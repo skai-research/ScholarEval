@@ -60,14 +60,17 @@ Additional resources:
 
 ## Cite Our Work
 
-If you use **ScholarEval** or **ScholarIdeas** in your research, please cite our paper:
+If you find **ScholarEval** or **ScholarIdeas** useful in your work, please cite our paper:
 
 ```bibtex
-@inproceedings{moussa2025scholareval,
-  title     = {ScholarEval: Research Idea Evaluation Grounded in Literature},
-  author    = {Moussa, Hanane Nour and Queiroz Da Silva, Patrick and Majumder, Bodhisattwa Prasad and Kumar, Sachin and others},
-  booktitle = {Proceedings of the Conference on Language Modeling (COLM)},
-  year      = {2025}
+@misc{li2025autosdtscalingdatadrivendiscovery,
+      title={ScholarEval: Research Idea Evaluation Grounded in Literature}, 
+      author={Hanane Nour Moussa, Patrick Queiroz Da Silva, Daniel Adu-Ampratwum, Alyson East, Zitong Lu, Nikki Puccetti, Mingyi Xue, Huan Sun, Bodhisattwa Prasad Majumder, Sachin Kumar},
+      year={2025},
+      eprint={},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/}, 
 }
 ```
 
