@@ -1,6 +1,3 @@
-Here’s a cleaned-up version of your README with a clearer structure and a **“Cite Our Work”** section at the end:
-
-````markdown
 # ScholarEval: Research Idea Evaluation Grounded in Literature 
 
 ## Overview  
