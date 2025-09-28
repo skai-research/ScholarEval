@@ -35,7 +35,7 @@ cd ScholarEval
 
 #### Command Line Arguments
 
-* `research_plan_path`: Path to the research plan text file
+* `research_idea_path`: Path to the research idea text file
 * `llm_engine_name`: LLM engine name (e.g., `gpt-4o`, `claude-sonnet-4`)
 * `litellm_name`: LiteLLM model name for cost calculation
 
