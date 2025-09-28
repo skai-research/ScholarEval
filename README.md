@@ -1,4 +1,6 @@
-# ScholarEval: Research Idea Evaluation Grounded in Literature 
+# ScholarEval
+
+This is the accompanying repository of the paper "ScholarEval: Research Idea Evaluation Grounded in Literature."
 
 ## Overview  
 <img width="1047" height="482" alt="image" src="https://github.com/user-attachments/assets/9cdff5da-cd83-430e-ae99-a8aa496caec2" />
@@ -54,7 +56,7 @@ Each folder in `ScholarIdeas/` includes:
 Additional resources:
 
 * Dataset creation pipeline: `dataset_creation/`
-* Evaluation pipeline (coverage, reference invalidity, LLM metrics): `evaluation/`
+* Evaluation pipeline (coverage, reference invalidity, LLM metrics - actionability, depth, and evidence support): `evaluation/`
 
 ---
 
