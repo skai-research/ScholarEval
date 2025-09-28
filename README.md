@@ -15,7 +15,7 @@ To support evaluation, we also release **ScholarIdeas**, the first expert-annota
 Our experiments show that ScholarEval:  
 - Achieves significantly higher coverage of expert-annotated rubrics in ScholarIdeas compared to all baselines  
 - Is consistently preferred over OpenAI’s *o4-mini-deep-research* in terms of actionability, depth, and evidence support  
-- Outperforms deep research in a user study on literature engagement, idea refinement, and overall usefulness  
+- Outperforms deep research in a user study with experts on literature engagement, idea refinement, and overall usefulness  
 
 ---
 
