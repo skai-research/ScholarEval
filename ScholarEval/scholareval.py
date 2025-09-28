@@ -387,7 +387,7 @@ def run_contribution_workflow(input_file: Path, output_dir: Path, llm_engine_nam
 
 def main():
     parser = argparse.ArgumentParser(description='Simple ScholarEval Pipeline for evaluating research plans')
-    parser.add_argument('--research_plan', required=True, type=Path,
+    parser.add_argument('--research_idea', required=True, type=Path,
                        help='Path to the research plan text file')
     parser.add_argument('--llm_engine_name', required=True,
                        help='LLM engine name for processing')
@@ -397,7 +397,7 @@ def main():
     args = parser.parse_args()
     
     # Validate research plan file
-    if not args.research_plan.exists():
+    if not args.research_idea.exists():
         print(f"Error: Research plan file {args.research_plan} does not exist")
         return 1
     
@@ -413,7 +413,7 @@ def main():
     
     # Copy research plan to output directory
     research_plan_copy = output_dir / "research_plan.txt"
-    with open(args.research_plan, 'r') as src:
+    with open(args.research_idea, 'r') as src:
         plan_content = src.read()
     with open(research_plan_copy, 'w') as dst:
         dst.write(plan_content)
