@@ -1,0 +1,32 @@
+
+# Research Plan: Modeled Grid Cells Aligned by a Flexible Attractor
+
+## Problem
+
+Grid cells in the medial entorhinal cortex provide spatial representation through hexagonal periodic firing patterns, with cells in the same module sharing spacing and orientation while differing only in spatial phase. Current computational models typically assume that this alignment results from two-dimensional continuous attractor networks that directly mirror the two-dimensional space being represented. However, this approach presents several limitations that motivate our investigation.
+
+First, the assumption that network architecture dimensionality must match representational space dimensionality has not been rigorously tested. Two-dimensional attractors impose rigid constraints on neural activity, yet experimental evidence shows grid maps can undergo global and local modifications under various manipulations. Second, the mechanisms for forming and maintaining such complex, fine-tuned two-dimensional networks remain poorly understood, often requiring independent functional representations of two-dimensional space as prerequisites. Third, grid cells demonstrate versatility in representing one-dimensional variables (space, time, sound frequency) and three-dimensional space with poor periodicity, suggesting the need for more flexible organizational principles. Finally, recent experimental evidence shows that animals deprived of sensory and vestibular feedback develop ring-like rather than toroidal population dynamics.
+
+We hypothesize that simpler one-dimensional attractors can effectively align grid cells while providing greater flexibility in negotiating the geometry of representational manifolds with feedforward inputs, rather than imposing predetermined constraints.
+
+## Method
+
+We will employ a self-organizing network model based on previous work demonstrating hexagonal map formation through Hebbian plasticity. Our approach centers on comparing different attractor architectures while maintaining identical feedforward learning mechanisms.
+
+The network architecture consists of a spatial input layer (225 neurons with place cell-like activity) projecting through feedforward connections with Hebbian plasticity to a grid cell layer (100 neurons) equipped with global inhibition and adaptation mechanisms. The key experimental manipulation involves implementing different recurrent collateral connection architectures: a classical two-dimensional toroidal attractor (2D condition), a one-dimensional ring attractor (1D condition), a linear stripe attractor without periodic boundaries (1DL condition), and a control condition without recurrent collaterals (No condition).
+
+For topological analysis of the resulting population activity, we will apply advanced mathematical tools from topological data analysis. This includes computing persistent homology to determine Betti numbers, assessing local dimensionality through principal component analysis, evaluating orientability through homology with different coefficient fields, and detecting boundaries or singularities through local homology analysis.
+
+We will quantify grid cell properties using standard metrics including gridness indices, spacing measurements, and angular spread of symmetry axes. The flexibility of one-dimensional attractors will be assessed by analyzing the geometric configurations that emerge during self-organization.
+
+## Experiment Design
+
+We will conduct 100 simulations for each condition (2D, 1D, 1DL, No) using identical parameters except for the recurrent connection architecture. Each simulation will involve a virtual animal navigating a 1-meter square arena over 2×10^7 steps, with feedforward synaptic weights updated according to Hebbian learning rules while recurrent weights remain fixed.
+
+The experimental design includes several key analyses. First, we will compare grid cell properties across conditions by measuring gridness, spacing, and alignment throughout the learning process and at completion. Second, we will conduct topological analysis of population activity by computing persistent homology diagrams, determining Betti numbers, and assessing local dimensionality and orientability for each condition. Third, we will analyze the transpose of the population activity matrix to investigate whether network architecture features are reflected in spatial map relationships.
+
+To understand the flexibility of one-dimensional attractors, we will visualize population activity by color-coding neurons according to their position in the ring attractor and mapping these colors to physical space. This will allow us to classify different geometric configurations and understand how one-dimensional arrangements can cover two-dimensional space.
+
+We will employ dimensionality reduction techniques (specifically Isomap) to visualize the high-dimensional population activity, while acknowledging that such methods do not guarantee topology preservation. Statistical comparisons across conditions will focus on the distribution of topological features and grid cell properties.
+
+The experimental design controls for potential confounds by using identical input statistics, learning parameters, and initial conditions across all attractor architectures. We will analyze both individual cell properties and population-level organization to distinguish between local grid formation and global alignment effects.

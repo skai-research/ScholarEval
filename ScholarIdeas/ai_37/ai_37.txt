@@ -1,0 +1,37 @@
+# Research Plan: Foundation Models for Boolean Logic
+
+## Problem
+
+Boolean logic problems such as Boolean satisfiability (SAT), model counting, and unsatisfiable core extraction are fundamental computational challenges with significant real-world applications. While efficient heuristic algorithms exist for these problems, their performance depends heavily on the specific structure of problem instances, creating a data-dependent algorithm design challenge.
+
+Traditional machine learning approaches for Boolean logic have relied on hand-crafted features based on expert domain knowledge, which can be expensive to compute and difficult to transfer across domains. Recent end-to-end machine learning techniques using graph neural networks (GNNs) have shown promise but suffer from being extremely data-hungry, requiring many CPU years of computation to generate sufficient training data for strong performance.
+
+We hypothesize that foundation models—large pretrained models trained on massive, multi-task datasets that can be fine-tuned for specific applications—could dramatically reduce training costs and improve sample efficiency for Boolean logic tasks. Our central research question is whether we can develop the first foundation model for Boolean logic that demonstrates strong fine-tuning performance across diverse held-out tasks while being significantly more data and training-time efficient than models trained from scratch.
+
+## Method
+
+We will develop a multi-task foundation model for Boolean logic using graph neural networks. Our approach centers on creating a unified architecture that can handle diverse Boolean logic tasks simultaneously through shared representations and task-specific heads.
+
+**Dataset Construction**: We will compile a dataset of one million uniform-random 3SAT instances at the solubility phase transition, each with 100 variables. We will generate ground truth labels for sixteen prediction tasks spanning ten different categories, including satisfiability prediction, model counting, backbone prediction, unsatisfiable core detection, RL-based branching, and various instance-level and variable/clause-level properties derived from existing SAT solver features.
+
+**Architecture Design**: We will adapt the GPS++ architecture, representing CNF formulae as clause-variable bipartite graphs with one-hot encoded inputs. Our model will consist of: (1) pre-GNN node and edge encoders, (2) a sequence of message-passing layers that iteratively update node and edge embeddings, (3) a shared-embedding layer that pools and concatenates graph and node level embeddings, and (4) task-specific heads for each of the sixteen tasks.
+
+**Multi-task Learning Framework**: We will optimize multiple tasks simultaneously using a mean loss across all tasks, with mean squared error for regression tasks and cross-entropy for classification tasks. The model will learn shared representations through the GNN layers while maintaining task-specific prediction heads.
+
+## Experiment Design
+
+**Within-Distribution Task Generalization**: We will evaluate foundation model effectiveness through leave-one-task-out experiments. For each task category, we will train a foundation model on all other tasks, then fine-tune on the held-out task. We will compare fine-tuning performance against training from scratch across multiple dimensions:
+
+- *Data Efficiency*: We will subsample training sets at 100, 1,000, 10,000, and 100,000 instances to measure how much training data each approach requires to achieve comparable performance.
+- *Training Time Efficiency*: We will measure validation performance at regular intervals during training to compare convergence speed between fine-tuning and training from scratch.
+- *Frozen vs. Full Fine-tuning*: We will test both full parameter fine-tuning and frozen shared architecture (training only task heads) to assess computational requirements.
+
+**Architecture Component Analysis**: We will systematically evaluate different normalization techniques (batch normalization, layer normalization, and our proposed hybrid normalization) across all tasks. We will also investigate the effects of dropout, pooling methods (mean vs. sum), and self-attention components.
+
+**Single-task vs. Multi-task Pretraining**: We will compare fine-tuning from our multi-task foundation model against fine-tuning from single-task pretrained models to determine whether task diversity contributes to representation quality.
+
+**Out-of-Distribution Generalization**: We will evaluate generalization to seven new distributions, including three non-random distributions (small-world graph coloring, quasi-group completion, spectrum repacking) and various random distributions (4SAT, 5SAT, controlled backbone instances). We will also test size generalization on larger instances (150-600 variables).
+
+**Training Configuration**: We will use a two-layer MLP for encoding, eight message-passing layers, 64-dimensional embeddings, Adam optimizer with 0.0001 learning rate, and batch size of 20. We will allocate 24 hours for pretraining, 6 hours for fine-tuning, and 2 hours for frozen fine-tuning experiments on A100 GPUs.
+
+Our evaluation will focus on comparing fine-tuning performance metrics (accuracy for classification, R² for regression) against training from scratch baselines, measuring both final performance and convergence efficiency across all sixteen tasks.

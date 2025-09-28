@@ -1,0 +1,41 @@
+# Research Plan: Invariant Spatiotemporal Representation Learning for Cross-Patient Seizure Classification
+
+## Problem
+
+We aim to address the critical challenge of cross-patient seizure classification from EEG data, where traditional methods fail due to distribution shifts between training and test data. Current seizure classification approaches primarily focus on patient-specific scenarios with consistent distributions between training and test sets, which greatly limits their applicability in real-world clinical scenarios.
+
+The core problem stems from significant variability in EEG patterns across individuals, including differences in epileptogenic zones, brain structure, and electrophysiological signatures of seizures due to individual variations in brain connectivity and seizure generation mechanisms. Existing methods, including CNNs, RNNs, and GNNs, face inherent limitations in generalization performance when applied to cross-patient scenarios. Recent approaches using adversarial learning struggle to implement effective solutions when applied to larger and more diverse patient groups.
+
+We hypothesize that by learning invariant spatiotemporal representations that capture the essential seizure-related patterns while filtering out patient-specific variations, we can achieve accurate seizure-type classification across different patient populations. Our approach is motivated by the need to separate invariant representations (key signals determining seizure type) from variant representations (noise, artifacts, and patient-specific variations) in EEG data.
+
+## Method
+
+We propose a spatiotemporal invariant risk minimization (ST-IRM) framework that combines self-supervised learning with invariant representation learning. Our methodology consists of several key components:
+
+**Invariant Mask Function**: We will develop a mask function m(·) to decompose raw EEG feature representations φ(Xt) into two orthogonal components: invariant representation κ(Xt) = m(φ(Xt)) and variant representation ψ(Xt) = (1 - m(φ(Xt))) ⊙ φ(Xt), where m(Xt) ∈ [0,1]^(N×M).
+
+**Self-Supervised Learning Component**: We will implement a self-supervised learning approach that focuses on preserving relationships between invariant representations across time steps, using the loss function: Lssl = (1/|nT|) Σᵢ₌₁ⁿ Σₜ₌₁ᵀ L(zt-1(m(φ(Xᵢₜ₋₁))), m(φ(Xᵢₜ))).
+
+**Supervised Learning Integration**: We will incorporate supervised signals to ensure preserved invariant information can predict seizure types using: Lsup = (1/|n|) Σᵢ₌₁ⁿ L(hT(m(φ(XᵢT))), yi).
+
+**Environment-Based Invariant Learning**: We will partition patients into different groups/environments using clustering methods (such as K-means) to create distinguishable environments, then apply invariant risk minimization across these environments.
+
+**Gradient Variance Penalty**: We will control time-varying variation across patient groups using the variance of gradients toward the mask function as a penalty term.
+
+## Experiment Design
+
+**Dataset**: We will conduct experiments on the Temple University Hospital EEG Seizure Corpus (TUSZ) dataset version v1.5.2, which contains 5,612 EEG signals and 3,050 annotated seizure events from over 300 patients, covering eight seizure types recorded using 19 electrodes from the standard 10-20 system.
+
+**Data Preprocessing**: We will transform raw EEG signals into the frequency domain, resample recordings to 200Hz, and segment them into non-overlapped 60-second windows. Each clip will be further segmented into 1-second intervals, with Fast Fourier Transform applied to obtain logarithmic amplitudes of non-negative frequency components.
+
+**Cross-Patient Evaluation Setup**: We will divide the dataset ensuring patient sets are disjoint between training, validation, and test sets. The training set will contain clips from 179 patients, validation from 22 patients, and test from 34 patients, with 1,925, 450, and 521 clips respectively.
+
+**Baseline Comparisons**: We will compare our method against several baseline approaches including CNN-based methods (DenseCNN), RNN-based methods (LSTM), hybrid approaches (CNN-LSTM), and GNN-based methods (MSTGCN, Dist-DCRNN, Corr-DCRNN, NeuroGNN, PANN-DCRNN).
+
+**Evaluation Metrics**: We will use weighted F1-score as the primary evaluation metric, along with precision and recall, to measure classification performance across different seizure types.
+
+**Hyperparameter Tuning**: We will tune hyperparameters including initial learning rate, top-k neighbors for correlation graphs, maximum diffusion steps, dropout probability, and training epochs on the validation set.
+
+**Ablation Studies**: We will conduct in-depth analyses examining the effect of different numbers of patient groups, various top-k values, and different penalty weight configurations to understand the contribution of each component.
+
+**Implementation Details**: We will use batch sizes of 40 EEG clips, employ cosine annealing learning rate scheduler, and conduct experiments on NVIDIA GeForce RTX 3090 with Intel Xeon Gold 6248R CPU.

@@ -1,0 +1,38 @@
+
+# Research Plan
+
+## Problem
+
+Animals face a critical survival challenge: balancing the urgent need to find food during starvation with the necessity to avoid toxic substances. In Drosophila, this decision-making process involves distinguishing between nutritious and potentially toxic food through specialized Gustatory Receptor Neurons (GRNs) that express different Gustatory Receptors (GRs). While GRNs expressing Gr64f detect sweet compounds and promote feeding behavior, those expressing Gr66a detect bitter compounds and induce feeding rejection. These GRNs project to the Subesophageal Zone (SEZ) in the central brain where gustatory information is processed.
+
+Despite extensive knowledge about GRs and GRNs, the processing of gustatory information in the SEZ remains unclear. Unlike the olfactory system with its organized glomerular structure, the gustatory system lacks clear anatomical subdivisions, though sweet and bitter processing neurons do converge in distinct, non-overlapping SEZ regions. We hypothesize that the first layer of gustatory interneurons, termed Gustatory Second Order Neurons (G2Ns), which receive direct input from GRNs, play a crucial role in integrating gustatory information with the fly's metabolic state to guide feeding decisions.
+
+Our central research question is: How do G2Ns integrate opposing gustatory signals (sweet-attractive vs. bitter-repulsive) with metabolic state information to regulate feeding behavior? We specifically aim to understand how flies integrate gustatory information that codes for opposing behaviors and how starvation influences this integration process.
+
+## Method
+
+We will employ a molecular approach to identify and characterize G2Ns using several complementary techniques. Our primary strategy involves using the trans-Tango genetic tool to label postsynaptic neurons connected to specific presynaptic GRNs. We will use Gr64f-Gal4 transgenes to label G2Ns receiving sweet information and Gr66a-Gal4 transgenes for those receiving bitter information.
+
+To capture the influence of metabolic state on gustatory processing, we will analyze G2Ns under two conditions: fed flies and flies starved for 24 hours. We will use Fluorescent Activated Cell Sorting (FACS) to isolate the fluorescently labeled G2Ns (marked with mtdTomato) from both sweet (Gr64fG2N) and bitter (Gr66aG2N) pathways under both metabolic conditions.
+
+Following cell sorting, we will perform bulk RNA sequencing (RNAseq) to characterize the molecular profiles of these G2N populations. Our analysis will focus on identifying differences in gene expression between the two G2N populations and changes associated with metabolic state. We will pay particular attention to neurotransmitters, neuropeptides, and their receptors, as these are known modulators of feeding behavior.
+
+To validate synaptic connectivity, we will employ orthogonal techniques including GRASP (GFP Reconstruction Across Synaptic Partners) and BacTrace for confirming synaptic connections between identified neurons. We will also utilize connectomic analysis using the Full Adult Female Brain (FAFB) electron microscopy dataset to map connectivity patterns.
+
+## Experiment Design
+
+Our experimental design consists of several integrated components:
+
+**RNAseq Analysis**: We will collect G2Ns from four experimental groups: Gr64fG2Ns from fed flies, Gr64fG2Ns from starved flies, Gr66aG2Ns from fed flies, and Gr66aG2Ns from starved flies. After FACS sorting, we will extract RNA and perform bulk RNAseq. We will analyze differential gene expression using Principal Component Analysis and focus on genes involved in neurotransmission and neuropeptide signaling.
+
+**Validation Experiments**: For genes of interest identified through RNAseq, we will perform quantitative PCR (qPCR) on enriched samples and immunohistochemistry to confirm protein expression changes. We will use specific antibodies to validate expression patterns in whole-mount brain preparations.
+
+**Connectivity Analysis**: We will use trans-Tango labeling combined with immunohistochemistry to identify which neurons express candidate molecules and receive input from specific GRN types. GRASP experiments will involve expressing complementary GFP fragments in candidate presynaptic GRNs (using Gr64f-LexA and Gr66a-LexA) and postsynaptic neurons of interest, with GFP reconstruction indicating synaptic contact. BacTrace experiments will provide additional validation by labeling presynaptic partners.
+
+**Connectomic Analysis**: Using the FAFB dataset and tools like FlyWire, we will identify candidate neurons by analyzing all postsynaptic partners of characterized Gr64fGRNs and Gr66aGRNs. We will look for neurons that receive input from both sweet and bitter GRNs and compare their morphology with our experimentally identified candidates.
+
+**Behavioral Assays**: We will test the functional role of identified neurons using two behavioral paradigms. First, we will employ Proboscis Extension Response (PER) assays to measure feeding initiation responses to sucrose alone and sucrose mixed with bitter compounds (caffeine) in fed, 12-hour starved, and 24-hour starved flies. Second, we will use flyPAD two-choice assays to monitor sustained feeding behavior over extended periods, offering flies choices between different sugar concentrations with and without bitter compounds.
+
+For functional manipulation, we will silence candidate neurons using tetanus toxin (UAS-TNT) expressed via specific Gal4 drivers, with UAS-TNTimp serving as controls. We will test flies across different starvation states to assess how metabolic condition influences the role of these neurons in gustatory decision-making.
+
+Our experimental approach will systematically progress from molecular characterization through connectivity validation to functional behavioral analysis, providing a comprehensive understanding of how G2Ns integrate gustatory and metabolic information to guide feeding decisions.

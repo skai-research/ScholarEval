@@ -1,0 +1,36 @@
+
+# Research Plan
+
+## Problem
+
+We aim to reassess the substrate specificities of two major Staphylococcus aureus peptidoglycan hydrolases: lysostaphin (LSS) and LytM. Despite decades of research, the exact molecular targets and substrate specificities of these lysostaphin-like zinc-dependent metalloendopeptidases remain enigmatic and contradictory. 
+
+The motivation for this research stems from the urgent need for alternative antimicrobial strategies in the age of antibiotic resistance, particularly against methicillin-resistant S. aureus (MRSA) strains. Peptidoglycan hydrolases represent promising bacteriocins and druggable targets for treating multidrug-resistant S. aureus infections. However, profound knowledge of their structure, function, and substrate specificity is instrumental to harness their full potential as a new breed of antibiotics.
+
+Both LSS and LytM belong to the M23 family of metalloendopeptidases and have been designated as glycyl-glycine hydrolases that specifically target the pentaglycine cross-bridge of S. aureus peptidoglycan. However, previous studies have reported inconsistent results regarding the exact cross-bridge bonds that these enzymes target, with different research groups identifying different cleavage sites. We hypothesize that the substrate specificities of these highly homologous enzymes are divergent and have been inaccurately defined in previous studies.
+
+## Method
+
+We will employ a systematic bottom-up approach using solution-state NMR spectroscopy as our primary analytical method to decipher the substrate specificity of LSS and LytM catalytic domains. Our methodology combines real-time kinetics monitoring with atomic-resolution identification of hydrolysis products.
+
+We will prepare a comprehensive panel of synthetic peptides that faithfully replicate the chemical structure of recognized S. aureus peptidoglycan fragments, using the pentaglycine cross-bridge as the common scaffold structure. To break isotopic symmetry and enable unambiguous determination of cleavage sites, we will employ selective ¹⁵N,¹³C-labeling of specific glycine residues in pentaglycine substrates.
+
+Our approach will utilize quantitative ¹H NMR spectroscopy to monitor substrate hydrolysis in real-time, allowing us to measure reaction kinetics while simultaneously identifying hydrolysis products through multi-dimensional NMR experiments including ¹H-¹³C HSQC, HMBC, and glycine-optimized 2D HA(CA)CO correlation experiments.
+
+We will complement synthetic peptide studies with analysis of muropeptides extracted from purified S. aureus USA300 sacculus using established protocols, and validate our findings through turbidity reduction assays on living S. aureus cells.
+
+## Experiment Design
+
+We will conduct systematic kinetic studies using seven different peptidoglycan fragments (peptides 1-7) of varying complexity, from simple pentaglycine to more complex cross-linked structures containing stem peptides. Each experiment will monitor substrate hydrolysis at approximately 0.4 mM substrate concentration with 2 μM or 50 μM enzyme concentration.
+
+For real-time NMR kinetics, we will acquire quantitative ¹H spectra at regular time intervals using a standard pulse sequence with selective radiofrequency field for residual HDO signal presaturation. We will use 20-second recycle delays to ensure quantitative detection and 0.1 mM DSS as both reference compound and for peak integration.
+
+To determine preferred cleavage sites in pentaglycine, we will use selectively ¹³C-labeled pentaglycine (Gly2 labeled at Cα and CO carbons) and monitor the reaction using glycine-optimized 2D HA(CA)CO NMR experiments. The characteristic chemical shift differences between C-terminal (179.4 ppm) and non-terminal (173.8 ppm) ¹³CO resonances will allow unambiguous identification of cleavage sites.
+
+We will extract muropeptides from S. aureus USA300 sacculus using established protocols involving SDS treatment, DNase and Pronase digestion, HCl treatment, and mutanolysin digestion. The extracted muropeptides will be analyzed by NMR before and after enzyme treatment to confirm cleavage patterns observed with synthetic substrates.
+
+Turbidity reduction assays will be performed using S. aureus USA300 cells in late stationary phase (OD600 6-8), monitoring optical density reduction at 600 nm over 16 hours in the presence of 50 μg/mL enzyme concentration.
+
+We will also test the effects of cross-bridge length variations and serine substitutions using additional synthetic peptides to understand resistance mechanisms and validate our findings against known S. aureus mutant phenotypes.
+
+All experiments will be conducted at 25°C using 800 MHz NMR spectroscopy, and reaction rates will be calculated using linear regression of the first 40-60 minutes of each reaction, with kinetic data fitted to Michaelis-Menten equations where appropriate.

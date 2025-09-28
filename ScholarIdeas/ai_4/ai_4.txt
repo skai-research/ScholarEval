@@ -1,0 +1,33 @@
+# Research Plan: ESM-Effect Framework for Mutation Functional Effect Prediction
+
+## Problem
+
+We address critical limitations in computational mutation effect prediction, particularly for functional effects rather than traditional pathogenicity predictions. Current approaches face three main challenges: (1) methods using static ESM1 embeddings or multimodal features either fall short in accuracy or involve complex preprocessing pipelines, (2) functional effect prediction suffers from a lack of standardized datasets and metrics for robust benchmarking, and (3) existing pathogenicity predictors struggle to accurately predict bidirectional functional effects of specific mutations, such as rare gain-of-function enzyme mutations.
+
+The motivation stems from the clinical need for precise functional insights into mutations, as Deep Mutational Scans (DMS) are laborious, expensive, and rare. While pathogenicity predictors can distinguish benign from pathogenic mutations, they cannot reliably capture the complex biological specificity required for predicting whether mutations increase or decrease specific protein properties. We hypothesize that systematic optimization of ESM2-based approaches through fine-tuning will significantly outperform static embedding methods and potentially match or exceed multimodal competitors.
+
+## Method
+
+We will develop ESM-Effect, a framework that systematically optimizes ESM2-based functional effect prediction through extensive ablation studies. Our methodology involves:
+
+**Model Architecture Optimization**: We will evaluate different ESM2 model sizes (35M to larger variants) to determine optimal scaling relationships for functional effect prediction, investigating whether NLP scaling laws transfer to this biological domain.
+
+**Fine-tuning Strategy Analysis**: We will compare static ESM2 embeddings against fine-tuned approaches, testing multiple fine-tuning strategies including full fine-tuning, LoRA (Low-Rank Adaptation), and partial fine-tuning (unfreezing specific layers).
+
+**Regression Head Design**: We will systematically evaluate four regression head architectures: (1) mean embedding of mutant sequence, (2) linear combination of mean embeddings from mutant and wildtype sequences, (3) embedding at mutation position of mutant sequence, and (4) linear combination of mutation position embeddings from mutant and wildtype sequences.
+
+**Inductive Bias Integration**: We will incorporate two key inductive biases into our architecture: that mutation effects are relative to a wildtype sequence, and that mutation impact is largest at the mutation position.
+
+## Experiment Design
+
+**Ablation Studies**: We will conduct comprehensive ablation experiments across multiple DMS datasets (including AAV, GB1, GFP, SNCA, NUDT15, PTEN) to systematically evaluate each component. We will test different model sizes, fine-tuning approaches, and regression head designs using consistent train-test splits.
+
+**Benchmarking Framework Development**: We will establish standardized evaluation protocols including: (1) consistent datasets with clear train-test splits, (2) the relative Binned-Mean Error (rBME) metric to emphasize prediction accuracy in challenging, non-clustered, and rare gain-of-function regions, and (3) visualization methods that provide realistic assessment of model performance.
+
+**Performance Comparison**: We will compare our optimized ESM-Effect against the state-of-the-art multimodal PreMode method, which incorporates ESM2 embeddings, AlphaFold2 structures, and multiple sequence alignments. We will use the same nine DMS datasets and train-test splits as PreMode for direct comparability.
+
+**Transfer Capability Assessment**: We will evaluate model generalization by testing on distinct sequence intervals rather than random splits, providing realistic measures of the model's ability to generalize to new biological contexts. We will analyze performance on structured versus disordered protein regions.
+
+**Validation Experiments**: We will conduct additional experiments including Test-Time-Training approaches and cross-protein family generalization tests to assess the broader applicability and limitations of our framework.
+
+All experiments will use consistent hyperparameters, multiple random seeds for statistical reliability, and both traditional metrics (Spearman correlation) and our proposed rBME metric for comprehensive evaluation.

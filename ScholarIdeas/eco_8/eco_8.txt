@@ -1,0 +1,28 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the factors that influence competitive incentives and aggression patterns among female gorillas in social hierarchies. While previous research suggests that individuals primarily compete with those closest in the hierarchy to maintain or attain ranks, recent work has demonstrated that the direction of aggression towards groupmates of different ranks varies even within species. We hypothesize that this variation arises due to different conditions that individual animals experience, specifically that individual energetic needs and the social environment shape competitive incentives and aggression towards individuals of different ranks.
+
+Competition among groupmates is commonly reflected in aggressive interactions as individuals try to attain or maintain higher social ranks for better access to critical resources. Most studies have focused on aggression rates, but we seek to understand how relevant factors influence "aggression direction" in terms of power differentials to unravel evolutionary aspects of competitive strategies. Gorillas represent an intriguing case because females of both species form stable hierarchical relationships but often direct aggression towards higher-ranking groupmates, with female-female aggression rates varying based on group composition and reproductive state.
+
+We predict that greater individual needs may prompt individuals to show greater aggression even against higher-ranking groupmates, as the benefits related to status improvement or resource acquisition might counterbalance risk-related costs. Additionally, we expect that social environment factors such as group composition will influence aggression patterns, with larger numbers of potential allies or protectors potentially minimizing risk-related costs of aggression towards higher-ranking competitors.
+
+## Method
+
+We will use long-term behavioral observations from wild gorilla groups to test whether energetic needs and social environment influence female aggression towards more or less powerful females. Our approach involves analyzing the direction of aggressive interactions using a novel scoring system that quantifies power differentials between aggressors and recipients.
+
+We will employ Elo-rating methods to infer individual female dominance hierarchies using decided avoidance and displacement behaviors, which are considered more reliable proxies of power relationships than aggression itself. We will assign interaction scores to each aggressive encounter by calculating the difference between the standardized Elo-score of the recipient and the aggressor, creating a continuous measure ranging from -1 to 1, where positive scores represent aggression up the hierarchy and negative scores represent aggression down the hierarchy.
+
+Our analytical framework will use linear mixed-effects modeling to test the relationships between aggression direction and our predictor variables while controlling for potential confounding factors. We will classify aggressive behaviors into intensity categories (mild, moderate, severe) and use demographic data to estimate daily female reproductive states as proxies for energetic needs.
+
+## Experiment Design
+
+We will analyze behavioral data from one western gorilla group in Loango National Park, Gabon, and four mountain gorilla groups in Bwindi Impenetrable National Park, Uganda, spanning multiple years of observation. We will record both focal and ad libitum behavioral observations, including avoidance, displacement, and aggressive behaviors among adult females.
+
+Our experimental design will test three main hypotheses: (1) females with greater energetic needs (pregnant and lactating females) will direct aggression towards higher-ranking individuals compared to cycling females, (2) females will target higher-ranking groupmates when there are more males in the group who may provide protection, and (3) females will target lower-ranking individuals when there are more females in the group, representing a larger pool of competitors.
+
+We will fit a linear mixed-effects model with aggression direction score as the response variable and include the following explanatory variables: species (western or mountain), reproductive state of the aggressor (cycling, pregnancy trimester, or lactation), number of females in the group, number of adult males in the group, and aggression intensity. We will include identities of interacting females, dyad, and group as random factors to account for non-independence in the data.
+
+We will differentiate between pregnancy trimesters (85 days each) to capture the varying energetic demands throughout pregnancy, with the expectation that the latest stage of pregnancy will show the strongest effects due to the highest energetic demands. We will validate our models using residual distribution tests and check for multicollinearity among explanatory variables to ensure robust statistical inference.

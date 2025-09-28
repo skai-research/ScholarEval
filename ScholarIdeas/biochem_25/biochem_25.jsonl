@@ -1,0 +1,2 @@
+{"statement": "The approach using destabilizing domains (DDs), RNAseq and differential gene expression (DGE) analysis to compare nuclear and cytosolic unfolded protein stress is interesting and effective at revealing cellular responses induced by compartment-specific protein misfolding stress.", "type": "strength", "axis": "contribution", "severity": "major"}
+{"statement": "The nature of the stress mounted by nuclear-localized DD (Nuc DD) is unclear and requires clarification.", "type": "weakness", "axis": "soundness", "severity": "major"}

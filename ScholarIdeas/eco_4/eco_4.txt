@@ -1,0 +1,46 @@
+
+# Research Plan: Interpreting Prediction Intervals and Distributions for Decoding Biological Generality in Meta-Analyses
+
+## Problem
+
+We aim to address a critical gap in ecological and evolutionary research: the systematic quantification of generality in scientific findings. Despite the importance of identifying predictable regularities for knowledge transfer across contexts, the generality of ecological and evolutionary findings has yet to be systematically evaluated.
+
+The core problem stems from current practices in meta-analysis that rely on total heterogeneity metrics (such as Cochran's Q and I²) as proxies for inferring generality. We hypothesize that this approach creates a misleading "generality gap" because it conflates within-study and between-study variances, leading to the illusion that generalization is exceedingly rare in ecological and evolutionary studies. 
+
+Our central hypothesis is that by decomposing heterogeneity at biologically meaningful hierarchical levels (particularly at the study level), we can reveal that generality is more achievable than previously thought. We propose that the misconception about rare generalization results from focusing too heavily on total heterogeneity rather than examining variance components at appropriate biological scales.
+
+The research questions guiding our study are: (1) How does the assessment of generality change when we partition heterogeneity into within-study and between-study components? (2) What proportion of ecological and evolutionary meta-analyses demonstrate meaningful generality when evaluated at appropriate hierarchical levels? (3) Can prediction intervals and distributions provide more biologically meaningful measures of generality than traditional heterogeneity metrics?
+
+## Method
+
+We will employ a novel methodological approach centered on prediction intervals (PIs) and predictive distributions (PDs) as direct measures of generality, moving beyond traditional heterogeneity metrics. Our approach will utilize hierarchical partitioning techniques to decompose total variance into meaningful biological components.
+
+The theoretical framework builds on three-level meta-analytic models that allow us to partition variance into between-study and within-study components. We will fit multilevel meta-analytic models to each dataset, estimating the average population effect size (μθ) and decomposing the total variance (σ²) into between-study variance (σ²b) and within-study variance (σ²w).
+
+Our methodology involves deriving PIs and PDs using both: (1) total heterogeneity (traditional approach), and (2) partitioned heterogeneity focusing on between-study variance (our proposed approach). We will employ both integration methods and Monte Carlo simulations to derive these measures from the distribution of population effect sizes.
+
+The rationale for this approach is that PIs provide intervals indicating the extent to which phenomena can be generalized in replication studies with specified probability (typically 95%), while PDs offer probabilistic estimates of entire effect size distributions from new studies, enabling estimation of the likelihood of observing meaningful effects above biologically relevant thresholds.
+
+## Experiment Design
+
+We will conduct our analysis using a comprehensive dataset comprising 512 meta-analyses with 109,495 observed effect sizes, compiled from ecological and evolutionary literature. The dataset includes various effect size measures (standardized mean difference, log response ratio, Fisher's Z_r, and others) from studies published in major ecological journals.
+
+**Primary Analysis Design:**
+We will fit three-level meta-analytic models to each of the 512 meta-analyses using the rma.mv() function from the metafor package. The models will use restricted maximum likelihood (REML) as the variance estimator, with specific optimization parameters including a quasi-Newton method, threshold of 10⁻⁸, step length of 1, and maximum iteration limit of 1,000.
+
+**Prediction Interval Calculations:**
+We will derive 95% PIs at two levels: (1) total level using complete variance components, and (2) study level controlling for within-study variance. We will assess generalizability by determining how many meta-analyses exclude the null effect within their 95% PIs.
+
+**Predictive Distribution Analysis:**
+We will implement two computational approaches: (1) Monte Carlo simulations sampling 10⁵ effect sizes from t-distributions specific to each meta-analytic context, and (2) integration over probability density functions derived from estimated model parameters. We will calculate the probability P(x > q) of observing effects above meaningful thresholds.
+
+**Threshold Definition:**
+For meaningful effect thresholds, we will use the lower confidence limit of each meta-analysis as a general proxy, with sensitivity analyses using conventional cutoffs for 'small effects' (0.2 for Cohen's d, 0.1 for Fisher's Z_r).
+
+**Validation Procedures:**
+We will confirm model convergence and identifiability of variance estimation by examining likelihood profiles. We will exclude datasets where multilevel models fail to achieve convergence despite parameter optimization.
+
+**Comparative Analysis:**
+We will systematically compare conclusions about generalizability between traditional total heterogeneity approaches and our proposed decomposition method, quantifying how many additional meta-analyses demonstrate meaningful generality when evaluated at the study level rather than total level.
+
+The experimental design will enable us to test whether decomposing heterogeneity reveals greater generality than traditional approaches suggest, and to quantify the extent of this difference across diverse ecological and evolutionary phenomena.

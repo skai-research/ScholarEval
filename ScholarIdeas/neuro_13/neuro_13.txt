@@ -1,0 +1,36 @@
+
+# Research Plan
+
+## Problem
+
+The brain's ability to consolidate diverse memories while maintaining their distinctiveness across experiences remains poorly understood. Sharp-wave ripples (SWRs), neural oscillations occurring predominantly within CA1 of the hippocampus during immobility and sleep, play a critical role in memory consolidation. Recent evidence has revealed functional heterogeneity of pyramidal neurons within distinct sublayers of CA1 (superficial CA1sup and deep CA1deep) that display unique properties during ripples, potentially contributing to memory specificity.
+
+Despite this understanding, it remains unclear exactly how ripples shift the activity of CA1 neuronal populations to accommodate the consolidation of specific memories and how sublayer differences manifest. While much attention has focused on uncovering principles that guide memory reactivation and consolidation, less is known about the mechanisms that regulate these processes and govern memory specificity.
+
+We hypothesize that cortical inputs, specifically from the anterior cingulate cortex (ACC), may play a role in modifying hippocampal activity during memory consolidation. The ACC displays increased activity immediately preceding CA1 ripples and is instrumental in contextual fear conditioning and memory consolidation. We propose that interactions between ACC and CA1 neurons during ripples undergo reorganization following learning, potentially contributing to the rebalancing of CA1 neuronal populations' contribution to ripple contents.
+
+## Method
+
+We will employ simultaneous dual-site in vivo electrophysiology recordings of both ACC and hippocampal CA1 regions throughout a contextual fear conditioning paradigm. We will record local field potentials and neuronal spikes simultaneously, identifying slow-wave sleep by CA1 delta waves and ripple oscillations.
+
+To investigate information flow between regions, we will implement generalized linear model (GLM) machine learning decoding to test whether ACC activity preceding ripples can predict CA1 activity during ripples. ACC spiking will be binned into 200ms segments across multiple time windows to predict individual CA1 neuronal firing rates between 0-100ms after ripple onset.
+
+We will classify CA1 neurons into superficial (CA1sup) and deep (CA1deep) sublayers based on their sharp-wave deflection characteristics. Additionally, we will categorize neurons as task-active or task-inactive based on whether they increase or decrease their activity during training, calculated using a firing activity index ratio comparing each neuron's firing rate during training with its pre-training baseline.
+
+To establish causal relationships, we will perform optogenetic stimulation experiments. We will unilaterally microinject AAV-CaMKII-ChR2 into the ACC and implant an optic fiber above the injection site, alongside a recording tetrode array in CA1. We will administer 4-pulse 25Hz optogenetic stimulations during sleep to examine how CA1 neurons respond to ACC stimulations.
+
+## Experiment Design
+
+We will conduct contextual fear conditioning experiments using a square chamber with a shock grid floor. During training, mice will first explore the chamber for 3 minutes, then receive 3 mild footshocks (0.75 mA, 0.5 s) with 2-minute intervals between shocks. Neural activity will be recorded continuously, including pre-training sleep (2-3 hours), training (7.5 min), post-training sleep (2-3 hours), and contextual fear test (5 min).
+
+For electrophysiology recordings, we will implant dual electrode arrays (8 tetrodes each) into ACC and CA1. We will record from multiple mice, targeting substantial numbers of neurons in both regions. Spikes will be sorted manually and analyzed for activity patterns surrounding ripples and during behavioral tasks.
+
+We will examine ACC neuronal spiking activity surrounding CA1 ripples during pre-training sleep by computing peri-ripple event histograms and comparing ACC spiking activity between different time windows relative to ripple onset. We will determine whether neurons show pre-ripple or post-ripple peaks in activity.
+
+For GLM decoding analysis, we will randomly partition ripples into training and testing datasets. The model derived from the training phase will be applied to ACC population spike data in the test set to yield predictions for CA1 spike counts across ripples. We will calculate prediction errors and compare real data performance to shuffled controls.
+
+We will classify putative excitatory pyramidal neurons and interneurons based on spike waveform, firing rate, and spike width. For sublayer classification, we will examine the mean amplitude of sharp-wave deflection at maximum ripple power for each tetrode, with deflections greater than 50μV classified as deep sublayer and less than -50μV as superficial layer.
+
+For optogenetic experiments, we will allow one week for recovery and viral expression development following surgery. During recording sessions, we will deliver laser stimulations and measure CA1 neuronal responses, calculating response latencies and analyzing differential effects on CA1 sublayers and interneuron populations.
+
+We will measure behavioral performance during fear conditioning and contextual fear tests to correlate learning outcomes with neurophysiological measures. All analyses will examine how ACC-CA1 communication patterns change from pre-training to post-training sleep and how these changes relate to learning and memory consolidation processes.

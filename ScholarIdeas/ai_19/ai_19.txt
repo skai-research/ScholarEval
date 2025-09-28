@@ -1,0 +1,23 @@
+# Research Plan: Improving Transformer Interpretability with Activation Contrast-Based Attribution
+
+## Problem
+
+We address the challenge of interpreting transformer-based text classification models, which has become critical as these models are increasingly integrated into real-world applications where transparency and trustworthiness are essential. While activation-based attribution methods have shown promise in explaining transformer decisions, we hypothesize that they suffer from a fundamental limitation: the incorporation of class-irrelevant features within activations that degrade the quality of their interpretations.
+
+Current activation-based methods like AttCAT apply gradients directly to activations to extract class-relevant features, but we observe that this procedure can still be affected by class-irrelevant features present in the activations. This leads to suboptimal attribution maps that may highlight incorrect tokens or miss important class-relevant tokens. Our motivation stems from the need to filter out these class-irrelevant features to generate more accurate and faithful token-level attribution maps for transformer-based text classification models.
+
+## Method
+
+We propose Contrast-CAT, a novel activation contrast-based attribution method that improves upon existing activation-based approaches by filtering out class-irrelevant features through an activation contrasting framework. Our approach builds on the first-order Taylor expansion approximation where we contrast target activations with reference activations from sequences that produce low confidence scores for the target class.
+
+The core methodology involves: (1) constructing contrastive references by selecting activation sequences from inputs where the model's confidence for the target class falls below a predefined threshold γ, (2) computing attribution maps using the difference between target and reference activations combined with gradient information and attention scores, and (3) aggregating information across multiple transformer layers to capture layer-specific semantic meanings.
+
+Our attribution map formulation incorporates three key components: gradient information that quantifies how activation changes affect predictions, averaged attention scores that reflect dominantly attended token-level information, and the activation contrast term that removes class-irrelevant features. We extend this to use multiple reference activations from various classes and employ a refinement process that selectively filters attribution maps based on quality assessment using token-wise deletion tests.
+
+## Experiment Design
+
+We will conduct comprehensive experiments using pre-trained BERT base models on four popular text classification datasets: Amazon Polarity, Yelp Polarity, SST2, and IMDB. We plan to evaluate our method against various baseline attribution methods categorized into attention-based (RawAtt, Rollout, Att-grads, Att×Att-grads, Grad-SAM), LRP-based (Full LRP, Partial LRP, TransAtt), and activation-based methods (CAT, AttCAT, TIS).
+
+For evaluation, we will use faithfulness metrics including Area Over the Perturbation Curve (AOPC) and log-odds (LOdds) under both Most Relevant First (MoRF) and Least Relevant First (LeRF) settings. We will assess attribution quality by measuring how model predictions change when tokens are removed based on their attribution scores. Additionally, we will conduct confidence evaluation using Kendall-τ rank correlation to ensure our method generates class-distinct attributions.
+
+We plan ablation studies to analyze: (1) the effect of our activation contrasting approach by comparing with random references and same-class references, (2) the impact of using multiple layers versus single layers, (3) the effect of varying the number of reference activations, and (4) qualitative evaluation through visualization of attribution maps. We will also conduct experiments across different transformer architectures to validate the generalizability of our approach.

@@ -1,0 +1,52 @@
+
+# Research Plan: Assemblies, Synapse Clustering and Network Topology Interact with Plasticity to Explain Structure-Function Relationships of the Cortical Connectome
+
+## Problem
+
+Synaptic plasticity underlies the brain's ability to learn and adapt, yet how synaptic changes are coordinated in biological neuronal networks to ensure the emergence of learning remains poorly understood. While experiments in brain slices have revealed mechanisms and protocols for plasticity induction between pairs of neurons, the gap between in vitro pair-level studies and in vivo network-level behavior presents a significant challenge.
+
+Current simulation and modeling approaches to study learning in plastic networks have not yet achieved a scale that incorporates realistic network structure, active dendrites, and multi-synapse interactions - all key determinants of synaptic plasticity. Most existing models use point-neuron representations, neglecting the structural and functional importance of dendrites in plasticity. The compartmentalized nature of dendritic trees gives rise to spatial clustering of synapses and local, non-linear voltage events, both thought to contribute to NMDA receptor unblocking and plasticity gating.
+
+We hypothesize that dendrites and network structure interact with plasticity to shape stimulus representations at the microcircuit level. Specifically, we predict that plasticity will be driven by co-firing stimulus-evoked functional assemblies, spatial clustering of synapses on dendrites, and the topology of network connectivity.
+
+## Method
+
+We will endow an existing large-scale cortical network model with a calcium-based model of functional plasticity that captures the diversity of excitatory connections under in vivo-like conditions. Our approach builds upon a biophysically detailed, large-scale cortical network model of rat non-barrel somatosensory cortex (nbS1) comprising 211,712 neurons in 2.4 mm³ of tissue.
+
+We will integrate a recently developed calcium-based plasticity model following the Graupner and Brunel (2012) formalism, where pre- and postsynaptic spikes lead to changes in synaptic calcium concentration. The model will track calcium entering through NMDA receptors and voltage-dependent calcium channels, with synaptic efficacy updates occurring when integrated calcium traces cross thresholds for depression or potentiation.
+
+Key methodological components include:
+- Modeling in vivo-like conditions with low extracellular calcium concentration (~1 mM instead of 2-2.5 mM in vitro)
+- Implementing pathway-specific initialization of synaptic efficacy states
+- Coupling short- and long-term plasticity through updates to utilization of synaptic efficacy (USE)
+- Delivering spatiotemporally precise input through thalamic fibers from VPM and POm nuclei
+
+We will use 10 VPM input patterns with varying degrees of overlap, presented repeatedly in random order with 500 ms inter-stimulus intervals, together with non-specific POm input.
+
+## Experiment Design
+
+We will conduct several complementary simulation experiments to test our hypotheses:
+
+**Primary Plasticity Simulation**: We will simulate 10 minutes of biological time with stimulus-evoked network activity to characterize plastic changes. We will monitor synaptic efficacy evolution, firing rate stability, and weight distribution changes throughout the simulation.
+
+**Stability Analysis**: We will assess network stability by tracking excitatory firing rates and comparing changes in synaptic efficacy over time. We will implement control simulations with higher calcium concentrations to test whether the plasticity rule can stabilize initially unstable (synchronous) network activity.
+
+**Control Experiments**: We will run multiple control conditions including:
+- Random Poisson spikes on VPM fibers without spatiotemporal structure
+- Simulations with intrinsic connectivity removed
+- Simulations without external stimuli
+- Comparison with traditional spike-timing dependent plasticity (STDP) rules
+
+**Assembly Detection and Analysis**: We will detect functional cell assemblies from spiking activity using established experimental methods, analyzing co-firing patterns and their relationship to plastic changes. We will examine plasticity propensity within and across assemblies.
+
+**Spatial Clustering Analysis**: We will identify spatial clusters of synapses (≥10 synapses within 20 μm stretches of dendritic branches) and analyze their relationship to plasticity, focusing on the most innervated Layer 5 thick-tufted pyramidal cells within assemblies.
+
+**Network Topology Analysis**: We will quantify network-level predictors of plasticity using directed simplex counts and edge participation metrics. We will analyze how connections' embedding in the full network topology influences their probability of undergoing plastic changes.
+
+**Pattern Specificity Testing**: We will run 2-minute simulations presenting single patterns repeatedly to assess stimulus-specific plasticity patterns and their relationship to input structure.
+
+**Functional Validation**: We will compare network activity before and after plasticity, measuring changes in firing rates, spike correlations, assembly reliability, and stimulus specificity.
+
+**External Validation**: We will test predictions against the MICrONS electron microscopic dataset, comparing edge participation relationships with connection strength measures.
+
+All experiments will be repeated multiple times to assess consistency, and we will systematically vary key parameters to understand the robustness of our findings.

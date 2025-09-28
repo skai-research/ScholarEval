@@ -1,0 +1,5 @@
+{"statement": "HepG4-seq, the new antibody-free strategy to map G4s based on the ability of hemin to act as a peroxidase when complexed to G4s, is interesting and offers a novel method to map native G4s.", "type": "strength", "axis": "contribution", "severity": "major"}
+{"statement": "The development and optimization of HBD-seq by replacing the problematic GST-His6-2xHBD fusion protein with EGFP-V5-tagged HBD construct avoids GST fusion protein aggregates and can reflect the genome-wide distribution of R-loops in vivo.", "type": "strength", "axis": "contribution", "severity": "major"}
+{"statement": "The plan relies exclusively on Tn5-based mapping strategies, which is problematic as global changes in DNA accessibility might strongly skew the results and it is unclear whether the lack of DHX9, BLM, or WRN has an impact on DNA accessibility.", "type": "weakness", "axis": "soundness", "severity": "major"}
+
+

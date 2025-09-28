@@ -1,0 +1,34 @@
+
+# Research Plan: Large-scale Characterization of Drug Mechanism of Action Using Proteome-wide Thermal Shift Assays
+
+## Problem
+
+The determination of compound mechanism of action remains a critical challenge in drug development. While most small molecule therapeutics function by engaging proteins through direct physical interactions, current understanding of many compounds' mechanisms remains incomplete, with extensive off-target engagement occurring despite widespread clinical and laboratory use.
+
+We hypothesize that proteome-wide thermal shift assays, particularly the recently developed PISA (Proteome Integral Solubility Alteration) approach, can provide comprehensive and unbiased assessment of compound-protein interactions. PISA offers an 8-fold theoretical improvement in throughput compared to traditional TPP and CETSA methods by compressing entire melting curves into single measurements, making large-scale chemical library screening feasible.
+
+Our research questions focus on: (1) Can we establish a robust, scalable workflow for screening chemical libraries using thermal stability measurements? (2) How effectively can combined cell-based and lysate-based approaches distinguish between primary (direct binding) and secondary (indirect) protein engagement? (3) What insights can large-scale thermal profiling reveal about off-target engagement and previously uncharacterized mechanisms of action?
+
+## Method
+
+We will implement PISA-based thermal shift assays in both living cells and native lysates to create a comprehensive platform for drug mechanism characterization. Our approach centers on measuring compound-dependent changes in protein thermal stability across the proteome.
+
+For cell-based experiments, we will treat K562 cells with compounds, subject them to thermal gradients (48°C-58°C), and measure soluble protein abundance after thermal denaturation and centrifugation. For lysate-based experiments, we will prepare crude extracts through dounce homogenization and apply the same thermal treatment protocol.
+
+We will use TMT-based quantitative proteomics coupled with mass spectrometry for protein quantification. The thermal window of 48°C-58°C will be optimized to maximize fold-change measurements while encompassing the back half of most protein melting curves in K562 cells.
+
+Our methodology will leverage the complementary nature of cell-based and lysate-based approaches: lysate experiments will primarily detect direct ligand binding events, while cell-based experiments will capture both direct engagement and secondary effects resulting from cellular signaling, protein-protein interactions, and post-translational modifications.
+
+## Experiment Design
+
+We will curate a chemical library of 96 compounds with well-annotated targets and known mechanisms of action, focusing primarily on cancer drugs and tool compounds. The library will include 70 protein kinase inhibitors and 26 compounds targeting other protein classes including HDACs, lysine demethylases, and PARPs.
+
+For the primary screen, we will treat K562 cells with each compound at 10 μM for 30 minutes in biological duplicate. We will arrange samples into TMTPro 16-plex experiments, requiring approximately 384 hours of instrument time across 16 multiplexes. We will also screen 70 selected compounds in K562 lysates using the same concentration and treatment duration.
+
+We will establish empirically-derived criteria for identifying high-confidence thermal stability changes, requiring log2 fold changes >0.2 in absolute value and >3.5 standard deviations from the mean protein-specific variance across all treatments.
+
+For validation studies, we will perform dose-response experiments with selected compounds to assess the relationship between thermal stability changes and compound potency. We will use biochemical assays and western blotting to validate predicted target engagement and measure downstream signaling effects.
+
+We will implement network-based correlation analysis to identify consistent thermal stability responses among structurally related proteins and protein complexes. We will compare thermal stability profiles between compounds with shared targets to assess specificity and identify potential off-target interactions.
+
+The experimental design will generate approximately 871,120 thermal stability measurements in cells and 627,176 measurements in lysates, providing unprecedented scale for mechanism of action characterization across multiple compound classes.

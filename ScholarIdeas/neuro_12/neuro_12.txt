@@ -1,0 +1,30 @@
+
+# Research Plan
+
+## Problem
+
+We aim to resolve a fundamental debate in space physiology regarding the mechanisms underlying movement slowing in microgravity. Astronauts consistently exhibit slower movements during spaceflight, even in controlled experimental settings where postural stability is ensured. This phenomenon persists across various tasks and represents a significant challenge for optimizing human performance in space.
+
+Two competing hypotheses have emerged to explain this movement slowing. The conservative control hypothesis suggests that the sensorimotor system adopts a generalized strategy prioritizing safety and postural stability over speed, leading to strategically planned longer movement durations. Alternatively, the body mass underestimation hypothesis proposes that humans systematically underestimate their body segment properties in microgravity due to reduced proprioceptive inputs, resulting in insufficient initial force generation during feedforward control.
+
+These hypotheses make distinct predictions about movement kinematics that we can test empirically. The conservative control hypothesis predicts maintained temporal symmetry in speed profiles with delayed peak speed and acceleration. In contrast, the body mass underestimation hypothesis predicts earlier occurrence of peak speed and acceleration due to initial underactuation, followed by compensatory feedback-based corrections that would manifest as additional submovements and asymmetric speed profiles.
+
+## Method
+
+We will leverage the natural variation in effective limb mass across movement directions, known as anisotropic inertia, to dissociate the effects of mass underestimation from strategic control. Using a two-joint arm model, we will examine reaching movements toward targets that engage different effective masses based on biomechanical properties.
+
+Our approach combines experimental data collection with model-based analyses. We will use the movement utility theory to estimate planned movement duration and a forward optimal controller to simulate reaching trajectories. These models will generate specific predictions about how actual and misperceived limb mass should affect reaching kinematics across different movement directions.
+
+We will analyze movement kinematics using established measures of feedforward control (peak acceleration and peak speed) and their temporal characteristics. To identify feedback-based corrections, we will employ submovement decomposition methods to detect trials containing both primary and secondary submovements, which would indicate corrective actions during movement execution.
+
+## Experiment Design
+
+We will study twelve taikonauts from the China Space Station across multiple phases: pre-flight, in-flight, and post-flight sessions. An age-matched ground control group will provide baseline comparisons to assess potential confounding effects of repeated measurements.
+
+Participants will perform rapid reaching movements using their right index finger on a tablet touchscreen. The task will involve reaching from a start position to one of three targets located 12 cm away at 45°, 90°, and 135° counterclockwise from the horizontal axis. These specific directions are chosen to systematically vary the effective mass of the moving limb based on biomechanical simulations.
+
+Each session will include 120 trials with the three target directions presented in pseudorandom order to minimize movement automation. Participants will be instructed to reach targets quickly and accurately, with a time constraint of 650 ms from target appearance to movement completion. In half the trials, an auditory beep will accompany target appearance to promote faster reactions and allow examination of speed-accuracy trade-offs.
+
+During in-flight sessions, participants will be secured with foot straps and will stabilize themselves by grasping the tabletop edge with their left hand. The tablet will be positioned consistently across all sessions to maintain experimental conditions. We will record finger position continuously at 100 Hz and apply kinematic analyses to extract movement parameters including reaction time, movement duration, peak acceleration, peak speed, and their temporal characteristics.
+
+We will analyze the data using repeated-measures ANOVAs with factors of experimental phase and movement direction. We will examine whether movement changes follow the predicted patterns based on effective mass variations, particularly focusing on the magnitude and timing of peak kinematic measures. Additionally, we will decompose speed profiles to identify primary and corrective submovements, analyzing their frequency and characteristics across different conditions.

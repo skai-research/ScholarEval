@@ -1,0 +1,34 @@
+
+# Research Plan
+
+## Problem
+
+Voltage-gated potassium (Kv) channels play crucial roles in human physiology, particularly in neuronal function and cellular excitability. While various inhibitors exist for these channels, most suffer from limited potency and poor selectivity among different Kv-channel types. We have identified a promising small molecule inhibitor, RY785, which demonstrates high potency (IC50 = 50 nM) and selectivity for Kv2 channels. However, the molecular mechanism by which RY785 inhibits these channels remains unknown.
+
+Previous electrophysiological studies suggest that RY785 has a unique mode of action that differs significantly from well-characterized inhibitors like tetraethylammonium (TEA). Unlike TEA, RY785 is electroneutral and appears to influence voltage sensor dynamics located over 3 nm away from the traditional TEA binding site. This puzzling observation suggests that RY785's inhibitory mechanism is more complex than simple pore blockade and may involve allosteric effects on channel gating.
+
+We hypothesize that RY785 inhibits Kv2.1 channels through a mechanism distinct from direct pore blockade, potentially involving stabilization of non-conductive channel conformations or modulation of gating transitions. Understanding this mechanism at the molecular level will provide insights into selective channel inhibition and could guide the development of more specific therapeutic agents.
+
+## Method
+
+We will employ all-atom molecular dynamics (MD) simulations to investigate the molecular mechanisms of Kv2.1 channel inhibition by RY785, using TEA as a control for comparison. Our approach will leverage the recently determined cryo-EM structure of activated Kv2.1 channels embedded in lipid nanodiscs.
+
+We will develop and validate a molecular mechanics forcefield for RY785 compatible with the CHARMM General Force Field (CGenFF). This will involve quantum chemical calculations using MP2/6-31G(d) methods to generate benchmarking data for atomic charges, molecular geometries, and potential energy surfaces. The forcefield parameters will be optimized against ab-initio data including interaction energies and hydrogen bond distances for RY785-water complexes.
+
+Our simulation methodology will utilize the activated Kv2.1 structure (residues 174-426) embedded in POPC lipid bilayers with 300 mM KCl buffer. We will employ a multi-scale approach, starting with coarse-grained equilibration using MARTINI force fields, followed by conversion to all-atom representations using CHARMM36m. To maintain structural integrity over long timescales while allowing thermal fluctuations, we will apply weak biasing potentials to backbone and side-chain dihedral angles.
+
+We will simulate K+ permeation under applied transmembrane voltages (100 mV, positive inside) to drive outward ion flow. The inhibitor binding studies will examine spontaneous entry of TEA and RY785 into the channel through the cytoplasmic gate, with the inhibitors initially placed in solution and allowed to diffuse freely within defined cylindrical volumes.
+
+## Experiment Design
+
+We will conduct three primary sets of MD simulations to characterize channel function and inhibition mechanisms:
+
+**Baseline Channel Characterization**: We will perform extended simulations (25 μs) of uninhibited Kv2.1 channels under 100 mV applied voltage using Anton2 supercomputers. These simulations will establish the baseline mechanism and rate of K+ permeation through the selectivity filter. We will monitor ion positions, permeation events, and calculate single-channel conductance for comparison with experimental values (8-10 pS).
+
+**Inhibitor Binding and Function Studies**: We will conduct separate 5-6 μs simulations with TEA and RY785 added to the cytoplasmic solution. Each inhibitor will be confined within a cylindrical volume co-axial with the channel pore using flat-bottom restraining potentials, allowing free diffusion while preventing escape from the simulation system. We will track inhibitor entry kinetics, binding locations, and effects on K+ permeation rates.
+
+**Mechanistic Validation Experiments**: To confirm our observations about inhibitor mechanisms, we will perform controlled simulations without applied voltage where we artificially induce knock-on events in the selectivity filter by driving central K+ ions outward. This will create vacancies in the S4 binding site, allowing us to test whether bound inhibitors prevent or allow K+ reloading of this site.
+
+Throughout all simulations, we will analyze: (1) K+ ion density profiles along the channel axis, (2) inhibitor binding locations and protein contacts, (3) permeation event frequencies and mechanisms, (4) structural dynamics of the cytoplasmic gate region, and (5) interactions between inhibitors and key hydrophobic residues (Val409, Pro406, Ile405, Ile401, Val398) that likely form the channel gate.
+
+We will use statistical analysis to quantify inhibitor-protein contacts, binding site occupancy, and the impact on ion permeation rates. The simulations will be performed at 298 K under constant pressure conditions with appropriate electrostatic treatments and periodic boundary conditions.

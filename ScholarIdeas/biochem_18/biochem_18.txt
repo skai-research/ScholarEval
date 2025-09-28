@@ -1,0 +1,44 @@
+
+# Research Plan: Endogenous Oligomer Formation Underlies DVL2 Condensates and Promotes Wnt/β-catenin Signaling
+
+## Problem
+
+The Wnt/β-catenin signaling pathway is crucial for stem cell proliferation and tissue regeneration, with deregulation linked to diseases like colorectal cancer. Activation of this pathway critically depends on polymerization of dishevelled 2 (DVL2) into biomolecular condensates. However, a fundamental paradox exists: the known DVL2 self-interaction sites have low affinity (mid-micromolar range) and DVL2 exists at low cellular concentrations, which should strongly disfavor the polymerization required for pathway activation.
+
+While DVL2 overexpression studies have shown that it can form microscopically visible assemblies characterized as phase-separated biomolecular condensates, there remains controversial debate about whether DVL2 forms condensates at endogenous expression levels. Recent studies report conflicting findings - some observe only small DVL2 assemblies with fewer than 10 molecules, others report single large condensates at the centrosome, and still others describe approximately 100 condensates per cell.
+
+Additionally, the three vertebrate DVL isoforms (DVL1, DVL2, DVL3) exhibit different capabilities to transduce Wnt signals despite structural similarities, yet their molecular differences remain poorly understood. We hypothesize that DVL2 may form stable oligomeric complexes at endogenous levels through high-affinity interaction sites that have not yet been identified, and that these complexes may be functionally important for Wnt pathway activation.
+
+## Method
+
+We will employ a multi-faceted approach combining biochemical, cell biological, and functional analyses to investigate DVL2 complex formation and its relationship to condensate formation and Wnt signaling activity.
+
+**Biochemical Analysis:** We will use sucrose density gradient ultracentrifugation to detect and characterize endogenous DVL2 complexes in cellular extracts. This approach will allow us to determine complex sizes by comparing DVL2 fractionation patterns with molecular weight standards and control proteins like AXIN1.
+
+**Comparative Analysis:** We will compare complex formation between DVL isoforms (DVL1, DVL2, DVL3) to identify isoform-specific differences in oligomerization behavior.
+
+**Domain Mapping:** We will systematically map DVL2 regions responsible for complex formation using deletion constructs and computational predictions. We will use the SEG algorithm to identify low-complexity regions, the TANGO algorithm to predict aggregation sites, and protein alignments to identify conserved domains.
+
+**Molecular Characterization:** We will design point mutations targeting predicted interaction sites (aggregation sites and phenylalanine stickers) to test their roles in mediating DVL2 self-interaction.
+
+**Functional Validation:** We will assess the relationship between complex formation, condensate formation, and Wnt pathway activation using immunofluorescence microscopy and luciferase reporter assays.
+
+## Experiment Design
+
+**Endogenous Complex Detection:** We will perform sucrose density gradient ultracentrifugation on lysates from multiple cell lines (HEK293T, HeLa, U2OS) to fractionate proteins by size. We will detect endogenous DVL2 using validated antibodies and compare its fractionation pattern with molecular weight markers (thyroglobulin 669 kDa, albumin 66 kDa) and control proteins (AXIN1). We will validate antibody specificity using siRNA knockdown.
+
+**Isoform Comparison:** We will transiently express HA-tagged DVL1, DVL2, and DVL3 and analyze their complex formation patterns using the same ultracentrifugation approach. We will also test whether DIX domain mutations affect complex formation.
+
+**Domain Mapping Experiments:** We will create a series of DVL2 deletion constructs removing different regions (DEP domain, C-terminal regions, individual low-complexity regions LCR1-4, conserved domains CD1-2). We will test these constructs for complex formation using ultracentrifugation and for condensate formation using immunofluorescence microscopy in transfected cells.
+
+**Point Mutation Analysis:** Based on computational predictions, we will create point mutations targeting key residues in identified regions (VV-AA mutations in predicted aggregation sites, FF-AA mutations targeting phenylalanine stickers). We will test these mutations for their effects on complex formation, condensate formation, and Wnt pathway activation.
+
+**Functional Assays:** We will use immunofluorescence microscopy to quantify condensate formation in transfected cells, counting cells with condensates and measuring condensate numbers per cell using automated image analysis. We will assess Wnt pathway activation using TOP/FOP luciferase reporter assays in transfected cells.
+
+**Phase Separation Validation:** We will test whether identified condensates exhibit properties of phase-separated structures by treating cells with osmotic shock and 1,6-hexandiol, which should dissolve phase-separated condensates.
+
+**Interaction Studies:** We will perform co-localization experiments by co-expressing isolated domains with full-length DVL2 to test direct interactions. We will also test whether isolated domains can act as dominant-negative inhibitors of DVL2 function.
+
+**Rescue Experiments:** We will test whether heterologous condensate-forming regions from other proteins (such as AXIN1-derived sequences) can functionally replace DVL2 condensate-forming regions to determine if condensate formation per se is important for function.
+
+All experiments will include appropriate controls, statistical analysis using Student's t-tests, and will be performed with biological replicates. We will use correlation analysis to examine relationships between complex formation, condensate formation, and functional activity across different DVL2 constructs.

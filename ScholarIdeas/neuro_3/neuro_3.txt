@@ -1,0 +1,42 @@
+
+# Research Plan
+
+## Problem
+
+Memory impairment in chronic pain patients is substantial and common, yet few therapeutic strategies are available. Clinical observations indicate high heterogeneity in chronic pain-related memory impairment, suggesting that it exhibits susceptible and unsusceptible features. However, few preclinical studies model this clinical scenario and explore its underlying mechanisms.
+
+We hypothesize that chronic pain-related memory impairment has distinct susceptible and unsusceptible phenotypes that can be modeled in mice, and that specific molecular mechanisms in the hippocampal dentate gyrus (DG) determine vulnerability to such impairment. The DG plays a crucial role in memory formation processing, including pattern separation, novelty detection, and spatial context processing. While findings from human and animal studies indicate that cognitive dysfunction associated with chronic pain is linked to structural and functional deficits within the hippocampus, the molecular mechanisms remain minimally understood.
+
+Based on preliminary evidence suggesting involvement of sphingosine 1-phosphate (S1P) signaling in both pain processing and memory formation, we hypothesize that S1P/S1PR1 signaling in the DG may be a key determinant of vulnerability to chronic pain-related memory impairment through regulation of structural synaptic plasticity.
+
+## Method
+
+We will employ a multidisciplinary approach combining behavioral, molecular, and morphological techniques to investigate the role of S1P/S1PR1 signaling in chronic pain-related memory impairment.
+
+First, we will establish a chronic neuropathic pain model using chronic constrictive injury (CCI) of the sciatic nerve in male C57BL/6J mice. We will use k-means clustering analysis to segregate mice into memory impairment-susceptible and -unsusceptible subpopulations based on performance in spatial memory tests.
+
+To identify molecular mechanisms underlying susceptibility differences, we will perform RNA-sequencing analysis on hippocampal DG tissue from segregated mouse populations. We will focus on pathways related to sphingolipid metabolism and S1P signaling based on our hypothesis.
+
+We will employ gain- and loss-of-function approaches using adeno-associated virus (AAV) vectors to manipulate S1PR1 expression specifically in the DG. Additionally, we will use pharmacological approaches with S1PR1 agonists to validate our findings.
+
+To examine structural plasticity changes, we will utilize transmission electron microscopy (TEM) to quantify excitatory synapses and postsynaptic densities, and Golgi staining to assess dendritic morphology and spine characteristics.
+
+For mechanistic studies, we will investigate actin cytoskeleton regulation through Western blotting analysis of key regulatory proteins, yeast two-hybrid screening to identify protein interactions, and co-immunoprecipitation assays to validate interactions in vivo.
+
+## Experiment Design
+
+**Behavioral Characterization**: We will conduct chronic constrictive injury surgery on mice and assess pain thresholds using von Frey filaments (mechanical allodynia) and Hargreaves test (thermal hyperalgesia). Spatial memory will be evaluated using Y-maze test and Morris water maze (MWM) at multiple time points post-injury. We will use k-means clustering (k=2) to segregate mice into susceptible and unsusceptible populations based on memory performance cutoff values.
+
+**Molecular Analysis**: We will perform RNA-sequencing on DG tissue from Sham, susceptible, and unsusceptible mice at 28 days post-CCI to identify differentially expressed genes and enriched pathways. Western blotting will be used to validate key protein expression changes, particularly S1PR1 and downstream signaling molecules.
+
+**Viral Manipulation Studies**: We will generate AAV vectors for S1PR1 knockdown (shRNA) and overexpression, delivering them bilaterally into the DG via stereotaxic injection. Control groups will receive scrambled shRNA vectors. We will assess the effects on pain sensitivity and memory performance using the same behavioral paradigms.
+
+**Pharmacological Intervention**: We will implant cannulas into the DG and deliver the S1PR1 agonist SEW2871 continuously for 14 days starting from day 7 post-CCI. We will evaluate effects on S1PR1 expression, pain thresholds, and memory performance.
+
+**Structural Plasticity Analysis**: Using TEM, we will quantify the number of excitatory synapses per unit area and measure postsynaptic density dimensions in the DG. Golgi staining will be used to analyze dendritic complexity, total dendritic length, and spine morphology (mushroom/stubby vs. thin/filopodia types).
+
+**Mechanistic Studies**: We will examine actin cytoskeleton regulation by measuring F-actin/G-actin ratios and analyzing expression of key regulatory proteins (Rac1, Cdc42, Arp2/3, ITGA2). Yeast two-hybrid screening will be used to identify potential S1PR1 protein interactions, with co-immunoprecipitation assays to validate interactions in mouse DG tissue.
+
+**Validation Experiments**: We will generate AAV vectors for ITGA2 knockdown to test its functional role in the pathway. Cell culture experiments using HT-22 hippocampal neuronal cells will be conducted to visualize actin cytoskeleton changes using phalloidin staining.
+
+All experiments will include appropriate controls, and we will use both male mice initially with plans to extend to both sexes. Sample sizes will be determined based on power analysis, and all behavioral testing will be conducted in a blinded manner. Statistical analyses will include unpaired t-tests, one-way ANOVA with post-hoc comparisons, and correlation analyses as appropriate.

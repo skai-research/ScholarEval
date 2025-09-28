@@ -1,0 +1,34 @@
+
+# Research Plan
+
+## Problem
+
+Immunodetection methods based on antibody-antigen interactions are fundamental tools in biological and clinical laboratories. While DNA-labeled antibodies offer significant advantages for simultaneous detection of multiple target molecules through orthogonal DNA barcode sequences, current antibody-DNA conjugation methods face critical limitations. These methods typically involve non-site-specific modifications that are labor-intensive, expensive, and often compromise antibody affinity and specificity. The process requires tailored conjugation protocols for each specific application and targets active functional groups on limited amino acids, potentially affecting antigen-binding sites.
+
+We hypothesize that developing a modular, site-specific, and cost-efficient DNA tagging strategy could overcome these limitations and enable widespread adoption of DNA-barcoded antibody technologies. Our research aims to create a universal approach that can be applied to off-the-shelf IgG antibodies without compromising their binding properties, while simultaneously enhancing the multiplexity and throughput of immunodetection applications.
+
+## Method
+
+We will develop the Multiplexed and Modular Barcoding of Antibodies (MaMBA) strategy, which introduces nanobodies as adaptor proteins between IgG antibodies and DNA barcode oligonucleotides. Our approach will utilize anti-IgG Fc nanobodies that selectively bind to the fragment crystallizable (Fc) region of IgG antibodies, minimizing interference with antigen recognition.
+
+The methodology will employ enzymatic reactions for site-specific conjugation rather than chemical linkers. We will use the recombinant Oldenlandia affinis asparaginyl endopeptidase (OaAEP1) to catalyze the ligation of azide-bearing dipeptide substrates to nanobodies at specific recognition motifs fused at the C-termini. The resulting azide-functionalized nanobodies will then be covalently tagged with DNA oligonucleotides through click chemistry reactions.
+
+We will test two IgG secondary nanobodies: TP897 (for rabbit IgGs) and TP1107 (specific for mouse IgGs). Additionally, we will develop a cleavable variant of MaMBA incorporating disulfide linkers between nanobodies and DNA oligonucleotides, enabling iterative use of the same reagents through reductive cleavage with reducing agents like TCEP.
+
+## Experiment Design
+
+We will conduct systematic experiments to validate MaMBA efficiency and demonstrate its applications in two major areas: multiplexed in situ protein imaging and high-throughput biomolecule detection.
+
+**MaMBA Validation Experiments:**
+We will assess conjugation efficiency using SDS-PAGE gel electrophoresis at each step of the process. We will measure labeling degrees of DNA molecules on IgG antibodies using MaMBA compared to classic amine- and thiol-targeted conjugation methods. Western blot experiments will evaluate the effects of DNA conjugation on antibody binding ability using anti-GFP antibodies to detect GFP in cell lysates.
+
+**Multiplexed In Situ Imaging (misHCR/misHCRn):**
+We will develop MaMBA-assisted isHCR (misHCR) by combining MaMBA with hybridization chain reaction (HCR) signal amplification. We will test this approach on mouse brain sections and human skin biopsies, targeting multiple antigens simultaneously. For enhanced multiplexity, we will implement misHCRn using cleavable MaMBA variants, enabling iterative cycles of immunostaining, HCR amplification, imaging, and HCR initiator removal. We plan to demonstrate 12-plex immunodetection on mouse brain sections using sequential rounds of misHCR.
+
+**High-Throughput Biomolecule Detection (BLISA):**
+We will develop barcode-linked immunosorbent assay (BLISA) by integrating cleavable MaMBA into classic ELISA formats. We will test both direct antigen detection on microplate surfaces and magnetic bead-based sandwich immunoassays. For validation, we will use cell lysates spiked with recombinant proteins and cells with drug-inducible gene expression systems. We will develop high-throughput versions incorporating next-generation sequencing (NGS) for simultaneous readout of DNA barcodes from multiple samples, including unique molecular identifiers (UMIs) for quantification.
+
+**Clinical Applications:**
+We will apply BLISA to detect SARS-CoV-2 spike receptor binding domain (RBD) IgG antibodies and hepatitis B virus (HBV) antigens in human serum samples. We will compare BLISA sensitivity and specificity with standard ELISA methods across large cohorts of clinical samples. Additionally, we will demonstrate drug screening applications by testing FDA-approved compounds on cell lines using multiplexed phosphoprotein detection.
+
+All experiments will include appropriate controls, technical replicates, and statistical analyses to ensure reproducibility and validate the performance of MaMBA-based methods against established techniques.

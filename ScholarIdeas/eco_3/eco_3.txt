@@ -1,0 +1,36 @@
+
+# Research Plan
+
+## Problem
+
+Pesticide-induced resurgence, where pest insect populations increase following pesticide application, poses a serious threat to sustainable crop pest control. While this phenomenon has been observed in brown planthopper (BPH) populations following exposure to certain insecticides, the molecular mechanisms underlying pesticide-enhanced reproduction remain poorly understood.
+
+We have observed that when farmers use emamectin benzoate (EB) and abamectin to control rice leaffolders in China, BPH outbreaks frequently occur in the same fields. These avermectin pesticides act as allosteric modulators of glutamate-gated chloride channels (GluCls) and are highly effective against Lepidoptera. However, since BPH and rice leaffolders have overlapping migratory paths but different occurrence periods, BPH arriving later may be exposed to sublethal concentrations of these compounds.
+
+Previous studies have shown that sublethal doses of certain pesticides can enhance BPH fecundity, with increases in circulating juvenile hormone (JH) III titers being implicated. However, the regulation of JH is complex, and the key molecular actors involved in JH-mediated pesticide-enhanced reproduction remain an open question. Additionally, previous findings suggest that GluCl receptors may be involved in JH biosynthesis in cockroaches, but whether insecticides targeting GluCl can stimulate reproduction in insect pests and how GluCl receptors regulate JH production is still unknown.
+
+We hypothesize that avermectin exposure results in profound changes in the expression of key genes that regulate JH, leading to increased JH titer in adult females and enhanced fecundity through coordinated action of diverse regulatory factors.
+
+## Method
+
+We will employ a comprehensive approach combining bioassays, molecular biology techniques, biochemical analyses, and functional studies to investigate the impact of sublethal doses of avermectins on BPH fecundity and unravel the underlying molecular mechanisms.
+
+Our methodology will include: (1) bioassay methods using both rice seedling dip bioassays and topical application bioassays to assess systemic and contact toxicity; (2) fecundity assays with different mating combinations to determine the effects of pesticide treatment on reproduction; (3) quantitative RT-PCR to examine gene expression changes in JH-related pathways; (4) ELISA and HPLC-MS/MS methods to measure JH III titers; (5) RNAi knockdown experiments to functionally validate the roles of key genes; (6) peptide injection assays to test the effects of synthetic neuropeptides; and (7) biochemical assays to measure storage macromolecules and metabolites.
+
+We will focus on investigating the JH signaling pathway, including genes involved in JH biosynthesis (JHAMT, FAMeT), JH signaling (Met, Kr-h1), JH degradation (JHE), and downstream targets (vitellogenin). We will also examine the role of neuropeptides that regulate JH production, particularly allatostatins and allatotropins, and their receptors.
+
+## Experiment Design
+
+We will conduct systematic bioassays to determine LC15 and LC50 concentrations of EB for different life stages of BPH using both systemic (rice seedling dip) and contact (topical application) methods. We will treat 4th instar nymphs and newly emerged adults with these sublethal concentrations and examine fecundity through controlled mating experiments with treated and untreated individuals.
+
+To investigate reproductive fitness changes, we will measure preoviposition period, emergence rate, female ratio, longevity, wing morphology, and body weight. We will examine ovarian development by dissecting females at 1, 3, 5, and 7 days after eclosion and counting detained eggs. We will also assess whether EB affects oogenesis through microscopic examination of different developmental stages.
+
+For molecular mechanism studies, we will collect samples at multiple developmental stages (5th instar nymphs and 1-7 days post-eclosion adults) following EB treatment and analyze gene expression using quantitative RT-PCR. We will measure JH III titers using both ELISA and HPLC-MS/MS methods to validate our findings.
+
+We will perform RNAi experiments by injecting newly emerged females with dsRNA targeting key genes (JHAMT, Met, Kr-h1, AstAR, GluCl) and examine the effects on fecundity, JH titer, and gene expression. We will also conduct rescue experiments by treating RNAi-knockdown insects with EB to determine if the pesticide can restore normal reproduction.
+
+To investigate neuropeptide regulation, we will clone and sequence genes encoding allatostatins, allatotropins, and their receptors from BPH. We will synthesize mature peptides and inject them into female BPH to test their effects on egg-laying and JH titer.
+
+We will measure biochemical parameters including glycogen, triglycerides, total protein, cholesterol, and circulating sugars to assess how EB affects energy metabolism and storage. We will also test the species-specificity of EB effects by conducting similar experiments on related planthopper species and Drosophila melanogaster.
+
+All experiments will include appropriate controls, multiple biological replicates, and statistical analyses to ensure robust and reproducible results. We will use standard molecular biology techniques for gene cloning, sequence analysis, and phylogenetic studies to characterize the identified genes and their evolutionary relationships.

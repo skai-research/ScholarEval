@@ -1,0 +1,40 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the mechanism of action of quinofumelin, a novel quinoline fungicide developed by Mitsui Chemicals Co., Ltd. Japan, against phytopathogenic fungi. While quinofumelin exhibits exceptional antifungal activity against plant pathogens and shows no cross-resistance to currently used modern selective fungicides, its precise mode of action remains unknown. This represents a significant knowledge gap, as understanding fungicide mechanisms is crucial for effective disease management and resistance prevention.
+
+The development of fungal resistance to existing selective fungicides has become a major agricultural challenge, leading to control failures and reduced crop yields. Therefore, identifying novel targets and mechanisms of action is essential for developing next-generation fungicides. Based on biological and physiological characteristics, quinolines are classified as FRAC group 13, but the specific molecular targets and pathways affected by quinofumelin have not been elucidated.
+
+We hypothesize that quinofumelin acts through a unique mechanism involving essential cellular pathways in fungal pathogens, particularly targeting processes critical for growth and survival. Our research questions focus on: (1) What are the primary molecular targets of quinofumelin in Fusarium graminearum? (2) Which cellular pathways are disrupted by quinofumelin treatment? (3) Can we validate the specific protein target through biochemical and genetic approaches?
+
+## Method
+
+We will employ a multi-faceted approach combining omics technologies, genetic analysis, and biochemical validation to elucidate quinofumelin's mechanism of action. Our methodology will integrate transcriptomic and metabolomic analyses to identify affected pathways, followed by targeted genetic and biochemical experiments to validate specific targets.
+
+The overall strategy involves treating F. graminearum with quinofumelin at sub-lethal concentrations and analyzing the resulting changes in gene expression and metabolite profiles. We will use conjoint analysis of transcriptome and metabolome data to identify co-enriched pathways and potential target genes. Based on these findings, we will conduct functional validation through gene deletion studies and recovery experiments using pathway metabolites.
+
+For biochemical validation, we will employ molecular docking, surface plasmon resonance (SPR), and microscale thermophoresis (MST) to demonstrate direct protein-ligand interactions. This comprehensive approach will provide multiple lines of evidence to support our mechanistic conclusions.
+
+## Experiment Design
+
+### Transcriptomic Analysis
+We will culture F. graminearum PH-1 in YEPD medium and treat with quinofumelin at EC90 concentration (1 μg/mL) for 48 hours, using DMSO as control. RNA will be extracted from treated and control mycelia for Illumina sequencing. We will perform quality control, principal component analysis, and differential expression analysis using DESeq2 with thresholds of P<0.05 and fold change ≥1.5. Gene Ontology and KEGG pathway enrichment analyses will identify affected biological processes.
+
+### Metabolomic Analysis
+Using samples from the same treatment groups as transcriptomic analysis, we will conduct widely targeted metabolome analysis using LC-MS. Metabolites will be extracted using methanol:water solution and analyzed for differential accumulation between treated and control groups. We will apply PLS-DA analysis with screening thresholds of P<0.05 and fold change ≥1.5 to identify significantly affected metabolites and perform KEGG pathway enrichment analysis.
+
+### Recovery Experiments
+Based on pathway analysis results, we will test whether exogenous supplementation of pathway metabolites can rescue quinofumelin-induced growth inhibition. F. graminearum strains will be grown on CZA plates containing quinofumelin (1 μg/mL) supplemented with various concentrations of candidate metabolites. Colony diameter measurements will assess growth recovery across multiple Fusarium species and strains.
+
+### Gene Deletion Studies
+We will generate deletion mutants of candidate target genes using protoplast transformation and homologous recombination. Deletion constructs will be designed with appropriate selection markers, and transformants will be verified by PCR analysis. Mutant phenotypes will be characterized on various media with and without metabolite supplementation to assess gene essentiality and pathway involvement.
+
+### Molecular Interaction Studies
+For biochemical validation, we will express and purify candidate target proteins in E. coli systems. Molecular docking will be performed using AutoDockTools to predict binding conformations and calculate binding energies. SPR analysis using Biacore T200 will measure real-time binding kinetics and affinity constants between purified proteins and quinofumelin. MST analysis will provide additional validation of protein-ligand interactions using fluorescently labeled proteins across concentration gradients.
+
+### Phylogenetic Analysis
+We will identify homologous proteins across fungal species using BLAST searches and construct phylogenetic trees to assess target conservation. This analysis will help predict the broad-spectrum potential of quinofumelin and identify structural domains critical for function.
+
+All experiments will include appropriate biological replicates and statistical analyses using ANOVA and Fisher's PLSD for mean comparisons. The integrated approach will provide comprehensive evidence for quinofumelin's mechanism of action and identify its specific molecular target in fungal pathogens.

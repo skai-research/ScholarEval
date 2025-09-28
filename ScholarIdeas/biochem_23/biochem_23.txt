@@ -1,0 +1,32 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the dynamic regulation of LRRK2 (Leucine Rich Repeat Kinase 2), a multi-domain protein linked to Parkinson's Disease (PD). Despite the availability of high-resolution structures, the molecular mechanisms underlying LRRK2 activation and regulation remain poorly understood, particularly the interplay between its kinase domain and Roc G-domain.
+
+LRRK2 belongs to the Roco protein family and contains seven domains, including a Roc (Ras of complex proteins) G-domain and a kinase domain. The protein shuttles between monomeric cytosolic states and kinase-active oligomeric forms localized at membranes, where it phosphorylates specific Rab proteins. While kinase activity depends on the guanine nucleotide binding capacity of the Roc domain, the exact mechanism of G-nucleotide action and how the nucleotide state influences kinase activity remains unclear.
+
+Previous work has identified the Roc domain as a major target of LRRK2 auto-phosphorylation, and there are indications that auto-phosphorylation modifies GTP-binding activities and enhances GTPase activity. We propose that PD-associated variants may differentially affect this regulatory mechanism, which could explain differences in disease penetrance.
+
+## Method
+
+We will employ a comprehensive biochemical approach combining systematic mutational analysis with detailed Michaelis-Menten kinetics determination to characterize LRRK2 Roc domain activity and its regulation by the kinase domain.
+
+Our methodology will utilize two complementary protein expression systems: full-length LRRK2 expressed in HEK293T cells and a LRRK2 RocCOR domain construct expressed as an MBP fusion protein from E. coli. We will assess GTPase activity using both HPLC-based assays (for full-length protein) and radiolabeling charcoal assays (for domain constructs), allowing us to determine complete kinetic parameters including KM, kcat, and catalytic efficiency.
+
+To investigate the proposed feedback mechanism, we will examine the effects of ATP pre-incubation on GTPase kinetics, comparing wild-type LRRK2 with kinase-dead variants. We will systematically analyze known auto-phosphorylation sites within the Roc domain through site-directed mutagenesis, creating serine/threonine to alanine mutants to identify critical regulatory residues.
+
+The relationship between auto-phosphorylation and protein oligomerization will be assessed using mass photometry to monitor monomer-dimer equilibrium changes upon ATP treatment. Additionally, we will validate our findings in cellular contexts using established LRRK2 activity markers.
+
+## Experiment Design
+
+We will conduct Michaelis-Menten kinetic analyses on three pathogenic LRRK2 variants: R1441G (Roc domain), Y1699C (COR-A domain), and G2019S (kinase domain), comparing them to wild-type protein. GTP concentrations will range from 25 μM to 5 mM to capture the full kinetic profile, with particular attention to the physiological GTP concentration range (~500 μM).
+
+To test the feedback hypothesis, we will pre-incubate purified LRRK2 proteins with ATP for two hours at 30°C, then measure GTPase activity. Control experiments will include kinase-dead variants (K1906M) and MLi-2 kinase inhibitor treatment to ensure observed effects are kinase-dependent.
+
+For phosphorylation site identification, we will systematically test serine/threonine to alanine mutants of known Roc domain auto-phosphorylation sites, expecting that the critical regulatory site will show no kinetic changes upon ATP treatment. Mass photometry experiments will monitor protein oligomerization states before and after ATP treatment to assess monomer-dimer equilibrium shifts.
+
+Cellular validation will employ HEK293T cells transfected with LRRK2 variants, measuring phosphorylation levels of established substrates (Rab10) and activity markers (pS935) through Western blot analysis. We will use both in vitro LRRKtide kinase assays and cell-based Rab phosphorylation assays to confirm that identified mutants retain kinase activity while disrupting the proposed feedback mechanism.
+
+All kinetic measurements will be performed in triplicate with appropriate statistical analysis using ANOVA and post-hoc tests. Data will be fitted using standard Michaelis-Menten equations to determine kinetic parameters and their standard errors.

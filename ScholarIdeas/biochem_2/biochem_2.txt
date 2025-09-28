@@ -1,0 +1,38 @@
+
+# Research Plan: Non-autonomous cell redox-pairs dictate niche homeostasis in multi-lineage stem populations
+
+## Problem
+
+We aim to investigate the fundamental question of how stem cells harmonize their redox potential by possessing a restrained oxidant system. While reactive oxygen species (ROS) have been established as key molecules influencing cell fate decisions like maintenance and differentiation, these redox-dependent events are mainly considered to be cell intrinsic in nature. However, we hypothesize that oxygen-derived entities may function as intercellular communicating agents.
+
+Our research focuses on the multi-stem cell lineage-based niche architecture in Drosophila testis, where we suspect that a perfectly balanced redox differential between Germline Stem Cells (GSCs) and Cystic Stem Cells (CySCs) is essential for niche homeostasis. We hypothesize that CySCs, by virtue of their higher redox threshold and clustering of mitochondria at the GSC-CySC interface, generate an intercellular redox gradient that maintains physiological ROS levels in GSCs.
+
+We predict that disruption of intercellular redox equilibrium between these two adjoining stem cell populations will result in deregulated niche architecture and loss of GSCs, potentially due to loss of contact-based receptions and uncontrolled CySC proliferation through ROS-mediated activation of self-renewing signals.
+
+## Method
+
+We will employ the Drosophila testicular stem cell niche as our model system, which consists of a central cluster of somatic hub cells contacting eight to eleven GSCs arranged in a round array, with each GSC enclosed by a pair of CySCs. Our approach will involve:
+
+**Redox State Analysis**: We will use the gstD1-GFP reporter line as an intrinsic ROS reporter to assess redox gradients between GSCs and CySCs. We will examine mitochondrial distribution patterns using ATP5A immunostaining and TFAM-GFP to understand the spatial organization of ROS-generating organelles.
+
+**Genetic Manipulation**: We will manipulate antioxidant defenses by depleting superoxide dismutase 1 (Sod1) in CySCs using Tj-Gal4 driver and in GSCs using Nos-Gal4 driver. We will also overexpress Sod1 to test the opposite effects. Additionally, we will deplete Sod2 to examine mitochondrial ROS involvement.
+
+**Pathway Analysis**: We will investigate how redox imbalance affects key signaling pathways including JAK-STAT, EGFR, PI3K/Tor, and Hedgehog signaling through immunostaining and qRT-PCR analysis of pathway components and target genes.
+
+## Experiment Design
+
+**Mitochondrial Distribution Analysis**: We will perform confocal microscopy using ATP5A antibody to label mitochondria and examine their distribution patterns in Vasa+ GSCs versus Tj+ CySCs. We will quantify mitochondrial density profiles and assess their clustering at GSC-CySC boundaries using intensity profiling and sectioning analysis.
+
+**ROS Gradient Assessment**: We will use gstD1-GFP reporter flies to visualize ROS levels across the niche. We will perform 2D-Plot profiling of Vasa, Tj, and gstD1-GFP signals to quantify redox gradients. DHE fluorescence will serve as an additional ROS measurement tool.
+
+**Functional Perturbation Studies**: We will conduct RNAi-mediated knockdown of Sod1 and Sod2 in specific cell types using tissue-specific Gal4 drivers. We will assess the effects on cell numbers, proliferation status using FUCCI reporters, and differentiation markers including Zfh1, Eya, and Bam.
+
+**Cell Cycle and Proliferation Analysis**: We will employ the fly-FUCCI system to track cells through G1/S transition, S phase, and G2/M phases. We will quantify cell numbers in each phase and assess mitotic indices in both control and experimental conditions.
+
+**Signaling Pathway Evaluation**: We will examine adherens junction integrity using E-cadherin staining, assess EGFR signaling through pErk levels and Dlg expression, evaluate PI3K/Tor activity via p4E-BP levels, and analyze Hedgehog signaling through Ptc, Ci, and pathway target gene expression.
+
+**Rescue Experiments**: We will attempt to rescue observed phenotypes by reducing gene dosage using dominant-negative alleles (PI3KDN) or additional RNAi (Hh-RNAi) to validate the involvement of specific pathways.
+
+**Molecular Analysis**: We will perform qRT-PCR to measure transcript levels of STAT-dependent genes (Socs36E, Ptp61F) and Hedgehog pathway components. We will also conduct immunoblot analysis for protein level assessments where appropriate.
+
+All experiments will include appropriate controls using corresponding Gal4 lines crossed with wild-type Oregon R+. We will use 3-5 day old male flies maintained at 25°C, with temperature shifts to 29°C for optimal Gal4 activity when required. Statistical analysis will employ Student's t-test with adequate sample sizes for each experimental condition.

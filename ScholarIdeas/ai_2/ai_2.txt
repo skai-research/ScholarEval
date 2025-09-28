@@ -1,0 +1,33 @@
+# Research Plan: Exploring the Recall of Language Models - Case Study on Molecules
+
+## Problem
+
+Current benchmarks for evaluating generative language models primarily focus on the accuracy of generated outputs, but we identify a critical gap in evaluating recall - the ability of models to generate all correct outputs for a given input. This capability is crucial for security-focused applications such as finding all software vulnerabilities, discovering all possible jailbreaks for language model security, suggesting comprehensive medical diagnoses, and generating diverse molecular candidates for drug discovery.
+
+We face two significant obstacles in developing recall-based evaluation: (1) the difficulty of creating benchmarks that include complete sets of correct outputs, and (2) the non-unique nature of object representations, where the same correct output can be expressed in multiple equivalent ways (forming equivalence classes). We hypothesize that we can overcome these challenges by using molecular generation as a testbed, where complete datasets exist and equivalence classes can be computed algorithmically.
+
+Our research questions focus on: How can we systematically evaluate and predict the recall capabilities of language models? What methods can improve model recall? How do different training strategies and molecular representations affect recall performance?
+
+## Method
+
+We will develop a benchmark using the GDB-13 database, a complete set of small organic molecules with specific characteristics. We will define four molecular subsets of varying complexity based on chemical similarity and synthetic accessibility criteria. These subsets will serve as our ground truth sets with known completeness.
+
+Our approach involves training language models on subsets of these molecular sets and representing molecules using SELFIES strings, which provide well-defined equivalence classes that can be computed algorithmically. We will use the OPT 1.3B architecture as our base model, with pretraining on a large subset of GDB-13 molecules (excluding our test sets) followed by fine-tuning on the specific molecular subsets.
+
+We will develop a theoretical framework for predicting recall without generation by computing the probability that a model will generate molecules from a validation set in G attempts. This prediction method will be based on autoregressive loss quantities and will extend to various i.i.d. sampling methods.
+
+## Experiment Design
+
+We will conduct experiments across four main areas:
+
+**Dataset Characterization**: We will train models on four molecular subsets (Sasp, Ssas, Sd>p, Sd=p) with varying complexity levels and evaluate their recall to establish baseline difficulty rankings. We will compare performance against unigram models and theoretical upper bounds.
+
+**Recall Prediction**: We will test our theoretical prediction framework by computing expected precision and recall using validation set probabilities, then compare predicted values against actual generation results across different sampling methods and temperatures.
+
+**Recall-Oriented Generation Methods**: We will investigate how different sampling strategies affect recall, including temperature sampling and a novel beam search approach that maximizes recall by avoiding duplicates. We will use beam sizes equal to the number of desired generations to produce diverse outputs.
+
+**Recall-Oriented Loss Functions**: We will design experiments with modified loss functions during fine-tuning, using batches containing multiple SELFIES representations of the same molecules and testing three aggregation functions (mean, minimum, maximum) to determine if forcing models to focus on single representations improves recall.
+
+**Analysis Experiments**: We will conduct ablation studies examining: (1) the impact of pretraining by comparing pretrained versus randomly initialized models, (2) molecular representation effects by comparing SELFIES versus SMILES, and (3) canonical versus randomized representation strategies during pretraining and fine-tuning phases.
+
+All experiments will generate between 1-10 million molecules using random sampling as the baseline, with systematic evaluation of precision and recall metrics. We will use models of different sizes (800K, 125M, 1.3B parameters) to investigate the relationship between model capacity and recall performance.

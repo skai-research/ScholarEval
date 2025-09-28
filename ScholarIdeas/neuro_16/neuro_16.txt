@@ -1,0 +1,34 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate how neuronal ensembles in the auditory cortex (AC) coordinate their activity to maintain stable sensory processing despite high trial-by-trial variability. In the AC, repeated presentations of the same sound activate different sparse ensembles of neurons while producing the same percept, indicating significant variability in which specific neurons respond on each trial. This raises fundamental questions about how these varying ensembles interact to provide consistent perceptual outcomes.
+
+We hypothesize that co-tuned neuronal ensembles (neurons sharing similar frequency preferences) actively interact and rebalance their activity to maintain network homeostasis. Specifically, we predict that when activity increases in one subset of co-tuned neurons, other co-tuned neurons will decrease their activity to maintain overall network balance. This rebalancing should be frequency-specific, occurring only when neurons process their preferred acoustic features.
+
+Our research addresses three key questions: (1) How does increased activity in a small ensemble of co-tuned neurons affect the responses of other neurons in the network? (2) Is this effect specific to neurons sharing similar tuning properties? (3) How rapidly does this rebalancing occur, and does it persist after the manipulation?
+
+## Method
+
+We will employ an all-optical approach combining in vivo two-photon calcium imaging with holographic optogenetic stimulation to manipulate and monitor neuronal activity at single-cell resolution in awake mice. We will use a custom AAV vector (AAV9-hSyn-GCaMP8s-T2A-rsChRmine) that co-expresses the calcium indicator GCaMP8s and the red-shifted opsin rsChRmine, allowing simultaneous imaging and optogenetic manipulation.
+
+Our methodology involves precisely targeting small ensembles (5 cells) of neurons sharing the same frequency preference while monitoring the responses of all other neurons in the field of view. We will focus on neurons preferring either 16 kHz or 54 kHz pure tones, representing different portions of the mouse hearing range. Target neurons will be selected from the top 30% most responsive cells to ensure they are highly selective for their preferred frequency.
+
+To isolate stimulation effects from adaptation artifacts, we will include a control condition where we perform identical procedures but with 0 mW laser power. This approach will allow us to distinguish between changes due to optogenetic stimulation versus natural response adaptation to repeated sound presentation.
+
+## Experiment Design
+
+We will conduct experiments using a four-session sequential imaging paradigm in the primary auditory cortex layer 2/3 of awake, head-fixed mice:
+
+**Session 1 (Cell Selection):** We will present pure tones at three frequencies (4, 16, and 54 kHz, 100 ms duration, 2-second inter-stimulus intervals, 10 repeats each) to identify frequency-tuned neurons and select target ensembles for stimulation.
+
+**Session 2 (Baseline):** We will record baseline responses to 16 kHz and 54 kHz pure tones (100 ms duration, 5.8-6.5 second inter-stimulus intervals, 30 trials each in random order) to establish pre-stimulation response properties of all imaged neurons.
+
+**Session 3 (Stimulation):** We will repeat the same tone presentations while simultaneously applying holographic optogenetic stimulation to five pre-selected target neurons (100 ms stimulation duration, 5 mW per cell, 15 μm spiral pattern, 30 revolutions). We will conduct separate sessions for 16 kHz and 54 kHz target ensembles, as well as control sessions with 0 mW power.
+
+**Session 4 (Post-stimulation):** We will present the same tone series without stimulation to assess whether any observed changes persist after the manipulation period.
+
+We will measure tone-evoked responses as changes in fluorescence (ΔF/F) and quantify stimulation effects by comparing response amplitudes between sessions. We will categorize neurons based on their frequency preferences and analyze how co-tuned versus non-co-tuned populations respond to target ensemble stimulation. Additionally, we will examine the spatial distribution of affected neurons and the temporal dynamics of any observed changes to understand the underlying mechanisms.
+
+To validate our holographic stimulation precision, we will conduct control experiments varying stimulation position relative to target cells and measuring response decay with distance. We will also test the reliability of multi-cell stimulation by assessing the proportion of successfully activated target neurons across trials.

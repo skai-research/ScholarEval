@@ -1,0 +1,3 @@
+{"statement": "The research plan neglects to consider the possibility of multiple binding sites for RY785, particularly given its impact on voltage sensors and gating currents, including potential allosteric binding sites in the voltage-sensing domain (VSD).", "type": "weakness", "axis": "soundness", "severity": "major"}
+{"statement": "The research plan describes RY785 as a selective inhibitor of Kv2 channels and characterizes its binding residues through MD simulations, however, it is not clear whether the identified RY785-binding residues are indeed unique to Kv2 channels.", "type": "weakness", "axis": "contribution", "severity": "minor"}
+

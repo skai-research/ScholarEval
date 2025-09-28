@@ -1,0 +1,47 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the neural mechanisms underlying flexible temporal construals from different perspectives. Humans conceptualize time in terms of space, allowing them to adopt various viewpoints when thinking about temporal sequences. We can engage in "mental time travel" by projecting ourselves internally through a timeline to remember the past and imagine the future, or we can adopt "mental time watching" by taking an external standpoint to have a panoramic view of temporal events.
+
+The distinction between these temporal perspectives relates to philosophical concepts of time reference frames: the A-series (egocentric, with events ordered relative to the observer's subjective "now") and the B-series (allocentric, concerning the order of events regardless of the observer's position). However, the neural mechanisms that support these flexible temporal construals remain unclear.
+
+We hypothesize that the brain implements complementary allocentric and egocentric reference frames for temporal representation, similar to those proposed for spatial cognition. Specifically, we predict that the medial temporal lobe (particularly the hippocampus) stores temporal sequences allocentrically in a perspective-agnostic manner, while the parietal cortex retrieves temporal sequences egocentrically, adapting to the optimal perspective for the current task context.
+
+Our research questions are: (1) Do different brain regions represent temporal sequences from egocentric versus allocentric reference frames? (2) How do neural representations of event sequences and durations differ when adopting internal versus external perspectives on time? (3) Do the hippocampus and posterior parietal cortex show complementary patterns of temporal representation that support both memory storage stability and flexible time construals?
+
+## Method
+
+We will use functional magnetic resonance imaging (fMRI) to investigate neural correlates of temporal sequence and duration processing from different perspectives. Our approach involves training participants on a fictional temporal sequence and then examining brain activity while they process this sequence from internal and external viewpoints.
+
+We will employ parametric modulation analysis to identify brain regions where activation correlates with temporal variables (sequential distance and event duration). To distinguish between egocentric and allocentric representations, we will examine interaction effects between task perspective and temporal variables, as well as main effects that remain consistent across perspectives.
+
+Our theoretical framework draws from neurocomputational models of spatial cognition, which propose that allocentric representations in the medial temporal lobe provide templates from which diverse egocentric representations can be generated in the parietal cortex. We will test whether this framework extends to the temporal domain.
+
+We will use behavioral measures (reaction time and accuracy) to validate our experimental manipulation and confirm that participants are indeed adopting different temporal perspectives as intended.
+
+## Experiment Design
+
+We will recruit native Italian speakers with no neurobiological or psychiatric disorders. Participants will learn a fictional religious ritual consisting of 15 events that follow a specific sequence, have particular durations, and occur during predetermined parts of the day (morning, afternoon, evening).
+
+**Learning Phase (Day Before Scanning):**
+Participants will learn the temporal structure through reading and imagination phases. In the reading phase, they will read a narrative describing the ritual twice, with sentences presented sequentially to match the event order. In the imagination phase, they will imagine performing the ritual guided by auditory instructions, with imagination durations proportional to actual event durations. We will assess learning through three tests: event-sequence judgment, self-paced duration reproduction, and parts-of-day categorization.
+
+**fMRI Scanning:**
+During scanning, participants will perform two tasks designed to induce different temporal perspectives:
+
+1. **External-perspective task (Mental Time Watching):** Participants will judge whether target events occurred in the same or different part of the day as reference events. This encourages a panoramic, external view of the temporal sequence.
+
+2. **Internal-perspective task (Mental Time Travel):** Participants will imagine themselves at the reference event and judge whether target events occurred in the past or future relative to their projected position. This encourages internal navigation through the timeline.
+
+Each trial will present two event phrases sequentially (reference event, then target event). We will measure reaction times and accuracy to confirm successful perspective manipulation, expecting a symbolic distance effect (faster responses for distant events) in the internal-perspective task and a reverse effect (slower responses for distant events) in the external-perspective task.
+
+**fMRI Analysis:**
+We will use parametric modulation to identify brain regions where activation correlates with:
+- Sequential Distance: number of events between reference and target
+- Duration: length of target events
+
+We will examine interaction effects between task type and temporal variables to identify regions showing perspective-dependent representations (predicted in parietal cortex), and main effects to identify regions showing perspective-independent representations (predicted in hippocampus).
+
+We will control for potential confounds including reaction time, syllable length of event phrases, and head motion. Statistical inference will use permutation testing with cluster-level family-wise error correction.

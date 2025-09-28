@@ -1,0 +1,36 @@
+
+# Research Plan: The Neural Dynamics of Positive and Negative Expectations of Pain
+
+## Problem
+
+Pain perception is heavily modulated by expectations, with positive expectations leading to hypoalgesia (placebo effect) and negative expectations increasing perceived pain intensity (nocebo effect). While many studies have demonstrated that expectations influence pain perception, the neuronal processes underlying the generation of expectations prior to pain stimulus appearance remain poorly understood.
+
+Several key gaps exist in our current understanding. First, while the integration of expectations with sensory information has been examined, little is known about how positive and negative expectations are generated and their neural dynamics from generation through anticipation to integration with sensory information. Second, it remains unclear whether positive and negative expectations share a common neural basis or depend on different networks, with conflicting evidence regarding shared versus distinct neural representations. Third, the temporal dynamics of expectation processing during the anticipation phase have not been adequately characterized due to the limitations of fMRI's temporal resolution.
+
+We hypothesize that representations of pain-related expectations undergo dynamic changes during the anticipation phase and pain phase, reflecting different processes such as expectation formation, expectation integration, and pain modulation. We expect to observe dissociable neuronal representations of expectations during the anticipation phase versus during the pain phase, albeit in similar areas. More specifically, we predict that positive and negative valences will be differentially represented during both the anticipation phase and the pain phase.
+
+## Method
+
+We will employ a novel paradigm that allows manipulation of expectations on a trial-by-trial basis using a sham Brain-Computer Interface (BCI) approach. Participants will be told they are receiving real-time visual feedback on their current pain sensitivity based on their EEG activity. The feedback will indicate one of three brain states: high pain sensitivity (red cue/nocebo condition/negative expectation), low pain sensitivity (green cue/placebo condition/positive expectation), or no prediction (yellow cue/control condition/no expectation).
+
+To reinforce expectations, we will implement a conditioning phase where red cues are paired with higher pain intensity (VAS level 70) and green cues with lower pain intensity (VAS level 30). In the subsequent test phase, temperatures will be kept constant (VAS level 60) regardless of condition.
+
+We will use combined EEG-fMRI measurements to capture both the spatial and temporal dynamics of expectation processing. This multimodal approach will allow us to examine the temporal sequence of neural activity during expectation generation and integration, overcoming the temporal limitations of fMRI alone. We will also continuously record electrodermal activity as an objective physiological marker.
+
+Our analytical approach will focus on identifying both common effects (positive and negative expectations vs. control, constrained to areas showing no statistical difference between positive and negative conditions) and distinct effects (positive vs. negative expectations) across different phases. We will use fMRI-informed EEG analyses to track the temporal sequence of processing in identified regions of interest.
+
+## Experiment Design
+
+We will conduct a preregistered study with 55 participants using a within-subjects design. The experiment will consist of four phases: verbal instruction, pain calibration, conditioning, and test phases.
+
+During the verbal instruction phase, participants will be informed about the sham BCI system and the meaning of different colored visual cues. In the pain calibration phase, we will determine individual temperatures corresponding to VAS30, VAS60, and VAS70 using a stepwise procedure with heat stimuli delivered via a PATHWAY CHEPS thermode.
+
+The conditioning phase will include 20 trials (10 per condition) where green cues are paired with less painful stimuli (VAS30) and red cues with more painful stimuli (VAS70), unbeknownst to participants. The test phase will comprise 90 trials (30 per condition) across three blocks, where all participants receive VAS60 stimuli regardless of cue condition.
+
+Each test trial will follow this structure: cue presentation (2s), expectation rating (4s), anticipation period (3.3s), pain stimulus (4s), and pain rating (8s), with randomized inter-trial intervals of 2-7s.
+
+We will acquire simultaneous EEG-fMRI data using a 3T Siemens PRISMA scanner with 64-channel EEG recording. EEG data will be recorded at 5,000 Hz and processed to remove MR and cardioballistic artifacts. fMRI data will be analyzed using a Finite Impulse Response (FIR) model to characterize BOLD fluctuations over time.
+
+For the combined EEG-fMRI analysis, we will extract single-trial fMRI BOLD response amplitudes and correlate them with time-frequency decomposed EEG measures. We will focus on regions of interest including the insular cortex, dorsolateral prefrontal cortex, anterior cingulate cortex, thalamus, hippocampus, and amygdala based on their established roles in pain processing and expectation effects.
+
+Statistical analyses will compare the three conditions during both anticipation and pain phases, with correction for multiple comparisons using family-wise error correction. We will validate our expectation manipulation using behavioral ratings, skin conductance responses, and the stimulus intensity independent pain signature (SIIPS) as objective markers of successful expectation induction.

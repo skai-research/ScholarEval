@@ -1,0 +1,36 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate how adolescence affects auditory processing and learning in mice, specifically examining whether ongoing brain development during this period impacts sensory discrimination abilities and the underlying neural mechanisms. While adolescence is characterized by heightened brain plasticity, the extent to which sensory and cognitive functions have matured during this developmental stage remains unclear, with studies showing inconsistent results regarding adolescent learning capabilities.
+
+Our research is motivated by the concept that brain development involves multiple, overlapping critical periods that can affect each other, rather than discrete developmental windows. Although the critical period for pure tone representation in the auditory cortex closes by approximately postnatal day 15 (before adolescence begins), we hypothesize that learning of pure tone discrimination will remain malleable during adolescence because other perceptual features and cognitive mechanisms are still developing.
+
+We predict that adolescent mice will show distinct behavioral performance and cortical representations compared to adults when learning an auditory discrimination task, even for simple stimuli like pure tones. Specifically, we hypothesize that differences will arise from the combined effects of age and learning, rather than from basic auditory processing capabilities alone, since the critical period for pure tone processing has already closed.
+
+## Method
+
+We will employ a comprehensive approach combining behavioral training, electrophysiological recordings, and optogenetic manipulations to compare auditory learning and cortical processing between adolescent and adult mice.
+
+Our methodology centers on training mice to perform a Go/No-Go pure tone discrimination task of varying difficulty levels. We will use two complementary behavioral paradigms: an automated home-cage system (Educage) for initial behavioral characterization, and a head-fixed paradigm that enables simultaneous neural recordings during task performance.
+
+For neural recordings, we will use high-density Neuropixels probes to record from multiple auditory cortical regions (dorsal, primary, ventral auditory cortex, and temporal association cortex) while mice perform the discrimination task. We will focus our analysis on infragranular layers 5 and 6, which contain key output neurons of the auditory cortex.
+
+To separate age-related effects from learning-related effects, we will record from both naive and expert mice in each age group. Additionally, we will conduct passive listening experiments to characterize basic auditory tuning properties and assess learning-induced plasticity in frequency response areas.
+
+We will use optogenetic silencing of auditory cortex to establish the causal necessity of this brain region for task performance, employing AAV-mediated expression of inhibitory opsins with bilateral optical fiber implants.
+
+## Experiment Design
+
+We will train adolescent mice (starting at postnatal day 20-37) and adult mice (starting at postnatal day 60-77) on a pure tone discrimination task with two difficulty levels. The easy discrimination will involve tones separated by 1 octave (7.07 kHz vs 14.14 kHz), while the hard discrimination will use tones separated by 0.25 octave (9.2 kHz vs 10.9 kHz).
+
+Our experimental timeline will involve a 3-day tone association period, followed by one week of training on the easy task, then one week of simultaneous training on both easy and hard tasks. We will measure behavioral performance using signal detection theory metrics (d-prime) and analyze response bias, hit rates, false alarm rates, and behavioral variability.
+
+For electrophysiological experiments, we will record from mice during expert task performance and compare neural responses between adolescent and adult groups. We will analyze single neuron discriminability using receiver operating characteristic (ROC) analysis to quantify stimulus-related activity (hits vs false alarms) and choice-related activity (false alarms vs correct rejects). Population-level analysis will employ linear discriminant analysis to decode trial outcomes from neural activity patterns.
+
+To assess learning-induced plasticity, we will compare neural responses between naive mice (recorded after tone association but before discrimination learning) and expert mice (recorded after completing the full training protocol). We will characterize frequency tuning properties using a comprehensive pure tone protocol spanning 4-40 kHz at multiple sound pressure levels.
+
+For optogenetic experiments, we will train mice to expert level performance, then test the effects of bilateral auditory cortex silencing on task performance by applying light stimulation in 50% of trials in a randomized fashion.
+
+We will use appropriate control groups throughout, including control virus injections for optogenetic experiments, and will counterbalance factors such as sex and housing conditions. Statistical analyses will account for hierarchical data structures using linear mixed-effects models with appropriate random effects for repeated measurements and co-housed animals.

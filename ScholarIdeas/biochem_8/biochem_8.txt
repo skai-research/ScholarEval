@@ -1,0 +1,32 @@
+
+# Research Plan: Membrane Mimetic Thermal Proteome Profiling (MM-TPP) towards Mapping Membrane Protein-Ligand Dynamics
+
+## Problem
+
+Integral membrane proteins (IMPs) represent the principal targets of small-molecule therapeutics, comprising nearly two-thirds of druggable targets despite making up only 20-30% of the human genome. However, studying interactions between small molecule drugs and membrane proteins poses unique challenges due to their low abundance and hydrophobic characteristics, which complicates their characterization and analysis.
+
+Current proteomics-based technologies for identifying protein-ligand interactions, particularly thermal proteome profiling (TPP), primarily rely on cytosolic extracts and often neglect pharmaceutical-relevant transmembrane proteins. While strategies to improve membrane proteome coverage through detergent solubilization have been explored, it is widely acknowledged that even mild detergents can disrupt protein structures and activities, leading to challenges in accurately identifying drug targets.
+
+We hypothesize that integrating the peptidisc membrane mimetic system into thermal proteome profiling will enable broad-scale characterization of membrane protein-ligand interactions while completely circumventing structural perturbations invoked by detergents. This approach should provide a robust platform for identifying on- and off-target ligand effects, offering insights into the druggable membrane proteome and its stability as a consequence of changing and often dynamic small molecules.
+
+## Method
+
+We will implement a membrane mimetic thermal proteome profiling (MM-TPP) workflow that integrates the peptidisc system into standard TPP methodology. The approach will utilize peptidisc libraries, which are self-assembling scaffolds characterized by their "one size fits all" property, effectively stabilizing integral membrane proteins of varying sizes and topologies in a water-soluble state.
+
+Our methodology will involve preparing detergent-solubilized membrane fractions and reconstituting them into peptidisc libraries following established protocols. The peptidisc library will be divided into treatment and control aliquots, with one exposed to the ligand of interest and the other treated with vehicle control. Following ligand exposure, samples will undergo controlled heating to facilitate protein denaturation and precipitation, followed by ultracentrifugation to isolate the soluble fraction for liquid chromatography and tandem mass spectrometry (LC-MS/MS) analysis.
+
+We will identify proteins exhibiting significant stabilization or destabilization using established statistical methods, where proteins meeting defined fold difference thresholds between triplicate treatment and control groups will be considered highly probable ligand binders.
+
+## Experiment Design
+
+We will conduct validation experiments using purified and peptidisc-reconstituted bacterial ABC transporter MsbA in the presence of ATP and vanadate (VO4), as vanadate is a known potent inhibitor of the ABC transporter family. We will assess thermal stability using SDS-PAGE analysis to confirm ligand-induced stabilization.
+
+For broader validation, we will apply MM-TPP to peptidisc libraries derived from wild-type E. coli membranes, where target proteins are present at native expression levels. We will test the effect of ATP-VO4 across multiple temperatures and use volcano plot analysis to identify significantly stabilized and destabilized proteins.
+
+We will then extend our approach to mammalian systems using mouse liver membranes, where drug screening for cell surface IMPs is particularly relevant. We will conduct MM-TPP experiments in the presence of ATP-VO4 and analyze the results using Gene Ontology (GO) term analysis to identify enriched functions related to nucleoside-phosphate binding and primary active transport.
+
+To investigate the sensitivity of our method to ATP metabolites, we will test the effects of ATP by-products and compare results with non-hydrolyzable ATP analogs like AMP-PNP. We will use computational tools, including AlphaFold3 modeling, to predict potential binding sites and validate unexpected interactions.
+
+Our experimental design will include technical triplicates for all conditions, with statistical analysis using Student's t-test and significance cutoffs of fold change >2 or <-2 with p-value ≤0.05. We will require at least two unique peptides per protein for quantification and will use label-free quantification methods for relative protein abundance measurements.
+
+We will classify proteins based on transmembrane segment prediction and Gene Ontology annotations to distinguish between integral membrane proteins, peripherally bound proteins, and soluble proteins. This classification will allow us to specifically assess the method's effectiveness for membrane protein analysis while maintaining the ability to detect interactions across the entire proteome.

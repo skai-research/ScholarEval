@@ -1,0 +1,38 @@
+
+# Research Plan
+
+## Problem
+
+The striatum, as the central hub of cortico-basal ganglia loops, contains functionally heterogeneous subregions that mediate various processes of procedural learning through parallel processing. While previous studies have established a model where functional dominance shifts from associative subregions (caudate/anterior putamen in primates, dorsomedial striatum in rodents) to sensorimotor subregions (posterior putamen in primates, dorsolateral striatum in rodents) during motor learning progression, deviations from this model are evident in decision-making tasks based on external sensory cues.
+
+We hypothesize that the acquisition of sensory cue-based decision-making requires wide-range spatiotemporal processing within the striatum, involving multiple striatal subregions beyond the traditional DMS-to-DLS transition model. Specifically, we propose that different striatal subregions engage at distinct temporal stages during auditory discrimination learning and contribute to different behavioral strategies - those based on stimulus-response associations versus response-outcome associations.
+
+Our research questions focus on: (1) when and how different striatal subregions engage during the acquisition of auditory discrimination, (2) what specific functional roles these subregions play in mediating different learning processes, and (3) how the neural mechanisms underlying these processes differ from the established procedural learning model.
+
+## Method
+
+We will employ a comprehensive multi-methodological approach combining neuroimaging, pharmacological manipulations, and electrophysiological recordings to investigate striatal function during auditory discrimination learning.
+
+Our primary behavioral paradigm will be a two-alternative auditory discrimination task where rats learn to associate tone instruction cues (2 or 10 kHz) with specific lever responses (left or right), with a 3-second interval between stimulus presentation and lever insertion.
+
+For neuroimaging analysis, we will use small-animal positron emission tomography (PET) with 2-deoxy-2-[18F]fluoro-D-glucose (18F-FDG) to measure cerebral glucose metabolism correlated to brain activity. We will conduct voxel-based statistical parametric analysis to identify task-related and learning-dependent brain activity changes, focusing on three key striatal subregions: anterior dorsolateral striatum (aDLS), posterior ventrolateral striatum (pVLS), and dorsomedial striatum (DMS).
+
+For functional validation, we will perform both chronic excitotoxic lesions using ibotenic acid and transient pharmacological inactivation using the GABAA receptor agonist muscimol to assess the necessity of each striatal subregion for discrimination learning at different stages.
+
+To understand the underlying neural mechanisms, we will conduct simultaneous multi-unit electrophysiological recordings in the aDLS and pVLS during task performance, analyzing neuronal firing patterns related to different behavioral events and learning stages.
+
+## Experiment Design
+
+We will categorize the learning process into acquisition and learned phases based on behavioral performance, with the acquisition phase further divided into early, middle, and late stages based on success rates.
+
+For the neuroimaging experiments, we will perform 18F-FDG-PET scanning during a control single lever press task and at multiple time points during discrimination learning (Days 2, 6, 10, and 24). We will analyze regional brain activity using both task-related comparisons (discrimination vs. single lever) and learning-dependent comparisons (later days vs. Day 2).
+
+For lesion experiments, we will bilaterally inject ibotenic acid or phosphate buffered saline into target striatal subregions before behavioral training begins. We will assess both overall learning performance and specific behavioral strategies, including win-shift-win (WSW) strategy reflecting stimulus-response association and lose-shift-lose (LSL) strategy reflecting response-outcome association.
+
+For transient inactivation experiments, we will inject muscimol or saline at three specific time points: Day 2 (early stage), when success rate first reaches 60% (middle stage), and when success rate first reaches 80% (late stage). This stage-specific approach will allow us to determine the temporal contribution of each striatal subregion.
+
+For electrophysiological recordings, we will implant 64-channel silicon probes to simultaneously record from aDLS and pVLS. We will analyze neuronal responses to four key behavioral events: cue onset (CO), choice response (CR), reward sound (RS), and first licking (FL). We will categorize trials into four types based on tone frequency and lever choice (HR, HL, LR, LL) and identify neurons showing significant event-related activity changes.
+
+We will measure multiple behavioral parameters including success rate, response time, omission rate, and response bias to comprehensively assess learning performance. For strategy analysis, we will calculate the proportion of WSW and LSL strategies to understand how different striatal subregions influence behavioral approaches to the discrimination task.
+
+All experiments will include appropriate controls and will be conducted with proper statistical analysis to ensure robust interpretation of results. We will verify lesion extent and electrode placement through post-experimental histological analysis.

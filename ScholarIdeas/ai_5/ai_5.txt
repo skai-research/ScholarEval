@@ -1,0 +1,39 @@
+# Research Plan: Flow Matching for One-Step Sampling
+
+## Problem
+
+Flow-based generative models have emerged as powerful tools for mapping simple distributions to complex ones through continuous-time stochastic processes. While these models offer an effective framework for density estimation and sample generation, they face a significant computational bottleneck: the requirement to solve ordinary differential equations (ODEs) during the sampling process. This ODE-solving step incurs substantial computational costs, particularly when dealing with large datasets and numerous time points, making the sampling process prohibitively slow for practical applications requiring fast generation of large amounts of data.
+
+Current Flow Matching (FM) approaches, while theoretically sound, suffer from long sampling times due to this ODE dependency during inference. Although existing acceleration methods exist—including better coupling algorithms, faster sampling on pretrained models, knowledge distillation, stepsize optimization, and improved ODE solvers—they still fundamentally rely on iterative ODE solving, limiting their speed improvements.
+
+We hypothesize that by leveraging explicit formulas for the velocity field in Flow Matching and finding appropriate prototype points from the source distribution, we can eliminate the need for ODE solvers during sampling while preserving model performance. Our approach is based on the theoretical insight that exact expressions for the vector field that minimizes the Flow Matching loss can be used to directly couple source and target distribution points.
+
+## Method
+
+Our methodology centers on utilizing explicit velocity formulas derived from Flow Matching theory to create direct mappings between source and target distributions. We will employ the explicit expression for velocity field v(x,t) from invertible conditional maps, specifically using the regularized form with parameter σ > 0 to ensure invertibility.
+
+The core approach involves finding "prototypes" X₀(x₁) for each target sample x₁ by solving the inverse ODE problem. We will use the explicit velocity formula that contains integrals over the target distribution, which we will estimate using importance sampling techniques since we only have access to samples from the target distribution rather than its analytical form.
+
+For training, we will generate prototype-target pairs {X₀(x₁), x₁} and train a neural network model vθ to learn the direct mapping from prototypes to targets using a standard quadratic loss function. This eliminates the need for ODE solving during inference, as the trained model can directly map from source distribution samples to target distribution samples in a single forward pass.
+
+We will extend this approach to conditional generation by incorporating labels, using separate buffers for different classes and training conditional models vθ(x₀, i) that take both the prototype point and label as input.
+
+## Experiment Design
+
+We will conduct experiments across multiple domains to validate our approach:
+
+**Synthetic 2D Experiments**: We will test our method on toy datasets including 8 Gaussians to demonstrate proof-of-concept and visualize the prototype-target relationships. These experiments will help us understand the effect of regularization parameter σ and ODE solver tolerance on prototype quality.
+
+**Image Generation**: We will evaluate our approach on labeled MNIST dataset using DiT (Diffusion Transformer) architecture as our neural network model. We will use batch size n=128, buffer size N=6×n, and train for 15,000 steps with Adam optimizer (learning rate 10⁻³). The regularization parameter will be set to σ=10⁻².
+
+**Color Transfer Application**: We will test our method on the Winter2Summer dataset for color transfer tasks. This involves training two models: one to map from prototypes to target colors (vθ) and another to map from source images to prototypes (vχ). We will use multilayer perceptrons with different architectures for each model.
+
+**Parameter Studies**: We will systematically study the effects of key hyperparameters including:
+- Regularization parameter σ (testing values from 10⁻⁵ to 10⁻²)
+- Buffer size N for importance sampling
+- ODE solver tolerance for prototype finding
+- Batch size n and training iterations
+
+**Evaluation Metrics**: We will assess our method using standard generative model metrics and compare sampling speed against traditional Flow Matching approaches that require ODE solving during inference.
+
+The experiments will use importance sampling with softmax weighting for integral estimation, and we will solve the inverse Cauchy problem using adaptive Runge-Kutta methods from scientific computing libraries. All experiments will include appropriate noise addition proportional to σ to ensure the learned mappings generalize beyond the training manifold.

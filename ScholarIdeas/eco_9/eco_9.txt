@@ -1,0 +1,40 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the Solstice-as-Phenology-Switch hypothesis, which posits that the summer solstice (21 June) acts as a phenological "switch point" where the effects of temperature on autumn phenology reverse. Specifically, we hypothesize that pre-solstice warming advances autumn bud set while post-solstice warming delays it. However, the flexibility of this switch point remains poorly understood, particularly regarding how developmental constraints influence this temperature effect reversal.
+
+Recent observations show that autumn phenology delays are much smaller compared to spring advances under climate warming, despite experimental evidence of high autumn sensitivity to temperature. We hypothesize that developmental constraints mediate these responses, with early-season development rates determining when trees become sensitive to late-season cooling signals. Additionally, since trees primarily grow at night when temperatures and water deficits are lower, we expect daytime and nighttime temperatures to have different effects on growth cessation before and after the solstice.
+
+Our conceptual model suggests that early-season development has an advancing effect on autumn phenology until shortly after the summer solstice, while late-season warming increasingly delays autumn phenology as days shorten. We propose that the timing of this effect reversal is flexible and varies based on developmental speed - when development is slow or starts late, the effect reversal occurs later than under fast or early development.
+
+## Method
+
+We will conduct two complementary climate manipulation experiments on potted European beech (Fagus sylvatica) saplings to test our hypotheses. Our approach combines controlled temperature treatments with precise phenological monitoring to isolate the effects of developmental timing and temperature on primary growth cessation.
+
+For the first experiment, we will create early-leafing versus late-leafing trees by manipulating spring development rates through controlled cooling. We will then apply targeted cooling treatments during July and August to assess how early-season developmental timing influences responses to late-season temperature changes. This experimental design will allow us to test whether slower early-season development postpones the reversal date of temperature effects on autumn phenology.
+
+For the second experiment, we will focus on the differential effects of daytime versus nighttime cooling before and after the summer solstice. This approach recognizes that trees primarily grow at night, and recent climate trends show varying patterns in daytime versus nighttime warming rates.
+
+We will use bud set as our primary marker for primary growth cessation and the beginning of autumn phenology, as it represents a key physiological transition point. Linear mixed-effects modeling will be employed to analyze treatment effects while accounting for individual tree variation and bud type differences.
+
+## Experiment Design
+
+**Experiment 1: Early-season development and late-season temperature effects**
+
+We will establish an experimental population of 267 European beech saplings (40-60 cm tall) in 20L pots with standardized soil mixture. Trees will be randomly assigned to 10 treatment groups (n=26-27 each). To create developmental variation, we will place some trees in climate chambers from April 4 to May 24, cooling them to 2-7°C with simulated day-night cycles, while others remain under ambient conditions. This will generate early-leafing and late-leafing individuals.
+
+From May 24 to June 21, all trees will be maintained under ambient conditions in randomized blocks. We will monitor individual leaf-out dates (defined as >50% leaf unfolding). Summer treatments will begin after the solstice: July treatments (June 22 to July 23) and August treatments (July 24 to August 25). Treatment trees will experience either moderate cooling (8-13°C day/night) or extreme cooling (2-7°C day/night) in climate chambers with appropriate photoperiods, while controls remain under natural ambient conditions.
+
+We will measure terminal buds on primary shoots and lateral stems using digital calipers from July 4 to November 2. Bud set will be defined as the date when each bud reaches 90% of its maximum length, determined through linear interpolation between measurement dates.
+
+**Experiment 2: Pre- and post-solstice daytime versus nighttime cooling effects**
+
+We will use 180 four-year-old Fagus sylvatica trees in 20L pots with the same soil mixture. The ambient control group will consist of 36 trees under natural conditions. The remaining eight treatments will each include 18 trees, with cooling applied in climate chambers simulating ambient day length and light intensity.
+
+Pre-solstice treatments (May 22 to June 21) and post-solstice treatments (June 22 to July 21) will include four conditions each: chamber control (continuous 20°C), day cooling (8°C day/20°C night), night cooling (20°C day/8°C night), and full-day cooling (continuous 8°C). After treatments, all trees will be placed in randomized blocks under ambient conditions.
+
+We will measure buds weekly from August 25 to November 3 using the same methodology as Experiment 1. Additionally, we will measure leaf-level CO2 assimilation rates to assess photosynthetic responses to temperature treatments.
+
+Both experiments will maintain consistent watering to ensure adequate soil moisture throughout. We will use linear mixed-effects models with treatment as fixed effects and bud type as random effects to analyze bud set timing, with effect sizes calculated relative to appropriate control treatments.

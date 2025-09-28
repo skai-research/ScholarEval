@@ -1,0 +1,74 @@
+# Research Plan: Multiple-Play Stochastic Bandits with Prioritized Arm Capacity Sharing
+
+## Problem
+
+We propose to address resource allocation problems arising from modern applications such as LLM services and edge intelligence systems, where multiple tasks compete for limited resources according to priority-based mechanisms. Current multi-play multi-armed bandit (MP-MAB) frameworks do not adequately capture the prioritized resource sharing nature of these applications.
+
+Our motivation stems from real-world scenarios where:
+- In LLM applications, multiple reasoning tasks share LLM instances based on pricing or membership hierarchy
+- In mobile edge computing, tasks are allocated to edge servers according to differentiated pricing mechanisms
+- Resources are distributed in a "high priority first" manner when demand exceeds capacity
+
+We hypothesize that the prioritized resource sharing mechanism creates a nonlinear combinatorial structure in the utility function that poses fundamental challenges for both optimization and learning. Specifically, we expect that:
+1. Top-performing arms do not necessarily warrant optimal allocation due to movement costs and priority constraints
+2. The nonlinear structure makes it difficult to distinguish optimal from suboptimal allocations
+3. New regret bounds will emerge that depend on priority weights and resource characteristics
+
+## Method
+
+We will develop the MSB-PRS (Multiple-play Stochastic Bandits with Prioritized Resource Sharing) framework consisting of:
+
+**Model Components:**
+- K plays, each with priority weight αk and movement cost vector ck
+- M arms, each with stochastic capacity Dm and per-unit reward distribution Rm
+- Prioritized capacity sharing where plays are ranked by priority weights in descending order
+- Utility function combining weighted rewards minus movement costs
+
+**Theoretical Analysis Approach:**
+We plan to establish fundamental learning limits by:
+1. Constructing special instances of MSB-PRS composed of carefully designed independent groups of classical multi-armed bandits
+2. Applying existing lower bound techniques to these constructed instances
+3. Proving both instance-independent and instance-dependent regret lower bounds
+
+**Algorithmic Strategy:**
+We will address the computational challenges through:
+1. **Bipartite Graph Formulation:** Model the problem as a weighted bipartite graph where nodes represent plays and arm-rank pairs, with edge weights capturing marginal utility contributions
+2. **Matching-Based Optimization:** Establish connections between action profiles and U-saturated, V-monotone, priority-compatible matchings
+3. **Approximate UCB Design:** Develop computationally efficient UCB-based algorithms that avoid exhaustive search
+
+## Experiment Design
+
+**Theoretical Validation:**
+We will prove regret bounds by:
+- Constructing lower bound instances with specific parameter configurations (zero movement costs, equal weights, deterministic capacity)
+- Analyzing the approximate UCB algorithm's performance using confidence bands and monotonicity properties
+- Establishing matching upper and lower bounds up to logarithmic factors
+
+**Computational Experiments:**
+We plan to evaluate our algorithms through synthetic experiments with:
+
+**Parameter Settings:**
+- M = 5 arms, K = 10 plays (with systematic variation)
+- Probability mass functions following near-normal distributions
+- Three reward patterns: Inc-Shape, Dec-Shape, and U-Shape
+- Movement costs: ck,m = η|(k mod M) - m|/max{K,M}
+- Priority weights: half of plays with weight 3, half with weight 1
+- Default parameters: T = 10^4, δ = 1/T, η = 1, σ = 0.2
+
+**Experimental Variables:**
+We will systematically vary:
+1. Number of arms (M = 5, 10, 15)
+2. Number of plays (K = 10, 15, 20)
+3. Resource-reward correlation patterns
+4. Movement cost scale (η = 1, 2, 10)
+5. Reward standard deviation (σ = 0.1, 0.2, 0.3)
+
+**Baseline Comparisons:**
+We will compare against:
+- OnlinActPrf: existing algorithm with expert feedback and homogeneous plays
+- OnlinActPrf-v: variant enabling UCB on capacity distribution estimation
+
+**Performance Metrics:**
+We will measure cumulative regret over time horizons and assess convergence rates to demonstrate sublinear regret achievement and computational efficiency gains.
+
+The experiments will validate our theoretical predictions about regret bounds and demonstrate the practical advantages of our prioritized resource sharing approach over existing methods that do not account for priority mechanisms.

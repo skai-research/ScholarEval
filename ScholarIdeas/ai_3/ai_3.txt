@@ -1,0 +1,35 @@
+# Research Plan: Recovering Plasticity of Neural Networks via Soft Weight Rescaling
+
+## Problem
+
+We aim to address the phenomenon of plasticity loss in neural networks, where networks gradually lose their capacity to learn new information as training progresses. Recent studies have identified unbounded weight growth as one of the main causes of plasticity loss, which also harms generalization capability and disrupts optimization dynamics. 
+
+Current solutions have significant limitations: re-initializing networks results in the loss of learned information and performance drops, while existing weight regularization methods either cause optimization difficulties through additional loss terms or require computationally expensive gradient computations. Re-initialization methods, while improving generalization, suffer from knowledge loss when access to previous data is unavailable.
+
+We hypothesize that it is possible to prevent unbounded weight growth without losing previously learned information by directly scaling down weights in a principled manner. Our approach should maintain network plasticity while preserving the functional behavior of the model.
+
+## Method
+
+We will develop Soft Weight Rescaling (SWR), a novel weight regularization method that directly reduces weight magnitudes by scaling them down at each training step. Our approach is grounded in the concept of proportionality of neural networks.
+
+We will establish that for feed-forward neural networks with homogeneous activation functions, we can construct infinitely many proportional networks that maintain identical functional behavior. Specifically, for any neural network fθ and positive constant C, we can find networks proportional to fθ with proportionality constant C by scaling weights and biases according to specific rules.
+
+Our SWR method will determine scaling factors for each layer based on the ratio between the Frobenius norm of the initial weight matrix and the current one. To prevent over-constraining the model, we will incorporate an exponential moving average approach where the scaling factor for the l-th layer is: cl = (λ × ||W^init_l|| + (1-λ) × ||Wl||) / ||Wl||, where λ controls the regularization strength.
+
+We will extend this approach to handle normalization layers by focusing on learnable parameters of the final normalization layer to maintain proportionality. The method will apply different coefficients λc for classifier layers and λf for feature extractor layers.
+
+## Experiment Design
+
+We will evaluate SWR across three main experimental scenarios using standard image classification benchmarks:
+
+**Datasets and Models**: We will use MNIST, CIFAR-10, CIFAR-100, and TinyImageNet datasets with various architectures including 3-layer MLP, CNN with 2 convolutional and 2 fully connected layers, CNN with batch normalization (CNN-BN), and VGG-16.
+
+**Warm-start Learning**: We will follow the setup from prior work where models are first trained on 50% of training data for 100 epochs, then trained on the entire dataset for another 100 epochs. We will compare SWR against L2 regularization, L2 Init regularization, S&P re-initialization, and head reset methods.
+
+**Continual Learning**: We will implement two settings - full access where models can access all previous data chunks, and limited access where models can only access the current data chunk. Training data will be split into 10 chunks with 100 epochs per chunk to evaluate repeated warm-start scenarios.
+
+**Single-task Learning**: We will conduct standard supervised learning experiments training models for 200 epochs to assess generalization performance. We will also test compatibility with learning rate schedulers by implementing decay at specific epochs.
+
+**Evaluation Metrics**: We will measure test accuracy across all scenarios and assess model balancedness using entry-wise ℓp,q-norm ratios. We will perform hyperparameter sweeps for λ values and use multiple random seeds (5 for smaller models, 3 for VGG-16) to ensure statistical reliability.
+
+**Theoretical Validation**: We will provide mathematical proofs demonstrating that SWR bounds weight magnitude and balances weight magnitude between layers. We will also prove that SWR maintains Lipschitz continuity for networks with 1-Lipschitz activation functions.

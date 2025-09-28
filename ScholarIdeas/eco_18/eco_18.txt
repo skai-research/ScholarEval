@@ -1,0 +1,43 @@
+
+# Research Plan: Full Factorial Construction of Synthetic Microbial Communities
+
+## Problem
+
+We aim to address the significant technical barriers that limit the widespread adoption of full factorial design in microbial consortium research. Currently, constructing combinatorially complete species assemblages - necessary for dissecting the complexity of microbial interactions and finding optimal microbial consortia - is accomplished through either painstaking, labor-intensive liquid handling procedures or state-of-the-art microfluidic devices that are not accessible to most laboratories.
+
+The combinatorial nature of full factorial design makes the assembly of all possible communities extremely challenging. The number of unique liquid handling events required to form all combinations of m species scales as m2^(m-1), making manual assembly draining, slow, and prone to human error. For this reason, studies reporting full factorial construction of microbial consortia are very rare, and the field has largely relied on fractional factorial design where only a subset of representative species combinations are constructed.
+
+We hypothesize that a simple, rapid, low-cost, and highly accessible liquid handling methodology can be developed using basic laboratory equipment to enable full factorial assembly of microbial consortia. This would have benefits beyond biotechnology applications, as forming every possible species assemblage is required to investigate the complex, combinatorial nature of microbial interactions and the role that high-order interactions play in community function and dynamics.
+
+## Method
+
+We will develop a liquid handling methodology based on identifying each microbial consortium by a unique binary number. For a set of m species, we will represent any consortium as a binary string where each position indicates the presence (1) or absence (0) of each species. This mathematical framework allows us to leverage the additive properties of binary numbers for disjoint consortia and the structural properties of 96-well plates.
+
+Our approach will exploit the fact that 96-well plates have 8 rows (2^3 = 8), allowing us to form all combinations from a 3-species set in one column. We will then iteratively duplicate these consortia and add additional species to generate all possible combinations. The protocol will use standard multichannel pipettes to streamline the assembly process.
+
+To ensure consistent species densities across consortia, we will develop a buffer addition system that compensates for volume differences. We will derive mathematical expressions to determine the exact buffer volumes needed based on the positional indexes of wells in the plates.
+
+We will provide detailed protocols for specific conditions and develop an R script to help users tailor the protocol to their specific needs, including different numbers of species and pipetting volumes.
+
+## Experiment Design
+
+### Proof of Concept with Synthetic Colorants
+We will first validate our methodology using commercial food colorants and temperas as a proof of concept. We will dilute eight different colorants in water to comparable maximum absorbances in the 380-780 nm range. Using our protocol with m = 8 and v₀ = 25 μL, we will assemble all 256 color combinations across three 96-well plates.
+
+We will measure the absorbance spectrum of each combination using a plate reader and compare empirical spectra to additive expectations (sum of individual colorant spectra). Since colorants should not interact significantly, deviations from additivity will provide an estimate of our protocol's pipetting error. We will quantify accuracy by calculating relative deviations between empirical and expected absorbance values.
+
+### Microbial Consortium Assembly
+We will demonstrate the utility of our methodology using eight Pseudomonas aeruginosa strains from a previous experiment. We will culture each strain separately in LB medium, allowing growth to carrying capacity for 24 hours at 37°C. Using the same protocol parameters as the colorant experiment, we will assemble all 256 possible strain combinations.
+
+After assembly, we will inoculate each consortium into fresh LB medium (0.5 μL inoculum into 200 μL medium, 1:400 dilution) in 96-well plates and incubate at 37°C for 40 hours. We will then measure absorbance spectra to characterize community properties.
+
+### Data Analysis Framework
+We will focus on absorbance at 600 nm (Abs₆₀₀) as a proxy for total biomass to investigate:
+- Relationships between community diversity and function
+- Identification of optimal strain combinations
+- Quantification of pairwise and higher-order functional interactions
+- Mapping of complete community-function landscapes
+
+We will define functional effects as differences in function between consortia with and without specific strains, and functional interactions as deviations from additive expectations. We will analyze interaction structures across all possible ecological backgrounds and quantify the variance in community function attributable to different orders of interactions.
+
+The experimental design will enable us to test whether functional effects of strains are predictable from background community function, following patterns similar to global epistasis in genetics.

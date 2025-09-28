@@ -1,0 +1,41 @@
+# Research Plan: MMS CI: A Dataset for Graduate-Level Multi-Discipline Multimodal Scientific Understanding
+
+## Problem
+
+We aim to address the significant gap in evaluating and training Multimodal Large Language Models (MLLMs) for advanced scientific understanding. While MLLMs show promise as AI-driven scientific assistants, their ability to comprehend complex scientific figures across diverse disciplines remains largely unexplored. 
+
+Current datasets focus primarily on basic chart interpretation requiring minimal domain-specific knowledge, while figures in scientific articles are far more varied and complex. These include microscopy images, spectroscopy data, astronomical images, molecular structures, phylogenetic trees, and other specialized visualizations that typically require graduate-level expertise in specific domains to interpret properly.
+
+We hypothesize that existing MLLMs have significant limitations in understanding complex scientific figures that demand domain-specific knowledge, and that comprehensive evaluation across multiple scientific disciplines will reveal substantial performance gaps. Additionally, we believe that high-quality scientific data can serve as valuable training resources to enhance models' scientific comprehension capabilities.
+
+Our research questions include: How well do current MLLMs understand complex scientific figures across diverse disciplines? What types of scientific content pose the greatest challenges? Can task-specific training on scientific data improve model performance on scientific understanding tasks?
+
+## Method
+
+We will develop a comprehensive multimodal dataset by collecting high-quality, peer-reviewed articles from Nature Communications, spanning 72 scientific disciplines. Our methodology involves:
+
+**Data Collection Strategy**: We will systematically crawl open-access articles from Nature Communications, extracting article content (titles, abstracts, main text, references) and figures with their captions. We will use pylatexenc to convert LaTeX mathematical expressions into plain text and develop regular expression matching to identify and extract sub-figure captions.
+
+**Benchmark Development**: We will create two primary evaluation tasks:
+1. **Scientific Figure Captioning (MMS CICAP)**: Models will generate captions for scientific figures in both ungrounded and abstract-grounded settings
+2. **Figure Caption Matching (MMS CIQA)**: Multiple-choice questions with three settings - Figure-to-Caption matching, Subfigure-to-Subcaption matching, and Subcaption-to-Subfigure matching
+
+**Evaluation Framework**: We will employ multiple evaluation metrics including overlap-based metrics (ROUGE, METEOR), similarity-based metrics (BERTScore), and LLM-based evaluation metrics (modified FACTSCORE, G-EVAL) for comprehensive assessment.
+
+**Training Resource Development**: We will create task-specific multimodal training data formatted as single-turn and multi-turn conversations, and develop interleaved text-image data suitable for continuous pre-training of MLLMs.
+
+## Experiment Design
+
+**Dataset Construction**: We will collect articles published up to April 15, 2024, from Nature Communications, targeting comprehensive coverage across 72 scientific disciplines. We will categorize figures into seven major types and extract sub-captions using automated regular expression matching.
+
+**Benchmark Evaluation**: We will evaluate a diverse range of models including proprietary MLLMs (GPT-4V, GPT-4o, Gemini-1.5-Flash/Pro, Claude-3-Opus, Claude-3.5-Sonnet) and open-source models (Kosmos-2, Qwen-VL series, LLaVA series, InternVL2 series, IDEFICS series, MiniCPM-V-2.6, Llama3.2-11B-Vision). We will also include human evaluation using computer science graduate students as a baseline.
+
+**Data Splitting**: We will allocate 1% of articles from each subject to test and validation sets respectively, ensuring balanced coverage across disciplines while managing evaluation costs. Each sample will be derived from a single article to prevent content reuse.
+
+**Training Experiments**: We will conduct supervised fine-tuning of Qwen2-VL-2B using our task-specific training data and explore continuous pre-training using interleaved article and figure data.
+
+**Case Study Design**: We will conduct a focused case study in materials science, continuously pre-training LLaMA2-7B on interleaved scientific content and evaluating performance on material generation tasks using the MP-20 dataset. We will assess validity, coverage, property distribution, and stability of generated materials.
+
+**Evaluation Metrics**: For captioning tasks, we will use ROUGE, METEOR, BERTScore, modified FACTSCORE, and G-EVAL. For multiple-choice questions, we will measure accuracy across different settings. For the materials case study, we will evaluate structural/compositional validity, coverage metrics, property distribution alignment, and metastability/stability percentages.
+
+The experimental design will provide comprehensive assessment of current MLLM capabilities on scientific understanding tasks and demonstrate the potential of our dataset as both an evaluation benchmark and training resource for enhancing scientific comprehension in multimodal models.

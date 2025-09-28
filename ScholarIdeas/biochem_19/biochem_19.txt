@@ -1,0 +1,34 @@
+
+# Research Plan
+
+## Problem
+
+The mechanism of action of medicinal biguanides, particularly metformin and phenformin, remains poorly understood despite their established therapeutic benefits. While metformin has been used since the 1950s for treating type II diabetes and shows promise in cancer prevention, its molecular targets and mechanisms are still elusive. Current evidence suggests that energy metabolism plays a pivotal role in biguanide effectiveness, with studies indicating that at supra-pharmacological doses, metformin moderately inhibits complex I of the respiratory chain. However, the concentrations required to observe direct complex I inhibition in vitro are much higher than those needed for biological effects, suggesting additional or alternative targets may be involved.
+
+We hypothesize that biguanides may interact with multiple mitochondrial targets beyond complex I, potentially including components of the F1Fo-ATP synthase complex. Previous work has shown that biguanides likely disrupt cristae organization, a process mediated by ATP synthase oligomerization, and that atrazine (a biguanide derivative) can bind and inhibit F1Fo-ATP synthase. We propose that the e subunit of F1Fo-ATP synthase (ATP5I), which is involved in enzyme dimerization and cristae morphology, may serve as a direct target of medicinal biguanides and mediate their metabolic and antiproliferative effects.
+
+## Method
+
+We will employ a multi-faceted approach combining chemical biology, molecular biology, and functional genomics to investigate ATP5I as a biguanide target. Our methodology centers on the synthesis and characterization of a biotin-functionalized biguanide (BFB) that retains the biological activity of metformin while enabling affinity-based protein identification.
+
+We will synthesize BFB and validate its biological activity by comparing its effects on AMPK activation and cell proliferation to metformin in pancreatic cancer cells. Using this probe, we will perform affinity-based pull-down assays with streptavidin beads on mitochondrial-enriched cell extracts, followed by mass spectrometry analysis to identify interacting proteins. To control for non-specific binding, we will include parallel experiments with a biotin-functionalized amine control lacking the biguanide pharmacophore.
+
+For direct binding validation, we will express and purify recombinant ATP5I protein and use surface plasmon resonance (SPR) to characterize the interaction between BFB and ATP5I. We will generate ATP5I knockout cell lines using CRISPR-Cas9 technology to functionally validate its role in biguanide action. Additionally, we will create rescue cell lines by reintroducing wild-type ATP5I into knockout cells to demonstrate specificity.
+
+To gain broader insights into biguanide mechanisms, we will conduct genome-wide pooled CRISPR-Cas9 knockout screens in the presence of metformin and compare the genetic interaction profiles with those of known respiratory chain inhibitors (rotenone for complex I and oligomycin A for complex V).
+
+## Experiment Design
+
+We will first synthesize BFB by coupling a biotin-NHS ester to 6-aminohexylbiguanide and characterize its structure by NMR and mass spectrometry. We will validate BFB's biological activity in KP-4 pancreatic cancer cells by measuring AMPK phosphorylation, cell viability, and mitochondrial localization using fluorescence microscopy with streptavidin conjugates.
+
+For protein identification, we will perform pull-down experiments using mitochondrial extracts from KP-4 cells incubated with BFB or control compounds, followed by streptavidin bead capture. We will elute specifically bound proteins using metformin competition and analyze samples by mass spectrometry. We will validate ATP5I interaction through independent pull-down experiments followed by immunoblotting.
+
+To characterize the BFB-ATP5I interaction, we will express N-terminal 6x-His-tagged ATP5I in E. coli, purify the protein using immobilized metal affinity chromatography under denaturing conditions, and refold it in physiological buffer. We will immobilize BFB on streptavidin-coated SPR sensor chips and measure binding kinetics by injecting increasing concentrations of recombinant ATP5I.
+
+For functional validation, we will generate ATP5I knockout clones in KP-4 cells using lentiCRISPR vectors with two different guide RNAs targeting ATP5I. We will characterize knockout cells by immunoblotting for respiratory complex proteins, qPCR analysis of mRNA levels, and assessment of mitochondrial DNA content. We will analyze mitochondrial morphology using immunofluorescence microscopy with TOMM20 antibodies and quantify the percentage of cells exhibiting filamentous, fragmented, or punctate mitochondrial networks.
+
+We will assess the metabolic consequences of ATP5I knockout by measuring NAD+/NADH ratios, oxygen consumption rates (OCR), and extracellular acidification rates (ECAR) using Seahorse technology. We will evaluate cell growth, AMPK activation, and sensitivity to glycolysis inhibition with 2-deoxyglucose. We will test biguanide sensitivity by treating control and knockout cells with various concentrations of metformin and phenformin, measuring both acute metabolic effects and long-term growth inhibition.
+
+For rescue experiments, we will reintroduce wild-type ATP5I into knockout cells using retroviral vectors and assess restoration of protein levels, mitochondrial morphology, metabolic parameters, and biguanide sensitivity.
+
+Finally, we will conduct genome-wide CRISPR screens in NALM-6 cells treated with growth-inhibitory concentrations of metformin, rotenone, or oligomycin A. We will analyze sgRNA frequency changes to identify genes whose knockout enhances or suppresses drug effects, and compare genetic interaction profiles between compounds to infer mechanistic relationships.

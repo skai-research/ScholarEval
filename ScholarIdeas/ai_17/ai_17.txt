@@ -1,0 +1,47 @@
+# Research Plan: MAC-CAFE: Multi-Actor, Centralized Critic Architecture for Feedback-Driven Editing
+
+## Problem
+
+We address a critical limitation in Retrieval-Augmented Generation (RAG) systems where Large Language Models (LLMs) often generate incorrect or outdated information, particularly in low-resource settings or when handling private data. While RAG systems attempt to mitigate this by using external knowledge bases (KBs), these KBs themselves can suffer from inaccuracies, incompleteness, or outdated content.
+
+Current knowledge editing approaches either require white-box access to LLM parameters or simply add new documents without addressing existing inaccuracies. We hypothesize that directly editing the KB based on expert feedback will be more effective than parameter-based approaches or simple document addition, especially in applications like chatbots or code generation where expert intervention is crucial.
+
+Our research questions focus on: (1) How can we systematically refine KBs using structured edits based on expert feedback? (2) Can a multi-agent reinforcement learning framework effectively coordinate document-level updates? (3) What characteristics define high-quality KB edits, and how can we measure them?
+
+## Method
+
+We propose MAC-CAFE, a Multi-actor, Centralized Critic Architecture for Feedback-driven Editing that formulates KB editing as a state search problem. Our approach models the KB as a collection of documents, where each state represents the current configuration of all documents.
+
+We employ a multi-actor, centralized critic reinforcement learning framework where:
+- A centralized critic analyzes global reward signals from expert feedback and generates textual gradients
+- Individual actors, modeled as ReACT agents, are assigned to specific documents and perform structured edits
+- The critic decomposes feedback into document-specific reflections and coordinates updates across actors
+
+We use Monte Carlo Tree Search (MCTS) to explore the state space of possible KB configurations, with the objective of finding the optimal KB state that maximizes RAG system performance. To address the computational challenges of large search spaces, we decouple KB edits by isolating document-level modifications and breaking them into manageable sections.
+
+## Experiment Design
+
+We will evaluate MAC-CAFE on five datasets spanning incomplete and incorrect KB scenarios:
+
+**Incomplete KB Settings:**
+- ARKS-Pony and ARKS-Ring: Code generation datasets for low-resource programming languages with compiler feedback as expert input
+- We will split failure cases into train/eval/test in 1:1:2 ratios, using execution accuracy as the success metric
+
+**Incorrect KB Settings:**
+- ARKS-ScipyM and ARKS-TensorflowM: Data science problems with artificially perturbed library documentation
+- CLARKS-news: Factual knowledge updates with questions whose answers changed over time
+
+We will implement PROMPT AGENT-E as our baseline, extending PROMPT AGENT for KB editing by creating separate document-wise optimization agents.
+
+**Evaluation Metrics:**
+- **Completeness**: Train set accuracy measuring expert feedback incorporation
+- **Generalization**: Test set accuracy assessing edit generalizability  
+- **Coherence**: Document-wise coherence scores using G-Eval with GPT-4 as judge
+
+**System Configuration:**
+- MCTS parameters: UCT algorithm, depth=3, expansion width=3, 5 iterations, exploration constant=2.5
+- RAG system with embedding similarity retrieval and iterative retrieval for coding tasks
+- GPT-4-1106-PREVIEW as reasoning model, OpenAI-TEXT-EMBEDDING-3-LARGE for embeddings
+- Document chunking at 50 lines for unstructured data, 18000 token budget for retrievals
+
+We will measure improvements in KB quality across the three defined characteristics and demonstrate enhanced RAG system performance through systematic comparison with our baseline approach.

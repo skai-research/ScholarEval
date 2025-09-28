@@ -1,0 +1,52 @@
+# Research Plan: SPACE - Series Prediction Augmented by Causality Estimation
+
+## Problem
+
+We address the limitations of current multivariate time series (MTS) forecasting approaches that primarily focus on correlative relationships rather than causal dependencies. Three key characteristics make MTS analysis challenging: (i) interrelationships are represented through causal relationships rather than mere similarities; (ii) they convey information across multiple independent factors; and (iii) their dynamics arise from inherent temporal dependencies.
+
+Current state-of-the-art attention-based models focus on learning correlative weights between time series, which presents a one-dimensional view that hampers comprehensive understanding. We hypothesize that incorporating causal relationships alongside temporal dependencies will significantly improve forecasting performance compared to correlation-based approaches alone.
+
+The core research question is: Can an integrated approach that treats causality as equally important as temporal dependencies lead to superior multivariate time series forecasting performance?
+
+## Method
+
+We propose SPACE (Series Prediction Augmented by Causality Estimation), an end-to-end trainable model that integrates temporal dependencies and causal relationships. Our approach consists of several key components:
+
+**Temporal Embedding**: We adopt a cross-temporal approach where individual time series are patchified into 2D tensors and projected into latent space, rather than treating all data points at the same time as column vectors.
+
+**Sequence Enhancer**: A multi-head attention module that shares information and patterns from other patches to enhance sequences before causal processing, utilizing the auto-regressive characteristics of time series.
+
+**Cross-TE Module**: We employ transfer entropy (TE) methods to compute causal weights, specifically using pseudo transfer entropy (pTE) which assumes normal distribution for time series data. To address computational bottlenecks, we develop a fast-pTE algorithm that reduces complexity from O(d²T) to O(dT) by flattening series in the last two dimensions.
+
+**Causal Graph Neural Network (CGNN)**: This module integrates information using the causality matrix from Cross-TE as its adjacency matrix, featuring a 2DMixer to handle information within and across patches before aggregation.
+
+The methodology integrates these modules within a conventional attention framework, enabling our workflow to function as a drop-in replacement for attention modules.
+
+## Experiment Design
+
+We will conduct comprehensive experiments on 9 real-world datasets to validate our approach:
+
+**Datasets**: 
+- ETT datasets (ETTh1, ETTh2, ETTm1, ETTm2) with 7 sub-series of electricity data
+- Weather dataset with 21 weather condition indicators
+- Exchange-rate dataset with daily rates from 8 countries
+- Three financial index datasets (proprietary)
+
+**Baseline Comparisons**: We will compare against 8 state-of-the-art models including:
+- Linear-based methods: DLinear, TiDE, RLinear
+- Transformer-based methods: iTransformer, PatchTST, Crossformer, Stationary
+- TCN-based method: TimesNet
+
+**Experimental Setup**: All experiments will use the same input length (H=96) and prediction lengths (F∈{96,192,336,720} for most datasets, F∈{48,96,192,336} for financial indices). We will use PyTorch implementation on NVIDIA RTX 4090 GPU.
+
+**Evaluation Metrics**: We will assess performance using Mean Squared Error (MSE) and Mean Absolute Error (MAE) across different prediction horizons.
+
+**Ablation Studies**: We plan to conduct ablation experiments to evaluate:
+- Impact of replacing transfer entropy with conventional attention
+- Effect of removing the Sequence Enhancer module
+- Contribution of the entire encoder structure
+- Hyperparameter sensitivity analysis for learning rate, hidden dimensions, and encoder blocks
+
+**Interpretability Analysis**: We will visualize learned adjacency matrices to demonstrate that causality-based relationships provide more meaningful insights compared to attention-based correlations, particularly using the Weather dataset to verify climate-scientific relationships.
+
+The experimental design aims to demonstrate that explicitly incorporating causative information leads to superior performance compared to correlation-based approaches in multivariate time series forecasting tasks.

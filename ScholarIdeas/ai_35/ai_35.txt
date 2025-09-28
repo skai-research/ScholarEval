@@ -1,0 +1,44 @@
+# Research Plan: Advancing Drug-Target Interaction Prediction via Graph Transformers and Residual Protein Embeddings
+
+## Problem
+
+We address the fundamental challenge of predicting drug-target interactions (DTIs) in pharmaceutical research, where distribution shifts between different experimental settings, drug classes, or target families significantly impact model performance. Current computational approaches for DTI prediction face limitations in handling domain adaptation scenarios where new chemical entities or previously unexplored target families are involved, and labeled data in target domains is scarce or unavailable.
+
+Our hypothesis is that by developing a unified mathematical framework that integrates measure theory, functional analysis, information geometry, and optimal transport theory, we can create more robust domain adaptation techniques for DTI prediction. We propose that incorporating both structural and chemical similarities of drugs and targets through novel distance metrics will enable more effective knowledge transfer between domains.
+
+The research questions guiding our study include: How can we quantify domain discrepancy in DTI prediction contexts more effectively? What is the optimal path for domain adaptation in DTI model space? How can we establish theoretical guarantees for domain adaptation performance while providing practical algorithmic improvements?
+
+## Method
+
+We will develop a comprehensive unified mathematical framework (MoleProLink) for unsupervised domain adaptation in DTI prediction. Our approach integrates several theoretical perspectives:
+
+**Novel Distance Metric**: We will introduce the DTI-Wasserstein distance, extending the classical Wasserstein metric to incorporate both structural and chemical similarities of drugs and targets. This will allow more nuanced quantification of discrepancy between source and target domains.
+
+**Information-Geometric Framework**: We will leverage information geometry to reveal the intrinsic structure of the DTI model space by equipping the statistical manifold of DTI models with the Fisher-Rao metric. This will enable us to characterize optimal adaptation paths as geodesics on the manifold.
+
+**Spectral Analysis**: We will develop a spectral decomposition of the DTI-DA transfer operator to understand modes of information transfer between domains, leading to DTI-spectral embedding and DTI-spectral mutual information concepts.
+
+**Unified Variational Formulation**: We will create a variational formulation that connects geometric, transport-theoretic, and information-theoretic perspectives on DTI domain adaptation.
+
+**Architecture Design**: Our framework will incorporate Graph Transformers for drug encoding with Centrality Encoding and Spatial Encoding, Residual2vec for protein representation, and multi-head attention mechanisms for interaction prediction.
+
+## Experiment Design
+
+**Datasets**: We will evaluate our approach using four publicly accessible benchmark datasets: Human, C. elegans, Davis, and GPCR. For domain adaptation experiments, we will split datasets into source and target domains in a 6:4 ratio, with target domains further divided into training (unlabeled) and testing (labeled) sets in a 3:1 ratio.
+
+**Implementation Framework**: We will implement the model using PyTorch 2.1.0 and mamba-ssm 1.0.1 for protein encoding modules. Training will be conducted on A100 GPUs with 40GB memory.
+
+**Evaluation Metrics**: We will assess performance using AUC (Area Under the ROC Curve) and AUPR (Area Under the Precision-Recall Curve) to comprehensively evaluate DTI prediction accuracy.
+
+**Experimental Validation**: We will conduct experiments to:
+1. Compare our unified framework against existing DTI prediction methods across multiple benchmark datasets
+2. Validate theoretical bounds through empirical analysis of domain adaptation performance
+3. Demonstrate the effectiveness of DTI-Wasserstein distance in quantifying domain discrepancy
+4. Analyze the geometric properties of optimal adaptation paths
+5. Evaluate the spectral properties of the DTI-DA transfer operator
+
+**Ablation Studies**: We will perform systematic ablation experiments by removing key components (Mamba embedding layer, KAN decoder module) to demonstrate the necessity of each framework component.
+
+**Hyperparameter Configuration**: We will optimize hyperparameters including atomic representation dimensionality (128), attention heads (8), hidden layer dimensions (128-256), learning rates (5e-5 to 1e-4), batch sizes (32-128), and dropout rates (0.1) across different datasets.
+
+The experimental design will validate both theoretical contributions and practical improvements, demonstrating the framework's ability to effectively leverage data from diverse sources for improved DTI prediction while providing insights into the fundamental limits of domain adaptation in this context.

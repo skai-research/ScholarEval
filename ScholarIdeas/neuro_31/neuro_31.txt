@@ -1,0 +1,36 @@
+
+# Research Plan: The Influence of Temporal Context on Vision Over Multiple Time Scales
+
+## Problem
+
+We aim to inv\estigate how past sensory experiences influence perception of the present across multiple temporal scales. Currently, multiple research subfields have emerged to study this phenomenon at different temporal scales, which fall into three categories: the influence of immediately preceding sensory events (micro), short sequences of events (meso), and regularities over long sequences of events (macro). However, this compartmentalized approach limits comparison between temporal context effects at different scales and leaves unclear whether common mechanisms operate across scales.
+
+The central research question is whether temporal context serves perception differently at each time scale through unique adaptive mechanisms, or whether a common rule applies at all scales, signaling a unifying adaptive mechanism. Predictive coding theory offers a normative framework for understanding temporal context influence across scales, but contradictory evidence from distinct experimental paradigms has challenged this unification, particularly regarding whether expected events are "sharpened" or "dampened" in neural representation.
+
+We hypothesize that temporal context may operate through unified mechanisms across multiple time scales, potentially involving both attention-modulated processes that support rapid responses to expected events and automatic processes that prioritize encoding of unexpected events.
+
+## Method
+
+We will design a novel paradigm to investigate how temporal context shapes perception across micro, meso, and macro scales within a single experimental framework. Our approach will combine behavioral, neuroimaging, and physiological methods to characterize the mechanisms underlying temporal context effects.
+
+The core methodology involves presenting participants with serially presented visual stimuli (Gaussian blobs randomly positioned around central fixation) while they perform speeded binary judgments. To assess the influence of attention, we will sort trials according to two spatial reference planes: task-related (corresponding to participants' binary judgment, e.g., left/right of fixation) and task-unrelated (orthogonal to the task-related plane, e.g., above/below fixation).
+
+We will use electroencephalography (EEG) and pupillometry recordings to characterize neural mechanisms. For neural analysis, we plan to re-analyze a previously published EEG dataset where participants viewed visual stimuli while monitoring for targets, allowing us to examine neural correlates without motor confounds during the critical analysis periods.
+
+Our theoretical framework will examine whether predictive mechanisms operate through "dampening" (reduced sensitivity to expected features) or "sharpening" (increased selectivity for expected features) by measuring both behavioral precision and neural decoding accuracy for expected versus unexpected events.
+
+## Experiment Design
+
+We will conduct three main experiments to systematically examine temporal context effects:
+
+**Experiment 1** will establish baseline temporal context effects across scales. Participants will perform speeded binary judgments on randomly positioned visual stimuli, with 10% of trials including a reproduction task to measure recall precision. We will analyze micro-scale effects by comparing repeat versus alternate trials, meso-scale effects by examining sequences of five events, and assess serial dependence through continuous measures of angular distance from previous stimuli.
+
+**Experiment 2** will test macro-scale temporal context by introducing probabilistic biases. We will manipulate the probability of repeat versus alternate stimuli (75% vs 25%) along task-related and task-unrelated reference planes, counterbalancing conditions across participants to isolate expectation effects from stimulus-specific differences.
+
+**Experiment 3** will replicate Experiment 2 with fixed stimulus duration (200ms) to control for potential confounds from variable presentation times.
+
+For each experiment, we will measure response time, accuracy, and recall precision across the different reference planes. Pupillometry will assess physiological responses to expected versus unexpected events. 
+
+**EEG Analysis** will involve re-analyzing existing data using multivariate linear discriminant analysis to classify stimulus locations and inverted encoding modeling to reconstruct stimulus features over time. We will examine both decoding accuracy and precision for repeat versus alternate stimuli and across different sequence types.
+
+We will use cluster-corrected statistical analyses to identify significant time periods in neural data and non-parametric tests for behavioral measures. Our design will allow us to dissociate task-related from task-unrelated history effects and examine whether similar mechanisms operate across micro, meso, and macro temporal scales.

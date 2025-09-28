@@ -1,0 +1,15 @@
+streamlit
+requests
+openai
+litellm
+tavily-python
+tqdm
+PyPDF2
+grobid-client-python
+pathlib
+json
+tempfile
+subprocess
+time
+os
+sys

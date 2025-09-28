@@ -1,0 +1,41 @@
+# Research Plan: Defining Deception in Decision Making
+
+## Problem
+
+With the rapid advancement of machine learning systems that interact with humans—including language models, dialogue systems, and recommendation systems—there is growing concern about the potential for these systems to deceive and manipulate people on a large scale. Current approaches to defining deception are limited, primarily focusing on supervised learning methods for detecting false statements, which fails to capture the complexity of deceptive behavior in interactive settings.
+
+We identify several key limitations in existing deception definitions: (1) omissions may be inevitable when complete information sharing is infeasible; (2) technically true statements can still convey misleading impressions; (3) listeners' prior beliefs may mean that technically false statements actually bring understanding closer to truth; and (4) statements further from literal truth may sometimes lead listeners to actions more aligned with their goals.
+
+Our hypothesis is that a complete definition of deception must go beyond simply considering the logical truth of individual statements and should account for the sequential nature of interactions, including the listener's beliefs, belief updates, actions, and utilities. We aim to develop a principled mathematical framework that can serve as both an objective for training non-deceptive systems and a detection mechanism for identifying deceptive agents.
+
+## Method
+
+We will formalize deception within the framework of partially observable Markov decision processes (POMDPs), modeling interactions between a speaker agent and a listener agent. Our approach centers on a regret-based theory of deception that measures the impact of a speaker's communication on a listener's downstream reward.
+
+We will define a communication POMDP where the speaker observes the world state and sends messages to the listener, who updates their beliefs based on these communications and their model of the speaker's behavior. The listener then takes actions that yield rewards based on their updated beliefs.
+
+Our core innovation is measuring deception through regret: comparing the listener's expected reward after interacting with the speaker versus what they would have received acting on their prior beliefs alone. This formulation allows us to capture both belief-based deception (making beliefs less accurate) and outcome-based deception (leading to worse task performance) under a unified mathematical framework.
+
+We will explore different reward function definitions for the listener to capture various intuitive notions of deception, including task-based rewards and belief-accuracy rewards, demonstrating how our general framework can subsume existing definitions while handling more nuanced scenarios.
+
+## Experiment Design
+
+We will conduct three complementary experiments to evaluate how well our proposed deception metric aligns with human intuition:
+
+**Experiment 1: Conversational Scenario Analysis**
+We will design three realistic scenarios where deception commonly occurs: house bargaining (seller-buyer), nutrition consultation (nutritionist-patient), and workplace small talk (colleagues). Each scenario will feature three binary features that can be true or false. We will programmatically generate conversation scenarios and use an LLM to convert symbolic POMDP actions into natural language dialogue.
+
+We will conduct a user study with 50 participants, showing each person 10 random scenarios per situation (1,500 total interactions). Participants will rate deceptiveness on a 1-5 Likert scale after seeing: (1) true features known only to the speaker, (2) listener's prior beliefs, (3) which features the speaker revealed, and (4) which features the listener cares about. We will measure correlations between human ratings and our regret-based metrics.
+
+**Experiment 2: Interactive Dialogue Management System**
+We will build a dialogue management system simulating a housing scenario where humans input preferences and engage with an AI representative sharing information about available homes. This system will feature eight house features with correlations between them, making deception detection more challenging within a few interaction rounds.
+
+The system will use an LLM to convert model actions into natural language, randomly selecting actions that either maximize or minimize deceptive regret. We will conduct a user study with 30 participants who will interact with the system and rate how deceptive they found the agents, allowing us to measure correlations between human perceptions and our deception metrics in real-time interactions.
+
+**Experiment 3: LLM-Generated Negotiation Analysis**
+We will use an LLM to generate 30 negotiation conversations based on the Deal or No Deal task, where two agents must split an inventory of three items. We will modify the original setup so that Agent 1 knows Agent 2's point values but Agent 2 only has prior beliefs about Agent 1's values, creating opportunities for strategic deception about preferences.
+
+We will use chain-of-thought prompting to extract prior beliefs, posterior beliefs, and speaker actions from the generated dialogues, then compute deceptive regret values. A user study with 30 participants will provide human deception ratings for correlation analysis.
+
+**Evaluation Metrics**
+For all experiments, we will compute correlation coefficients between human deception ratings and our regret-based metrics (task regret, belief regret, and combined regret). We will also compare our approach against baseline evaluations from state-of-the-art LLMs (GPT-4, LLaMA, Google Bard) to demonstrate that our formalism captures deception better than existing approaches. Statistical significance will be assessed with p-values, and we will analyze which components of our regret formulation best predict human judgments across different scenarios.

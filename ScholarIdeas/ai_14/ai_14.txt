@@ -1,0 +1,27 @@
+# Research Plan: Mitigating Privacy Risk of Adversarial Examples with Counterfactual Explanations
+
+## Problem
+
+We aim to address the fundamental tension between robustness and privacy in machine learning models. Current robust models trained with adversarial examples exhibit significantly higher privacy risks compared to non-robust models, creating a critical security vulnerability. The primary hypothesis is that the generalization gap between adversarial and original examples enables privacy attackers to detect distributional differences, thereby increasing privacy risks in robust models.
+
+We observe that existing adversarial example generation methods produce perturbations that are often perceptible and meaningless, particularly on grayscale datasets, violating the core definition of adversarial examples as imperceptible modifications. Additionally, traditional privacy-preserving techniques for non-robust models fail when applied to robust models, as they significantly degrade predictive performance.
+
+Our research questions focus on: (1) whether counterfactual explanations can be leveraged to generate adversarial examples with reduced privacy risks, (2) how to maintain adversarial robustness while achieving privacy protection equivalent to random guessing, and (3) what constitutes the optimal balance between accuracy, robustness, and privacy in model training.
+
+## Method
+
+We propose a novel approach that combines counterfactual explanations with adversarial example generation to create "counterfactual adversarial examples." Our methodology builds on the observation that both adversarial examples and counterfactual explanations involve adding perturbations to alter model predictions, but differ in their constraints and objectives.
+
+The core innovation lies in reversing the traditional generation process: instead of directly perturbing an original sample, we identify the nearest neighbor from a different class and generate counterfactual explanations of this neighbor sample to produce adversarial examples for the original. This approach ensures the generated adversarial examples incorporate features from the neighbor class while maintaining characteristics of the original sample.
+
+We will employ autoencoders for counterfactual explanation generation, as they provide superior privacy performance compared to generative models like GANs. The generation process operates in latent space to enhance privacy protection and produce more imperceptible perturbations. We will incorporate sparsity constraints to reduce the generalization gap between adversarial and original datasets, and decouple the adversarial generation process from model training to prevent the model from memorizing individual samples.
+
+## Experiment Design
+
+We will conduct experiments using CNN architectures with three dropout layers on the MNIST dataset to evaluate our approach against established methods including PGD and AdvGAN. The experimental framework will maintain consistent model architectures across generation and training processes, with all models fully trained without overfitting to minimize generalization gap impacts.
+
+Privacy risk assessment will utilize membership inference attacks (MIA) under black-box settings, where attackers can only access prediction results. We will employ state-of-the-art attack methods specifically designed for robust models to evaluate privacy leakage. The separation of adversarial generation and training processes will be implemented across all methods for fair comparison.
+
+To analyze the relationship between robustness and privacy, we will systematically vary the proportion of adversarial examples in training sets while controlling total data quantity. We will use t-SNE visualization to examine data distribution similarities between original and adversarial datasets, providing insights into why our method achieves better privacy performance.
+
+The evaluation metrics will include training accuracy, test accuracy, and MIA accuracy, with the goal of achieving MIA accuracy approaching 50% (random guessing level) while maintaining competitive model performance. We will also analyze the semantic meaningfulness of generated perturbations and their alignment with adversarial example definitions across different dataset types.

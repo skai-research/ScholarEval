@@ -1,0 +1,39 @@
+# Research Plan: Toward Human-Interpretable Explanations in a Unified Framework for GNNs
+
+## Problem
+
+We address the critical limitation of existing Graph Neural Network (GNN) explainability methods, which lack human interpretability and fail to provide unified explanations across both model-level and instance-level perspectives. Current post-hoc explainability approaches primarily rely on perturbation-based and gradient-based methods that estimate the importance of edges, nodes, or subgraphs through stochastic optimization. However, these methods suffer from two fundamental issues:
+
+First, they often produce explanations that do not align with human intuition or domain knowledge. For instance, a scientist studying gene networks who wants to understand whether triangular or rectangular structures are crucial for predictions cannot obtain explicit insights about these specific patterns from existing methods. Instead, users must rely on conjecture based on generated explanations that may include isolated nodes or disconnected edges.
+
+Second, existing methods typically specialize in either model-level or instance-level explanations, but rarely provide both in a unified framework. Model-level explanations reveal patterns that GNNs consider significant for specific classes, while instance-level explanations focus on individual predictions by identifying relevant subgraphs for target nodes. Since these complementary perspectives enhance overall explainability, we need a unified approach that incorporates both levels while centering on human interpretability.
+
+We hypothesize that leveraging graphlets—small, connected, non-isomorphic induced subgraphs—and their associated orbits as human-interpretable units can address both challenges. These structures are widely recognized in scientific fields including protein interaction networks, social networks, and molecular structure networks, making them natural candidates for domain-expert-driven explanations.
+
+## Method
+
+We propose UO-Explainer (Unified and Orbit-based Explainer), which decomposes GNN predictions using predefined orbits as interpretable units. Our approach operates on the principle that GNN predictions can be decomposed into contributions from these meaningful structural patterns.
+
+The methodology consists of three core components:
+
+**Orbit Basis Learning**: We first preprocess the input graph to determine orbit existence for each node, creating binary indicators for whether each node belongs to specific orbits within 2-5 node graphlets. We then train logistic binary classifiers to predict orbit existence, using node representations as input. This process learns orbit basis vectors that capture both the distribution of orbits in the input graph and the message-passing behavior of the embedding model.
+
+**Model-Level Explanation Generation**: We decompose class weights into linear combinations of orbit bases using a greedy optimization approach. Rather than directly optimizing over all orbit bases (which introduces significant randomness), we iteratively select orbits that minimize the difference between class weights and the linear combination of selected orbits. The coefficients in this decomposition represent class-orbit scores, indicating each orbit's contribution to class predictions.
+
+**Instance-Level Explanation Generation**: We extend the class weight decomposition to individual prediction values by decomposing the prediction for each target node into orbit contributions. This yields node-class-orbit scores that quantify how much each orbit contributes to the prediction for a specific node and class. We then use breadth-first search algorithms to identify subgraphs within the input graph that match the highest-contributing orbit patterns.
+
+The unified framework allows domain experts to select relevant graphlets as interpretable units and request explanations based on these units, while our method provides both global patterns (model-level) and local explanations (instance-level) simultaneously.
+
+## Experiment Design
+
+We will conduct comprehensive experiments across both synthetic and real-world datasets to validate our approach from multiple perspectives.
+
+**Datasets**: We plan to use five synthetic datasets (Random Graph, BA-Shapes, BA-Community, Tree-Cycle, Tree-Grid) with known ground-truth patterns, and three real-world datasets (Protein-Protein Interaction, LastFM-Asia, Gene networks) representing diverse application domains. The synthetic datasets will allow us to verify whether our method correctly identifies predetermined structural patterns, while real-world datasets will demonstrate practical applicability.
+
+**Baseline Comparisons**: For model-level explanations, we will compare against D4Explainer and GLGExplainer, which are the primary existing methods providing model-level explanations for node classification. For instance-level explanations, we will evaluate against established methods including GNNExplainer, PGExplainer, TAGE, MixupExplainer, SAME, EIG, and MotifExplainer.
+
+**Evaluation Metrics**: We will assess explanation quality using four key metrics: (1) Sparsity - measuring the ratio of edges in explanations compared to total computation graph edges, (2) Fidelity - quantifying the difference in prediction probabilities when explanations are excluded, (3) Edge-recall - determining how many explanation edges match ground-truth edges, and (4) Sub-recall - measuring the proportion of entire explanations that correctly match ground truths.
+
+**Experimental Procedures**: For synthetic datasets, we will pre-train GCN and GIN models on node classification tasks where each class corresponds to specific orbit memberships. We will then evaluate whether our explanations correctly identify the ground-truth orbit patterns. For real-world datasets, we will focus on fidelity and sparsity metrics since ground-truth patterns are not available. We will conduct qualitative analysis through visualization of explanatory subgraphs, particularly examining whether identified gene networks align with known biological pathways.
+
+**Technical Implementation**: We will implement our approach using PyTorch and PyTorch Geometric frameworks, with careful hyperparameter tuning for both orbit basis learning and class-orbit score learning phases. We will ensure fair comparison by extensively exploring hyperparameter spaces for all baseline methods and conducting multiple experimental runs to report statistical significance.

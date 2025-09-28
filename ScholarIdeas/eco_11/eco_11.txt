@@ -1,0 +1,30 @@
+
+# Research Plan
+
+## Problem
+
+Understanding plant phenological responses to climate warming is crucial for predicting changes in plant communities and ecosystems, but current approaches face significant limitations. Numerous observational studies and controlled experiments have produced varying results, with observed phenological changes differing by research approach, climatic region, and functional group. For example, observed changes are often smaller with experimental studies, native species, and warmer regions. 
+
+We hypothesize that these differential responses result from the complex interplay of multiple drivers of spring phenology that are not adequately captured by current sensitivity analysis methods. Plants in the northern hemisphere require an accumulation of cool winter temperatures (winter chilling) to break dormancy and an accumulation of warm spring temperatures (spring forcing, degree days) to initiate species events. However, changes in spring phenology are also constrained by insufficient winter chilling, photoperiod effects, and environmental stresses such as drought and spring freezing.
+
+The fundamental problem is that current methods for quantifying phenological changes rely on sensitivity analysis that is not linked to the underlying drivers of spring phenology. This makes it difficult to understand the mechanisms behind differential phenological responses and limits our ability to predict future changes in plant communities and ecosystems under climate warming.
+
+## Method
+
+We will develop a new analytical framework to partition observed phenological changes into their component drivers. Our approach centers on introducing a new measure called "phenological lag" to quantify the overall effect of phenological constraints including insufficient winter chilling, photoperiod, and environmental stresses.
+
+The method will be based on the difference between observed phenological response and that expected from species-specific changes in spring temperatures (forcing change and growth temperature). We will calculate species-specific forcing change from the difference between degree days of baseline and warmer temperatures at the time of species events. The expected phenological response under the null hypothesis that climate warming does not induce changes in phenological constraints will be determined from forcing change and species phenology with baseline temperatures.
+
+Growth temperature will be calculated as the average temperature within the window of expected phenological response, and phenological lag will represent the difference between expected and observed responses. This approach will allow us to separate the effects of different constraints without requiring species-specific chilling or forcing needs that are often unavailable or variable across studies.
+
+We will apply this analytical framework to conduct a meta-analysis of phenological changes reported in the literature, following PRISMA guidelines for systematic reviews and meta-analyses.
+
+## Experiment Design
+
+We will build a comprehensive global dataset by systematically searching Web of Science and Google Scholar for experimental and observational studies on warming-induced changes in spring phenology. Our selection criteria will include: (a) accessible peer-reviewed articles published in scientific journals for boreal and temperate regions in the northern hemisphere, (b) studies reporting spring leafing or flowering before Julian day 213, (c) studies containing different climatic conditions of baseline and warmer climates, (d) access to local temperature data within 50 km, and (e) reported phenological changes in unique locations, species, and periods.
+
+For each phenological response, we will characterize study locations by research approach (observation or experiment), climatic region (boreal or temperate), biogeographic origin of species (exotic or native), and growth form (tree, shrub, herb, or grass). We will obtain baseline and warmer temperature data from multiple sources and calculate forcing change, expected response, growth temperature, and phenological lag for each response.
+
+We will use linear mixed-effects models to explore differences in observed responses and phenological lags between research approaches, species origins, climatic regions, and among growth forms. Location and species will be treated as random effects. To assess the influences of climatic, phenological, and biological variables, we will use stepwise regression with automated combined forward and backward selection by Akaike information criterion to select the best combination of variables for predicting observed responses.
+
+The variables we will examine include altitude, latitude, mean annual temperature, mean annual precipitation, spring phenology timing, growth temperature, forcing change, spring warming, and phenological lag. This comprehensive analysis will allow us to investigate the contributions of forcing change, growth temperature, and phenological lag to differential phenological responses reported in previous studies.

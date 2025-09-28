@@ -1,0 +1,62 @@
+# Research Plan: GenBen - A Generative Benchmark for LLM-Aided Design
+
+## Problem
+
+We aim to address critical limitations in evaluating large language models (LLMs) for hardware design automation. Current benchmarks for LLM-aided design (LAD) suffer from four key problems:
+
+1. **Verification Coverage Gaps**: Existing benchmarks show inadequate design complexity and verification coverage, with testbenches failing to represent essential function points of RTL designs. Current worst coverage scores are approximately 52.40% for RTLLM and 44.63% for VerilogEval.
+
+2. **Deficient Data Diversity**: Current benchmarks demonstrate insufficient diversity in data sources and modalities. Many are sourced from overly simplistic educational materials lacking silicon validation, and are predominantly text-based, failing to reflect real-world design specifications that incorporate visual schematics and timing diagrams.
+
+3. **Test Set Contamination**: Since existing benchmarks are statically open-source on GitHub, their RTL designs and specifications can be automatically captured by crawlers and incorporated into LLM pre-training datasets, leading to data leakage and contaminated evaluations.
+
+4. **Limited Evaluation Metrics**: Current benchmarks focus primarily on syntax and functional pass rates, neglecting critical Quality-of-Results (QoR) metrics such as synthesizability, power consumption, area utilization, and timing performance.
+
+We hypothesize that a comprehensive, generative benchmark incorporating diverse difficulty levels, multimodal content, perturbation strategies, and end-to-end QoR evaluation will provide more accurate assessment of LLM capabilities in hardware design automation.
+
+## Method
+
+We will develop GenBen, a generative benchmark framework with the following methodological approach:
+
+**Dataset Construction Strategy**: We will curate hardware-related content from diverse sources including GitHub repositories, silicon-proven projects, textbooks, and StackOverflow. A team of 10 domain experts will screen data for correctness, completeness, and diversity, with particular focus on sampling from silicon-proven projects.
+
+**Difficulty Tiering Mechanism**: We will categorize tests into three difficulty levels (L1-Simple, L2-Intermediate, L3-Tough) to enable fine-grained evaluation of LLM capabilities across different complexity levels.
+
+**Perturbation Strategy**: We will implement two types of perturbations to mitigate memorization bias:
+- Surface-level perturbations that alter phrasing without changing core meaning
+- Semantic perturbations that increase task difficulty by altering underlying requirements
+- Static perturbations applied during test construction
+- Dynamic perturbations applied during evaluation
+
+**Multimodal Support**: We will incorporate both textual and visual inputs including circuit diagrams, design architecture schematics, waveform diagrams, and tables to simulate real-world design scenarios.
+
+**Comprehensive Evaluation Framework**: We will develop a multi-dimensional evaluation system encompassing:
+- Knowledge mastery and transfer assessment
+- Code generation and debugging capabilities
+- Quality-of-Results metrics including synthesizability, power, area, and timing
+
+## Experiment Design
+
+**Test Categories and Distribution**: We will construct 300 tests distributed across:
+- Knowledge Master: 75 tests focusing on fundamental hardware concepts
+- Knowledge Transfer: 69 tests applying concepts to complex scenarios
+- Design: 99 tests with difficulty based on code complexity and design time
+- Debug: 57 tests for syntax/function/combination error correction
+- Multimodal: 60 tests incorporating textual and visual inputs
+
+**Testbench Enhancement Process**: We will employ constraint randomization and coverage-driven testbench generation methodologies to achieve point-to-point mapping between generated stimuli and functional coverage checklists, targeting >95% verification coverage.
+
+**Model Evaluation Setup**: We will evaluate nine models comprising six multimodal and three language models (GPT-4-turbo, GPT-4o, GPT-3.5-turbo, Claude3.5, Llama3, QWEN-vl-max, QWEN-vl-plus, GLM-4V-plus, GLM-4) using a pass@5 evaluation strategy with standardized prompt templates.
+
+**End-to-End Workflow Implementation**: We will integrate open-source tools including:
+- Icarus Verilog for simulation and functional correctness testing
+- OpenLane EDA flow for physical implementation
+- SkyWater 130nm PDK for consistent QoR evaluation
+- Yosys for synthesizability, area, and power extraction
+- OpenSTA for timing analysis
+
+**Evaluation Metrics**: We will measure performance using pass rates calculated as the percentage of test cases producing correct outputs, along with comprehensive QoR metrics normalized against reference designs.
+
+**Generative Benchmark Infrastructure**: We will implement script-based test generation to prevent automated RTL code extraction by crawlers, with both static and dynamic perturbation mechanisms to ensure each evaluation session uses slightly varied test instances while maintaining consistency.
+
+**Ablation Studies**: We will conduct controlled experiments to assess the impact of dynamic perturbations on model performance, comparing results between original and perturbed test sets to evaluate model robustness and sensitivity to variations.

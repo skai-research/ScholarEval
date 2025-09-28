@@ -1,0 +1,36 @@
+
+# Research Plan: An Illusion of a Macroecological Law, Abundance-Occupancy Relationships
+
+## Problem
+
+We aim to investigate the validity of abundance-occupancy relationships (AORs), which are considered one of the most general and robust patterns in ecology and sometimes referred to as a macroecological law. The AOR asserts that locally abundant species tend to be widely distributed, while locally rare species tend to be geographically restricted in their range. Despite being widely accepted and underpinning many practical applications in ecology and conservation, the mechanism driving this relationship has never been proven and remains unresolved.
+
+We hypothesize that publication bias and confirmation bias may have created an illusion of AORs as a 'universal' pattern. While a previous meta-analysis of 279 effect sizes showed a remarkably strong overall effect (r = 0.58), we suspect that sampling bias, publication bias, and confirmation bias could generate artifactual AORs. Our research questions focus on: (1) whether AORs truly exist when examined with large, methodologically consistent datasets free from publication and confirmation bias, and (2) how sampling intensity affects the magnitude of AORs.
+
+We expect a more modest relationship than previously reported (r = 0.58 for all taxa; r = 0.74 for birds) due to the different potential biases in traditional meta-analyses. We also anticipate that if eBird contributors undercount common species while overcounting rare species, this could further weaken the relationship and introduce large heterogeneity into our dataset.
+
+## Method
+
+We will employ two complementary approaches to test AORs using bird data. Our methodology leverages large citizen science datasets collected for non-hypothesis-driven purposes, which have the advantage of avoiding confirmation and publication biases that may affect traditional studies.
+
+For the first approach, we will conduct the largest known meta-analysis by synthesizing correlations between global range sizes and local species counts from eBird checklists. We will use global range size as our measure of occupancy because it should be relatively stable compared to local range sizes, and different types of occupancy measures contribute less to observation heterogeneity. For abundance, we will use local species counts from individual eBird checklists.
+
+For the second approach, we will conduct a phylogenetically controlled comparative analysis, regressing species range sizes on globally derived species' mean density estimates. This will allow us to examine the relationship at a macro-scale while controlling for phylogenetic relationships among species.
+
+We will quantify how AORs change in relation to increases in species richness and sampling duration, both of which are predicted to reduce the magnitude of AORs. We will also examine the role of sampling bias by controlling for effort time and species number in our analyses.
+
+## Experiment Design
+
+**Data Collection and Filtering:**
+We will download the eBird basic dataset covering January 1st, 2005 to May 31st, 2020. We will apply quality assurance filters including: (1) complete checklists only; (2) checklists between 5-240 minutes duration; (3) checklists that traveled <5km; (4) checklists covering <500 ha; and (5) checklists with at least ten species recorded. We will exclude any checklist containing "X" entries to avoid potential bias from unmeasured abundances. We will only perform correlation tests when we have range size data for a minimum of 4 species per checklist.
+
+**Meta-Analysis Design:**
+For each qualifying eBird checklist, we will perform correlation tests using Pearson's correlation coefficient between log-transformed species counts and log-transformed global range sizes from BirdLife International. We will transform correlations to Fisher's Z (Zr) and calculate sampling variances. We will use multilevel random-effects models with 'country' and 'state code' as random factors to control for non-independence.
+
+We will fit moderator models to assess potential biases: (1) ln(checklist duration) as a surrogate for observation effort, and (2) sampling variance to detect small study bias. We will run uni-moderator and multi-moderator models to quantify the impacts of these factors.
+
+**Phylogenetic Comparative Analysis:**
+We will use density estimates from 5-degree grid cells for bird species, taking the mean density across all grid cells where each species occurs as our measure of macro-scale abundance. We will use range size summations across occupied grids as our occupancy measure. We will employ phylogenetic comparative analysis using 100 phylogenetic trees and merge estimates using Rubin's rules to account for phylogenetic uncertainty.
+
+**Statistical Measures:**
+We will calculate multilevel versions of I² to obtain relative heterogeneity and estimate R² for our meta-regression models. We will assess both relative and absolute heterogeneity to determine whether observed variation represents biological/ecological patterns or sampling error.

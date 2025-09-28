@@ -1,0 +1,33 @@
+
+# Research Plan: Self-Other Generalisation in Social Interaction and Borderline Personality Disorder
+
+## Problem
+
+We aim to investigate the computational mechanisms underlying self-other generalization in social interactions and how these processes may be disrupted in borderline personality disorder (BPD). Social animals have evolved sophisticated mechanisms for cooperation, requiring individuals to exchange information and manage uncertainty about both themselves and others during interpersonal interactions. In humans, this involves two key processes: self-insertion (using one's own preferences as initial beliefs about others) and social contagion (allowing observations of others to influence one's own preferences).
+
+Critical questions remain about how humans adjudicate between these processes during social interaction. Specifically, we need to understand: How do humans manage interpersonal generalization during social exchange? Does uncertainty in self-other beliefs affect their generalizability? How can disruptions in interpersonal exchange during sensitive developmental periods inform models of psychiatric disorders?
+
+We hypothesize that information generalization is foundational to healthy social bonds, and that the BPD phenotype may arise from disruptions to this process. BPD is characterized by interpersonal sensitivity, relational instability, and fear of abandonment, strongly associated with early childhood adversity. We propose that individuals with BPD may exhibit distinct, disintegrated representations of self and other, failing to engage in normal self-other information transfer processes.
+
+## Method
+
+We will employ a formal computational approach using Bayesian models to test theories of self-other generalization. Our methodology centers on a three-phase social value orientation paradigm called the Intentions Game, combined with computational modeling that allows for concurrent self-insertion and social contagion processes.
+
+We will construct four computational models (M1-M4) to explain participant behavior. Model M1 assumes both self-insertion and social contagion occur: participants use their own preferences as prior beliefs about partners and are subsequently influenced by partner behavior. Model M4 assumes neither process occurs, with participants forming novel priors about partners and remaining uninfluenced by observation. Models M2 and M3 test each process independently.
+
+All models will assume participants use a Fehr-Schmidt utility function to calculate option utilities based on absolute reward gain (α) and relative reward preferences along a prosocial-competitive axis (β). We will use Hierarchical Bayesian Inference for parameter estimation and model comparison, allowing for both group-level and individual-level analysis.
+
+## Experiment Design
+
+We will conduct a case-control study comparing individuals with BPD diagnosis (n=50) to matched healthy controls (n=53). Groups will be matched on age, gender, education, and social deprivation indices.
+
+The Intentions Game consists of three phases:
+- **Phase 1**: Participants make 36 forced choices about point allocation between themselves and an anonymous partner, establishing their social value preferences
+- **Phase 2**: Participants predict decisions of a new anonymous partner over 54 trials, receiving accuracy feedback. We will use novel server architecture to ensure partners are approximately 50% different from participants, guaranteeing learning is required
+- **Phase 3**: Participants again make allocation decisions with a third anonymous partner, allowing assessment of whether partner observation influenced their preferences
+
+We will collect psychometric measures including the Childhood Trauma Questionnaire, Green Paranoid Thoughts Scale, Mentalization Questionnaire, and Epistemic Trust scales to examine individual differences in trauma history, paranoia, and mentalizing capacity.
+
+We will analyze behavioral data including choice patterns, reaction times, and prediction accuracy across phases. Computational analysis will involve fitting our four models to participant data, conducting model comparison using protected exceedance probability, and examining parameter differences between groups. We will also analyze trial-by-trial belief updating using Kullback-Leibler divergence and examine correlations between model parameters and psychometric measures.
+
+To validate our approach, we will conduct generative accuracy testing by simulating data using fitted parameters and refitting models to synthetic data, ensuring our models can recover the underlying computational processes.

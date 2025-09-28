@@ -1,0 +1,43 @@
+# Research Plan: Towards Robust Evaluation of Protein Generative Models: A Systematic Analysis of Metrics
+
+## Problem
+
+The field of protein generative modeling has witnessed significant progress with various approaches including language model-based architectures, GANs, VAEs, and diffusion models successfully generating novel protein sequences. However, the evaluation of protein generative models remains a critical challenge. Unlike other domains such as image or text generation where well-established evaluation metrics exist, the protein design field lacks a standardized and comprehensive set of metrics. Many studies resort to developing ad hoc metrics, leading to inconsistencies and difficulties in comparing results across different models and methods.
+
+The fundamental question of what constitutes a "good" protein is not trivial, as it involves multiple dimensions such as foldability, structural similarity to natural proteins, and functional relevance. We hypothesize that current evaluation practices have potential pitfalls and weaknesses that need systematic investigation. Our research aims to address this gap by systematically analyzing commonly used metrics for evaluating protein generative models, focusing on quality, diversity, and distributional similarity.
+
+## Method
+
+We will conduct a systematic investigation of evaluation metrics for protein generative models by examining their behavior under various controlled conditions. Our methodology encompasses three main categories of metrics:
+
+**Quality Metrics Analysis**: We will analyze four widely used quality metrics - predicted Local Distance Difference Test (pLDDT), perplexity (ppl), pseudoperplexity (pppl), and self-consistency perplexity (scPerplexity). We will examine their sensitivity to sample size, correlation with each other, and the impact of different underlying models on their performance.
+
+**Diversity Metrics Evaluation**: We will utilize Cluster Density (CD) as our primary diversity metric, employing MMseqs2 for sequence clustering at 50% and 95% similarity thresholds to capture both broad diversity patterns and potential mode collapse scenarios.
+
+**Distributional Similarity Metrics Assessment**: We will evaluate five distributional similarity metrics including Improved Precision and Recall (IPR), Density and Coverage (D&C), Maximum Mean Discrepancy (MMD), Fréchet Distance (FD), and Earth Mover's Distance (EMD). These will be tested across different protein language models of varying sizes to assess the impact of model choice on metric behavior.
+
+Our approach will establish a framework for protein quality based on structural stability and self-consistency properties, leveraging the bidirectional mapping between sequence and structure spaces through folding and inverse folding functions.
+
+## Experiment Design
+
+**Synthetic Data Experiments**: We will design two complementary experimental approaches using synthetic datasets that provide controlled experimental conditions:
+
+1. *Training Progress Simulation*: Using the SwissProt dataset as reference, we will introduce controlled perturbations by randomly substituting amino acids while preserving overall amino acid distribution. Noise levels will range from 0% to 30% in 5% increments to simulate varying degrees of model undertraining.
+
+2. *Diversity Assessment Setup*: We will construct a dataset from five distinct protein families that naturally form well-defined clusters, then introduce three systematic variations:
+   - Cluster Elimination: Sequential removal of entire clusters to simulate mode collapse
+   - Cluster Imbalance: Progressive reduction of four clusters while maintaining one at full size
+   - Intra-cluster Diversity Reduction: Gradual replacement of unique sequences with duplicates within clusters
+
+**Sample Size Sensitivity Analysis**: We will systematically evaluate metric behavior across different sample sizes (2^5 to 2^14) and perturbation levels to determine minimum sample size requirements for reliable estimates.
+
+**Model Comparison Studies**: We will investigate the impact of different underlying models:
+- Structure prediction models (AlphaFold, ESMFold, OmegaFold) for pLDDT calculations
+- Protein language models (ESM-2 family, ProtT5) of varying sizes for distributional similarity metrics
+- Autoregressive models (ProtGPT2, ProGen2, RITA) for perplexity calculations
+
+**Parameter Optimization**: We will conduct comprehensive analysis of the MMD RBF kernel parameter σ across three experimental settings: controlled corruption scenarios, GPT2 training progression, and evaluation of various protein generative models.
+
+**Real-world Validation**: We will test our findings on outputs from state-of-the-art protein generators to validate the practical applicability of our systematic analysis.
+
+Through these experiments, we aim to assess metric robustness, sensitivity to meaningful differences, computational efficiency, and interpretability to provide practical recommendations for researchers evaluating protein generative models.

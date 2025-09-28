@@ -1,0 +1,35 @@
+
+# Research Plan
+
+## Problem
+
+Synchronous neuronal ensembles play a pivotal role in the consolidation of long-term memory in the hippocampus, but their organization during the acquisition of spatial memory remains less clear. While synchronous ensembles among CA1 pyramidal cells (CA1PCs) during offline memory consolidation are well-characterized, particularly during sharp-wave ripples, their organization during online acquisition of spatial memory—such as when animals enter a new environment and new place cells form—remains unclear.
+
+Previous studies have identified correlated activities among place cells during theta oscillation, but these operate on the timescale of theta periods (~125ms) rather than the shorter timescales (10-30 ms) characteristic of population synchrony. Population synchrony on shorter timescales is speculated to be reduced by the presence of theta oscillations. Additionally, while correlated membrane potentials have been proposed to underlie the synchrony of neuronal ensembles, multicellular recordings of subthreshold membrane voltages (subVms) have not yet provided direct experimental evidence.
+
+We hypothesize that investigating the temporal relationships of sub- and suprathreshold neuronal activities among CA1PCs during novel exploration will reveal how synchronous ensembles organize spatially tuned activities during memory acquisition.
+
+## Method
+
+We will use voltage imaging to investigate the temporal dynamics of sub- and suprathreshold neuronal activities in CA1PCs during novel exploration. Our approach involves expressing the voltage indicator Voltron2 in CA1 pyramidal cells, which will allow us to measure both suprathreshold and subthreshold membrane potentials from multiple CA1PCs simultaneously.
+
+We will employ an air-lifted plastic track system that allows mice to explore an environment while remaining head-fixed under a microscope. To ensure a genuinely novel experience, all pre-training and habituation will be performed in a separate room distinct from the recording setup. On imaging day, mice will be introduced to the recording room for the first time and initially confined to a specific corner of the track before being allowed to explore freely during imaging.
+
+We will simultaneously monitor animals' positions and speed within the track while recording local field potential (LFP) from the contralateral side of the hippocampus. This multi-modal approach will enable us to correlate neuronal synchrony with both behavioral states and network oscillations.
+
+## Experiment Design
+
+We will conduct voltage imaging experiments using mice expressing Voltron2 in CA1 pyramidal cells. Fluorescence sensors will be excited using a 532-nm laser, and images will be acquired at 2kHz with high spatial resolution to capture both spiking activity and subthreshold membrane dynamics.
+
+Our experimental design will include several key measurements:
+- Detection and analysis of synchronous ensembles by counting spikes from all neurons within sliding windows and comparing to jittered controls
+- Calculation of grand average cross-correlograms (CCGs) to assess population synchrony timing
+- Analysis of LFP traces to detect theta oscillations and ripple events
+- Examination of subthreshold membrane voltage dynamics in relation to synchronous events
+- Assessment of spatial tuning properties to identify place cells and analyze their relationship to synchronous activity
+
+We will analyze data across different behavioral states (locomotion vs. immobility) to determine how synchronous ensembles vary with animal behavior. We will also investigate the relationship between synchronous ensembles and network oscillations by aligning LFP traces with detected synchronous events.
+
+To assess the significance of observed synchrony, we will compare original data with jittered controls where spike timings are randomly perturbed while maintaining spike rates. We will quantify ensemble sizes, synchronization strength between cell pairs, and the temporal relationship between synchronous events and both theta oscillations and ripple events.
+
+Finally, we will examine the spatial coding properties of neurons participating in synchronous ensembles, particularly focusing on how synchronization strength relates to the similarity of place field tuning between neuron pairs.

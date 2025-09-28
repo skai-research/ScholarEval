@@ -1,0 +1,45 @@
+# Research Plan: scKGOT - Intercellular Signaling Inference with Knowledge Graph Optimal Transport
+
+## Problem
+
+We aim to address the challenge of accurately inferring intercellular signaling and pathway activity from single-cell transcriptomic data. Current methods for analyzing cell-cell communication have significant limitations: they primarily focus on direct predictions of ligand-receptor pairs based on gene expression and correlation between genes, without fully leveraging the complex biological pathways that mediate intercellular communication.
+
+The fundamental issue is that simply examining expression levels of ligand and receptor genes cannot reliably capture the activated signaling pathways mediating intercellular communication. While some existing methods like NicheNet and CellCall attempt to identify both ligand-receptor pairs and downstream genes, they fail to make full use of biological pathways in their inference process. This represents a critical gap since ligand-receptor-mediated cell-cell communication relies on the activation of specific signaling pathways such as JAK-STAT, PKC, and MAPK pathways.
+
+We hypothesize that by integrating prior knowledge of signaling pathways and modeling fine-grained gene interactions through optimal transport, we can significantly outperform existing methods in terms of precision and interpretability. Our approach should enable the discovery of both known and novel biological pathways while providing deeper insights into the complex mechanisms underlying intercellular communication.
+
+## Method
+
+We propose scKGOT (single-cell Knowledge Graph Optimal Transport), a novel method that employs the Knowledge Graph Optimal Transport (KGOT) algorithm to model and quantify ligand-receptor-signaling networks between sender and receiver cells.
+
+Our approach reformulates the traditional ligand-receptor binding problem from a probabilistic classification task to a fine-grained transportation problem that considers signal transmission through multiple pathways. We define the problem as:
+
+ẑ = arg max_{z∈C} Σ_{w_n∈W} P(z|w_n,D) · P(w_n|D)
+
+where W represents the space of pathways, and we factorize the probability into gene importance scores within pathways and pathway knowledge discrepancy (KD).
+
+The core methodology involves constructing a Ligand-Receptor-Pathway Knowledge Graph (LRP-KG) that encompasses both intra-cellular and intercellular gene-gene interactions across different pathway types. We will use KEGG and Reactome databases to build this knowledge graph, incorporating thousands of pathways and millions of interaction records.
+
+We define sender and receiver spaces using pairwise distance matrices derived from gene expression profiles, with marginal distributions representing relative gene abundance. The optimal transport framework will minimize a loss function that considers correlation distances between sender and receiver cells while respecting transport constraints.
+
+## Experiment Design
+
+We will conduct comprehensive benchmarking using carefully curated single-cell RNA sequencing datasets from multiple species and tissues. Our experimental design includes:
+
+**Datasets**: We plan to use 6 human and 5 mouse scRNA-seq datasets, each containing at least one ligand-receptor pair within the cell pairs of interest. All datasets will be retrieved from high-quality published reports to ensure reliability.
+
+**Baseline Comparisons**: We will compare scKGOT against two categories of methods:
+1. Knowledge graph embedding methods (TransE, DistMult, RotatE, ComplEx) to evaluate our approach as a multi-relation link prediction problem
+2. Specialized cell-cell interaction prediction methods (NicheNet, CellPhoneDB, SingleCellSignalR, CellChat, CellCall)
+
+**Evaluation Metrics**: We will report Mean Rank (MR) and Hits@K (K=1,5,10,50) based on filtered settings for knowledge graph methods, and accuracy with percentile rank for cell-cell interaction methods. All results will be derived from five independent runs using different random seeds, with permutation testing using 100 iterations.
+
+**Multi-level Analysis**: We will conduct comprehensive analysis from three perspectives - cells, genes, and pathways - to demonstrate scKGOT's ability to provide deeper insights into pathway activation and intercellular communication mechanisms.
+
+**Ablation Studies**: We will design systematic ablation experiments to assess robustness by:
+- Removing facts and pathway types from LRP-KG (FactDrop, TypeDrop)
+- Reducing gene expression data by removing low-expression genes and cells (ExprDrop, CellDrop)
+
+**Case Studies**: We will demonstrate practical applicability through detailed analysis of specific biological contexts, including placenta, testis, and liver datasets, to showcase the method's ability to uncover biologically relevant pathway interactions and cellular heterogeneity patterns.
+
+The experimental framework will enable us to validate our hypothesis that integrating pathway knowledge with optimal transport can significantly improve the accuracy and interpretability of intercellular communication inference from single-cell transcriptomic data.

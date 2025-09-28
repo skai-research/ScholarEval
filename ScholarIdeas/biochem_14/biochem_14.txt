@@ -1,0 +1,72 @@
+
+# Research Plan: Isobaric Crosslinking Mass Spectrometry Technology for Studying Conformational and Structural Changes in Proteins and Complexes
+
+## Problem
+
+Dynamic conformational and structural changes in proteins and protein complexes play a central and ubiquitous role in the regulation of protein function, yet studying these changes remains very challenging, especially for large protein complexes under physiological conditions. While direct structural methods like X-ray crystallography, NMR, SAXS, and cryo-EM can provide high-resolution information, they face limitations including difficulty crystallizing all conformations and incompatibility with many physiological conditions. Indirect methods such as limited proteolysis, FRET, chemical footprinting, and crosslinking can be performed under physiological conditions but present challenges in interpreting data to infer correct conformational changes.
+
+Existing quantitative crosslinking mass spectrometry (qCLMS) strategies have significant limitations. TMT-labeling approaches require multiple processing steps before sample combination, potentially introducing quantification artifacts. Isotopically labeled crosslinkers (d0/d4 BS3, d0/d12 EGS, etc.) double or triple MS1 complexity, decreasing sensitivity and reproducibility, while many crosslinked peptides are difficult to quantify due to low abundance. Many current crosslinker designs are too complicated for routine studies of conformational changes.
+
+We hypothesize that a novel, simple isobaric crosslinker design with optimal spacer arm length and MS2-based quantification could overcome these limitations and provide a reliable method for studying conformational and structural changes in proteins and complexes.
+
+## Method
+
+We will develop a new class of isobaric crosslinkers called "Qlinkers" based on the following design principles:
+
+**Crosslinker Design:**
+- Use iminodipropionic acid as the base structure to provide an optimal extended distance of ~10 Å for crosslinking studies
+- Incorporate 1-imino-2.6-dimethylpiperidin-1-ium as the reporter ion moiety (similar to TMT reagents) to generate reporter ions at m/z values that do not overlap with b1+ and immonium ions
+- Create isobaric variants using 1-13C and 2-13C bromoacetic acid to synthesize C1q2 and C2q2 crosslinkers
+
+**Synthesis Strategy:**
+- Employ a peptoid synthesis approach for one-pot synthesis of di-tert-butyl protected products
+- Use FPLC-RP-C18 purification to achieve >99% purity
+- Activate crosslinkers in situ using TSTU and DIPEA in dry DMF
+
+**Quantification Approach:**
+- Crosslink equal amounts of proteins in different structural states with C1q2 and C2q2 respectively
+- Combine samples immediately after crosslinking to minimize processing variations
+- Use stepped HCD MS2 method for fragmentation and reporter ion generation
+- Extract 126.1277 and 127.1311 reporter ion intensities for relative quantification
+- Apply correction factors based on isotopic distribution for accurate quantification
+
+## Experiment Design
+
+**Validation Experiments:**
+1. **Quantification Accuracy Testing:** Crosslink equal amounts of affinity-purified RNA polymerase I with C1q2 or C2q2 separately, then combine digested peptides at known ratios (1:10, 1:5, 1:2, 1:1, 2:1, 5:1, 10:1) to evaluate quantification accuracy and precision.
+
+2. **Control Experiment:** Crosslink pol II in the presence and absence of α-amanitin (where no major structural changes are expected) to demonstrate reliable quantification when no conformational changes occur.
+
+**Biosensor Studies:**
+3. **Maltose Binding Protein (MBP):** Compare MBP in the presence and absence of 10 mM maltose using crosslinker swapping experiments to detect conformational changes between open and closed states.
+
+4. **Calmodulin (CaM):** Analyze CaM with and without 20 mM CaCl2 and CBP derived from alphaII-spectrin to detect calcium-induced conformational changes.
+
+**Complex Assembly Studies:**
+5. **Transcription Factor Complexes:** Study structural changes during TFIIA/TBP/TFIIB ternary complex formation by comparing:
+   - TBP-TFIIA and TBP-TFIIB binary complexes (crosslinked with C1q2)
+   - TBP-TFIIA-TFIIB ternary complex (crosslinked with C2q2)
+
+6. **RNA Polymerase II Complexes:** Investigate Rpb4/7-induced structural changes by comparing:
+   - ΔRpb4 pol II (10-subunit core complex)
+   - Holo-pol II (12-subunit complex)
+   - Perform crosslinker swapping experiments for validation
+
+**Sample Preparation Protocol:**
+- Perform crosslinking reactions in 50 mM HEPES buffer (pH 7.9) with ~2 mM crosslinker for 1-2 hours at room temperature
+- Quench reactions with ammonium sulfate, combine samples, and process together through all subsequent steps
+- Use 1% SDC for protein denaturation to optimize peptide recovery
+- Employ trypsin digestion followed by C18 cleanup
+- Fractionate complex samples using strong cation exchange chromatography
+
+**Mass Spectrometry Analysis:**
+- Use stepped HCD fragmentation (24%, 30%, 36% collision energies) to optimize both peptide fragmentation and reporter ion intensity
+- Identify crosslinked peptides using pLink2 and Nexus algorithms
+- Extract reporter ion intensities within 0.005 Da mass tolerance and apply isotopic correction factors
+- Manually validate crosslinked peptide identifications requiring at least 4 consecutive b or y ions for each peptide
+
+**Data Analysis Strategy:**
+- Calculate log2 ratios of corrected 127/126 reporter ion intensities
+- For multiple spectra of the same crosslinked site, use average log2 ratios
+- Interpret quantitative changes in the context of known structural information
+- Focus on interlinks for large complexes as they provide more informative distance restraints than intralinks or monolinks

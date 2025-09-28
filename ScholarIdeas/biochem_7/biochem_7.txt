@@ -1,0 +1,55 @@
+
+# Research Plan: Coordinated Regulation of Chemotaxis and Resistance to Copper by CsoR in Pseudomonas putida
+
+## Problem
+
+Copper is an essential enzyme cofactor in bacteria, but excess copper is highly toxic. Bacteria have evolved multiple strategies to cope with copper stress, including increasing copper resistance through efflux pumps and copper-binding proteins, and initiating chemorepellent responses to avoid copper-rich environments. However, it remains unclear how bacteria coordinate these two responses - chemotaxis and resistance to copper.
+
+The chemotaxis kinase CheA plays a central role in bacterial chemotaxis signaling and has been shown to interact with proteins from other systems in various bacterial species, suggesting that CheA-mediated crosstalk coordinates complex behaviors. While copper resistance mechanisms are well-characterized across diverse bacterial species, the mechanisms of bacterial chemotaxis to copper are poorly studied. Most importantly, no mechanism has been identified for how bacteria coordinate chemotaxis and copper resistance responses.
+
+We hypothesize that bacteria use regulatory proteins that can simultaneously control both chemotaxis and copper resistance pathways. Since CheA is central to chemotaxis signaling, we propose that identifying CheA-interacting proteins will reveal novel regulatory mechanisms that coordinate these two important stress responses.
+
+## Method
+
+We will use a multi-step approach to identify and characterize proteins that interact with CheA and potentially coordinate chemotaxis and copper resistance in Pseudomonas putida KT2440.
+
+First, we will perform a comprehensive protein-protein interaction screen using pull-down assays with purified His-tagged CheA as bait protein against whole cell lysates of P. putida. We will use mass spectrometry to identify proteins that show significantly higher abundance in CheA-binding samples compared to negative controls.
+
+To validate the interactions identified in the pull-down screen, we will employ two complementary approaches: bacterial two-hybrid (BTH) assays and bimolecular fluorescence complementation (BiFC) assays. These methods will help eliminate false positives from the initial screen.
+
+For proteins that show consistent interactions across all three methods, we will assess their functional relevance by testing their effects on bacterial chemotaxis using semisolid plate assays when overexpressed in wild-type P. putida.
+
+We will focus detailed characterization on proteins that both interact with CheA and affect chemotaxis, particularly those with potential roles in metal homeostasis. For these candidate proteins, we will investigate their biochemical properties, including metal-binding capabilities using microscale thermophoresis (MST), and their effects on CheA autophosphorylation using in vitro phosphorylation assays with [32P]ATP.
+
+To understand the molecular basis of protein-CheA interactions, we will map the specific domains of CheA involved in binding using truncated CheA variants and individual domain constructs in BTH assays.
+
+## Experiment Design
+
+**Initial Protein Interaction Screen:**
+We will purify His-tagged CheA and immobilize it on Ni-NTA agarose columns. Whole cell lysates from P. putida KT2440 will be passed over these columns, with blank Ni-NTA columns serving as negative controls. Bound proteins will be eluted and analyzed by SDS-PAGE and mass spectrometry. We will identify proteins showing Log2(fold change) > 2 compared to controls as potential CheA-interacting partners.
+
+**Validation of Protein Interactions:**
+For BTH assays, we will clone candidate proteins and CheA into T18 and T25 vectors and co-transform them into E. coli BTH101. Interactions will be assessed by β-galactosidase activity on X-gal plates after 60 hours incubation. For BiFC assays, we will create fusion constructs with fluorescent protein fragments and measure complementation in P. putida using confocal microscopy and fluorescence intensity measurements.
+
+**Functional Chemotaxis Assays:**
+We will overexpress each validated CheA-interacting protein in wild-type P. putida and assess chemotaxis ability on semisolid agar plates (0.25% agar). Swimming zone diameters will be measured after 16 hours incubation to quantify chemotaxis strength. Growth curves in liquid medium will be monitored to ensure effects are not due to growth defects.
+
+**Biochemical Characterization:**
+For proteins affecting chemotaxis, we will purify them using standard His-tag or Strep-tag protocols. Metal-binding capabilities will be tested using MST with various metal ions (Cu2+, Zn2+, Ni2+, Co2+, Cd2+, Mg2+) at concentrations ranging from 0.031 to 1000 μM. Binding constants (Kd) will be calculated from triplicate measurements.
+
+**CheA Autophosphorylation Assays:**
+We will incubate purified CheA (3 μM) with candidate proteins (10 μM) in phosphorylation buffer, then initiate reactions with [32P]ATP[γP]. Reactions will be terminated at various time points and analyzed by SDS-PAGE and autoradiography to assess effects on CheA phosphorylation.
+
+**Domain Mapping Studies:**
+We will construct five truncated CheA variants, each missing one domain (ΔHPT, ΔYB, ΔDim, ΔHATPase, ΔWB), and individual domain constructs. BTH assays will be performed between these constructs and candidate proteins to identify the specific CheA domains required for interaction.
+
+**Copper Response Characterization:**
+For copper-binding candidates, we will test their role as transcriptional regulators using qRT-PCR to measure expression of copper resistance genes (copA-I, copA-II, copB-II) in deletion mutants with and without copper treatment. DNA-binding activity will be assessed using electrophoretic mobility shift assays (EMSA) with promoter regions of copper resistance genes.
+
+**Chemotaxis to Copper:**
+We will test bacterial chemotaxis responses to copper gradients using semisolid plates with copper-containing agar plugs placed in the center. Response indices will be calculated as RI = D1/(D1+D2), where D1 and D2 are distances from inoculation point to colony edges nearest and farthest from the copper source. We will also use microfluidic chemotaxis devices with time-lapse microscopy to track individual cell movements in copper gradients.
+
+**Cross-species Analysis:**
+We will test whether CheA-candidate protein interactions exist in other bacterial species by performing BTH assays with homologous proteins from species known to possess both cheA and candidate genes.
+
+All experiments will be performed with appropriate controls and statistical analysis, with at least three independent replicates for each condition tested.

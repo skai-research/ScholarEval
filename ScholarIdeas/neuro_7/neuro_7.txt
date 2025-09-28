@@ -1,0 +1,40 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the cell class-specific long-range axonal projections of neurons in mouse whisker-related somatosensory cortices to better understand how different types of cortical neurons contribute to brain-wide signaling underlying sensory processing. 
+
+The whisker system in mice provides an important model for understanding sensory-motor transformations, as whisker deflection drives neural activity that must be transmitted from somatosensory cortices to downstream brain areas involved in perception and motor control. While previous studies have identified major projection targets from somatosensory cortex using anterograde tracers, we lack comprehensive, quantitative maps of how genetically-defined classes of neurons project throughout the brain.
+
+Our central hypothesis is that different classes of cortical neurons, defined by their laminar location and genetic markers, will exhibit distinct brain-wide projection patterns that reflect their specialized functional roles. We further hypothesize that there may be topographic organization in these projections, particularly to motor cortex, where the spatial location of neurons in somatosensory cortex corresponds systematically to the location of their axonal targets.
+
+Understanding these cell class-specific projection patterns is essential for deciphering how local computations in somatosensory cortex are transmitted to appropriate downstream circuits to guide behavior. This knowledge will provide an anatomical foundation for future functional studies investigating how different classes of projection neurons contribute to sensory perception and sensory-guided actions.
+
+## Method
+
+We will develop a comprehensive workflow combining multiple advanced techniques to quantify brain-wide axonal projections from genetically-defined classes of neurons in whisker-related somatosensory cortices.
+
+Our approach will utilize six transgenic mouse lines expressing Cre-recombinase in different classes of cortical neurons distributed across cortical layers: Rasgrf2-dCre (primarily layer 2/3), Scnn1a-Cre (primarily layer 4), Tlx3-Cre (layer 5 intratelencephalic), Sim1-Cre (layer 5 pyramidal tract), Rbp4-Cre (layer 5 mixed), and Ntsr1-Cre (layer 6 corticothalamic). We will inject Cre-dependent viral vectors expressing fluorescent proteins (GFP or tdTomato) into the posterior primary somatosensory barrel cortex (SSp-bfd) and posterior supplemental somatosensory cortex (SSs), which contain representations of the large posterior mystacial whiskers.
+
+For tissue processing, we will use immunolabeling-enabled three-dimensional imaging of solvent-cleared organs (iDISCO) to achieve whole-brain immunolabeling and clearing. We will acquire volumetric brain images using mesoscale selective plane illumination microscopy (MesoSPIM) at approximately 5 μm near-isotropic resolution.
+
+For axon quantification, we will segment axon-containing voxels using TrailMap, a three-dimensional convolutional network specifically designed for identifying elongated structures. We will further train this network on our specific dataset to optimize performance for our imaging conditions. All data will be registered to the Allen Mouse Brain Common Coordinate Framework (Allen CCF) to enable standardized anatomical assignment and comparison across samples.
+
+We will normalize axonal density measurements by the number of labeled neurons in each injection site to enable quantitative comparisons across different samples and cell classes. This will allow us to compute long-range axonal projection density per neuron for each cell class-specific injection site.
+
+## Experiment Design
+
+We will conduct systematic viral injections across the six transgenic mouse lines, targeting both SSp-bfd and SSs in each line. Prior to injection, we will identify the C2 whisker representations using intrinsic optical imaging to ensure precise targeting of functionally relevant cortical regions.
+
+For each injection, we will deliver 25 nl of Cre-dependent viral vector at depths appropriate for each cell class (200 μm for layer 2/3, 400 μm for layer 4, 500 μm for layer 5, 700 μm for layer 5PT, and 850 μm for layer 6). After 4 weeks of viral expression, we will process brains through the iDISCO protocol and perform light-sheet imaging.
+
+We will include appropriate controls by injecting the same viral vectors into wild-type mice lacking Cre-recombinase to test for Cre-independent expression. We will also characterize the laminar expression patterns of each Cre line by crossing with Cre-dependent tdTomato reporter mice and examining coronal sections.
+
+For each sample, we will segment injection sites semi-automatically and count the number of labeled neurons using high-resolution imaging. We will then apply the TrailMap network to segment axons throughout the brain volume and register all data to the Allen CCF for standardized analysis.
+
+To investigate spatial organization of projections, we will focus on motor cortex as a major target and quantify the relationship between injection site location in somatosensory cortex and the location of peak axonal innervation in motor cortex. We will measure the spread and density of axonal innervation and test for correlations between mediolateral injection positions and anteroposterior target locations.
+
+To validate our anatomical findings functionally, we will conduct optogenetic experiments using triple-transgenic mice expressing both channelrhodopsin-2 and a calcium indicator. We will deliver blue light stimulation to different locations across somatosensory cortex while imaging evoked calcium signals brain-wide. We will quantify the relationship between stimulation location and the location of evoked activity hotspots in motor cortex to test whether functional connectivity maps correspond to anatomical projection patterns.
+
+We will analyze correlations between projection patterns both within and across cell classes using both categorical brain region analysis and direct spatial correlation of 3D projection maps. This will allow us to quantify the similarity and differences in projection patterns across genetically-defined cell classes and between SSp-bfd and SSs injection sites.

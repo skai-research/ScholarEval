@@ -1,0 +1,45 @@
+# Research Plan: Robust Heterogeneous Treatment Effect Estimation Under Covariate Perturbation
+
+## Problem
+
+We address a critical limitation in heterogeneous treatment effect (HTE) estimation: the lack of robustness against covariate perturbation in existing causal machine learning methods. While current representation learning approaches like CFR, TARNet, and DragonNet have shown solid theoretical guarantees for estimating conditional average treatment effects (CATE), they assume that covariates are accurately observed. In practice, however, covariates are often subject to measurement errors or perturbations.
+
+For example, in healthcare applications estimating treatment effects on cardiovascular disease, ECG data represents a perturbed observation of actual heart status due to scan resolution limitations. Such covariate perturbations can lead to incorrect treatment evaluations and decisions with unpredictable consequences. While some existing work addresses measurement error in causal inference, these methods require strong assumptions about extra variables or specific distribution families that cannot be tested from observed data, limiting their generality.
+
+We hypothesize that by controlling the Lipschitz constant of causal prediction models alongside empirical loss and representation distributions, we can achieve robust CATE estimation under covariate perturbation. Our approach is motivated by adversarial machine learning principles, where we aim to bound the worst-case performance when covariates are perturbed.
+
+## Method
+
+We will develop a representation learning-based Robust Heterogeneous Treatment Effect (RHTE) framework that integrates adversarial machine learning techniques into causal inference. Our methodology consists of several key components:
+
+**Adversarial Formulation**: We will formulate the robustness problem using adversarial samples under spherical perturbation assumptions. For a given covariate x, we define the adversarial sample as the worst-case perturbation within an ε-ball that maximizes the loss function. We will study the Expected Adversarial Factual Loss, which controls estimation error in the worst-case scenario.
+
+**Theoretical Foundation**: We will establish the relationship between adversarial loss and standard factual loss through Lipschitz constants. Our theoretical analysis will show that the adversarial loss can be bounded by simultaneously controlling the expected factual loss and the Lipschitz constant of the model.
+
+**Regularization Design**: We will propose two types of Lipschitz regularization terms:
+1. **Orthonormality Regularization**: Based on parseval tightness theory, constraining weight matrices to be orthonormal to control spectral norms
+2. **RKHS Regularization**: Assuming the model lies in a reproducing kernel Hilbert space and controlling the RKHS norm
+
+**Optimization Framework**: We will minimize an objective function that combines three components: weighted empirical loss (to balance treatment and control groups), Lipschitz regularization (to control model smoothness), and Integral Probability Metric (IPM) distance (to balance representation distributions between treatment groups).
+
+## Experiment Design
+
+We will conduct comprehensive experiments to validate the effectiveness and robustness of our RHTE framework across multiple dimensions:
+
+**Datasets**: We will evaluate our method on four datasets:
+- ACIC: A benchmark dataset with 4,802 units and 82 covariates from linked birth and infant death data
+- IHDP: A semi-synthetic dataset with 747 units and 25 covariates from the Infant Health and Development Program
+- UTK-sim: A synthetic multimodal dataset combining tabular data with UTK images (1,000 units, 2,710 covariates)
+- TC-sim: A synthetic dataset based on toxic comment data (3,240 units, 3,071 covariates)
+
+**Baseline Comparisons**: We will compare against 11 representative methods including tree-based approaches (Random Forests, Causal Forests), meta-learning methods (S-Learner, T-Learner), and neural network-based approaches (BNN, DragonNet, TARNet, CFR variants, DeRCFR, ESCFR).
+
+**Perturbation Testing**: We will add controlled perturbations to test sets using uniform noise δx ~ U(-0.1, 0.1)^dim(x) to simulate covariate measurement errors. We will also test non-spherical perturbations using Fast Gradient Sign Method (FGSM) and One-step Target Class Method (OTCM).
+
+**Evaluation Metrics**: We will use the standard Rooted Precision in Estimation of Heterogeneous Effect (√PEHE) metric to measure treatment effect estimation quality, reporting both within-sample and out-of-sample performance.
+
+**Ablation Studies**: We will conduct ablation studies varying the regularization penalty parameter β ∈ [0, 1e-4, 1e-2, 1, 1e2, 1e4] to understand the contribution of our proposed regularization terms.
+
+**Implementation Details**: We will implement our methods using a 3-layer fully-connected architecture with 200 units for the representation function and 100 units for the treatment effect prediction function. We will use ReLU activations, batch normalization, and set hyperparameters α = β = 1, with batch size 64 and learning rate 0.01.
+
+The experimental design will allow us to demonstrate that our RHTE framework achieves superior robustness under covariate perturbation while maintaining competitive performance on standard benchmarks, validating our theoretical insights about controlling Lipschitz constants for robust causal inference.

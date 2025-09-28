@@ -1,0 +1,55 @@
+# Research Plan: Principal Counterfactual Fairness
+
+## Problem
+
+We address a fundamental gap in the counterfactual fairness literature: the question of "which attributes and individuals should be protected" is rarely discussed. Current counterfactual fairness approaches require that algorithmic decisions remain unchanged when protected attributes are altered, but this blanket requirement may not always be appropriate.
+
+For instance, when considering leg disability as a protected attribute, algorithms should not treat individuals with disabilities differently in college admissions, but it may be reasonable to consider this factor when selecting runner athletes. The key insight is that when and how to enforce fairness should depend on the causal relationship between the protected attribute and the outcome of interest.
+
+We hypothesize that counterfactual fairness should only be required for individuals whose protected attribute has no individual causal effect on the outcome of interest. This approach would allow us to distinguish between cases where a protected attribute legitimately affects outcomes (like disability affecting athletic performance) versus cases where it should not (like disability affecting academic performance).
+
+## Method
+
+We will develop a novel fairness framework called "principal counterfactual fairness" using the concept of principal stratification from causal inference literature. Our approach focuses on whether counterfactual fairness holds specifically for individuals whose protected attribute has no individual causal effect on the outcome.
+
+We will formulate several variants of principal counterfactual fairness, ordered from weakest to strongest:
+- Principal counterfactual parity
+- Principal conditional counterfactual fairness  
+- Principal counterfactual equalized odds
+- Principal counterfactual fairness (individual-level)
+
+The methodology will utilize the potential outcomes framework, where we define principal strata based on joint potential outcome values (Yi(a), Yi(a')) and focus fairness requirements only on the "principal fairness" stratum where Yi(a) = Yi(a').
+
+To operationalize this framework, we will derive statistical bounds for evaluating whether algorithms satisfy principal counterfactual fairness, since principal strata are not directly observable. We will also develop a post-processing approach to achieve principal counterfactual fairness with minimal changes to existing algorithmic decisions.
+
+## Experiment Design
+
+### Theoretical Development
+We will derive necessary conditions for algorithms to satisfy principal counterfactual fairness based on statistical bounds. Under the ignorability assumption (A ⊥⊥ (Y(1), Y(0), D(1), D(0))|X), we will establish sharp upper and lower bounds and prove theoretical results about the consistency of our estimation approaches.
+
+### Evaluation Framework
+We will develop an optimization-based evaluation method to test whether algorithms satisfy principal counterfactual fairness. The approach will involve solving constrained optimization problems where violations occur if the feasible region is empty or if certain probability bounds exclude zero.
+
+### Estimation Strategy
+We will implement three estimation approaches for the required conditional probabilities:
+- Outcome regression (OR) estimator
+- Inverse propensity scoring (IPS) estimator  
+- Doubly robust (DR) estimator
+
+We will prove the asymptotic normality and consistency properties of these estimators.
+
+### Post-Processing Algorithm
+We will design an optimization-based post-processing method that adjusts unfair decisions with minimal individual changes. The approach will solve for optimal adjustment parameters ε(x) that ensure principal counterfactual fairness while minimizing the number of decision changes.
+
+### Experimental Validation
+
+**Synthetic Experiments**: We will generate data from structural equation models based on random DAGs with 10 nodes and 40 directed edges using the Erdős-Rényi model. We will test our approach using four different base models (Logistic Regression, SVM, Random Forest, Naive Bayes) combined with the three estimation methods (OR, IPS, DR).
+
+**Real-World Experiments**: We will use the Open University Learning Analytics Dataset (OULAD) containing 32,593 students and 11 attributes. We will treat disability as the sensitive attribute and binarized final grades as the outcome, learning causal structures using the PC algorithm and testing our framework across different subgroup divisions.
+
+### Performance Metrics
+We will evaluate performance using two key metrics:
+- Counterfactual fairness (CF): P(D(0) = D(1))
+- Principal counterfactual fairness (PCF): P(D(0) = D(1)|Y(0) = Y(1))
+
+We will measure percentage improvements in both metrics before and after applying our post-processing approach, expecting larger improvements in PCF since our method specifically targets the population where Y(0) = Y(1).

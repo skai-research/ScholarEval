@@ -1,0 +1,40 @@
+
+# Research Plan: Partitioning Changes in Ecosystem Productivity by Effects of Species Interactions in Biodiversity Experiments
+
+## Problem
+
+Current biodiversity experiments face significant limitations in distinguishing the effects of different types of species interactions on ecosystem productivity. The widely used additive partitioning method compares species performance in mixtures with expectations from monocultures, decomposing net biodiversity effects into complementarity effects (CE) and selection effects (SE). However, neither of these components can be reliably linked to specific effects of species interactions.
+
+We hypothesize that positive biodiversity effects detected through current null expectations may often result from competitive interactions rather than truly positive interactions (resource partitioning and facilitation). Competitive interactions can produce positive biodiversity effects when the yield gain of more competitive species from increased resource availability exceeds the yield loss of less competitive species from decreased resource availability. This occurs because competitive interactions are the predominant type of interspecific relationships in plants and occur in all mixtures where constituent species differ in competitive ability.
+
+Our central research question is: How can we partition changes in ecosystem productivity to distinguish between effects of competitive interactions versus positive and negative species interactions? We aim to develop a framework that will enable meaningful identification of which communities truly benefit from diversity through positive interactions versus those that show positive effects solely due to interspecies differences in growth and competitive ability.
+
+## Method
+
+We will develop a competitive partitioning model that modifies null expectations by incorporating competitive growth responses - the proportional changes in individual size (biomass or volume) expected in mixture based on species differences in growth and competitive ability. Our approach will use the competitive exclusion principle and partial density monocultures to establish competitive expectations.
+
+The methodology involves several key components:
+
+1. **Competitive Growth Response Estimation**: We will determine maximum competitive growth responses (MG) using the ratio of individual size in partial density monocultures to full density monocultures. This represents the maximum change a species can achieve under competitive exclusion scenarios.
+
+2. **Relative Competitive Ability Calculation**: We will define relative competitive ability (RC) as the deviation of species competitive ability from community average, standardized by community maximum. Competitive ability will be assessed using growth attributes such as full density monoculture yields.
+
+3. **Competitive Expectation Framework**: Species competitive expectation will be calculated by combining null expectation with competitive growth response derived from species differences in growth and competitive ability.
+
+4. **Partitioning Scheme**: We will partition net biodiversity effects into three components: positive effects (when observed yields exceed competitive expectations), competitive effects (differences between competitive and null expectations), and negative effects (when observed yields fall below competitive expectations).
+
+## Experiment Design
+
+We will test our competitive partitioning model using two complementary approaches:
+
+**Simulated Forest Mixtures**: We will use the GYPSY growth and yield simulation system to generate data for trembling aspen (Populus tremuloides) and white spruce (Picea glauca) mixtures. We will simulate stands at four ages (20, 40, 60, and 80 years) and five composition ratios from nearly pure aspen (90%) to nearly pure spruce (90%). The simulations will provide data for mixtures and monocultures at both partial and full densities on medium productivity sites.
+
+**Experimental Grassland Data**: We will apply our framework to existing experimental data from grassland mixtures involving six species in full and half-density monocultures, as well as all two-species combinations. This will allow us to test our approach on empirical data where aboveground biomass measurements are available.
+
+For both datasets, we will:
+- Calculate competitive expectations using partial density monoculture yields and the competitive exclusion principle
+- Determine species competitive ability using full density monoculture yields
+- Apply our partitioning framework to separate positive, competitive, and negative effects
+- Compare results with traditional additive partitioning to demonstrate differences in mechanistic interpretation
+
+We will assess the effectiveness of our framework by examining whether it can distinguish cases where positive biodiversity effects result from competitive dominance versus true positive interactions, and whether it provides more ecologically meaningful insights into the mechanisms driving changes in ecosystem productivity.

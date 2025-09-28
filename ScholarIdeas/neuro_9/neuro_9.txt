@@ -1,0 +1,30 @@
+
+# Research Plan
+
+## Problem
+
+Cooperation is essential for societal success, yet research consistently shows that adolescents cooperate less than adults in social dilemmas. This reduced cooperation is commonly attributed to underdeveloped mentalizing abilities that limit adolescents' expectations of others' cooperative intentions. However, the internal computational processes underlying this developmental difference remain largely unexplored.
+
+We observe that adolescents' lower cooperation appears selectively - emerging primarily after their partner's cooperation but not following defection. This pattern suggests that factors beyond mentalizing deficits may be at play. We hypothesize that adolescents may prioritize maximizing immediate rewards over long-term reciprocity, making defection the optimal strategy when they are confident their partner will cooperate.
+
+Our research questions focus on: (1) confirming whether adolescents exhibit lower overall cooperation compared to adults, particularly following partner cooperation; (2) identifying the mental variables contributing to these differences through computational modeling; and (3) determining whether reduced cooperation stems from inappropriate partner expectations, reduced intrinsic reward for reciprocity, or both.
+
+## Method
+
+We will investigate cooperative behavior differences between adolescents and adults using a repeated Prisoner's Dilemma Game (rPDG) combined with computational modeling approaches. We will recruit 127 adolescents (aged 14-17) and 134 adults (aged 18-30) to participate in the study.
+
+Our methodological approach centers on developing computational models to investigate the dynamic variables guiding cooperative decisions. We will implement a basic reinforcement learning (RL) algorithm to model participants' dynamic expectations regarding partner cooperation. Drawing on research showing asymmetric reward learning in adolescents, we will include asymmetric updating for positive (better-than-expected) and negative (worse-than-expected) outcomes.
+
+The computational framework will explicitly incorporate both expectations of partner cooperation (parameter p) and intrinsic reward of reciprocity (parameter ω). We will model participants' expectations as trial-by-trial dynamic variables, with the term p×ω quantifying the intrinsic reward for reciprocity. We will systematically compare multiple models, starting with a baseline random selection model and progressing through win-stay/loss-shift, reward learning, inequality aversion, and social reward models.
+
+## Experiment Design
+
+Participants will complete a 120-trial rPDG where they believe they are playing simultaneously with another human partner, though the partner's behavior will be predetermined by computer program to ensure consistent conditions across age groups. We will use the standard PDG payoff matrix where mutual cooperation yields 4 tokens each, mutual defection yields 2 tokens each, and asymmetric outcomes yield 0 tokens for cooperators and 6 tokens for defectors.
+
+To enhance realism while maintaining experimental control, we will introduce variability into the computer-simulated partner's behavior. The partner's cooperation probability will remain stable at 78% for half the trials, while in the other half, cooperation probability will vary between 20%, 80%, and 20% across sets of 20 trials. We will counterbalance the order of these two sessions between participants.
+
+We will collect both behavioral choices and subjective ratings throughout the experiment. Every 15 trials, participants will evaluate their partner's cooperativeness using a 10-point scale. We will analyze how participants respond to their partner's consistent cooperation versus defection patterns, examining sequences where partners cooperated or defected for one, two, or three consecutive trials.
+
+For model fitting, we will use maximum likelihood estimation with 500 iterations using different starting points to find global minima. We will evaluate models using the Akaike Information Criterion corrected for sample size (AICc) and protected exceedance probability from group-level Bayesian model selection. We will conduct model identifiability analysis by generating synthetic datasets and parameter recovery analysis to ensure robust model comparison.
+
+Our statistical analysis will employ generalized linear mixed models (GLMM) for behavioral data and linear mixed models (LMM) for computational variables, examining main effects of age group, previous trial patterns, partner choices, and their interactions while controlling for gender and trial timing.

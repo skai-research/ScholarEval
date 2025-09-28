@@ -1,0 +1,37 @@
+# Research Plan: LINGUINI - A Benchmark for Language-Agnostic Linguistic Reasoning
+
+## Problem
+
+We aim to address significant limitations in evaluating language models' linguistic reasoning capabilities. Current multilingual benchmarks have become saturated, with state-of-the-art performance on popular benchmarks like MMLU increasing from 60% to 90% in just two years, providing diminishing returns for distinguishing between models. More critically, existing linguistic reasoning evaluations are typically tied to comprehensive knowledge of specific languages (commonly English), making it difficult to assess a model's underlying linguistic skills beyond language-specific knowledge.
+
+We hypothesize that language models possess meta-linguistic awareness and deductive reasoning capabilities that can be evaluated independently of pre-existing language proficiency. Our research question centers on whether models can demonstrate linguistic reasoning skills when provided with sufficient contextual information about unfamiliar languages, particularly extremely low-resource languages that are unlikely to appear in training data.
+
+## Method
+
+We will develop a benchmark called Linguini based on problems extracted from the International Linguistic Olympiad (IOL), a secondary school competition where participants solve Rosetta Stone-style linguistic puzzles using only their understanding of linguistic concepts. Our methodology involves:
+
+1. **Problem Selection and Taxonomy**: We will build a comprehensive taxonomy of IOL problems from 2003 to 2023, excluding instances that appear only once, require images, or have explanation-only responses. We will focus on problems requiring morphosyntactic segmentation, morphosemantic alignment, derivation, morphophonological segmentation, and graphophonemic transcription.
+
+2. **Dataset Construction**: We will compile problems across 75 mostly extremely low-resource languages, organizing them into three categories: sequence transduction (translation and matching tasks), fill-in-blanks (morphophonological derivation), and number transliteration (digit/text conversion).
+
+3. **Language-Agnostic Design**: We will ensure that all information required to solve each linguistic puzzle is provided within the context, eliminating the need for prior knowledge of the tested languages.
+
+## Experiment Design
+
+We will conduct comprehensive evaluations using both open-source and proprietary language models to assess their linguistic reasoning capabilities:
+
+**Primary Evaluation**:
+- Zero-shot to few-shot evaluation (0-5 in-context examples) across the complete dataset
+- Leave-one-out cross-validation to maximize in-context candidates per task
+- Include examples of the same format while excluding same-language examples to avoid contamination
+- Use exact match accuracy as the primary metric, with chrF as a secondary softer metric
+
+**Ablation Studies**:
+1. **No-Context Prompting**: Remove contextual information to assess reliance on training data versus provided context, serving as a proxy for data contamination detection
+2. **Script Transliteration**: Convert high-performing problems from Latin script to non-Latin scripts (Cyrillic, Greek, Georgian, Armenian) to test script-independence of reasoning
+3. **Resource Level Analysis**: Examine correlation between language resourcefulness (measured by speaker count and online presence) and model performance
+4. **Grammar Book Integration**: Test models' ability to acquire linguistic proficiency through in-context textbooks, scaling previous single-language studies to multiple languages and task types
+
+**Model Coverage**: We will evaluate major open-source models (Llama, Mistral, Gemma series) and commercially available state-of-the-art models (GPT-4 variants, Claude-3 series) to identify performance gaps between open and proprietary systems.
+
+**Evaluation Framework**: We will prompt models with instructions, contextual information, and problems, averaging scores across items within each problem to provide single task scores. We will analyze both individual model performance and cross-model comparisons to understand the current state of linguistic reasoning capabilities in language models.

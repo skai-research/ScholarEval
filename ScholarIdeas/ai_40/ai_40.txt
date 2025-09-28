@@ -1,0 +1,49 @@
+# Research Plan: Hierarchical Self-Supervised Graph Contrastive Learning
+
+## Problem
+
+Graph Neural Networks (GNNs) have emerged as powerful tools for learning representations from graph-structured data, but they typically rely heavily on large amounts of labeled data for training. This presents a significant challenge since obtaining labeled data in graph domains can be costly, time-consuming, and requires domain expertise. Meanwhile, vast amounts of unlabeled graph data are readily available across numerous domains including social networks, biological networks, recommendation systems, and knowledge graphs.
+
+Existing self-supervised learning methods for graphs have limitations in capturing comprehensive structural information. Current approaches either focus on local neighborhood patterns or global structural properties, but not both simultaneously across multiple hierarchical levels. We hypothesize that a hierarchical approach that performs contrastive learning at multiple structural scales (node, subgraph, and graph levels) will enable more effective utilization of unlabeled data and lead to superior node representations.
+
+Our research addresses the fundamental question: How can we design a self-supervised learning framework that captures rich structural information at multiple hierarchical levels to learn robust node representations without extensive labeled data?
+
+## Method
+
+We propose a novel hierarchical self-supervised graph contrastive learning framework that leverages unlabeled data by performing contrastive learning at three distinct structural levels: node-level, subgraph-level, and graph-level. Our approach is grounded in the principle that different scales of graph structure contain complementary information that can be jointly exploited.
+
+The methodology consists of several key components:
+
+**Graph Augmentation Strategy**: We will implement an adaptive augmentation approach that generates multiple views of the original graph while preserving essential structural properties. This includes node-wise augmentations (feature masking and node dropping), edge-wise augmentations (edge perturbation), subgraph sampling (k-hop neighborhoods), and global augmentations (attribute masking and virtual node addition).
+
+**Hierarchical Contrastive Learning**: We will design three complementary contrastive objectives:
+- Node-level contrast: Maximizing agreement between embeddings of the same node from different augmented views
+- Subgraph-level contrast: Contrasting embeddings of subgraphs containing the same central node across different views
+- Graph-level contrast: Maximizing agreement between node embeddings and global graph representations
+
+**Model Architecture**: Our framework will employ a shared GNN encoder (such as GCN or GIN) to learn node embeddings from each augmented view, followed by a projection head implemented as a multi-layer perceptron to map embeddings into a latent space for contrastive learning.
+
+**Composite Loss Function**: We will combine the hierarchical contrastive losses into a unified objective function with learnable weighting parameters to balance the contribution of each level.
+
+## Experiment Design
+
+We will conduct comprehensive experiments to validate our approach across multiple dimensions:
+
+**Datasets**: We plan to evaluate on four benchmark datasets representing different graph types and scales: Cora, Citeseer, and PubMed (citation networks) and Reddit (social network). These datasets provide varying characteristics in terms of size, feature dimensions, and class distributions.
+
+**Experimental Settings**: We will assess performance in both transductive and inductive settings. For transductive evaluation, the model will have access to the entire graph structure during training. For inductive evaluation, we will train on subgraphs and test on unseen nodes to assess generalization capability.
+
+**Evaluation Protocols**: 
+- Standard benchmark splits for fair comparison with existing methods
+- Low-label regime experiments with varying numbers of labeled nodes per class (1-10) to demonstrate effectiveness when labeled data is scarce
+- Node classification accuracy as the primary evaluation metric
+
+**Implementation Details**: We will use a 2-layer GNN encoder with hidden dimension 128, a 2-layer MLP projection head with hidden dimension 64, and optimize using Adam optimizer. We plan to tune hyperparameters including temperature parameter τ and loss weighting coefficients α, β, γ through validation.
+
+**Baseline Comparisons**: We will compare against both supervised methods (GCN, GAT, GraphSAGE) and self-supervised methods (DGI, GRACE, MVGRL, GraphCL) to demonstrate the effectiveness of our hierarchical approach.
+
+**Ablation Studies**: We will conduct systematic ablation studies to validate the contribution of each hierarchical component by removing individual loss terms and analyzing performance degradation.
+
+**Qualitative Analysis**: We plan to perform embedding visualization using t-SNE to qualitatively assess the discriminative power of learned representations and demonstrate improved cluster separation compared to existing methods.
+
+The experimental design will enable us to demonstrate that our hierarchical contrastive learning framework consistently outperforms existing approaches, particularly in scenarios with limited labeled data, while maintaining strong generalization capabilities across different graph types and settings.

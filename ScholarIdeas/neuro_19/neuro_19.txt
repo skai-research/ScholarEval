@@ -1,0 +1,46 @@
+
+# Research Plan: Inference Technique for Synaptic Conductances in Rhythmically Active Networks
+
+## Problem
+
+We aim to address a fundamental challenge in neurobiology: extracting and separating patterns of inhibitory and excitatory synaptic conductances at high temporal resolution from single neuronal intracellular recordings in rhythmically active networks. Understanding synaptic interactions between excitatory and inhibitory interneurons within rhythmic neural circuits, such as central pattern generation (CPG) circuits for rhythmic motor behaviors, is critical for deciphering circuit interactions and functional architecture.
+
+Current methods for extracting dynamic patterns of input synaptic conductances from intracellular recordings have limitations in providing continuous, high-resolution readouts of excitatory and inhibitory synaptic conductances. These patterns often involve temporally complex excitatory and inhibitory synaptic inputs that can be superimposed during circuit activity, complicating the separation of these components.
+
+We hypothesize that by developing a robust analytical technique based on fundamental electrophysiological principles, we can extract nearly continuous readouts of excitatory and inhibitory synaptic conductances that will be essential for deciphering circuit functional interactions. We propose that these synaptic conductance profiles represent convergent synaptic inputs from key functional populations and can reveal the "functional connectome" of active circuits.
+
+## Method
+
+We will develop a general method for extracting and separating patterns of inhibitory and excitatory synaptic conductances from intracellular recording data that is applicable to any periodically active network. Our approach will be based on the current balance equation and will assume that the membrane potential reaches instantaneous equilibrium after short-time-scale fluctuations are filtered out.
+
+The methodology will involve:
+
+1. **Phase-based analysis**: We will define the phase of the activity cycle as a piece-wise linear function of time and divide each cycle into discrete phase bins (100 bins). We will operate under the assumption that in networks exhibiting periodic dynamics, synaptic conductances depend on cycle phase rather than time explicitly.
+
+2. **Linear regression approach**: For each phase bin, we will collect time moments corresponding to phases in that bin and perform linear regression between injected current and membrane potential to determine the slope (total resistance) and V-intercept (effective resting potential).
+
+3. **Conductance decomposition**: We will calculate total conductance as the reciprocal of total resistance and decompose it into inhibitory and excitatory components using the current balance framework.
+
+4. **Reversal potential estimation**: We will exploit periods when neurons receive only one type of synaptic input (inhibitory or excitatory) to estimate reversal potentials using "wedge diagrams" that plot the relationship between total conductance and effective current.
+
+Our technique will be designed to be compatible with various experimental setups, including current-clamp and voltage-clamp protocols, making it adaptable to a wide range of rhythmically active neuronal circuits.
+
+## Experiment Design
+
+We will test and validate our analytical technique using the mammalian brainstem respiratory CPG as our experimental model. This system provides an ideal testing ground because these circuits are continuously active, experimentally accessible, and contain various electrophysiological phenotypes of respiratory neurons.
+
+**Experimental preparation**: We will use in situ arterially perfused brainstem-spinal cord preparations from mature rats (3-4 weeks old). The preparations will be mechanically stabilized for intracellular recordings by removing great veins and heart, and using a hydraulic damping system to eliminate flow pulsations.
+
+**Recording procedures**: We will perform sharp microelectrode intracellular recordings in the preBötzinger complex (preBötC) and Bötzinger complex (BötC) regions of the ventrolateral medulla. We will target various respiratory neuron types with different firing patterns (pre-inspiratory/inspiratory, ramping inspiratory, early-inspiratory, late-inspiratory, post-inspiratory, and augmenting expiratory neurons).
+
+**Current injection protocols**: During recordings, we will inject depolarizing and hyperpolarizing current in a stepwise manner, maintaining at least three different current injection levels for at least 5 respiratory cycles each. We will use both current-clamp and voltage-clamp recording modes to validate our approach.
+
+**Data collection criteria**: We will only analyze recordings from neurons that meet strict quality criteria: coefficient of variation of respiratory cycle period <10%, stable baseline membrane potential without significant drift, and clear rhythmic firing patterns consistent with respiratory phases.
+
+**Validation experiments**: We will compare synaptic conductance profiles obtained from current-clamp versus voltage-clamp recordings from the same neurons to test the reliability of our method. We will also analyze different epochs from the same recordings to evaluate the effects of recording non-stationarity.
+
+**Histological verification**: We will label recorded neurons with neurobiotin for subsequent histological verification of recording locations and, in some cases, identify neurotransmitter phenotypes through immunohistochemistry to corroborate our inferences about inhibitory inputs.
+
+**Statistical analysis**: We will use z-tests to confirm statistical significance of reconstructed synaptic inputs and estimate errors for conductance measurements based on voltage fluctuations and the number of respiratory cycles analyzed.
+
+Through this experimental design, we will demonstrate the versatility and robustness of our approach across different neuronal types and recording conditions, while providing novel insights into the functional organization of respiratory circuits that can serve as a model for applying this technique to other rhythmic neural networks.

@@ -1,0 +1,39 @@
+# Research Plan: Vision-Based Pseudo-Tactile Information Extraction and Localization for Dexterous Grasping
+
+## Problem
+
+Dexterous robotic hand grasping remains a challenging problem due to two primary limitations: the difficulty in acquiring tactile perception during mechanical manipulation and the complexity of multi-finger contact scenarios. Current tactile sensing systems for dexterous hands are generally costly and rely on expensive external sensors such as high-precision LiDAR, which greatly limits their widespread application in robotics.
+
+We hypothesize that tactile information can be effectively extracted from visual data by analyzing surface characteristics in 3D point clouds, and that precise fingertip contact localization can be achieved through high-fidelity simulation. Our research addresses the fundamental question of whether vision-based systems can provide reliable pseudo-tactile feedback for robotic grasping without requiring physical tactile sensors.
+
+The motivation for this work stems from the need for a low-cost, high-performance tactile sensing and grasping positioning system that can enhance robotic manipulation capabilities while providing accessible sensory data for embodied intelligent agents.
+
+## Method
+
+We will develop a novel framework that combines vision-based pseudo-tactile information extraction with precise contact point localization. Our approach introduces the concept of "pseudo-tactile" information—tactile-like data derived from visual analysis of an object's surface texture, rather than traditional tactile sensing that relies on physical interaction.
+
+The methodology consists of two main components:
+
+**Pseudo-Tactile Information Extraction**: We will use Intel RealSense cameras to capture detailed 3D point cloud data of objects. From this data, we will extract surface texture characteristics by analyzing surface normal vectors and grayscale variance. We will develop a filtering algorithm that calculates normal vectors using PCA-based methods and determines texture feature points based on empirically determined thresholds for both Y-component normal vectors and grayscale variance.
+
+**Contact Point Localization**: We will utilize NVIDIA Isaac Sim to create a highly realistic simulation environment for the Seed Robotics RH8D dexterous hand. By transmitting real-time joint states from the physical hand to the simulation platform, we will accurately replicate grasping actions and calculate fingertip contact coordinates with high precision using the wrist as the coordinate origin.
+
+The theoretical framework establishes coordinate transformations between world, camera, and pixel coordinate systems, enabling accurate mapping of visual data to spatial coordinates. We will construct KD-trees for efficient neighborhood searches and apply PCA-based normal vector calculations to characterize surface undulations.
+
+## Experiment Design
+
+We will conduct comprehensive experiments to validate both the pseudo-tactile information extraction and contact point localization capabilities of our framework.
+
+**Dataset Construction**: We will collect point cloud images of over 200 everyday objects with diverse materials, shapes, and surface textures to build a comprehensive test dataset. From these, we will select 49 representative objects for deep learning experiments and 15 for final validation. We will adjust lighting parameters (brightness and color temperature) to simulate different environmental conditions and enhance algorithm robustness.
+
+**Experimental Setup**: Our experimental platform will include AGILE ROBOTS DIANA 7 robotic arms, Intel RealSense cameras for depth sensing, and LIPPMANN L50pro adjustable lighting systems. The setup will simulate industrial environments with the camera positioned at a 45-degree angle, 60cm from objects placed on a horizontal surface. We will use a 13th-generation Intel Core i9-13900K processor and NVIDIA RTX 4090 GPU for computational processing.
+
+**Evaluation Methodology**: We will assess two key aspects:
+
+1. **Pseudo-Tactile Extraction Accuracy**: We will evaluate whether robot vision alone can capture 3D tactile surface data during multi-finger grasps by testing the texture feature extraction algorithm across objects with varying surface characteristics.
+
+2. **Contact Point Localization Precision**: We will measure the accuracy of real-time fingertip position computation for two, three, four, and five-finger grasping configurations. We will compare simulated 3D fingertip coordinates with real-world measurements over multiple trials per object.
+
+**Performance Metrics**: We will use root mean square error (RMSE) to quantify localization precision and evaluate system performance across different materials including glass, plastic, metal, and feather-like textures. We will also assess the integration capability between 3D fingertip localization and pseudo-tactile information by matching contact point coordinates with extracted texture features.
+
+The experiments will validate our hypothesis that vision-based systems can effectively simulate tactile feedback and provide precise spatial localization for dexterous robotic manipulation without requiring physical tactile sensors.

@@ -1,0 +1,44 @@
+# Research Plan: From Abstract Noise to Architectural Form - Designing Diffusion Models for Efficient Floor Plan Generation
+
+## Problem
+
+We aim to address the critical challenge of generating innovative and efficient floor plans in contemporary architectural design. The motivation for this research is twofold: first, to explore the potential of state-of-the-art AI models to understand and implement complex, implicit rules that govern architectural aesthetics and functionality; and second, to provide a tool that significantly augments architects' ability to generate diverse design alternatives quickly.
+
+While recent advancements in generative models, particularly diffusion models, have shown unprecedented success in image-generation tasks, their application in specialized domains like architectural design remains largely unexplored. Traditional generative models broadly target image generation but lack the specificity required for architectural applications where detail, accuracy, and adherence to design principles are paramount.
+
+We hypothesize that diffusion models, when finely tuned and conditioned, can embrace 'implicit, human-learned' architectural semantics while enhancing design efficiency and creativity. Our research seeks to bridge the gap between general-purpose image generation and the specialized requirements of architectural floor plan creation.
+
+## Method
+
+We will adapt and enhance diffusion models specifically for architectural floor plan generation through a comprehensive methodology involving several key components:
+
+**Model Architecture**: We will employ a customized adaptation of the U-Net architecture configured within a diffusion modeling framework. This adaptation will be geared towards capturing the nuanced requirements of architectural designs, including the layout of spaces and their functional relationships. We will utilize the UNet2DModel from the diffusers library with specific configurations including ResNet layers, progressive channel depths, and attention mechanisms.
+
+**Data Preprocessing**: We will implement a rigorous preprocessing routine to standardize and optimize our dataset. This will include: (1) detection and isolation of floor plans from extraneous background elements, (2) rotation alignment to ensure consistent orientation across all floor plans, and (3) background standardization to create uniform image conditions for training.
+
+**Training Strategy**: We will train the model at lower resolutions (128x128 pixels) to balance detail and computational efficiency, then employ post-generation upscaling techniques to achieve high-resolution outputs without sacrificing computational resources during training.
+
+**Enhancement Approach**: We will integrate advanced upscaling techniques post-generation, allowing the model to operate efficiently at lower resolutions while maintaining high-resolution outputs, thus addressing the dual challenges of detail fidelity and computational efficiency.
+
+## Experiment Design
+
+**Dataset**: We will use a comprehensive dataset containing 12,000 architectural floor plan images at 512x512 pixel resolution, including distinct images for walls, room segmentation, and overall floor plans with descriptive metadata. This dataset size provides sufficient diversity for reliable model training compared to smaller alternatives we explored.
+
+**Training Configuration**: 
+- Image processing at 128x128 pixels for computational efficiency
+- Batch sizes of 16 for both training and evaluation
+- Initial learning rate of 1e-4 with 500-step warm-up phase
+- Automatic mixed precision (fp16) to accelerate training without compromising quality
+- UNet2DModel with 2 ResNet layers per block, progressive channel outputs (128, 128, 256, 256, 512, 512), and mixed attention-enhanced blocks
+
+**Evaluation Methodology**: We will conduct qualitative analysis through direct visual inspection of generated images, assessing three primary criteria:
+- **Accuracy**: Verification that generated images represent viable architectural spaces with correct placement of walls, doors, and windows
+- **Coherence**: Assessment of logical architectural layout including room flow, functionality, and real-world applicability
+- **Aesthetics**: Evaluation of visual appeal and professional design quality
+
+**Experimental Phases**:
+1. **Initial Generation**: Train the diffusion model on preprocessed data and generate baseline floor plans
+2. **Enhancement Phase**: Apply upscaling techniques to improve resolution and detail of generated plans
+3. **Comparative Analysis**: Evaluate the trade-offs between computational efficiency and output quality using our lower-resolution training with upscaling approach versus direct high-resolution generation
+
+We will measure success through the model's ability to produce professional-grade floor plans that demonstrate architectural coherence, functional viability, and aesthetic appeal while maintaining computational efficiency through our proposed training and enhancement pipeline.

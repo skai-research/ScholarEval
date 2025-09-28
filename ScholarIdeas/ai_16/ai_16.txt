@@ -1,0 +1,43 @@
+# Research Plan: Large-Scale Multi-Agent Reinforcement Learning for Traffic Signal Optimization
+
+## Problem
+
+We aim to address the critical challenge of Traffic Signal Control (TSC) in multi-agent environments, motivated by the significant economic and environmental impacts of traffic congestion. Traffic congestion causes 3.9 billion Euros in economic damages annually in Germany alone, and emissions in stop-and-go traffic are 29 times higher than in free-flowing conditions. 
+
+The problem is inherently complex due to several factors: traffic flow varies dynamically throughout the day influenced by rush hours, weather, accidents, and events; intersections cannot be managed as standalone agents since they form interconnected networks where traffic at one intersection affects others; and different stakeholders have varying objectives that must be balanced (drivers want minimal waiting time, pedestrians prioritize safety, city planners aim to reduce emissions).
+
+Current infrastructure limitations pose additional challenges, as many traffic controllers in German cities cannot be dynamically controlled, sensor data may be faulty or have low coverage, and historical data is difficult to acquire at scale. We hypothesize that a novel approach using transformer architecture to model inter-agent communication can effectively coordinate traffic signals across multiple intersections while requiring minimal state information.
+
+## Method
+
+We will model TSC optimization as a multi-agent MDP where agents (intersections with traffic signals) can take actions in their respective action spaces, leading to a global reward. Each agent will have access to a subset of the global state consisting of observations in its proximity. 
+
+Our core methodological innovation involves generating enriched agent states by allowing agents to exchange information through a communication channel parameterized by neural network architectures. We will treat inter-agent spatial dependencies as a 2D sequence problem and utilize transformer architecture to model this sequence, conditioning the network on spatial relations between agents using 2D positional encoding based on normalized longitude and latitude.
+
+The approach consists of three main components:
+
+1. **Permutation-Invariant Lane Encoding**: We will use a PointNet-inspired encoder with shared MLP weights across agents to create canonical representations of lane-level information, handling varying intersection types through permutation-invariance and max-pooling operations.
+
+2. **Inter-Agent Communication**: We will implement attention-based communication using transformers, allowing agents to attend to other agents' states with optional distance-based attention masking that exponentially decays with spatial distance.
+
+3. **Variable State Information**: We will design three levels of state observation based on implementation cost: no traffic observation (only traffic light information), limited traffic observation (high-level metrics from platforms like Google Maps), and full observation (detailed sensor data).
+
+We will optimize the value function and policy using Proximal Policy Optimization (PPO), with actions representing traffic light phase changes and rewards based on differences in vehicle waiting time.
+
+## Experiment Design
+
+We will conduct comprehensive experiments using the SUMO simulation environment to validate our approach across multiple scenarios:
+
+**Simple Network Experiments**: We will train both our transformer model and a baseline Simple MLP on a ring network with 7 agents using static traffic flow. We will test all three levels of state information availability to establish proof of concept and compare convergence rates and performance between models.
+
+**Complex Network Experiments**: We will evaluate our transformer model on a complex grid network with 73 agents using dynamic traffic flow that varies over time. We will train the model with all levels of state information to assess scalability and robustness to network complexity.
+
+**Multi-Network Training**: We will simultaneously train our model on multiple road networks of varying complexities to develop a unified model capable of generalizing across diverse environments and traffic demands. This will test our architecture's ability to handle variable input sizes and network topologies.
+
+**Evaluation Metrics**: We will compare our models against static traffic control baselines using metrics including fuel consumption, CO2 emissions, number of waiting vehicles, travel time, queue length, and delay. Simulations will run for one-hour periods to capture meaningful traffic patterns.
+
+**Automated Dataset Generation**: We will implement and test our automated pipeline for generating randomized road networks and traffic demands, sampling environments conditioned on hyperparameters such as number of intersections and average traffic density. This will enable training without reliance on limited real-world data.
+
+**Generalization Testing**: We will evaluate our trained models on both synthetically generated networks and imported real-world road networks to assess transfer capabilities and practical applicability.
+
+The experiments will systematically vary network complexity, traffic flow dynamics, and state information availability to isolate the impact of each factor on model performance and validate our hypothesis that minimal state information can achieve competitive results.

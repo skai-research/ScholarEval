@@ -1,0 +1,36 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate how neural representations of individual finger movements change during the early period of sequential motor skill learning. The central question is whether individual sequence action representations differentiate or remain stable during early skill learning, when the most prominent performance improvements occur and the memory is not yet fully formed.
+
+Previous research has shown that neural representations of individual motor sequence actions may remain relatively stable over days or weeks of practice after a memory is formed. However, it remains unknown whether individual sequence action representations differentiate during early skill learning, particularly when the same action is executed at different contextual locations within a skill sequence. This question is crucial for understanding the neural mechanisms of rapid skill acquisition and has important implications for brain-computer interface (BCI) applications in neurorehabilitation.
+
+We hypothesize that individual sequence actions become contextualized during early skill learning, meaning that neural representations of the same action (e.g., an index finger keypress) will differentiate based on where that action occurs within the learned sequence. Furthermore, we predict that this contextualization will develop predominantly during rest intervals between practice periods, consistent with the phenomenon of micro-offline learning where most performance gains occur during brief rest periods rather than during active practice.
+
+## Method
+
+We will employ a well-characterized sequential skill learning task combined with magnetoencephalography (MEG) recording to investigate neural representation changes at millisecond resolution. Our approach centers on developing and optimizing machine learning decoders to classify sequence-embedded finger movements from MEG activity as a function of both learning state and local sequence context.
+
+To address the challenge of investigating contextualization of discrete action representations while both individual actions and skill sequences are concurrently represented in changing neural dynamics, we will construct a series of decoders aimed at predicting keypress actions from MEG neural activity. These decoders will be designed to capture representations dependent upon the learning state and the ordinal position of keypress actions within the sequence.
+
+We will develop a novel hybrid-space decoding approach that combines multiple spatial scales of neural activity. This approach will integrate: (1) parcel-space estimates from whole-brain activity patterns representing lower spatially resolved global brain dynamics, and (2) voxel-space estimates from brain regions containing the most keypress-related activity, representing higher spatially resolved regional activity patterns. We will systematically compare decoding performance across different spatial (sensor, parcel, voxel, and hybrid spaces), temporal (various time windows around keypress events), and spectral (broadband vs. narrowband oscillatory activity) feature sets.
+
+To optimize decoder performance, we will test multiple dimensionality reduction techniques including principal component analysis (PCA), multi-dimensional scaling (MDS), minimum redundant maximum relevance (MRMR), and linear discriminant analysis (LDA). We will also evaluate various machine learning classifiers including Naïve Bayes, decision trees, ensembles, k-nearest neighbor, linear discriminant analysis, support vector machines, and artificial neural networks.
+
+## Experiment Design
+
+Participants will engage in a sequential motor skill learning task involving repetitive typing of a 5-item numerical sequence (4-1-3-2-4) with their non-dominant left hand, where numbers 1-4 correspond to little finger through index finger keypresses. The task will consist of 36 trials on Day 1, with each trial containing alternating 10-second practice and 10-second rest periods. We will record individual keypress times and identities to quantify skill as correct sequence speed (keypresses/second).
+
+On Day 2 (approximately 24 hours later), participants will be retested on the same trained sequence for 9 trials, and will also perform single-trial tests on 9 different untrained control sequences to assess generalization and specificity of learned representations.
+
+We will record MEG data continuously using a 275-channel CTF magnetoencephalography system during both Day 1 training and Day 2 testing sessions. High-resolution anatomical MRI will be acquired for each participant to enable accurate source localization and individual head modeling for MEG analysis.
+
+For decoder construction, we will extract MEG features at multiple scales: sensor-space (272 channels), source-space voxel-level (approximately 15,684 cortical dipoles), and parcel-level (148 brain regions from Desikan-Killiany Atlas). We will systematically evaluate temporal windows of variable size (25-350ms) and alignment (0-100ms post-keypress onset) to optimize decoding accuracy.
+
+Our primary analysis will focus on decoding the index finger keypress, which occurs at two different ordinal positions in the sequence (positions 1 and 5), allowing us to assess contextualization by comparing neural representations of the same physical action performed in different sequence contexts. We will construct both 4-class decoders (to classify the four different finger movements) and 5-class decoders (to classify sequence elements including contextual information about ordinal position).
+
+To quantify contextualization, we will measure Euclidean distances between neural representation manifolds of index finger keypresses at different ordinal positions, tracking how these distances change across learning trials. We will separately analyze "online" changes (within practice trials) and "offline" changes (across rest periods) to determine when contextualization primarily develops.
+
+We will validate our findings through several control analyses, including testing decoder performance on Day 2 data, comparing trained versus untrained sequences, and assessing relationships between contextualization measures and behavioral performance gains during both practice and rest periods.

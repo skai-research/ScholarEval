@@ -1,0 +1,31 @@
+# Research Plan
+
+## Problem
+
+Type 2 diabetes (T2D) and obesity are metabolic diseases characterized by chronic low-grade inflammation, with elevated serum levels of pro-inflammatory cytokines IL-6 and TNF-α. These conditions are associated with increased fracture risk despite normal or higher bone mineral density, suggesting impaired bone quality rather than reduced bone mass. Subjects with elevated pro-inflammatory cytokines have been linked to increased fracture risk, yet direct evidence of inflammation's effect on bone fragility in T2D and obesity remains lacking.
+
+In vitro studies have demonstrated that inflammation induces bone erosion and inhibits bone formation by increasing inhibitors of the Wnt canonical pathway. TNF-α has been shown to promote bone erosion and inhibit bone formation by upregulating main inhibitors of the Wnt canonical pathway. We have previously demonstrated that the canonical Wnt pathway is downregulated in T2D and is associated with reduced bone formation markers and reduced bone strength.
+
+We hypothesize that increased inflammation may affect bone quality through modulation of the Wnt canonical pathway in bone of postmenopausal women with T2D or obesity. Specifically, we propose that increased inflammation in bone of subjects with T2D and obesity is negatively associated with Wnt pathway signaling and bone strength.
+
+## Method
+
+We will conduct a cross-sectional study examining the relationship between inflammation, Wnt signaling, and bone quality in postmenopausal women. Our approach will involve comprehensive analysis of both systemic and local bone inflammation markers, coupled with detailed assessment of Wnt pathway gene expression and bone mechanical properties.
+
+We will measure circulating inflammatory cytokines in serum using automated immunoassays and ELISA techniques. For bone tissue analysis, we will perform gene expression analysis using RT-PCR to quantify mRNA levels of inflammatory markers and Wnt signaling components. We will assess bone microarchitecture using micro-computed tomography (μCT) and evaluate bone mechanical properties through compression testing.
+
+Our analytical strategy will include correlation analyses to examine relationships between inflammatory markers, Wnt signaling components, and bone strength parameters. We will use appropriate statistical methods to compare groups and assess correlations between variables.
+
+## Experiment Design
+
+We will enroll 63 postmenopausal women (age >65 years) undergoing hip replacement surgery for osteoarthritis. Participants will be divided into three groups: 19 women with T2D and obesity (target HbA1c ~6.8%; BMI ~30 kg/m²), 17 women with obesity but normal glucose metabolism (BMI ≥30 kg/m²), and 27 normal-weight controls (BMI <25 kg/m²).
+
+We will collect venous blood samples after an 8-hour fast on the day before surgery. Serum will be isolated and stored at -80°C for cytokine analysis. We will measure TNF-α and IL-6 using the ELLA microfluidic immunoassay system, and adiponectin using ELISA immunoassay.
+
+During hip replacement surgery, we will obtain femoral head specimens and collect trabecular bone samples. These will be washed in sterile PBS and stored at -80°C. We will extract total RNA using TRIzol and perform reverse transcription followed by real-time PCR analysis. Target genes will include inflammatory markers (TNF-α, IL-6, IL-8, IL-10, ADIPOQ, SFRP5) and Wnt signaling components (SOST, WNT10B, LEF-1, WNT5A, GSK3β), with β-actin as the housekeeping gene.
+
+For bone microarchitecture analysis, we will prepare cylindrical trabecular bone specimens (10 mm diameter, 20 mm length) and analyze them using μCT to measure bone volume density, connectivity density, trabecular thickness, trabecular number, trabecular separation, tissue mineral density, and volumetric BMD. We will then perform compression tests to determine mechanical parameters including Young's modulus, ultimate strength, and yield strength.
+
+We will also conduct DXA scans to assess body composition, bone mineral density, and visceral adipose tissue measurements. Clinical characteristics including fasting glucose, HbA1c, lipid profiles, and kidney function parameters will be recorded.
+
+Statistical analysis will involve group comparisons using appropriate tests for normally and non-normally distributed data. We will perform correlation analyses using Spearman correlation to examine relationships between inflammatory markers, Wnt signaling components, and bone mechanical properties. We will exclude participants with diseases affecting bone metabolism, inflammatory conditions, malignancy, or those taking medications that affect bone metabolism.

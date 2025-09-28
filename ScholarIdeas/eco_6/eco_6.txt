@@ -1,0 +1,35 @@
+
+# Research Plan
+
+## Problem
+
+Insect herbivores, particularly caterpillars, face strong selection pressure from natural enemies such as parasitoid wasps. While the role of olfaction in host-plant seeking has been extensively investigated in parasitoids and adult lepidopterans, the caterpillar olfactory system and its significance in tri-trophic interactions remains poorly understood. Chemical communication plays a critical role in interactions among plants, herbivores, and natural enemies, yet most olfaction research has focused on adult insects rather than larvae, despite many insects spending significant portions of their lives in larval stages where chemical information likely plays essential roles in host-plant choice and natural-enemy avoidance.
+
+We hypothesize that olfactory information enables caterpillars to locate suitable food sources more efficiently and select enemy-free spaces. Specifically, we propose that loss of olfactory function will reduce caterpillar performance and increase their susceptibility to natural enemies. Our research questions focus on: (1) How does impaired olfactory perception affect caterpillar feeding behavior and performance? (2) What role does olfaction play in caterpillar avoidance of natural enemies? (3) Which volatile compounds mediate these interactions in the tri-trophic system?
+
+## Method
+
+We will employ a well-established research system utilizing Brassica oleracea as host-plants, Pieris brassicae caterpillars as herbivores, and Cotesia glomerata parasitoid wasps as natural enemies. Our primary approach involves using CRISPR/Cas9 gene editing to knock out the odorant receptor co-receptor (Orco) in P. brassicae, which is required for functional olfactory reception in insects.
+
+We will target the second exon of Orco using specifically designed sgRNAs, with off-target evaluation performed using Exonerate and CHOPCHOP to ensure specificity. The knockout will be verified through multiple approaches: (1) immunohistochemical staining of Orco proteins in larval antennae and maxillary palps, (2) analysis of glomerular structure in the larval antennal center (LAC), and (3) electroantennography (EAG) of adult butterflies to confirm loss of olfactory responses.
+
+We will analyze volatile compounds involved in these interactions through dynamic headspace sampling using Tenax TA adsorbent material, followed by thermal desorption and GC-MS analysis. Chemical identification will be based on comparison with NIST and Wageningen Mass Spectral Database libraries.
+
+## Experiment Design
+
+**Knockout Verification Experiments:**
+We will inject newly laid P. brassicae eggs with sgRNA/Cas9 mixtures targeting Orco, rear the resulting caterpillars to adulthood, and screen for mutations using PCR and sequencing. Successful knockouts will be verified through immunohistochemical staining of larval antennae and maxillary palps using lepidopteran-specific Orco antibodies, and through glomerular counting in the larval antennal center using biotin-dextran tracing.
+
+**Performance and Behavioral Experiments:**
+We will compare caterpillar growth between wildtype (WT) and knockout (KO) genotypes by placing groups of L1 caterpillars on cabbage plants and measuring weight after 10 days. Host-plant selection behavior will be assessed using two-choice assays in Petri dishes with cabbage leaf discs, tomato leaf discs, and green paper discs. Host-plant locating behavior will be evaluated using Y-tube olfactometer experiments comparing caterpillar responses to healthy plants, caterpillar-infested plants, and clean air controls.
+
+**Natural Enemy Interaction Experiments:**
+We will assess caterpillar vulnerability to parasitoids through three approaches: (1) exposing caterpillars to "disarmed" female C. glomerata wasps (ovipositor removed) to test harassment effects without parasitism, (2) exposing caterpillars to unmanipulated parasitoids to measure survival rates, and (3) testing caterpillar responses to plants with different parasitoid presence using Y-tube olfactometry.
+
+**Chemical Analysis Experiments:**
+We will collect volatiles from five treatments: P. brassicae caterpillars alone, C. glomerata wasps alone, caterpillars with wasps together, caterpillar frass, and caterpillar saliva. Volatile collection will be performed through dynamic headspace sampling, followed by GC-MS analysis for compound identification. We will then test caterpillar behavioral responses to selected individual compounds using a custom-made multichannel arena setup.
+
+**Adult Butterfly Experiments:**
+We will conduct EAG experiments on both male and female butterflies using a panel of 54 chemicals to confirm olfactory impairment in KO adults. Mating and oviposition behavior will be assessed by pairing newly emerged butterflies and monitoring egg-laying behavior and mating frequency through spermatophore counts.
+
+All experiments will include appropriate sample sizes (n=7-73 depending on the experiment) and will be conducted under controlled greenhouse or laboratory conditions. Statistical analyses will employ appropriate tests including Student's t-tests, Chi-square tests, Wilcoxon rank-sum tests, and GLMs depending on data distribution and experimental design.

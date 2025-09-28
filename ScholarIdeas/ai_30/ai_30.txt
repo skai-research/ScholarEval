@@ -1,0 +1,25 @@
+# Research Plan: Broad Incremental Detection (BID) for Android Malware Detection
+
+## Problem
+
+We address the challenge of rapidly evolving Android malware that poses significant threats to mobile device security. Current detection systems face substantial limitations when encountering new attack patterns or malware variants, as they typically require complete retraining to maintain effectiveness. Traditional rule-based detection methods struggle with poor adaptability and vulnerability to variant attacks, while deep learning approaches, despite their improved accuracy, suffer from high computational costs, extensive parameter tuning requirements, and time-consuming retraining processes when new malware emerges.
+
+The core problem is developing a detection system that can dynamically adapt to the continuously evolving landscape of Android malware without requiring complete retraining, while maintaining high detection accuracy and computational efficiency. We hypothesize that leveraging incremental learning capabilities within a broad learning system framework can enable real-time adaptation to new malware samples while preserving computational efficiency through a lightweight network architecture.
+
+## Method
+
+We propose a novel Broad Incremental Detection (BID) framework that combines the efficiency of Broad Learning Systems (BLS) with incremental learning capabilities for dynamic Android malware detection. Our approach builds upon the Random Vector Functional Link Neural Network (RVFLNN) architecture, utilizing a single-layer structural neural network with feature nodes and enhancement nodes.
+
+To address the randomness inherent in BLS feature generation, we develop a Sparse Relational Autoencoder (SRAE) that captures both data reconstruction and relational structures between samples. The SRAE minimizes a composite loss function that balances data reconstruction loss, relationship reconstruction loss, and regularization terms. This approach enables more effective feature selection and representation learning compared to traditional sparse autoencoders.
+
+Our incremental learning mechanism leverages the pseudo-inverse calculation properties of BLS to enable dynamic weight updates when new malware samples arrive. Rather than retraining the entire model, we update the system by calculating the pseudo-inverse of partitioned matrices, allowing for efficient incorporation of new data while preserving previously learned knowledge.
+
+## Experiment Design
+
+We will evaluate our BID framework across three comprehensive datasets: TUANDROMD (containing 1,000 benign and 24,553 malware samples with 214 permissions and 27 API calls), CIC-InvesAndMal-2019 (1,187 benign and 407 malware samples with 8,115 features), and CCCS-CIC-AndMal-2020 (162,181 benign and 195,624 malware samples with 9,502 features covering 14 malware categories).
+
+For baseline comparisons, we will implement and evaluate against established methods including SVM with RBF kernel, Naive Bayesian with polynomial model, and deep learning approaches (DeepAMD, BiGRU, and RNN-LSTM). All deep learning models will use consistent parameters (50 epochs, batch size 64) to ensure fair comparison.
+
+We will conduct two primary experimental evaluations: First, standard performance comparison experiments using 70% training and 30% testing splits to assess accuracy, precision, recall, F1-score, and computational time across both binary and multiclass classification tasks. Second, incremental learning experiments using a 5:3:2 ratio for training, testing, and incremental datasets to simulate real-world scenarios where new malware samples become available over time.
+
+The incremental experiments will specifically measure the system's ability to improve performance when incorporating new data without complete retraining, while also evaluating the computational efficiency gains compared to traditional retraining approaches. We will assess whether the combined time for initial training plus incremental updates is less than complete retraining time, demonstrating the practical advantages of our approach for real-time malware detection systems.

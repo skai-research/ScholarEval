@@ -1,0 +1,36 @@
+
+# Research Plan
+
+## Problem
+
+Host selection by mosquitoes is critical for understanding viral circulation and predicting future infection outbreaks. Culex quinquefasciatus, a worldwide distributed vector of several pathogens including West Nile virus (WNV) and Saint Louis encephalitis virus (SLEV), exhibits a seasonal host switching pattern - frequently feeding on birds during spring and early summer, then shifting to mammals towards late summer and autumn. This host switch coincides with increased arboviral activity in human populations during autumn, suggesting that viral spillover from birds to mammals results from mosquito feeding behavior changes.
+
+Several hypotheses have been proposed to explain this seasonal host switch, including host migration patterns, host breeding cycles, changes in host preference, and variations in host density. However, these hypotheses have been poorly supported by field data or are restricted to specific geographic regions. We hypothesize that the seasonal host switch results from the combined effects of blood meal source and seasonality on mosquito reproductive physiology, which may induce metabolic changes affecting host selection patterns.
+
+We expect that seasonal environmental conditions (temperature and photoperiod) interact with blood meal source to influence mosquito fitness, potentially driving host switching behavior. Specifically, we hypothesize that mosquitoes will show greater reproductive success (fecundity and fertility) when fed on mammals in autumn compared to avian hosts, with the opposite pattern expected in summer.
+
+## Method
+
+We will employ a factorial experimental design to assess the interactive effects of blood meal source and seasonality on reproductive traits of Culex quinquefasciatus. Our approach combines controlled laboratory conditions with simulated seasonal environments to isolate the effects of these variables.
+
+We will establish and maintain a laboratory colony of Cx. quinquefasciatus from egg rafts collected locally, with morphological and molecular identification to ensure species accuracy. The colony will be maintained under controlled conditions (28°C, 12L:12D photoperiod, 70% relative humidity) for multiple generations to ensure genetic stability.
+
+For blood meal sources, we will use live chickens (Gallus gallus) as the avian model and mice (Mus musculus, strain C57BL/6) as the mammalian model. Seasonality will be simulated using incubators programmed with temperature and photoperiod conditions representing typical summer (T°min = 22°C, T°max = 28°C, photoperiod = 14L:10D) and autumn (T°min = 16°C, T°max = 22°C, photoperiod = 10L:14D) conditions from Córdoba city.
+
+We will measure three key reproductive traits: fecundity (number of eggs per raft), fertility (number of L1 larvae hatched per raft), and hatchability (ratio of larvae to eggs per raft) across two consecutive gonotrophic cycles.
+
+## Experiment Design
+
+Egg rafts of Culex quinquefasciatus wil be collected from a drainage ditch at Universidad Nacional de Córdoba Campus, Córdoba city Argentina
+
+We will establish four experimental colonies based on the factorial combination of blood source and seasonality: bird-summer, bird-autumn, mammal-summer, and mammal-autumn. Experimental colonies will be reared from eggs to adults under controlled room conditions to ensure uniform adult size, then transferred to incubators for experimental treatments.
+
+Adult mosquitoes will be maintained in cardboard cages and provided with 10% sugar solution ad libitum. We will conduct feeding trials during two consecutive blood meals at 5 and 14 days post-emergence. For each blood meal, 24-hour starved female mosquitoes will be offered restrained live hosts (chickens or mice) for 3 hours during the evening period.
+
+After each blood meal, we will anesthetize females with CO2 and classify them by engorgement status using Sella's staging. Only fully engorged females will be retained for reproductive assessment. Four days post-feeding, we will provide oviposition sites and collect egg rafts for analysis.
+
+For each egg raft, we will photograph and count eggs, then maintain rafts in 12-well plates with distilled water until hatching. After hatching, we will count L1 larvae and fix them with ethanol for preservation. This process will be repeated for the second gonotrophic cycle.
+
+We will analyze fecundity and fertility data using Generalized Linear Models with negative binomial error distribution, with blood source, seasonality, and gonotrophic cycle as explanatory variables in a three-way interaction. For hatchability analysis, we will employ a factorial ANOVA followed by null model analysis via data randomization with 10,000 permutations to test for significant effects, as the data may not follow standard exponential family distributions required for linear regression.
+
+All statistical analyses will be performed using R Studio, and we will evaluate main effects and interactions among the three factors to determine their influence on mosquito reproductive success.

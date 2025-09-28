@@ -1,0 +1,40 @@
+
+# Research Plan
+
+## Problem
+
+Seasonal polyphenism enables organisms to adapt to environmental challenges by increasing phenotypic diversity. Cacopsylla chinensis exhibits remarkable seasonal polyphenism, specifically in the form of summer-form and winter-form, which have distinct morphological phenotypes. Previous research has shown that low temperature and the temperature receptor CcTRPM regulate the transition from summer-form to winter-form in C. chinensis by impacting cuticle content and thickness. However, the underlying neuroendocrine regulatory mechanism remains largely unknown.
+
+We hypothesize that Bursicon, also known as the tanning hormone responsible for the hardening and darkening of the insect cuticle, plays a novel role in the transition from summer-form to winter-form in C. chinensis. Given that insects exposed to cold conditions exhibit larger body size and darker cuticular melanization than those reared in warmer environments, we expect Bursicon and its receptor to play a significant role in the seasonal polyphenism of C. chinensis.
+
+Additionally, we propose that microRNAs (miRNAs) may regulate Bursicon signaling at the post-transcriptional level, as miRNAs have been shown to be important in insect polyphenism and hormone signaling. However, there have been no reports on miRNAs targeting Bursicon and its receptor, making this investigation highly innovative.
+
+## Method
+
+We will employ a multi-faceted approach combining molecular identification, functional analysis, and regulatory mechanism investigation:
+
+**Molecular Characterization**: We will identify and characterize CcBurs-α and CcBurs-β as the two subunits of Bursicon in C. chinensis, along with their receptor CcBurs-R. We will use bioinformatics analysis, sequence alignment, phylogenetic analysis, and protein structure prediction to validate these genes.
+
+**Functional Analysis**: We will investigate the role of Bursicon signaling in seasonal polyphenism using RNA interference (RNAi) technology to knock down individual subunits and the receptor. We will assess the effects on cuticle pigmentation, chitin content, cuticle thickness, and the transition percentage from summer-form to winter-form.
+
+**Regulatory Mechanism Investigation**: We will explore the upstream regulation of Bursicon signaling by examining its relationship with low temperature (10°C) and the temperature receptor CcTRPM. Additionally, we will investigate microRNA regulation by predicting and validating miRNAs that target the Bursicon receptor.
+
+**Protein Expression and Validation**: We will express Bursicon proteins in HEK293T cells to study homodimer and heterodimer formation, and conduct rescue experiments to confirm functional relationships.
+
+## Experiment Design
+
+**Gene Identification and Expression Analysis**: We will analyze temporal and spatial expression patterns of CcBurs-α, CcBurs-β, and CcBurs-R across different developmental stages and tissues using qRT-PCR. We will compare expression levels between summer-form and winter-form individuals to establish baseline differences.
+
+**Temperature Response Studies**: We will expose newly hatched 1st instar nymphs of summer-form to different temperature treatments (25°C vs 10°C) and measure the expression of Bursicon genes at 3, 6, and 10 days post-treatment to determine temperature responsiveness.
+
+**RNAi Functional Studies**: We will conduct RNAi experiments by feeding newly hatched 1st instar nymphs with dsRNAs targeting CcBurs-α, CcBurs-β, CcBurs-R, or control dsEGFP. We will assess RNAi efficiency through qRT-PCR and evaluate functional outcomes through cuticle pigment extraction, chitin content determination, transmission electron microscopy for cuticle thickness measurement, and morphological transition percentage analysis.
+
+**Protein Interaction Studies**: We will express individual Bursicon subunits and co-express them in HEK293T cells, then use SDS-PAGE under reduced and non-reduced conditions to demonstrate homodimer and heterodimer formation.
+
+**MicroRNA Target Validation**: We will predict miRNAs targeting CcBurs-R using bioinformatics tools (miRanda and Targetscan), then validate target relationships through dual-luciferase reporter assays, RNA immunoprecipitation (RIP) assays, and fluorescence in situ hybridization (FISH). We will also conduct functional studies using agomir and antagomir treatments.
+
+**Rescue Experiments**: We will perform rescue experiments by feeding heterodimer proteins to RNAi-treated nymphs to confirm the functional relationship between Bursicon subunits and their receptor.
+
+**Downstream Pathway Analysis**: We will examine the expression of chitin biosynthesis pathway genes (CcTre1 and CcCHS1) following Bursicon signaling manipulation to establish the downstream molecular cascade.
+
+All experiments will be conducted with appropriate biological replicates (typically n=3 with at least 50 individuals per replicate) and will include proper controls. Statistical analysis will be performed using Student's t-test for pairwise comparisons and ANOVA followed by Tukey's HSD for multiple comparisons.

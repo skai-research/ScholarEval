@@ -1,0 +1,39 @@
+# Research Plan: ChunkKV - Semantic-Preserving KV Cache Compression for Efficient Long-Context LLM Inference
+
+## Problem
+
+We identify a critical limitation in existing KV cache compression methods for Large Language Models (LLMs). While current approaches like H2O and SnapKV effectively reduce GPU memory usage by compressing the key-value cache to less than 50% of its original size, they operate on discrete tokens, which leads to significant loss of semantic information. This discrete token-based compression can result in the retention of relevant keywords while omitting crucial contextual information such as subjects, objects, and their relationships.
+
+For example, when processing a passage about animal diets, discrete methods might retain the word "strawberries" while discarding information about which animals consume them, leading to potential misinterpretation. This problem is particularly pronounced in multi-document question-answering tasks where maintaining semantic coherence across multiple sources is essential for accurate comprehension and response generation.
+
+Our hypothesis is that preserving semantic chunks rather than individual tokens will better maintain the contextual relationships necessary for accurate long-context processing while achieving comparable or superior compression ratios.
+
+## Method
+
+We propose ChunkKV, a novel KV cache compression method that preserves semantic information by retaining coherent chunks of tokens rather than individual discrete tokens. Our approach consists of two main components:
+
+**ChunkKV Algorithm**: We will group consecutive tokens into semantic chunks of size c, where each chunk represents a coherent unit of meaning (e.g., subject-verb-object relationships). For compression, we will:
+1. Calculate observation scores for chunks by summing attention scores across tokens within each chunk
+2. Select the top-k chunks based on these aggregated scores using the same selection policy as existing methods
+3. Preserve the sequential order of selected chunks to maintain narrative flow
+4. Concatenate an observation window to retain recent important information
+
+**Layer-wise Index Reuse**: Based on our preliminary analysis showing that ChunkKV produces more similar preserved indices across adjacent layers compared to discrete methods, we will implement a technique to reuse chunk indices across multiple layers. This approach will reduce computational overhead by computing chunk selection only for every Nth layer and reusing those indices for intermediate layers.
+
+We will implement ChunkKV as a drop-in replacement for existing KV cache compression methods, maintaining compatibility with current transformer architectures while providing semantic-aware compression.
+
+## Experiment Design
+
+We will conduct comprehensive experiments across three main evaluation categories:
+
+**Long-Context Benchmarks**: We will evaluate ChunkKV on LongBench and Needle-In-A-HayStack (NIAH) benchmarks using LLaMA-3-8B-Instruct, Mistral-7B-Instruct, and Qwen2-7B-Instruct models. We will test compression ratios of 10%, 20%, and 30% to assess performance across different memory constraints. For LongBench, we will evaluate across 17 datasets covering single-document QA, multi-document QA, summarization, few-shot learning, and synthetic tasks. For NIAH, we will test retrieval capabilities across context lengths of 8k and 32k tokens.
+
+**In-Context Learning Evaluation**: We will assess ChunkKV's effectiveness on GSM8K arithmetic reasoning tasks with Chain-of-Thought prompting at a 30% compression ratio. This will test whether semantic preservation improves the model's ability to maintain reasoning chains across long contexts.
+
+**Ablation Studies**: We will conduct systematic ablation studies to determine optimal chunk sizes ranging from 1 to 30 tokens, evaluate the effectiveness of layer-wise index reuse across different numbers of reuse layers, and analyze the trade-offs between compression efficiency and performance degradation.
+
+**Comparative Analysis**: We will compare ChunkKV against existing methods (StreamingLLM, H2O, SnapKV, PyramidKV) using identical experimental settings. We will measure both task performance and computational efficiency, including compression time and memory usage.
+
+**Similarity Analysis**: We will quantify the semantic preservation capabilities of ChunkKV by measuring layer-wise similarity of preserved indices using Jaccard similarity coefficients and analyzing attention pattern preservation compared to discrete token methods.
+
+All experiments will be conducted three times with mean scores reported to ensure statistical robustness. We will evaluate performance across multiple languages using Qwen2-7B-Instruct on Chinese subtasks to assess cross-lingual effectiveness.

@@ -1,0 +1,44 @@
+
+# Research Plan
+
+## Problem
+
+Global biodiversity is declining at an unprecedented rate, with agriculture identified as a major driver of this decline. Insects, which account for 80% of animal species worldwide, are experiencing particularly severe declines, with terrestrial insect biomass decreasing by 75% in some areas over the last 30 years. This erosion of insect communities threatens ecosystem functioning and provision of ecosystem services essential for crop production.
+
+Current biodiversity conservation strategies in agriculture face a fundamental challenge: how to maintain adequate food production while supporting biodiversity. The concept of land sharing, which combines food production with biodiversity conservation on agricultural land, offers promise but requires sustainable agricultural practices that retain yield while enhancing biodiversity.
+
+Crop diversification, particularly through intercropping, has shown potential to enhance biodiversity without compromising yield. However, traditional intercropping is often considered impractical for mechanized farming systems. Strip cropping—where crops are grown in alternating strips wide enough for standard agricultural machinery yet narrow enough to facilitate ecological interactions among crops—represents a promising alternative that Dutch farmers have pioneered as compatible with standard farm machinery.
+
+We hypothesize that strip cropping systems designed for retaining productivity can also enhance ground beetle biodiversity without incurring major yield loss. Ground beetles serve as excellent indicators for this investigation because they are sensitive to changes in farming practices, frequently used to examine agricultural sustainability, and hold keystone positions in agroecosystem food webs as scavengers, predators, and detritivores.
+
+## Method
+
+We will conduct a multi-location study across four organic farms in the Netherlands to compare ground beetle communities between strip cropping and monocultural systems. Our approach will utilize ground beetles as indicator organisms due to their sensitivity to agricultural management changes and their role as representatives of wider insect diversity in agroecosystems.
+
+We will employ pitfall trapping as our primary sampling method to capture ground beetle communities across different crops, seasons, and years. This standardized approach will allow us to assess both taxonomic richness and activity density of ground beetle populations.
+
+Our analytical framework will include several complementary approaches:
+- Rarefaction analysis to account for differences in sampling effort between treatments
+- Generalized Linear Mixed Models (GLMM) to analyze biodiversity metrics while accounting for the hierarchical structure of our data
+- Community composition analysis using permanova and redundancy analysis (RDA) to examine changes in ground beetle assemblages
+- Indicator species analysis to identify species specifically associated with different cropping systems
+
+We will calculate multiple biodiversity indices including taxonomic richness, activity density, inverse Simpson index, absolute evenness, and Shannon entropy to provide a comprehensive assessment of ground beetle community responses to strip cropping.
+
+## Experiment Design
+
+We will establish our study across four experimental locations in the Netherlands: Almere, Lelystad, Valthermond, and Wageningen. These sites will provide variation in soil types, landscape contexts, and strip cropping configurations while maintaining organic management practices throughout.
+
+The experimental design will compare two cropping configurations:
+1. Strip cropping fields with alternating crop strips (3-6 meters wide depending on location)
+2. Large-scale monoculture plots (0.25-2.30 hectares) as reference treatments
+
+At each location, we will ensure that strip cropping and monoculture fields are paired within the same experimental field to control for local environmental conditions. The strip configurations will vary by location: some sites will feature all crops grown alongside each other in multi-crop systems, while others will focus on two-crop alternating patterns.
+
+Ground beetle sampling will be conducted using pitfall traps (8.5 cm diameter plastic cups) placed flush with the soil surface and filled with soapy water. Traps will be covered with black roofs and positioned at least 10 meters from field edges, always in the center of strips in strip cropping systems. We will conduct multiple sampling rounds per year between March and September across four years of data collection.
+
+Sampling effort will be standardized within each comparison, though it may vary between locations and years based on logistical constraints. We will pool all ground beetle catches from the same pitfall trap per year to create "year series" for analysis, which will account for seasonal variation in ground beetle activity.
+
+We will identify ground beetles to species level where possible, though some locations and years may require identification to genus level. This taxonomic data will allow us to examine both overall community patterns and responses of individual taxa to strip cropping systems.
+
+The experimental design will account for the nested structure of our data, with crops nested within years, years nested within locations, and multiple pitfall traps nested within fields. This hierarchical approach will allow us to separate the effects of strip cropping from other sources of variation while maintaining sufficient replication for robust statistical analysis.

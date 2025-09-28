@@ -1,0 +1,49 @@
+# Research Plan
+
+## Problem
+
+Large Language Models (LLMs) are increasingly deployed in high-stakes applications such as autonomous systems, computer task automation, and ML experimentation. In these critical use cases, it is essential to predict whether an LLM will succeed on a specific task instance (prompt) before executing subsequent actions. While "assessors" - independent modules that predict AI system performance on individual instances - have been developed, they typically require evaluating each new LLM on sufficiently many instances to achieve reliable predictions.
+
+The rapid proliferation of new LLM versions, with providers frequently retiring old models and releasing new ones, creates a significant cost burden when building LLM-specific assessors. Meanwhile, generic assessors that work across different LLMs typically rely on system features like parameter counts or training data statistics, which are often unavailable for proprietary models and not standardized across different LLM families.
+
+We hypothesize that we can combine evaluation information across multiple LLMs to predict the performance of a new LLM on novel instances by characterizing each LLM through its performance on a small set of reference instances, rather than relying on unavailable architectural or training details.
+
+## Method
+
+We propose a framework that builds a "generic assessor" capable of predicting any LLM's performance on individual instances using only the LLM's performance on a small reference set and intrinsic features of the target instance.
+
+Our approach consists of three main components:
+
+1. **Reference Instance Selection**: From existing evaluation datasets, we will extract a small set of representative reference instances using various selection methods including K-means clustering, Factor Analysis, and Item Response Theory (IRT). We will test these against random selection baselines.
+
+2. **LLM Characterization**: Instead of using unavailable architectural features, we will characterize each LLM by its binary success vector on the reference instances, creating observational features that capture LLM behavior.
+
+3. **Generic Assessor Training**: We will train a classifier that takes as input both instance-intrinsic features (such as text embeddings) and LLM-specific performance vectors on reference instances. The assessor will predict binary correctness scores for LLM-instance pairs.
+
+For instance features, we will test various text representations including OpenAI embeddings, Word2Vec, FastText, and n-gram frequencies. For the classifier, we will experiment with logistic regression (with L1 and L2 penalties) and XGBoost.
+
+## Experiment Design
+
+We will conduct experiments on two dataset collections:
+
+1. **HELM-Lite**: A subset of scenarios with binary performance metrics, containing 4,285 instances across 6 scenarios, with results available for 30 LLMs from different providers.
+
+2. **KindsOfReasoning**: A new collection we will create comprising 22 existing reasoning datasets (37,529 instances total) covering logical, common sense, inductive, deductive, abductive, counterfactual, causal, analogical, spatial, and arithmetic reasoning. We will evaluate all instruction-tuned OpenAI models from text-ada-001 to gpt-4-0125-preview.
+
+Our experimental design includes:
+
+**Data Splits**: We will create train/validation/test splits for both instances (56%/14%/30%) and LLMs, ensuring test LLMs are substantially different from training LLMs (e.g., different providers or model families).
+
+**Baseline Comparisons**: We will compare our generic assessor against:
+- LLM-specific assessors trained on full evaluation data
+- Random reference instance selection
+- Assessors using only reference instance performance
+- Assessors using only pooled training data without LLM-specific features
+
+**Evaluation Metrics**: We will use Area Under the Curve (AUC) as our primary metric, as it allows comparison across different scenarios and class distributions while being insensitive to monotonic transformations.
+
+**Ablation Studies**: We will systematically test different numbers of reference instances (30, 100, 300, 1000) and various combinations of instance features, reference selection methods, and base classifiers.
+
+**Out-of-Distribution Testing**: We will evaluate robustness by creating OOD splits where test datasets come from different reasoning types or domains than training data.
+
+The experiments will determine the minimum number of reference instances needed for effective prediction, identify the most informative instance features and selection methods, and assess the generalizability of our approach across different LLM families and task distributions.

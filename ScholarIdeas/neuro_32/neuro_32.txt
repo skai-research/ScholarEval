@@ -1,0 +1,26 @@
+
+# Research Plan
+
+## Problem
+
+Fine touch perception is commonly correlated with material properties and friction coefficients, but the inherent variability of human motion has led to low correlations and contradictory findings in the literature. The fundamental issue is that sliding friction in soft systems exhibits significant oscillations in forces arising from microscale stick-slip, adhesion, and elasticity. Human variability in finger velocity and pressure means that variations in friction encountered on a single object can be larger than variations between two distinct objects, making traditional friction coefficient measurements unreliable predictors of tactile perception.
+
+We hypothesize that humans use frictional instabilities—rather than average friction coefficients—to discriminate between objects. These frictional instabilities arise from competition between finger elasticity and adhesion to substrates. In the experimental parameter space of finger pressure and velocity, boundaries where one instability type forms versus another depend on surface composition. We propose that humans actively explore surfaces to find transitions between different types of frictional instabilities to distinguish surfaces. This approach would be advantageous because instability classification is less variable than raw friction forces typically seen in macroscopic experiments.
+
+## Method
+
+We will construct "minimal" tactile surfaces using vapor deposition of silanes onto silicon wafers. These surfaces will have physical variations in roughness below human detection limits and identical bulk and thermal properties at the human scale, with differences only in surface chemistry. The role of these chemical differences will be to shift boundaries between frictional instabilities to different finger pressures and velocities.
+
+Since no existing method can accurately predict phase maps of instabilities for elastic bodies from molecular structure, we will experimentally determine frictional instability maps using a mechanical apparatus with a mock finger. We will create a PDMS mock finger that mimics human finger mechanical properties, including appropriate stiffness (100 kPa), a rigid "bone" component, and surface treatment to replicate the stratum corneum.
+
+We will categorize friction traces into three broad phases based on competition between adhesion and finger elasticity: steady sliding (constant friction force with high-frequency oscillations), slow frictional waves (large oscillations at frequencies lower than microscopic stick-slip), and stiction spikes (singular large-magnitude events preceding smoother traces).
+
+## Experiment Design
+
+We will conduct mechanical testing using our PDMS mock finger across six different surface coatings and 16 combinations of finger sliding velocity (5, 10, 25, and 45 mm/s) and applied mass (0, 25, 75, and 100 g plus 6 g finger weight). We will collect friction force traces at 550 Hz sampling rate, gathering nine traces per mass-velocity combination for each surface to observe multiple instability occurrences.
+
+For human testing, we will perform three-alternative forced choice tests with 10 participants across 600 total trials. Participants will be presented with three surfaces (two identical, one different) and asked to identify the odd sample. We will select six pairs of surfaces with varying ranges of instability differences based on mechanical testing results. Participants will use only vertical downward motions with their dominant index fingers to mimic mechanical testing conditions.
+
+We will use generalized linear mixed models (GLMM) to correlate participant accuracy and response times with differences in instability frequencies between surface pairs. We will compare these correlations against traditional metrics including average friction coefficient, surface roughness, and contact angle hysteresis.
+
+To confirm that humans generate similar instabilities during exploration, we will conduct a two-alternative forced choice task where participants explore surfaces while we measure tangential and normal forces in real-time, allowing us to identify the same instability types observed in mock finger testing.

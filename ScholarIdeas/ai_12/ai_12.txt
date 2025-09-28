@@ -1,0 +1,48 @@
+# Research Plan: StarCraft II Arena - Evaluating LLMs in Strategic Planning, Real-Time Decision Making, and Adaptability
+
+## Problem
+
+We aim to address the inadequate evaluation of Large Language Models (LLMs) as agents in complex strategic environments. Current evaluation approaches primarily rely on final success rates or win rates, which fail to capture the nuanced decision-making processes and intermediate capabilities of LLMs during sequential decision-making tasks. This singular metric approach is insufficient for understanding how LLMs handle complexity, adapt to changing conditions, or demonstrate strategic reasoning in dynamic environments.
+
+Our hypothesis is that LLMs possess varying strengths across different cognitive dimensions - strategic planning, real-time decision-making, and adaptability - that cannot be adequately assessed through traditional binary success metrics. We believe that by decomposing strategic reasoning into these core components and implementing fine-grained evaluation metrics, we can provide a more comprehensive understanding of LLM capabilities in complex interactive environments.
+
+The motivation for this research stems from the growing deployment of LLMs in real-world applications requiring strategic reasoning, where understanding their specific strengths and limitations is crucial for effective implementation. StarCraft II provides an ideal testbed due to its combination of imperfect information, strategic and tactical elements, dynamic environments, and real-time constraints.
+
+## Method
+
+We will develop StarCraft II Arena, a comprehensive benchmark framework that evaluates LLMs across three core dimensions of strategic reasoning capability:
+
+**Strategic Planning**: We will assess long-term resource management, technological advancement planning, and overall strategic coherence. This dimension captures the LLM's ability to maintain broad perspective, allocate resources efficiently, and formulate sustainable long-term strategies.
+
+**Real-Time Decision Making**: We will evaluate the model's ability to process dynamic information rapidly and adjust tactics in response to immediate threats or opportunities. This tests the LLM's capacity for quick information processing while maintaining strategic objectives.
+
+**Adaptability**: We will measure the model's flexibility in adjusting strategies based on opponent behavior, environmental changes, and previous feedback. This dimension assesses learning from experience and strategic innovation over time.
+
+Our approach models the StarCraft II environment as a Partially Observable Markov Decision Process (POMDP) with two-level inference: high-level strategic planning and low-level tactical execution. We will implement fine-grained capability metrics that capture specific competencies rather than relying solely on win rates.
+
+## Experiment Design
+
+We will conduct comprehensive evaluations of multiple state-of-the-art LLMs, including both proprietary models (GPT-4o, GPT-4o mini, GPT-3.5 Turbo, Gemini 1.5 Flash) and open-source models (DeepSeek-V2.5, Llama-3.1-8B-Instruct, Llama-3.1-70B-Instruct).
+
+**Experimental Setup**: Each model will be tested across multiple scenarios with different opponent strategies (Macro, Rush, Random) in both synchronous and asynchronous operational modes. We will conduct multiple runs per model to ensure statistical reliability.
+
+**Fine-Grained Metrics**: We will implement quantitative metrics including:
+- Resource Management Ability (RPM): Total minerals and vespene gas collected
+- Supply Utilization Rate (SUR): Ratio of supply used to maximum capacity  
+- Actions Per Minute (APM): Total actions divided by game time
+- Effective Actions Per Minute (EPM): Meaningful actions per minute
+- Win Rate Trend and Error Rate Trend for adaptability assessment
+
+**Decision Tracking System**: We will implement a comprehensive behavioral analysis system that records key decisions throughout gameplay, including:
+- Action Type: Specific decision categories (resource allocation, unit production, etc.)
+- Decision Context: Game state and objectives at decision time
+- Outcome: Consequences of decisions on gameplay
+
+**Qualitative Analysis**: We will analyze decision trajectories through metrics such as:
+- Unit Construction Order: Sequence and timing of unit production
+- Key Building Completion Time: Timing of critical infrastructure
+- Strategy Innovation Rate: Frequency of adopting new strategic approaches
+
+**Testing Scenarios**: Models will be evaluated across different game phases (Early, Mid, Mid-to-Late) to assess performance consistency and strategic evolution over time.
+
+The experimental design will allow us to capture both quantitative performance data and qualitative insights into LLM decision-making processes, providing a comprehensive evaluation framework that goes beyond traditional success rate metrics.

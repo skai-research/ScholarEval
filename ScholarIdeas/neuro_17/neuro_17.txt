@@ -1,0 +1,45 @@
+
+# Research Plan: Striatal Crosstalk Between Dopamine and Serotonin Systems
+
+## Problem
+
+We aim to investigate the complex and poorly understood interactions between dopamine (DA) and serotonin (5-HT) systems in the striatum. Two conflicting hypotheses exist regarding these interactions. The opponency hypothesis suggests that DA and 5-HT have opposite functions, with DA promoting behavioral activation while 5-HT suppresses behavior. Pharmacological studies support this view, showing that DA and 5-HT agonists or antagonists have opposite effects on reward processing, feeding behavior, and self-stimulation. Recent fiber photometry recordings further suggest that DA and 5-HT exhibit inverse activity patterns in the striatum in response to reward and following choice actions.
+
+Alternatively, 5-HT could directly enhance DA activity or share properties that facilitate reinforcement processing similar to DA. Local 5-HT infusion into the striatum can increase extracellular DA levels, and selective serotonin reuptake inhibitors (SSRIs) can modulate DA self-stimulation thresholds and enhance cocaine's reinforcing effects. Furthermore, serotonergic activity in the dorsal raphe interacts with DA, encoding complementary aspects of reward processing.
+
+These discrepancies suggest complex mechanisms underlying DA-5-HT crosstalk that remain largely elusive, underscoring a complex interplay driven by receptor-specific interactions and overlapping projections. Both DA and 5-HT are involved in reinforcement and decision-making in opposing and complementary ways, and an imbalance between these systems is implicated in various psychiatric disorders, including depression, schizophrenia, compulsion, and addiction.
+
+There is increasing recognition of the functional and anatomical overlap between VTA DA neurons and DRN 5-HT neurons, particularly in the striatum, where both systems have dense projections and colocalizations. However, few studies have addressed the bidirectional interactions between the DA and 5-HT systems in response to specific neuronal stimulation, and the interaction between dorsal raphe serotonergic neurons and striatal DA transmission remains controversial.
+
+We hypothesize that selective activation of DA and serotonin neurons will reveal specific patterns of neurotransmitter release that will help clarify whether these systems operate independently, in opposition, or in cooperation within the striatum.
+
+## Method
+
+We will employ a multi-methodological approach combining optogenetics, fiber photometry with genetically-encoded neurotransmitter sensors, and slice electrophysiology to investigate the bidirectional interactions between DA and 5-HT systems.
+
+Our approach will utilize recent advancements in GPCR sensors and refined optogenetic tools to allow for real-time observation of neurotransmitter dynamics, enabling targeted interventions and establishing causal links. We will stimulate DA neurons in the VTA and 5-HT neurons in the DRN to investigate the reciprocal interactions between these systems and elucidate their crosstalk mechanisms.
+
+We will use DAT-IRES-Cre and SERT-Cre transgenic mice to achieve cell-type specific targeting. For optogenetic stimulation, we will inject AAV8-syn-Flex-Chrimson-tdTomato into either the VTA of DAT-Cre mice or the DRN of SERT-Cre mice. To monitor neurotransmitter release, we will inject AAV5-CAG-dLight1.2 for DA detection or AAV9-hSyn-5-HT3.0 for 5-HT detection into the nucleus accumbens (NAc) and dorsal striatum (DS).
+
+For electrophysiological investigations, we will use whole-cell patch-clamp recordings in acute brain slices to examine synaptic connections and potential glutamate co-release from serotonergic neurons, as DR projections have been reported to release glutamate in addition to serotonin.
+
+## Experiment Design
+
+We will conduct three main experimental series:
+
+**Experiment 1: VTA DA neuron stimulation effects**
+We will test whether optogenetic stimulation of VTA DA neurons results in DA and/or 5-HT release in the striatum. We will inject AAV-FLEX-ChrimsonR-tdTomato into the VTA of DAT-Cre mice and AAV-dLight or AAV-GRAB5HT in the NAc or DS to monitor DA or 5-HT levels respectively. We will deliver optogenetic stimulation consisting of 5 pulses, each composed of 30 bursts separated by 250 ms (each burst consisting of 5 laser pulses of 4-ms pulse width at 20 Hz). We will use fiber photometry to record neurotransmitter dynamics in real-time and compare responses to passive cocaine injection (15mg/kg) as a positive control.
+
+**Experiment 2: DRN SERT neuron stimulation effects**
+We will test whether stimulation of DRN SERT neurons produces release of DA or 5-HT in the striatum. We will inject AAV-FLEX-ChrimsonR-tdTomato into the DRN of SERT-Cre mice and monitor both DA and 5-HT levels in NAc and DS using the same stimulation protocol and recording methods as in Experiment 1. We will again use cocaine injection as a positive control for comparison.
+
+**Experiment 3: Electrophysiological characterization of synaptic connections**
+To investigate potential mechanisms underlying any observed crosstalk, we will examine synaptic afferents onto midbrain and striatal neurons in acute slice preparations. We will combine optogenetic projection targeting with whole-cell recordings to parse synaptic currents in identified regions including the DS, anterior and posterior NAc shell, orbitofrontal cortex (OFC), and VTA. We will use NBQX/AP5 to block glutamatergic transmission and determine whether DRN SERT neurons make excitatory synapses onto neurons in these regions.
+
+**Behavioral paradigm:**
+After 4-5 weeks of viral expression, we will habituate mice to handling and connection cables for three days before testing. On testing days, we will place mice in a transparent open-field chamber for 3 minutes of habituation, followed by 5 minutes of baseline recording, optogenetic stimulation, another 5 minutes of baseline recording, cocaine injection (15mg/kg i.p.), and 40 minutes of additional recording.
+
+**Data analysis:**
+We will analyze fiber photometry data using MATLAB, computing ΔF/F signals and normalizing to baseline. We will measure area under the curve for 5-second windows during baseline and after stimulation, and compare peak signals after optogenetic stimulation to those after cocaine injection. For electrophysiology, we will record optogenetic EPSCs with single or paired pulses at 0.1 Hz in the presence of picrotoxin to isolate excitatory currents.
+
+We expect this experimental design will allow us to determine whether DA and 5-HT systems operate independently, show reciprocal interactions, or demonstrate more complex patterns of crosstalk in the striatum.

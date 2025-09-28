@@ -1,0 +1,40 @@
+
+# Research Plan
+
+## Problem
+
+Plant-insect communication has been extensively studied across multiple sensory modalities including vision, olfaction, and mechanoreception, but plant-insect acoustic communication has never been demonstrated. Recent findings show that plants emit ultrasonic sounds, particularly under dehydration stress, which are airborne and potentially detectable by ultrasound-hearing moths from several meters away. These sounds can serve as reliable cues for plant condition, specifically indicating drought stress.
+
+Many moth species have evolved ultrasonic hearing abilities with sensitivity typically falling within the 20-60 kHz range. Two main hypotheses exist for the evolution of these hearing organs: detection of ultrasonic signals from male moths for sexual communication, and anti-predator mechanisms to detect bat echolocation calls. Regardless of their evolutionary origin, these hearing abilities allow moths to detect various additional sounds, including plant dehydration clicks which have spectra overlapping with moths' hearing range and peak around 50kHz.
+
+We hypothesize that herbivorous female moths with ultrasonic hearing might exploit ultrasonic plant emissions as cues to infer plant condition and employ this information for oviposition decisions. The selection of an oviposition site significantly impacts the fitness of hatching herbivorous larvae, making it one of the most critical decisions in a female moth's life.
+
+## Method
+
+We will focus on the Egyptian cotton leafworm (Spodoptera littoralis) from the Noctuidae family, which is a generalist herbivore with ultrasonic-sensitive tympanic ears. This species' hearing has been shown to be most sensitive around 38kHz, a frequency within the plant's click spectrum, and the spectra of male clicks broadly overlap with plant clicks.
+
+We will employ a two-alternative forced choice paradigm using experimental arenas (100×50×50 cm³) divided in the middle, offering moths two choices on either side. We will assess moth preferences by comparing the number of egg clusters laid on each side, using clusters rather than individual eggs as our response variable since each cluster represents a distinct oviposition decision.
+
+Our approach will involve multiple experimental conditions to isolate the acoustic component from other sensory modalities and validate the specificity of the response. We will use drought-stressed plant sounds recorded from real drying tomato plants and play them back through speakers at biologically relevant intensities and frequencies.
+
+## Experiment Design
+
+We will conduct six main experiments:
+
+**Experiment 1**: We will test baseline preference by placing moths in arenas with one drought-stressed and one fresh tomato plant (without acoustic playback) to establish their natural oviposition preference.
+
+**Experiment 2**: We will test acoustic preference in isolation by playing drought-stressed plant sounds on one side of the arena while maintaining silence on the other side, with no plants present. Small mesh boxes wrapped with paper towels will encourage oviposition, with speakers placed underneath to prevent direct vibration detection.
+
+**Experiment 3**: We will conduct deafening experiments by surgically puncturing the tympanic membranes of female moths and testing their response to the same acoustic setup as Experiment 2 to confirm that responses are auditory-based.
+
+**Experiment 4**: We will test acoustic influence in the presence of plants by placing healthy tomato plants on both sides of the arena while playing drought-stressed sounds on one side and maintaining silence on the other.
+
+**Experiment 5**: We will test specificity by using male moth courtship clicks instead of plant sounds to determine whether responses are specific to plant acoustic emissions.
+
+**Experiment 6**: We will conduct a sound gradient experiment using elongated arenas (150×20×5 cm³) with a single moth, placing a speaker on one end and a silent resistor on the other, with a sugar feeder in the center.
+
+For acoustic playback, we will use sounds recorded from drought-stressed tomato plants at intensities of approximately 60 dB SPL at 10 cm distance. We will play back clicks at rates of 30-60 per minute, which we will validate as ecologically relevant by recording from patches of drought-stressed plants.
+
+We will track moth behavior continuously in some experiments using IR cameras to understand their decision-making process and movement patterns. Each treatment will be repeated at least 9 times with new sets of moths, and moths will be observed for several consecutive nights to ensure adequate sample sizes.
+
+We will use mixed-effect generalized linear models (GLMM) for statistical analysis, with the number of clusters as the response variable, treatment as a fixed effect, and arena number, repetition round, and night as random effects. We will also implement Bayesian model fitting to understand choice-based decisions more deeply.

@@ -1,0 +1,23 @@
+# Research Plan
+
+## Problem
+
+We investigate the fundamental performance gap between BERT-family models and autoregressive (AR) models in text generation tasks. While BERT-family models have demonstrated excellent performance in language understanding tasks, they consistently underperform compared to AR models in generation scenarios, even with task-specific fine-tuning and iterative decoding methods. We hypothesize that this performance gap stems from a critical mismatch in sequence decomposition strategies: AR models naturally decompose text sequences in a left-to-right fashion during both training and inference, while BERT-family models are trained using random decomposition (random masking) but must identify optimal composition paths during inference. This training-inference mismatch creates a significant challenge that has not been adequately addressed in existing approaches. Additionally, the generative potential of BERT-family models without fine-tuning remains largely unexplored, representing a gap in our understanding of these models' capabilities.
+
+## Method
+
+We propose two complementary methods to address the sequence decomposition mismatch in BERT-family models. First, we introduce **path selection**, which expands the search space during inference by sampling multiple optional decoding paths from candidate spaces and selecting the best one based on highest total prediction probability. Instead of following a single predetermined path as in the standard Mask-Predict algorithm, we allow k candidate selections for re-masked tokens with the lowest-k total prediction probabilities at each decoding step, similar to beam search in AR models. To reduce computational overhead, we implement a simplified version that limits search complexity.
+
+Second, we propose **path selection***, which integrates path selection into the training process to enable models to learn preferences for specific decoding paths. Drawing inspiration from Direct Preference Optimization (DPO), we train the model using positive-negative sample pairs generated from different decoding paths. We randomly sample two different decoding paths for masked tokens, generate corresponding outputs, and use scoring functions (exact match accuracy or BLEU score) to identify positive and negative samples. We then apply a modified DPO loss combined with penalty terms to prevent failure cases and traditional masked language modeling loss.
+
+To support fair evaluation, we develop Generative BERT (GeBERT), a new BERT-family variant with modified masking mechanisms during training, incorporating modern techniques like Rotary Positional Embedding (RoPE) and SwiGLU activation functions.
+
+## Experiment Design
+
+We will conduct comprehensive experiments across two main categories of tasks. For zero-shot evaluation, we will assess GeBERT on common sense reasoning and reading comprehension tasks including ARC-easy, ARC-challenge, BoolQ, PIQA, SIQA, WinoGrande, Race, SciQ, LogiQA, HellaSwag, and TruthfulQA using the Language Model Evaluation framework. We will compare against AR baselines including OPT, GPT-neo, Pythia, and RWKV models with comparable parameters (≈150M and ≈350M).
+
+For task-specific generation evaluation, we will fine-tune models on XSUM (summarization) and MSQG (question generation) datasets, comparing against both AR baselines (MASS, BART, ProphetNet) and NAR baselines (BANG, ELMER, PreDAT, MIST, DEER). We will measure performance using ROUGE F1 scores for XSUM and BLEU, ROUGE-L, and METEOR for MSQG, while also evaluating generation speed compared to AR models.
+
+We will pre-train two versions of GeBERT (124M and 352M parameters) on the Pile dataset for 150k update steps using our generative masked language modeling objective. The training will incorporate our novel masking strategy that decomposes instances into prefix and suffix parts with different masking ratios. For path selection* training, we will initialize policy and reference models from fine-tuned checkpoints, freeze the reference model, and update the policy model using our combined loss function with hyperparameters λ₁ and λ₂ to balance different loss components.
+
+We will conduct ablation studies to analyze different decoding path selection methods, compare with token-aware beam search approaches, and examine the effects of various hyperparameter settings in our path selection* method. All experiments will be conducted using consistent evaluation frameworks to ensure fair comparison across different model architectures.

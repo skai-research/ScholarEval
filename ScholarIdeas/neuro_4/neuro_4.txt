@@ -1,0 +1,47 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the mechanisms underlying natural forgetting and its relationship to memory engram expression. Current understanding of memory storage emphasizes that memories are stored as ensembles of engram neurons, and successful recall involves reactivation of these cellular networks. However, significant gaps remain in connecting these cell ensembles with the process of forgetting.
+
+The standard view in the field considers forgetting as a deficit of memory function due to loss or dissipation of the engram. We propose a new conceptualization based on recent findings that emphasize retrieval deficits as a key characteristic of memory impairment. We hypothesize that natural forgetting represents a reversible suppression of engram ensembles due to experience and perceptual feedback, prompting cellular plasticity processes that modulate memory access adaptively.
+
+Our central hypothesis is that forgetting may be an adaptive form of engram plasticity which allows engrams to switch from an accessible state to an inaccessible state, rather than representing actual loss of the memory trace. We propose that different forms of forgetting may exist along a gradient of engram activity or expression, where altered engram accessibility may be caused by structural plasticity in the engram or competing engrams of similar or recent experiences.
+
+## Method
+
+We will utilize a mouse model of object memory based on an object recognition task that exploits the natural tendency of mice to explore novel stimuli. This approach will allow us to assess recognition memory over time and investigate the conditions under which a memory can be preserved, retrieved, or forgotten.
+
+Our methodology will employ c-fos-tTA transgenic mice combined with AAV9-TRE viral vectors to label and manipulate engram cells within the dentate gyrus. The c-fos promoter will allow us to selectively label neurons active during learning, while doxycycline control will restrict labeling to specific time windows. We will use optogenetic approaches with ChR2 for activation and ArchT for inhibition of identified engram cells.
+
+To investigate experience-dependent modulation of forgetting, we will implement several behavioral interventions including environmental enrichment, brief reminder exposures, and repeated context-only exposures. We will also employ pharmacological approaches targeting Rac1 signaling, which has been implicated in memory encoding, consolidation, and active forgetting.
+
+We will develop a computational model based on error-driven learning principles to formalize our hypothesis that forgetting represents adaptive learning. This model will incorporate the concept of "engram relevancy" that is dynamically updated based on prediction errors, where engrams subjectively less relevant for adaptive behavior are more likely to be forgotten.
+
+## Experiment Design
+
+We will conduct a series of experiments to test our hypotheses:
+
+**Experiment 1: Natural Forgetting Timeline**
+We will establish the temporal dynamics of object memory forgetting by testing mice at 24 hours, 1 week, 2 weeks, and 3 weeks after acquisition training. We will measure both behavioral performance and engram reactivation patterns.
+
+**Experiment 2: Engram Necessity and Sufficiency**
+Using optogenetic approaches, we will test whether dentate gyrus engrams are necessary for memory retrieval by inhibiting them during recall tests. We will also test sufficiency by activating engrams after natural forgetting has occurred.
+
+**Experiment 3: Environmental Enrichment Effects**
+We will house mice in enriched environments containing additional objects and stimuli, then assess forgetting rates and engram reactivation patterns compared to standard housing conditions.
+
+**Experiment 4: Reminder-Induced Memory Recovery**
+We will expose mice to brief reminder sessions consisting of the original training environment and objects, then test whether this can restore access to forgotten memories and increase engram reactivation.
+
+**Experiment 5: Context-Only Exposure**
+We will repeatedly expose mice to the training context without objects to test whether this accelerates forgetting by updating the original memory engram. We will also test whether optogenetic inhibition of the engram during these exposures prevents the accelerated forgetting.
+
+**Experiment 6: Rac1 Modulation**
+We will pharmacologically inhibit or activate Rac1 signaling and assess effects on forgetting rates and engram reactivation patterns.
+
+**Experiment 7: Morphological Analysis**
+We will perform detailed analysis of dendritic spine density and volume in engram cells following successful recall versus forgetting conditions.
+
+Throughout all experiments, we will quantify engram reactivation by measuring colocalization of original engram markers (eYFP) with c-Fos expression during memory tests. We will also measure discrimination indices based on novel versus familiar object exploration times. Our computational model will be fitted to behavioral data using maximum likelihood approaches to estimate learning rate parameters and test predictions across different experimental conditions.

@@ -1,0 +1,49 @@
+
+# Research Plan: The Transformation of Sensory to Perceptual Braille Letter Representations in the Visually Deprived Brain
+
+## Problem
+
+We aim to investigate experience-based plasticity of the human cortex at its boundaries by studying information processing in individuals who lost vision at birth or early in life. The complete loss of a sensory modality represents one of the most extreme changes in human experience, providing a unique experimental opportunity to characterize cortical plasticity at its limits.
+
+Previous research has shown that cortical structures most strongly activated by visual input in sighted brains are activated by various cognitive functions in visually deprived brains, including braille reading. However, overlapping functional responses alone cannot inform us about the nature of these activations - specifically, what kind of information they represent and what role they play in cognitive processing.
+
+We will investigate the tactile braille system in blind participants to elucidate the nature of information processing in the visually deprived brain. Braille readers commonly use both hands, requiring their brain to transform sensory tactile input into a hand-independent perceptual format. We will use this practical everyday requirement to experimentally characterize the transformation of sensory to perceptual braille letter representations.
+
+We operationalize sensory braille letter representations as representations coding information specific to the hand that was reading (hand-dependent), while perceptual braille letter representations are those coding information independent of which hand was reading (hand-independent).
+
+## Method
+
+We will combine fMRI and EEG in a multivariate analysis framework to determine the cortical location and temporal emergence of sensory and perceptual representations. To ascertain the functional role of identified representations, we will relate them to behavioral similarity ratings.
+
+Our experimental approach involves recording brain activity while blind participants read braille letters with their left or right index finger. We will deliver braille stimuli using single piezo-electric refreshable cells, allowing participants to read braille letters without moving their finger, thus avoiding finger motion artifacts in the brain signal and analyses.
+
+We will use a common experimental paradigm for fMRI and EEG adapted to the specifics of each imaging modality. The stimulus set will consist of ten different braille letters, with eight letters entering the main analysis and two letters serving as vigilance targets.
+
+For multivariate classification, we will assess fMRI voxel patterns to reveal where sensory braille letter representations are located in the cortex, and EEG electrode patterns to reveal the temporal dynamics of braille letter representations. We will measure perceptual representations by training classifiers on brain data recorded during stimulation of one hand and testing on data recorded during stimulation of the other hand (across-hand classification). For sensory representations, we will use a two-step procedure: first conducting within-hand classification (training and testing on the same hand), then subtracting across-hand from within-hand classification results to isolate sensory from perceptual representations.
+
+## Experiment Design
+
+### Participants and Stimuli
+We will recruit individuals who lost vision at birth or early childhood (≤3 years) for three separate experiments: fMRI (target N=15), EEG (target N=11), and behavioral similarity ratings (target N=19). We will present braille letters (B, C, D, L, M, N, V, Z) to participants' left and right index fingers using piezo-actuated refreshable braille cells. Two additional letters (E, O) will serve as catch stimuli requiring foot responses.
+
+### fMRI Experiment
+We will conduct fMRI sessions including structural imaging, a localizer run, and multiple runs of the main experiment. During the main experiment, we will present letters for 500ms with a 2500ms inter-stimulus interval. Each of the 16 experimental conditions (8 letters × 2 hands) will be repeated multiple times per run in random order, interspersed with catch trials and null trials.
+
+We will perform a separate localizer experiment with four conditions: braille letters and fake letters read with left and right hands, to define regions of interest along both tactile processing and sighted reading pathways.
+
+### EEG Experiment  
+The EEG experiment will use a similar design adapted for EEG specifics, with 500ms letter presentations and 500ms inter-stimulus intervals for regular trials, and longer intervals for catch trials to avoid movement contamination. We will record from 64 channels using standard 10-10 electrode placement.
+
+### Behavioral Experiment
+In a separate behavioral session, we will ask participants to rate the perceived similarity of braille letter pairs on a scale from 1 (very similar) to 7 (very different), presenting letter pairs on two adjacent braille cells.
+
+### Analysis Plan
+We will focus our investigation on two sets of cortical regions: tactile processing areas (somatosensory cortices S1 and S2, intra-parietal cortex, insula) and sighted reading areas (early visual cortex, V4, lateral occipital complex, letter form area, visual word form area).
+
+**Hypothesis 1:** We predict that sensory braille letter information will be represented in tactile processing areas, while perceptual braille letter representations will be located in sighted reading areas.
+
+**Hypothesis 2:** We expect that sensory braille letter representations will emerge in time before perceptual braille letter representations, analogous to sequential processing in visual and auditory domains.
+
+**Hypothesis 3:** We hypothesize that identified sensory and perceptual braille letter representations will be in a suitable format to be behaviorally relevant, as measured through correlation with perceived similarity ratings using representational similarity analysis.
+
+We will conduct both region-of-interest analyses and spatially unbiased searchlight analyses for fMRI, and time-resolved classification analyses for EEG. Statistical testing will use non-parametric tests with appropriate multiple comparison corrections.

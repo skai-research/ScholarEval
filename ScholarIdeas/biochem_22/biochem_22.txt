@@ -1,0 +1,36 @@
+
+# Research Plan: Establishing the Foundations for a Data-Centric AI Approach for Virtual Drug Screening
+
+## Problem
+
+We observe that researchers have predominantly adopted model-centric artificial intelligence (AI) approaches in cheminformatics by developing increasingly sophisticated AI methods to leverage growing chemical libraries. While complex deep learning methods have been shown to outperform conventional machine learning (ML) methods in QSAR and ligand-based virtual screening, such approaches generally lack explainability. 
+
+Instead of pursuing more sophisticated AI methods (i.e., a model-centric approach), we want to explore the potential of a data-centric AI paradigm for virtual screening. A data-centric AI would automatically identify the right type of data to collect, clean, and curate for later use by a predictive AI. This approach is particularly needed given the large volumes of chemical data that exist in chemical databases – PubChem alone has over 100 million unique compounds.
+
+However, a systematic assessment of the attributes and properties of suitable data is needed before we can develop such an approach. We hypothesize that it is not the result of deficiencies in current AI algorithms but rather poor understanding and erroneous use of chemical data that ultimately leads to poor predictive performance. We believe there are four pillars of cheminformatics data that drive AI performance – namely, data representation, data quality, data quantity, and data composition – and we are keen to investigate how each of these pillars contributes to improved AI performance.
+
+## Method
+
+We will adopt a comprehensive approach to systematically evaluate the four pillars of data-centric AI for virtual screening. Our methodology centers on creating a high-quality benchmark dataset that can achieve superior AI model performance, allowing us to confidently attribute any changes in AI performance to data perturbations rather than model imperfections.
+
+We will carefully curate a new dataset of BRAF actives and inactives for developing ligand-based virtual screening (LBVS) AI models. BRAF ligands represent a well-studied class of drugs with significant interest for developing potent BRAF antagonists. We will define actives as validated BRAF ligands with IC50 < 10 μM, while inactives will be carefully selected compounds with no known pharmacological activity against BRAF.
+
+Our approach will systematically test different ML algorithms (k-nearest neighbors, Naïve Bayes, gradient-boosted decision tree, random forest, and support vector machine) with various molecular representations to evaluate how molecular representations affect ML algorithm performance. We will test both standalone fingerprints and merged molecular representations, examining 10 standalone fingerprints and their 45 paired combinations.
+
+We will investigate multi-representation approaches as a form of multi-view learning, which constitutes an emerging direction in AI/ML with implications for improved generalization performance. This will help us determine the best type of molecular representation for virtual screening and understand how the interplay between molecular representations and different ML algorithms contributes to predictive performance changes.
+
+## Experiment Design
+
+We will design and conduct several systematic experiments to test our hypotheses about data-centric AI:
+
+**Dataset Construction**: We will manually curate approximately 4,100 BRAF actives and 24,000 inactive compounds. From this initial set, we will randomly select 3,600 BRAF actives for training datasets with the remaining 500 actives for hold-out testing. To avoid training bias, we will create 5 balanced training datasets, each containing 3,600 BRAF actives with equal numbers of unique inactives not shared across datasets.
+
+**Model Development and Assessment**: We will develop and assess 1,375 predictive models for LBVS of BRAF ligands using 5 ML algorithms with 55 different molecular representations (10 standalone + 45 paired combinations). We will use 10-fold cross-validation for hyperparameter optimization and model evaluation, employing accuracy, precision, and recall as performance metrics.
+
+**Data Representation Studies**: We will systematically test molecular fingerprints including Estate, PubChem, Klekota-Roth, ECFP6, FCFP6, Extended, Topological Torsion, Atom Pairs, Daylight-like, and CATS2D fingerprints, along with their paired combinations. We will evaluate whether merged fingerprint combinations outperform standalone fingerprints.
+
+**Data Quality, Quantity, and Composition Studies**: Using four top-performing predictive models, we will investigate how dataset composition and size impact performance by testing scenarios where: (1) the number of inactives increases equally with actives, and (2) the ratio of inactives to actives increases while fixing one component. We will examine the impact of using "less active" compounds (IC50 > 10 μM) versus true inactives, and evaluate the effect of using DUD-E decoys as inactives through spike-in experiments.
+
+**Comparative Analysis**: We will compare our conventional ML approaches against the performance levels achieved by sophisticated deep learning methods in previous studies to demonstrate whether data-centric approaches can achieve superior results without complex algorithms.
+
+All experiments will be conducted using Python with scikit-learn, RDKit, and Chemistry Development Kit (CDK) for fingerprint generation and model development. We will ensure rigorous experimental design with proper train/test splits and cross-validation to avoid overfitting and ensure reproducible results.

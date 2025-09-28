@@ -1,0 +1,32 @@
+
+# Research Plan: The Hungry Lens: Hunger Shifts Attention and Attribute Weighting in Dietary Choice
+
+## Problem
+
+We aim to investigate the cognitive mechanisms underlying how hunger influences dietary decision-making, particularly focusing on the interactive role of attention and choice processes. While previous research has established that hunger promotes unhealthy dietary decisions and that people show attentional biases toward food stimuli when hungry, the specific cognitive and attentional mechanisms driving these effects remain poorly understood.
+
+Our central hypothesis is that hunger affects food choice through attentional mechanisms that shift focus toward taste attributes and away from health considerations. We expect that hungry individuals will demonstrate increased preference for tasty over healthy food options, and that this effect will be mediated by changes in attention allocation. Specifically, we hypothesize that hungry participants will spend more time looking at taste-related information (food images) compared to health-related information (nutritional scores), leading to less healthy decision-making.
+
+The motivation for this research stems from the critical public health implications of understanding how metabolic states influence food choice in our increasingly obesogenic environment. While evolutionary mechanisms that drive preference for energy-dense foods when hungry were once adaptive, they may now contribute to suboptimal dietary decisions and rising obesity rates. By elucidating the cognitive processes underlying hunger-driven food choice, we can better understand how to promote healthier eating behaviors.
+
+## Method
+
+We will employ a within-subject experimental design using eye-tracking methodology combined with computational modeling to examine the mechanisms underlying hunger's effects on dietary choice. Our approach integrates behavioral measures, eye-tracking data, and advanced computational models to provide a comprehensive understanding of attention-choice interactions.
+
+The theoretical framework builds on recent advances in modeling attentional dynamics in evidence accumulation during decision-making, particularly the multi-attribute attentional drift diffusion model (maaDDM). We will extend existing models to allow for attribute-specific attentional discounting, hypothesizing that taste and health information may be processed differently due to their distinct presentation formats and informational complexity.
+
+Our methodology involves manipulating hunger state through overnight fasting followed by either protein shake consumption (sated condition) or continued fasting (hungry condition). We will use standardized food images paired with Nutri-Scores to represent taste and health attributes respectively, allowing us to examine how attention to these different types of information changes across hunger states.
+
+## Experiment Design
+
+We will conduct a within-subject experiment with 70 participants, each completing two sessions approximately one week apart. Participants will be tested in both hungry and sated conditions, with order counterbalanced across participants. In both conditions, participants will arrive after overnight fasting, but in the sated condition, they will consume a protein shake amounting to 25% of their daily caloric needs before beginning the experimental tasks.
+
+The experiment will consist of two main tasks: a food rating task and a binary food choice task. In the rating task, participants will rate 66 standardized food images on continuous scales for tastiness, healthiness, wanting, and perceived caloric content. The choice task will involve 190 binary decisions between food options, with each option presented as both a food image and its corresponding Nutri-Score.
+
+During the choice task, we will record eye movements using high-resolution eye-tracking equipment to measure fixation patterns and dwell times on different areas of interest (food images vs. Nutri-Scores). We will also collect reaction times for each choice to inform our computational models.
+
+To ensure ecological validity, we will incentivize participants by providing them with one of their chosen food items at the end of each session. We will assess the effectiveness of our hunger manipulation using visual analogue scales measuring subjective hunger and fullness at multiple time points throughout each session.
+
+We will implement several computational models to understand the underlying decision processes, including basic drift diffusion models (DDM), attentional DDMs (aDDM), multi-attribute time-dependent DDMs (mtDDM), and multi-attribute attentional DDMs (maaDDM). We plan to develop and test an extension of the maaDDM that allows separate attentional discounting parameters for taste and health attributes (maaDDM2φ), based on our hypothesis that these attributes may be processed differently due to their distinct presentation formats.
+
+Our analysis plan includes generalized linear mixed models to examine the effects of hunger state on choice behavior and reaction times, with attention measures as potential mediators. We will conduct formal mediation analyses to test whether attention mediates the relationship between hunger state and food choice. Model comparison will be performed using hierarchical Bayesian estimation with appropriate information criteria to identify the best-fitting computational model.

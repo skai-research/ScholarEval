@@ -1,0 +1,29 @@
+# Research Plan: FCoReBench - Can Large Language Models Solve Challenging First-Order Combinatorial Reasoning Problems?
+
+## Problem
+
+We aim to assess the reasoning limits of modern large language models (LLMs) by investigating their ability to solve computationally intensive, first-order combinatorial reasoning problems. These problems, such as graph coloring, knapsack, and cryptarithmetic, have long served as important testbeds for AI systems and present unique challenges due to their first-order nature - meaning they can be instantiated with potentially infinite problem instances of varying sizes.
+
+Current work on challenging benchmarks has limited focus on exploiting the first-order structure of these problems. We hypothesize that existing LLM approaches, even when augmented with symbolic solvers, will perform poorly on such structured problems and show degraded performance as problem instance size increases. We expect that the structured, first-order nature of these problems requires specialized approaches that can leverage both the reasoning capabilities of LLMs and the computational power of symbolic solvers.
+
+Our research questions are: (1) Can LLMs solve challenging first-order combinatorial reasoning problems directly? (2) Can they solve these problems when aided by symbolic AI systems? (3) How can we develop more effective approaches that leverage the first-order structure of these problems?
+
+## Method
+
+We will develop a comprehensive benchmark called FCoReBench consisting of 40 challenging first-order combinatorial reasoning problems. We will formally define first-order combinatorial reasoning (fcore) problems as having three components: a space of legal input instances (X), a space of legal outputs (Y), and a set of constraints (C) that every input-output pair must satisfy.
+
+To address the limitations of existing approaches, we will propose SymPro-LM, a novel method that combines LLMs with both symbolic solvers and program interpreters. Our approach will prompt LLMs to generate instance-agnostic programs that can: (1) convert any problem instance to a symbolic representation, (2) pass this representation to a symbolic solver, and (3) convert the solver's output back to the desired format.
+
+We will implement a refinement mechanism using solved examples as feedback. When programs fail on training instances, we will provide automated feedback to guide the LLM toward corrections. This process will continue until all training examples are solved correctly or a maximum number of feedback rounds is reached.
+
+## Experiment Design
+
+We will construct FCoReBench by selecting 40 computationally challenging problems from various sources including Wikipedia's NP-hard problems, logical puzzles from publishing houses, and real-world operations research problems. We will create natural language descriptions of rules and input-output formats for each problem, along with scripts to generate instances and verify solutions.
+
+We will evaluate four baseline approaches: (1) standard LLM prompting with in-context learning, (2) Program-aided Language Models (PAL), (3) Logic-LM that uses symbolic solvers, and (4) Tree-of-Thoughts prompting. We will compare these against our proposed SymPro-LM approach.
+
+Our experiments will use three LLMs: GPT-4-Turbo, GPT-3.5-Turbo, and Mixtral 8x7B. We will evaluate performance using accuracy metrics computed by verification scripts that check solution correctness. We will analyze the effect of problem instance size on performance, the impact of feedback rounds and multiple runs, and conduct error analysis to understand failure modes.
+
+We will also evaluate SymPro-LM on three additional logical reasoning datasets (LogicalDeduction, ProofWriter, and PrOntoQA) to assess generalizability beyond first-order problems. For these non-first-order datasets, we will generate separate programs for each test instance since no single program can solve all problems.
+
+We will conduct ablation studies examining the effects of feedback rounds, multiple runs, and the number of solved examples used for refinement. We will also analyze computational costs and inference times to understand the practical implications of our approach.

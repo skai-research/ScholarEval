@@ -1,0 +1,48 @@
+
+# Research Plan
+
+## Problem
+
+G protein-coupled receptors (GPCRs) are critical regulators of cellular processes and represent prime drug targets. While traditional GPCR-targeted therapies focus on orthosteric sites, recent advances have revealed allosteric sites offering novel therapeutic avenues. Although exogenous synthetic allosteric modulators are known, endogenous counterparts remain poorly characterized. 
+
+We hypothesize that endogenous intracellular metabolites can function as allosteric modulators of GPCRs by directly interacting with the GPCR-Gα protein binding interface. Specifically, we propose that a subset of pheromone-resistant yeast cells might regulate Ste2p-mediated programmed cell death (PCD) signaling via endogenous intracellular metabolites operating at the Ste2-Gα binding interface.
+
+The challenge lies in identifying these endogenous GPCR allosteric modulators, which is complicated by factors like incomplete GPCR topology data, vast chemical space, and the lack of robust computational methods for unbiased cavity identification and cavity-specific ligand design. Traditional approaches like structure-activity relationship (SAR) analysis are hampered by limited GPCR allosteric modulator data, and existing de novo drug design tools often lack practical applicability due to computational limitations.
+
+## Method
+
+We will develop Gcoupler, a comprehensive AI-driven computational toolkit that integrates structural biology, statistical methods, and deep learning to identify GPCR allosteric modulators. Gcoupler will consist of four interconnected modules:
+
+1. **Synthesizer Module**: Will identify putative cavities in protein structures using LigBuilder V3, providing flexibility to select cavities based on druggability scores or user-supplied critical residues. This module will generate cavity-specific ligands influenced by topology and pharmacophores using a hybrid Growing-Linking mode optimized through genetic algorithms.
+
+2. **Authenticator Module**: Will validate synthesized ligands by segregating high-affinity binders (HABs) and low-affinity binders (LABs) via virtual screening using AutoDock Vina. Statistical testing will be performed using Kolmogorov-Smirnov, Epps-Singleton, and Anderson-Darling tests to ensure meaningful separation between binding energy distributions.
+
+3. **Generator Module**: Will employ state-of-the-art Graph Neural Network models (Graph Convolution Model, Graph Convolution Network, Attentive FP, and Graph Attention Network) to construct predictive classifiers using Authenticator-informed classes. The module will include automated hyperparameter tuning and k-fold cross-validation to ensure robust model training.
+
+4. **BioRanker Module**: Will prioritize ligands through statistical and bioactivity-based tools, using G-means and Youden's J statistics to identify optimal probability thresholds and employing bioactivity embeddings computed via Signaturizer for multi-activity-based ranking.
+
+## Experiment Design
+
+We will validate Gcoupler using the well-characterized yeast mating pathway mediated via the Ste2p-Gpa1p interface. Our experimental approach will include:
+
+**Computational Validation**: We will test Gcoupler's performance across five GPCRs (AA2AR, ADRB1, ADRB2, CXCR4, and DRD3) using experimentally validated ligands and matched decoys from the DUD-E dataset. We will also validate allosteric site identification using PDB complexes.
+
+**Metabolite Screening**: We will employ Gcoupler to screen metabolites from the Yeast Metabolome Database (YMDB) against the yeast phospholipid bilayer-embedded molecular dynamics simulated cryo-EM structure of Ste2p. We will identify and analyze intracellular cavities, particularly those accounting for the Ste2p-Gpa1p interface.
+
+**Genetic Screening**: We will perform genetic screens of metabolic mutants by testing knockout strains from the Yeast Deletion Collection for resistance to α-factor-induced programmed cell death using propidium iodide-based cell viability assays.
+
+**Metabolomics Analysis**: We will conduct high-resolution metabolomics on yeast cells exposed to varying α-factor concentrations to identify differentially enriched metabolites in PCD survivors.
+
+**Molecular Dynamics Simulations**: We will perform molecular dynamics simulations to evaluate the stability of metabolite interactions at the Ste2p-Gpa1p interface and analyze binding free energies using MM/GBSA calculations.
+
+**Experimental Validation**: We will validate computationally predicted metabolites through:
+- Pre-loading wild-type yeast cells with identified metabolites and assessing rescue from α-factor-induced PCD
+- Mating assays to evaluate Ste2p signaling modulation
+- MAPK signaling analysis through p-Fus3 levels
+- Reporter assays using PFUS1-eGFP-CYC1 strains
+
+**Site-Directed Mutagenesis**: We will generate site-directed mutants of key metabolite-binding residues in Ste2p and test whether these mutations abrogate the metabolite-mediated rescue phenotype.
+
+**Transcriptomic Analysis**: We will perform RNA sequencing on metabolite-preloaded cells with and without α-factor exposure to understand the mechanistic basis of metabolite-mediated rescue.
+
+**Cross-Species Validation**: We will test the evolutionary conservation of this mechanism by evaluating the effects of identified metabolites on isoproterenol-induced GPCR-mediated cardiac hypertrophy in human AC16 cardiomyocytes and neonatal rat cardiomyocytes.

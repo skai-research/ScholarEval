@@ -1,0 +1,55 @@
+
+# Research Plan: Genome-wide Mapping of Native Co-localized G4s and R-loops in Living Cells
+
+## Problem
+
+Non-B DNA structures, particularly G-quadruplexes (G4s) and R-loops, are emerging as dynamic functional genomic elements that regulate gene expression. While both structures have been extensively studied individually, their interplay in regulating DNA repair, replication, and transcription is becoming increasingly apparent. However, a comprehensive understanding of native co-localized G4s and R-loops in living cells under physiological conditions is currently lacking.
+
+Existing detection methods rely heavily on antibody-based approaches using the single-chain variable fragment (scFv) BG4 for G4s and the monoclonal antibody S9.6 for R-loops. These approaches present several limitations: (1) the addition of high-affinity antibodies may shift the equilibrium toward folded states, potentially creating artifacts since G4s and R-loops exist at low steady-state levels under physiological conditions; (2) the specificity of the S9.6 antibody for R-loops has been questioned for accurate quantification and mapping; and (3) current methods do not adequately capture the native co-occurrence of these structures in living cells.
+
+We hypothesize that co-localized G4s and R-loops play important regulatory roles in transcriptional control and that their formation and resolution are dynamically regulated by specific helicases. Understanding their native distribution and regulatory mechanisms will provide insights into their roles in development and disease.
+
+## Method
+
+We will develop two complementary antibody-free methods to map native G4s and R-loops in living cells:
+
+**HepG4-seq Development:** We will exploit the ability of G4s to form tight complexes with the cellular cofactor hemin, creating a peroxidase that catalyzes oxidation reactions in the presence of hydrogen peroxide. This G4-hemin complex will oxidize biotin aniline to phenoxyl radicals that covalently conjugate biotin to G4s and proximal DNA within approximately 30 base pairs. We will use recombinant streptavidin monomer fused with anti-GP41 nanobody (mSA-scFv) to recognize biotinylated G4s and recruit GP41-tagged Tn5 transposase for CUT&Tag-based sequencing.
+
+**HBD-seq Optimization:** We will optimize existing RNase H1 hybrid-binding domain (HBD)-based methods by replacing the problematic GST-His6-2xHBD fusion protein with a more stable EGFP-V5-tagged HBD construct. This will avoid GST fusion protein aggregation issues while maintaining the gold-standard specificity of HBD for DNA/RNA hybrid recognition.
+
+**Validation Strategy:** We will validate method specificity by: (1) comparing signals with and without hemin/biotin aniline treatment; (2) including RNase treatment controls for HBD-seq; (3) correlating results with predicted G4-forming sequences using computational tools; and (4) testing method sensitivity using small molecule inhibitors of G4-resolving helicases.
+
+## Experiment Design
+
+**Cell Systems:** We will apply our methods to two cell types: human HEK293 cells and mouse embryonic stem cells (mESCs), allowing us to examine cell-type-specific distributions of co-localized structures.
+
+**Method Validation Experiments:**
+- Immunofluorescence microscopy to visualize hemin-induced biotinylation specificity
+- Comparison of BG4 CUT&Tag signals in hemin-treated versus control cells to ensure hemin treatment does not significantly alter G4 folding
+- Treatment with G4-resolving helicase inhibitors (ML216 for BLM, NSC617145 for WRN) to demonstrate method sensitivity to G4 dynamics
+
+**Genome-wide Mapping:**
+- Perform HepG4-seq and HBD-seq in biological replicates for both cell types
+- Include appropriate negative controls (non-labeled samples, RNase-treated samples)
+- Integrate data to identify co-localized G4s and R-loops using bioinformatics intersection analysis
+
+**Functional Characterization:**
+- Analyze genomic distribution relative to gene features (promoters, enhancers, gene bodies)
+- Correlate with chromatin modification data (H3K4me3, H3K27ac, H3K36me3, H3K4me1, H3K27me3)
+- Examine association with RNA polymerase II occupancy
+- Perform RNA-seq to assess transcriptional activity of associated genes
+
+**Helicase Regulation Studies:**
+- Focus on Dhx9 helicase as a key regulator based on its known ability to resolve both G4s and R-loops
+- Generate Dhx9 knockout mESCs using CRISPR/Cas9
+- Perform Dhx9 CUT&Tag to map direct binding sites
+- Compare co-localized G4s and R-loops in wild-type versus Dhx9 knockout cells
+- Analyze transcriptional changes and functional consequences for mESC self-renewal and differentiation
+
+**Functional Validation:**
+- Examine expression of pluripotency markers (Oct4, Nanog, Lin28a) in Dhx9 knockout cells
+- Assess cell cycle progression and proliferation capacity
+- Perform embryoid body differentiation assays to evaluate pluripotency
+- Analyze expression of germ layer markers during differentiation
+
+We will use standard statistical approaches including DESeq2 for differential expression analysis, Mann-Whitney tests for comparing signal distributions, and Gene Ontology analysis for functional enrichment. All experiments will include appropriate biological replicates and controls to ensure reproducibility and specificity of our findings.

@@ -1,0 +1,36 @@
+
+# Research Plan
+
+## Problem
+
+Understanding the relationships between biodiversity and ecosystem functioning stands as a cornerstone in ecological research. While extensive evidence demonstrates the profound impact of species loss on ecosystem stability and dynamics, it remains unclear whether the loss of genetic diversity within key species yields similar consequences. Most studies investigating biodiversity-ecosystem function relationships (BEFs) have primarily focused on the interspecific (species) facet of biodiversity, with limited attention to the intraspecific (genetic) facet.
+
+Although natural assemblages encompass both intra- and interspecific diversity, most BEF studies consider each biodiversity facet separately, making it difficult to differentiate the relative roles of genetic and species diversity in ecosystem functions. This impedes general predictions regarding the consequences of biodiversity loss as a whole on ecosystem functions. We currently lack knowledge about whether genetic diversity may functionally compensate for species loss in species-poor ecosystems, whether the loss of genetic diversity within a few species is as detrimental as species loss, or whether combined losses have non-additive consequences.
+
+The few studies investigating combined effects of genetic and species diversity have been conducted experimentally under controlled conditions, relying on simplified ecosystems that often lack environmental variation and feedbacks between ecosystem functions and biodiversity. We need realistic field studies embracing the whole diversity of life forms to generate insightful knowledge for future mechanistic models.
+
+Additionally, most BEF studies consider single trophic levels, despite evidence that biodiversity effects can propagate across trophic levels, generating "multi-trophic BEFs." We hypothesize that the relative impact of genetic and species diversity should vary across trophic levels, with genetic diversity effects potentially increasing at higher trophic levels due to lower species richness.
+
+## Method
+
+We will conduct a field study meta-analysis to test the relative importance of genetic and species diversity for ecosystem functions across multiple trophic levels in natural river ecosystems. Our approach will focus on three trophic levels: riparian trees (primary producers), macroinvertebrate shredders (primary consumers), and fish (secondary consumers).
+
+For each trophic level, we will quantify species diversity of each community and genetic diversity of a single target dominant species: Alnus glutinosa (trees), Gammarus sp. (invertebrates), and Phoxinus dragarum (fish). We will estimate several ecosystem functions, including leaf decomposition rates, biomass production of target species, and total biomass of each community within each trophic level.
+
+We will employ causal analyses using piecewise Structural Equation Models (pSEM) to account for direct and indirect effects of environmental factors through biodiversity on ecosystem functions. This approach will allow us to model causal relationships while including environmental covariates to avoid overestimated or artifactual BEFs.
+
+For genetic diversity estimation, we will use pool-sequencing approaches (ddRAD-seq for trees and invertebrates, nGBS for fish) to obtain genome-wide diversity measures. Species and genetic diversity will be calculated using Shannon entropy, which accounts for the distribution of species/allele abundances within each site.
+
+## Experiment Design
+
+We will sample 52 sites in Southern France from the Adour-Garonne watershed, distributed along an east-west gradient in the Pyrenees Mountains. At each site, we will collect data on species diversity, genetic diversity, and ecosystem functions at all three trophic levels.
+
+For species diversity, we will identify tree species along 200m transects of each river bank, excluding trees with trunks smaller than 2cm diameter and more than one meter from the bank. For invertebrates, we will use standardized traps (coconut brushes and litter bags) installed in four micro-habitats per site, with sampling at two occasions for accurate estimates. For fish, we will conduct single-pass electric fishing sessions over approximately 470m² per site, with sampling at two occasions.
+
+For genetic diversity, we will collect tissue from up to 32 individuals of each target species per site. DNA will be extracted and sequenced using equimolar pools from each population. We will perform quality filtering and SNP calling using reference genomes.
+
+We will measure seven ecosystem functions: total biomass of all species at each trophic level, biomass of each target species, and decomposition rate of Alnus leaves using litter bags placed for different time periods (9, 18, and 27 days).
+
+Environmental data will include thirteen variables related to river topography and physico-chemical characteristics. We will perform Principal Component Analysis to create synthetic environmental variables for inclusion in our models, using the first two axes to avoid collinearity.
+
+We will run separate pSEMs for each ecosystem function, with the function as the dependent variable and six biodiversity estimates plus environmental variables as predictors. We will calculate standardized effect sizes using Fisher's Z transformation for each biodiversity-ecosystem function relationship. Finally, we will use linear mixed-models to test whether genetic and species BEFs are similar in magnitude and direction, and whether within-trophic level BEFs differ from between-trophic level BEFs, including tests for consistency across trophic levels.

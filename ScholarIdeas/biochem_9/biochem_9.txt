@@ -1,0 +1,40 @@
+
+# Research Plan
+
+## Problem
+
+The SARS-CoV-2 main protease (Mpro) is essential for viral replication and serves as a critical antiviral drug target. While Mpro's role in cleaving viral polypeptides is well-established, its ability to target host proteins remains underexplored. Early proteome-wide virus-host protein interaction studies identified a putative interaction between catalytically inactive SARS-CoV-2 Mpro and the human tRNA methyltransferase TRMT1, but no stable interaction was found with wild-type Mpro, suggesting that Mpro may actively cleave TRMT1 in cells.
+
+TRMT1 installs the N2,N2-dimethylguanosine (m2,2G) modification on human tRNAs at position G26, which is critical for global protein synthesis and cellular redox homeostasis. Loss of TRMT1 function significantly decreases protein synthesis and increases sensitivity to oxidative stress. We hypothesize that SARS-CoV-2 Mpro can recognize and cleave human TRMT1, potentially disrupting host translation and redox homeostasis during viral infection.
+
+Our research questions focus on: (1) whether SARS-CoV-2 Mpro can cleave full-length human TRMT1, (2) the structural basis for TRMT1 recognition and cleavage by Mpro, (3) the kinetic parameters of TRMT1 cleavage compared to known viral substrates, and (4) the evolutionary conservation of the putative cleavage site across mammalian species.
+
+## Method
+
+We will employ a multidisciplinary approach combining biochemical, structural, and computational methods to characterize the Mpro-TRMT1 interaction.
+
+For biochemical analysis, we will express and purify recombinant SARS-CoV-2 Mpro (both wild-type and catalytically inactive C145A mutant) and full-length human TRMT1 in E. coli. We will perform proteolysis assays using both recombinant TRMT1 and endogenous TRMT1 from human cell lysates, monitoring cleavage by Western blot with domain-specific antibodies.
+
+To determine the structural basis of recognition, we will co-crystallize catalytically inactive Mpro with a TRMT1 peptide corresponding to the predicted cleavage site (residues 526-536) and solve the structure using X-ray crystallography. We will compare this structure with existing Mpro-viral peptide complexes to identify unique binding features.
+
+For kinetic characterization, we will measure cleavage parameters using fluorogenic peptide substrates and compare TRMT1 cleavage kinetics to known viral cleavage sites (nsp4/5 and nsp8/9). We will also perform mutagenesis studies on key Mpro residues and TRMT1 peptide positions to understand structure-activity relationships.
+
+Molecular dynamics simulations will be conducted to investigate substrate binding conformations and provide insights into the mechanistic basis for differential cleavage efficiencies. We will analyze binding modes, nucleophilic attack angles, and conformational dynamics.
+
+Finally, we will perform evolutionary analysis of TRMT1 orthologs across mammalian species to assess conservation of the cleavage site and identify potential resistance mechanisms.
+
+## Experiment Design
+
+**Proteolysis Assays**: We will incubate purified full-length TRMT1 with wild-type or C145A Mpro at 37°C and monitor cleavage over time using Western blot with two different TRMT1-specific antibodies (anti-TRMT1 460-659 recognizing both domains, and anti-TRMT1 609-659 recognizing only the zinc finger domain). For endogenous TRMT1, we will use HEK293T cell lysates pre-treated with PMSF to prevent non-specific proteolysis.
+
+**Crystallography**: We will co-crystallize Mpro C145A with TRMT1(526-536) peptide using hanging drop vapor diffusion. Crystals will be flash-frozen with cryoprotectant and diffraction data collected at synchrotron facilities. We will solve the structure by molecular replacement using existing Mpro structures as search models.
+
+**Kinetic Analysis**: We will use fluorogenic peptide substrates (MCA-peptide-K(Dnp)K format) to measure initial rates of cleavage at varying substrate concentrations (0.097-100 μM) with 50 nM enzyme. Fluorescence will be monitored continuously, and data fitted to Michaelis-Menten equations to determine kcat, KM, and catalytic efficiency values.
+
+**Mutagenesis Studies**: We will generate Mpro mutants (M49A, N142A, Q189A) targeting residues involved in TRMT1 binding based on structural analysis. We will also test TRMT1 peptide variants (A531S) predicted to alter binding conformation and measure their cleavage kinetics.
+
+**Molecular Dynamics**: We will perform 100 ns explicit solvent MD simulations of Mpro complexes with nsp4/5, nsp8/9, and TRMT1 peptides using AMBER force fields. We will analyze binding conformations, particularly P3' residue positioning, and calculate nucleophilic attack angle distributions.
+
+**Evolutionary Analysis**: We will retrieve TRMT1 orthologous sequences from mammalian species using OrthoMaM database and analyze conservation of the cleavage site region (residues 526-536). We will perform positive selection analysis using HYPHY/Datamonkey and generate sequence logos to visualize conservation patterns.
+
+**Controls and Validation**: All experiments will include appropriate controls (catalytically inactive Mpro, buffer-only conditions). We will validate antibody specificity and use multiple independent protein preparations. Kinetic experiments will be performed in triplicate with proper statistical analysis.

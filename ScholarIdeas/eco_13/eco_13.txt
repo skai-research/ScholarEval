@@ -1,0 +1,36 @@
+
+# Research Plan: Fitness Drivers of Division of Labor in Vertebrates
+
+## Problem
+
+We aim to address a significant gap in our understanding of division of labor evolution beyond eusocial insects. While division of labor as a means to increase productivity is well-documented in eusocial insect societies with sterile workers, empirical evidence and theoretical frameworks for understanding division of labor in vertebrates remain scarce. Most previous theoretical work has focused exclusively on eusocial systems where workers can only obtain fitness benefits indirectly through kin selection, resulting in low conflict of interest between group members.
+
+In cooperatively breeding vertebrates, however, the situation differs fundamentally. These societies are characterized by more equitable sharing of reproduction, low or mixed kinship, and often include unrelated helpers. Since sterile workers are absent in vertebrate societies, conflict can be much higher than in eusocial insect societies, and direct fitness benefits may be more relevant than indirect benefits in the evolution of division of labor.
+
+We hypothesize that the joint influence of direct and indirect fitness benefits has never been systematically investigated in the context of division of labor evolution. Furthermore, we propose that different helping tasks may have distinct fitness costs - some affecting immediate survival (such as predator defense) while others impact body condition and future reproductive prospects (such as provisioning or territory maintenance). These differential costs may select for task specialization according to individual life history strategies and the relative likelihood of obtaining direct fitness benefits.
+
+Our central research questions are: (1) Under what social and ecological circumstances does division of labor arise to maximize inclusive fitness in vertebrate groups? (2) What is the relative importance of direct versus indirect fitness benefits in driving task specialization? (3) How do demographic, social, and ecological factors influence the emergence and stability of division of labor?
+
+## Method
+
+We will develop a stochastic, individual-based model to disentangle the role of direct versus indirect fitness benefits in the evolution of division of labor in vertebrate societies. Our approach will explicitly model individuals with varying evolutionary forces to understand the conditions favoring division of labor emergence.
+
+The model will feature a population with overlapping generations residing in a habitat with limited breeding territories. Each territory will be monopolized by groups consisting of a single breeder and subordinate helpers capable of reproducing during their lifetime. We will assume complete reproductive skew where subordinate group members cannot reproduce at a given timestep but may inherit the breeding position when the breeder dies.
+
+We will model two distinct helping tasks with different fitness costs: (1) defensive tasks that reduce survival probability (representing activities like predator mobbing with high injury/death risk), and (2) work tasks that reduce body condition and competitiveness for future breeding positions (representing activities like allofeeding or territory maintenance). Subordinate helpers will be allowed to evolve different behavioral responses and reaction norms in task specialization based on their likelihood of becoming breeders.
+
+To distinguish between direct and indirect fitness effects, we will create multiple model variants: a main model where both group augmentation (direct benefits from larger group size) and kin selection (indirect benefits from helping relatives) operate simultaneously, a model with only group augmentation benefits (removing kin selection through cross-fostering manipulation), and a model with only kin selection benefits (removing group size benefits).
+
+We will systematically vary habitat quality across simulations, with harsh environments characterized by high mortality rates and increased breeding position turnover, while benign environments will have lower mortality and potential habitat saturation.
+
+## Experiment Design
+
+We will conduct computational experiments using our individual-based model, running simulations for 200,000 generations or until equilibrium is reached across 20 replicas to assess consistency. The model will track the evolution of helping strategies, task specialization patterns, and dispersal propensities.
+
+Our experimental design will systematically vary several key parameters: environmental quality (mortality rates from m = 0.1 for benign to m = 0.3 for harsh environments), costs of defensive tasks on survival (xh = 3, 5, and 7), and the requirement for division of labor (comparing scenarios where breeder productivity is maximized when both tasks are performed equally versus scenarios with no task-specific constraints).
+
+We will measure multiple outcome variables including: levels of helping behavior, degree of task specialization, age-dependent task switching patterns (temporal polyethism), dispersal rates, group sizes, within-group relatedness, and survival rates. The evolution of reaction norms will be tracked, particularly the parameters γt (slope of reaction norm for dominance value in task specialization) and γ0 (intercept), which determine whether individuals show age-dependent task specialization.
+
+To assess the role of dominance and age in task allocation, we will examine whether intermediate values of task specialization indicate true division of labor among age/dominance groups (γt ≠ 0) versus lack of specialization (γt = 0). We will analyze how individuals adjust their task choice based on their dominance value and likelihood of inheriting territory.
+
+The experimental framework will allow us to test specific predictions about when division of labor should evolve, which tasks should be preferred under different selective regimes, and how environmental harshness influences the stability and extent of task specialization. We will compare results across the three model variants to isolate the relative contributions of direct versus indirect fitness benefits to the evolution of cooperative task specialization.

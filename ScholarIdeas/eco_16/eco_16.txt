@@ -1,0 +1,34 @@
+
+# Research Plan
+
+## Problem
+
+Eukaryotic plankton play pivotal roles in marine ecosystems, including nutrient cycling, carbon fixation, and energy transfer, with phytoplankton responsible for approximately half of Earth's primary production. Despite their importance, current research approaches face significant limitations due to a technological dichotomy between optical methods (primarily used for taxonomic purposes) and genomics (which excels at describing biochemistry of microbial communities). This separation hampers efforts to link the morpho-optical properties of each species with its genetic and biomolecular makeup, leading to fragmented information and limited reproducibility.
+
+The most accurate method to characterize plankton community heterogeneity and functions requires determining taxonomic composition and examining molecular capabilities of each species. However, isolation and biomolecular analysis of individual species is slow, labor-intensive, and often restricted to laboratory-culturable species. While shotgun metagenomics and metatranscriptomics provide excellent tools for studying entire community biochemistry, they lack single-organism resolution and can be difficult to reproduce due to natural fluctuations in taxonomic composition. Single-cell genomics of environmental bacteria has matured, but eukaryotic plankton exhibit much larger variation in both genome and organismal size, hampering single-organism isolation and whole-genome coverage.
+
+We hypothesize that methods to simultaneously acquire multimodal (optical and genetic) information on planktonic organisms would provide crucial connections between organismal appearance and function, improve taxonomic prediction, and strengthen ecological analysis. The ideal experimental tool would pair rapid taxonomic screening of plankton communities with high-coverage sequencing of individual organisms of interest, including unculturable ones of any shape and size.
+
+## Method
+
+We will develop Ukiyo-e-Seq, an integrated approach to generate paired optical and transcriptomic data from individual, uncultured eukaryotic plankton. The methodology will combine environmental sampling, optical microscopy, robot-assisted capture, and transcriptomics into a unified workflow.
+
+Our approach will involve collecting ocean water samples using plankton nets, followed by size selection using tea sieves and filter paper to remove particles larger than 1mm and smaller than 25μm. We will use microscope-mounted cell pickers to image organisms in brightfield and three epifluorescence channels, then transfer selected organisms using glass capillaries into wells of microtiter plates. We will prepare libraries for single-well RNA sequencing using Smart-seq2 adapted to 384-well plates.
+
+For transcriptomic analysis, we will develop a merge-split strategy to address the challenge of reference genome unavailability for most oceanic species. This approach will involve: (i) pooling reads from all wells and assembling them to form a common reference, then (ii) aligning reads from each well against this reference separately. We will use rnaSpades for de novo assembly and compile read numbers from each sample that align to each contig into a single matrix.
+
+We will perform taxonomic classification using Kraken 2 against large databases of metagenomic and metatranscriptomic data to understand taxonomic identity despite lack of reference genomes. For functional characterization, we will identify open reading frames (ORFs) in contigs using NCBI ORF finder, functionally annotate ORFs, and extract specific pathway components of interest.
+
+## Experiment Design
+
+We will demonstrate our method by collecting 1 liter of ocean water from Wiley's Baths near Coogee, NSW, Australia on two separate occasions using plankton nets. We will process samples through tea sieves and filter paper for size selection, with additional centrifugation and sedimentation steps. Using the microscope-mounted cell picker, we will image and sequence 66 wells plus 4 negative control wells.
+
+For each selected organism, we will capture brightfield images and, for a subset, additional epifluorescence images at emission wavelengths of 515, 595, and 681 nm before capture. We will confirm successful picking with post-capture brightfield images. Following cell capture, we will store lysis plates at -80°C before processing.
+
+We will perform cDNA synthesis following the Smart-seq2 protocol, with reverse transcription at 42°C for 90 minutes followed by 70°C for 5 minutes. PCR amplification will use 26 cycles with specific temperature cycling parameters. We will normalize cDNA concentrations to 1.4 ng/μl and prepare libraries using the Nextera XT kit with 15 cycles of PCR, followed by bead purification using Agencourt Ampure XP magnetic beads.
+
+Libraries will be sequenced on Illumina NextSeq 500 using reagent v3 kit (2×300 bases) at approximately 250,000 read pairs per well. We will filter reads using Trimmomatic and remove template switch oligo sequences and sequencing artifacts using custom scripts.
+
+For analysis, we will visualize expression patterns of the top five most highly expressed contigs from each well to identify both "public" contigs (spanning most samples from single collection days) and "private" contigs (highly expressed in single wells only). We will assess taxonomic composition across all four superkingdoms and examine individual well phylogenies for taxonomic clarity and coexistence patterns.
+
+To demonstrate functional applications, we will focus on photosynthetic organisms by identifying ORFs assigned to KEGG photosystem I and II complexes. We will use AlphaFold 3 to predict three-dimensional structures of protein complexes from individual organisms. For developmental analysis, we will examine highly expressed contigs from fish egg/larva samples to identify novel proteins related to cell cycle and embryonic development pathways.

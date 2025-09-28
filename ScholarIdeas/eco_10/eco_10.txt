@@ -1,0 +1,48 @@
+
+# Research Plan: Old Age Variably Impacts Chimpanzee Engagement and Efficiency in Stone Tool Use
+
+## Problem
+
+We aim to address a significant gap in our understanding of how senescence affects wild great apes, particularly regarding their foraging behaviors that are essential for survival. While extensive research has documented senescence in captive primates across cognitive, physiological, and behavioral domains, comparatively few studies have investigated how aging influences the behaviors of primates in the wild using longitudinal data to track changes in specific individuals over time.
+
+Of particular interest are tool-use behaviors, which we hypothesize are at heightened risk of senescence due to their combined physical and cognitive demands. Tool use in great apes requires high-level cognitive abilities including planning, flexible assembly of actions into goal-directed behaviors, understanding of causal relationships between objects, and knowledge of physical properties. Many of these cognitive abilities—including motor coordination, working memory, executive functioning, and cognitive flexibility—have been identified as at risk of senescence in captive primates. Additionally, physiological changes including reduced bone mass, muscle wasting, arthritis development, and reduced visual acuity have been documented in great apes, all of which could influence strength, dexterity, and accuracy of movement required for effective tool use.
+
+We focus on wild West African chimpanzees at Bossou, Guinea, who engage in one of the most sophisticated forms of tool use observed in the animal kingdom: nut cracking using stone hammers and anvil stones. This behavior features all key elements that we predict will make tool-use behaviors likely to senesce with old age, including the need to construct complex object associations, organize and address multiple goals using extended behavioral sequences, select tools based on perceived properties, and combine objects with sufficient dexterity, precision, and force.
+
+Our central hypothesis is that progressive aging will negatively impact both the extent to which elderly chimpanzees engage with nut cracking behaviors and the efficiency with which they perform these behaviors, though we expect considerable interindividual variability in these effects.
+
+## Method
+
+We will employ a longitudinal approach using an existing video archive spanning 17 years (1999-2016) of wild chimpanzees engaging in nut cracking at an established "outdoor laboratory" field site at Bossou. Our methodology will focus on five elderly chimpanzees (four females: Fana, Jire, Velu, and Yo; one male: Tua) who were estimated to be 39-44 years old at the start of our sampling window and 56-61 years old by the end, representing the transition from late adulthood into old age.
+
+We will sample data from five timepoints separated by 3-5 year intervals across the 17-year period, representing a trade-off between collecting fine-grained behavioral data and maintaining sufficient temporal resolution to detect aging effects. We will use progression through field seasons as a proxy for increasing age, treating all focal individuals as similarly aged at each timepoint.
+
+Our analytical approach will employ linear and generalized linear mixed-effects models to assess aging effects, using the year of each field season as a fixed effect proxy for age. We will utilize random intercepts and slopes to evaluate individual-level variation in aging effects, as previous research suggests senescence effects are highly variable across individuals. We will compare random-slope models with fixed-slope models and null models using AIC to determine the best explanation for observed variation.
+
+## Experiment Design
+
+### Attendance Analysis
+We will model the rate at which focal elderly chimpanzees attended the outdoor laboratory over progressive field seasons, controlling for the total length of each field season. We will compare this with attendance data from a control group of younger individuals (ages 8-30 years) to establish a baseline for population-level changes unrelated to senescence. We will construct a Poisson GLMM with field season as a continuous fixed effect and age cohort as a categorical variable, including an interaction term to test whether attendance decline is more severe for elderly individuals.
+
+### Behavioral Engagement Analysis
+We will measure how the proportion of time each elderly individual spent interacting with nuts and stones changed over successive field seasons when present at the outdoor laboratory. For each individual, we will sample the first 10 encounters of each field season, timing engagement in four mutually exclusive behavioral categories: (1) engaging with nuts and stone tools, (2) drinking water using leaf tools, (3) eating oil-palm fruits, and (4) other behaviors. We will calculate proportions of time spent in each category across all encounters per field season.
+
+### Tool Selection Efficiency
+We will measure the time taken for elderly chimpanzees to select stone tools from a central matrix of over 50 stones during each sampled field season. We will record tool-selection duration from when chimpanzees approach the matrix with gaze fixed on stones until they turn away holding acquired tools. We will also record the number of tools selected and the number previously removed from the matrix to control for available options.
+
+### Nut Processing Efficiency
+We will code fine-grained actions used by focal chimpanzees when cracking nuts, using an established ethogram of 34 manipulations and 6 objects. We will sample videos chronologically from each field season until collecting at least 1000 actions describing the cracking of at least 20 complete nuts per individual per season.
+
+We will extract seven efficiency metrics from action sequences:
+1. Total time to crack nuts and consume all kernel
+2. Number of actions used to process nuts
+3. Number of unique action types used
+4. Number of times nuts were placed/replaced on anvils
+5. Number of hammer strikes per nut
+6. Number of tool reorientations per nut
+7. Number of tool changes per nut
+
+### Statistical Analysis Plan
+We will use mixed-effects models to assess aging effects while controlling for repeated measures. For attendance rates, we will compare elderly and younger cohorts over time. For efficiency metrics, we will use each individual as their own control, comparing their performance across field seasons using random slope models to capture individual variation in aging effects. We will restrict modeling to metrics where at least one individual shows median values falling outside previous interquartile ranges, indicating meaningful change over time.
+
+This longitudinal within-individual approach will allow us to detect aging effects while controlling for long-term interindividual variation in skill levels, providing novel insights into how senescence affects complex tool-use behaviors in wild great apes.

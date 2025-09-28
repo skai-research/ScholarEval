@@ -1,0 +1,35 @@
+# Research Plan: Tensor Train Decomposition for Adversarial Attacks on Computer Vision Models
+
+## Problem
+
+Deep neural networks (DNNs) are widely deployed but remain vulnerable to adversarial attacks, making it crucial to understand their potential weaknesses for developing effective defense mechanisms. While white-box attacks that leverage model architecture and gradients are highly successful, they are impractical for real-world scenarios where internal model structure is unknown. Black-box attacks, which only require query access to the target model, are more realistic but face significant challenges.
+
+Current black-box attack methods rely on gradient-free optimization algorithms, but these classical approaches often prove ineffective in high-dimensional spaces typical of computer vision problems. The challenge lies in efficiently searching the vast perturbation space to find adversarial examples while maintaining imperceptibility and minimizing the number of queries to the target model.
+
+We hypothesize that tensor train (TT) decomposition, which has shown success in various multidimensional applications, can provide a more effective framework for black-box adversarial attacks by efficiently representing and optimizing perturbations in high-dimensional image spaces.
+
+## Method
+
+We propose TETRADAT (TEnsor TRain ADversarial ATtacks), a novel black-box attack method that combines TT-based optimization with attribution-guided pixel selection. Our approach consists of three main components:
+
+**1. Attribution-based Pixel Selection:** We will use an auxiliary white-box model to compute attribution maps via Integrated Gradients, identifying the most semantically important pixels for perturbation. This reduces the optimization dimensionality while focusing on pixels most likely to affect model predictions.
+
+**2. TT-based Optimization:** We will formulate the adversarial perturbation problem as discrete optimization over a multidimensional tensor, where each dimension corresponds to a selected pixel and tensor elements represent perturbation values. The PROTES optimizer will be employed to efficiently search this space using probabilistic tensor sampling in TT format.
+
+**3. Iterative Perturbation Strategy:** We will implement a multi-restart approach, beginning with large perturbation amplitudes and progressively reducing them by half until successful attacks are found or the query budget is exhausted. Each restart will initialize using the probability distribution learned in the previous iteration.
+
+For perturbation application, we will convert RGB pixel values to HSV color space and modify saturation (for decreases) or value (for increases) channels, which should produce more natural-looking adversarial examples.
+
+## Experiment Design
+
+We will conduct comprehensive experiments to evaluate TETRADAT against established black-box attack methods across multiple model architectures and compare attack success rates, perturbation magnitudes, and visual quality.
+
+**Dataset and Models:** We will use the ImageNet dataset with one image per class (1000 total). Target models will include five standard architectures (AlexNet, GoogleNet, Inception V3, MobileNet V3, ResNet-152) and two adversarially trained models (Adversarial Inception, Adversarial Inception-ResNet). VGG-19 will serve as the auxiliary model for attribution computation.
+
+**Baseline Methods:** We will compare against three established black-box attacks: OnePixel (using differential evolution), Square (random square perturbations), and Pixle (pixel rearrangement). All methods will use identical query budgets of 10,000 requests.
+
+**Evaluation Metrics:** We will measure attack success rates, L1 and L2 norms of perturbations, and conduct visual quality assessments of generated adversarial examples.
+
+**Hyperparameter Configuration:** For TETRADAT, we will use approximately 10% of image pixels (≈5000 pixels) selected via attribution, initial perturbation amplitude ε=1, and PROTES parameters: K=100 candidates per iteration, k=10 best selections, learning rate λ=0.01, and TT-rank r=5. Integrated Gradients will use 15 gradient steps and 15 discretization nodes.
+
+**Experimental Protocol:** We will only attack images correctly classified by both the target model and attribution model. Each attack will use untargeted objectives, aiming to change the predicted class to any incorrect label. We will analyze results across different model types, including standard and adversarially trained networks, to assess method robustness.

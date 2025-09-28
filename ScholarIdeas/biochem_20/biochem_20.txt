@@ -1,0 +1,30 @@
+
+# Research Plan
+
+## Problem
+
+Toxoplasma gondii infects 25-30% of the global human population and causes life-threatening diseases in immunocompromised patients. The parasite exists in two main forms: fast-replicating tachyzoites that cause acute infections, and semi-dormant bradyzoites that persist within tissue cysts in brain and muscle tissue, responsible for chronic infections and disease transmission. Currently, no medical treatment exists to eradicate these tissue cysts with their rigid cyst wall from infected individuals. Existing drugs such as antifolates or cytochrome bc1 inhibitors (atovaquone, buparvaquone, endochin-like quinolones) suppress tachyzoite growth but consistently fail to eradicate mature bradyzoites. The underlying reasons for these treatment failures remain unclear - whether target proteins become dispensable for bradyzoite survival or whether failures result from poor drug permeability across the blood-brain barrier and cyst wall.
+
+We hypothesize that identifying compounds with simultaneous activity against both tachyzoites and bradyzoites will reveal essential metabolic pathways in bradyzoites and provide new therapeutic targets. The lack of genetic tools to directly characterize essential genes in bradyzoites, particularly mitochondrially encoded genes like cytochrome b, necessitates reverse pharmacological approaches involving screening of inhibitors against target proteins.
+
+## Method
+
+We will employ a recently developed human myotube-based culture system to generate mature T. gondii drug-tolerant bradyzoites for compound screening. Our approach combines phenotypic screening with metabolomic analysis to identify both active compounds and their modes of action.
+
+We will screen the MMV Pathogen Box, containing 400 compounds with known antiparasitic activities, against both tachyzoites and bradyzoites. For tachyzoite cultures, we will infect human foreskin fibroblasts with Pru-Δhxgprt tdTomato parasites. For bradyzoite cultures, we will differentiate KD3 myoblasts into multinucleated myotubes and infect them under bicarbonate-depleted conditions, allowing four weeks for tissue cyst maturation.
+
+To characterize compound modes of action, we will perform untargeted and stable isotope-resolved metabolomic analyses using liquid chromatography-mass spectrometry. We will treat parasites with active compounds and analyze their metabolic responses using both pHILIC and BEH-amide chromatography columns. For isotope labeling experiments, we will substitute glucose with 13C6-glucose and glutamine with 15N-amide-glutamine to trace metabolic flux through central carbon metabolism and pyrimidine synthesis pathways.
+
+## Experiment Design
+
+We will conduct the compound screening by treating both tachyzoite and bradyzoite cultures with 10 μM of each Pathogen Box compound for seven days, using DMSO as a negative control. Parasite viability will be monitored using fluorescence measurements of tdTomato-expressing parasites. For bradyzoites, we will assess compound efficacy by removing inhibitors after treatment and monitoring for tachyzoite regrowth over 28 days.
+
+We will validate screening hits by determining half-inhibitory concentrations (IC50) for tachyzoites and half-maximal lethal concentrations (LC50) for bradyzoites using serial dilution assays. Host cell cytotoxicity will be assessed using resazurin viability assays to exclude compounds that suppress parasite growth through host cell damage.
+
+We will predict the blood-brain permeability with LightBBB, the gastrointestinal absorption capability and the logP with SwissADME in silico.
+
+For metabolomic analysis, we will treat infected cultures with confirmed active compounds at concentrations corresponding to 3-5 fold their respective IC50 values for three hours. We will isolate parasites by mechanical disruption and filtration, then extract metabolites using acetonitrile. We will analyze samples using high-resolution mass spectrometry with both positive and negative ionization modes.
+
+To investigate mitochondrial function, we will assess mitochondrial membrane potential using MitoTracker Deep Red FM staining and examine ultrastructural changes by transmission electron microscopy. We will measure ATP levels in glucose-starved parasites using a luciferase-based assay to determine the importance of mitochondrial ATP production in both parasite stages.
+
+For compounds showing metabolic signatures consistent with electron transport chain inhibition, we will perform comparative analysis with known bc1-complex inhibitors atovaquone and buparvaquone, using both metabolite abundance measurements and stable isotope incorporation patterns to confirm target identification.

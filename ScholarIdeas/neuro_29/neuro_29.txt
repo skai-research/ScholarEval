@@ -1,0 +1,40 @@
+
+# Research Plan: Ultraslow Serotonin Oscillations in the Hippocampus Delineate Substates Across NREM and Waking
+
+## Problem
+
+We aim to investigate whether serotonin (5-HT) dynamics at shorter time scales can delineate substates within larger brain states of WAKE, NREM, and REM sleep. While serotonin levels are known to vary across major behavioral states (highest during waking, intermediate during NREM, lowest during REM), the potential role of 5-HT fluctuations in defining substates within these broader categories remains unexplored.
+
+Recent studies have identified substates within NREM sleep characterized by periods of high and low arousal, delineated by ultraslow oscillations (<0.1 Hz) of sigma power and noradrenaline levels. These substates appear to mediate the balance between processing external stimuli and carrying out internal brain processes like memory consolidation. Given that ultraslow oscillations have been observed in dorsal raphe nucleus population activity and extracellular 5-HT levels in the hippocampal dentate gyrus during NREM, we hypothesize that 5-HT may similarly distinguish pro-arousal and pro-memory substates.
+
+The hippocampus represents an ideal target for this investigation due to its dense serotonergic innervation from midbrain raphe nuclei and its central role in memory processing. Hippocampal ripples, transient fast oscillations (120-250 Hz) that underlie memory consolidation and replay, provide a key electrophysiological readout for memory-related processes. While previous studies examining 5-HT's effect on ripples found suppressive effects, these studies used systemic manipulations that may not reflect physiological 5-HT dynamics.
+
+## Method
+
+We will employ simultaneous recordings of local extracellular 5-HT concentrations and hippocampal electrophysiological activity using a correlative approach that bypasses the constraints of artificial 5-HT manipulations. Our methodology centers on the recently-developed G Protein-Coupled Receptor-Activation-Based (GRAB) 5-HT sensor (GRAB5-HT3.0), which allows measurement of physiological changes in local extracellular 5-HT concentrations with high spatial and temporal resolution.
+
+We will inject mice with AAV9-hSyn-5HT3.0 virus in the right dorsal CA1 and implant an optic fiber above the injection site for fiber photometry recordings. Simultaneously, we will implant silicon probes in the left dorsal CA1 at matching anterior-posterior coordinates to record local field potentials (LFP) and capture hippocampal activity patterns.
+
+For ripple detection, we will develop a custom convolutional neural network (CNN) model to overcome limitations of standard spectral filter-based methods. The model will use 400 ms segments of eight LFP channels (four hippocampal and four cortical) as input to distinguish true ripples from non-ripple fast oscillations and movement artifacts.
+
+We will perform automated sleep-scoring to classify behavioral states (WAKE, NREM, REM, microarousals) and analyze the relationship between ultraslow 5-HT oscillations and various electrophysiological measures including ripple occurrence, EMG activity, and hippocampal-cortical coherence.
+
+## Experiment Design
+
+We will conduct simultaneous fiber photometry and electrophysiology recordings from freely-moving mice in their home cages during normal behavior encompassing both waking and sleeping periods. Recording sessions will last 2-3 hours to capture sufficient data across different behavioral states.
+
+To validate the GRAB5-HT3.0 sensor's sensitivity to endogenous 5-HT levels, we will treat a subset of mice with fluoxetine (10 mg/kg), an SSRI known to acutely increase extracellular 5-HT levels in the dorsal hippocampus, and compare fluorescence responses to saline controls.
+
+We will analyze the phase relationship between ultraslow 5-HT oscillations (filtered at 0.01-0.06 Hz) and various neural and behavioral measures:
+
+1. **Ripple Analysis**: We will examine ripple occurrence relative to 5-HT oscillation phases, extract ripple clusters (groups of ≥10 ripples with inter-ripple intervals ≤3 seconds), and analyze the timing of first and last ripples within clusters. We will also investigate whether ripples of different power levels show distinct phase preferences.
+
+2. **Microarousal Analysis**: We will analyze the occurrence of microarousals during NREM relative to 5-HT oscillation phases, as these represent periods of heightened arousal within sleep.
+
+3. **EMG Analysis**: We will examine EMG peaks during both NREM and WAKE states relative to 5-HT oscillation phases to assess motor activity patterns.
+
+4. **Coherence Analysis**: We will compute magnitude-squared wavelet coherence between hippocampal and cortical channels across different frequency bands to examine how inter-areal communication varies with 5-HT oscillation phases.
+
+Statistical analysis will employ general linear mixed models (GLMMs) with random effects for mouse and session to account for hierarchical data structure and prevent pseudoreplication. We will compare activity measures between rising and falling phases of 5-HT oscillations, with post-hoc multiple comparisons testing where appropriate.
+
+We expect that if 5-HT oscillations delineate arousal-related substates, we will observe systematic relationships between oscillation phases and markers of arousal (microarousals, EMG activity, coherence) versus memory consolidation (ripples), potentially revealing how ultraslow 5-HT dynamics temporally segregate internal memory processes from arousal-related functions.

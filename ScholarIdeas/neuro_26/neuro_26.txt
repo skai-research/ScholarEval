@@ -1,0 +1,34 @@
+
+# Research Plan: Dynamic Estimation of the Attentional Field from Visual Cortical Activity
+
+## Problem
+
+We aim to investigate how the size of the attentional field is represented within human visual cortex and develop methods to dynamically recover both the location and spatial extent of covert spatial attention from visuocortical activity. While spatial attention has been conceptualized as a "spotlight" that can be flexibly adjusted based on behavioral demands, the neural underpinnings of attentional field size remain poorly understood compared to the well-studied locus of attention.
+
+The motivation for this research stems from a significant gap in our understanding of spatial attention. Although influential theoretical models propose that the attentional field can be broadened and narrowed according to task demands, and that the interaction between attentional field size and stimulus properties can predict observed attentional effects, empirical evidence demonstrating how attention changes its spread across the visual field through brain response modulation is surprisingly limited. Previous studies have focused primarily on neural modulation at attended locations, but methods for dynamically recovering both location and field size from moment to moment are lacking.
+
+We hypothesize that when participants are cued to attend to larger regions of space, the attentional modulation of BOLD responses will span correspondingly larger areas of visual cortex. We further hypothesize that we can develop a modeling approach to reliably estimate both the location and width of the attentional field from visuocortical activity patterns.
+
+## Method
+
+We will develop a paradigm that allows us to dynamically characterize the spatial tuning of spatial attention across the visual field using fMRI in humans. Our approach involves systematically manipulating both the location and width of spatial attention cues while participants perform a covert attention task.
+
+We will use population receptive field (pRF) mapping to identify the retinotopic organization of early visual areas (V1-V3) and constrain our analysis to voxels whose pRFs overlap with our stimulus display. To characterize the spatial profile of attentional modulation, we will project BOLD responses into visual field coordinates using each voxel's pRF location, creating 2D visual field maps of attentional enhancement.
+
+For quantitative analysis, we will extract one-dimensional spatial profiles of attentional modulation as a function of polar angle, since our experimental manipulation varies attention location only along this dimension. We will fit a generalized Gaussian model to these spatial profiles to estimate three key parameters: the location (μ), width (characterized by full width at half maximum), and amplitude of attentional modulation.
+
+To validate our approach, we will compare our estimates of attentional field modulation with equivalent estimates derived from a perceptual manipulation involving physical contrast changes in the visual stimulus, allowing us to benchmark our method against known stimulus-driven modulations.
+
+## Experiment Design
+
+We will conduct an fMRI experiment where participants perform a covert spatial attention task while viewing a white noise annulus in the periphery. The annulus will be segmented into 20 bins, with numbers and letters superimposed at each location. Participants will be cued to attend to contiguous subsets of these bins and report whether more numbers or letters are present within the cued region.
+
+The key experimental manipulation will involve systematically varying the width of the attentional cue across four conditions: 1, 3, 5, or 9 bins (corresponding to 18°, 54°, 90°, or 162° of polar angle). The cue location will also vary, with cues potentially centered on any of the 20 possible positions. Each cue will remain constant for blocks of 5 trials (10 TRs, 15.5 seconds) to allow sufficient time for BOLD signal measurement.
+
+We will monitor eye position throughout the experiment to ensure participants maintain central fixation and use covert attention to perform the task. The task difficulty will be controlled by adjusting the ratio of letters to numbers within each cued region based on the region size.
+
+In a separate control experiment, we will manipulate the physical contrast of segments of the white noise annulus (matching the same width conditions as the attention experiment) while participants perform an unrelated fixation task. This will allow us to compare attention-driven modulations with stimulus-driven modulations using identical analysis methods.
+
+We will collect population receptive field mapping data in separate scanning sessions using standard retinotopic mapping stimuli (expanding/contracting rings, rotating wedges, and moving bars) to characterize the spatial selectivity of voxels in early visual areas.
+
+For analysis, we will examine how well our generalized Gaussian model can recover the true location and width of attentional cues from the spatial profiles of BOLD modulation. We will assess model performance across different temporal intervals (1, 2, 3, 5, or 10 TRs) to determine the minimum data requirements for reliable estimation and evaluate the potential for moment-to-moment tracking of attentional field dynamics.

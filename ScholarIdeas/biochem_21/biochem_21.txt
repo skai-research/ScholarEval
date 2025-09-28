@@ -1,0 +1,34 @@
+
+# Research Plan: Effects of Residue Substitutions on the Cellular Abundance of Proteins
+
+## Problem
+
+We aim to understand how different amino acid residue substitutions affect protein cellular abundance by analyzing large-scale mutagenesis data in a structure-based manner. The motivation stems from the need to uncover general rules governing residue substitution effects for the specific molecular phenotype of cellular abundance, which is crucial for protein function and frequently impacted by single residue changes with widespread consequences for human disease.
+
+Previous studies combining substitution effect scores from multiple MAVEs have been complicated by variations in phenotypes probed across experiments and different experimental backgrounds. To address this limitation, we will focus on a homogeneous dataset using the same experimental methodology (VAMP-seq) that specifically measures cellular abundance effects. Our hypothesis is that simple structural considerations, particularly residue solvent accessibility, combined with information about physicochemical properties of wild-type and variant amino acid residue types, can explain a substantial portion of the variation in cellular abundance effects across different proteins.
+
+We expect that substitutions affecting protein folding free energy will correlate with cellular abundance changes, suggesting that simple structural descriptors might be useful for analyzing cellular stability substitution effects. Our goal is not to develop the most accurate possible variant abundance predictor, but rather to demonstrate how much variation in cellular abundance can be understood through simple rules that apply across different proteins.
+
+## Method
+
+We will collect and analyze VAMP-seq abundance scores from six previously published datasets for soluble human proteins (PTEN, TPMT, CYP2C9, NUDT15, ASPA, and PRKN), providing a total of approximately 31,614 single residue substitution variant abundance scores. We will limit our analysis to soluble proteins since residue substitutions may affect cellular abundance of membrane and non-membrane proteins through different mechanisms.
+
+We used combined crystal and AlphaFold2 structures in our analysis for structure preparation so that our structural input preserved crystal structure coordinates where possible and at the same time had no missing residues.
+
+Our approach will involve constructing amino acid substitution matrices that contain average abundance scores for all possible residue substitution types in different structural environments. We will use wild-type protein structures to calculate structural features describing local residue environment, including relative solvent accessible surface area (rASA) and weighted contact number (WCN). We will classify residues as either solvent-exposed or structurally buried based on rASA values and create separate substitution matrices for each structural environment.
+
+We will establish a baseline framework without structural information by constructing a global substitution matrix, then extend our analysis to incorporate structural context. We will also explore whether additional structural considerations, such as secondary structure context, can further improve our understanding of substitution effects.
+
+## Experiment Design
+
+We will evaluate our substitution matrix-based predictions using leave-one-protein-out cross-validation, where we recalculate matrices leaving out the entire VAMP-seq dataset from a single protein and use the averages in the recalculated matrix as abundance score predictions for substitutions in the omitted protein.
+
+To provide context for our results, we will compare abundance score predictions from our substitution matrices to predictions based on thermodynamic stability change (ΔΔG) calculations using the Rosetta energy function, which we consider a mechanistically-based baseline abundance model.
+
+We will perform hierarchical clustering and principal component analysis of the substitution matrices to identify amino acid groups with similar substitution profiles and understand the biochemical basis of the observed patterns. We will test correlations between average abundance scores and various helix propensity scales to investigate whether secondary structure preferences influence abundance effects.
+
+To assess the broader applicability of our approach, we will analyze how prediction accuracy varies with the number of datasets used to construct the matrices by testing all possible combinations of the six datasets.
+
+We will develop a method to identify functionally important residues by calculating root-mean-square-deviation (RMSD) between experimental substitution profiles and average profiles for buried or exposed residues. This approach will allow us to discover solvent-exposed residues that behave like buried residues in terms of mutational tolerance, potentially indicating functional importance such as involvement in protein-protein interfaces or post-translational modification sites.
+
+Finally, we will apply our method to analyze the homodimer interfaces of NUDT15 and ASPA to validate whether our approach can distinguish between experimentally relevant and irrelevant protein structures, and to identify surface residues critical for maintaining cellular stability.

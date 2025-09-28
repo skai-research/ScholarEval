@@ -1,0 +1,34 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the boundary conditions of hyperaltruistic preference in moral decision-making and examine how oxytocin might modulate these context-dependent effects. Recent moral decision-making research has revealed an intriguing hyperaltruistic tendency where people are more willing to sacrifice monetary gains to spare others from suffering than to spare themselves. However, other studies indicate an opposite egoistic bias where subjects are less willing to harm themselves for others' benefits compared to their own benefits. These conflicting findings highlight the need for a mechanistic account of hyperaltruistic preference.
+
+The mechanistic account of hyperaltruistic phenomena remains unknown, which hinders identification of boundary conditions for hyperaltruism. We hypothesize that moral perception of decision context affects people's hyperaltruistic preference, and that this contextual effect may be susceptible to oxytocin modulation. Specifically, we propose that replacing monetary gain with monetary loss in money-pain trade-off tasks might bias subjects' hyperaltruistic preference due to loss aversion or heightened vigilance when facing potential losses. Additionally, we hypothesize that people may implicitly form moral impressions (help or harm frames) based on decision contexts and adjust their behavior accordingly.
+
+We expect that oxytocin, a neuropeptide linked to social bonding and prosocial behaviors, might influence how subjects internally frame tasks as benefiting from others' pain versus sacrificing self-interest to avoid others' harm. Given oxytocin's documented effects on empathy and its context-dependent prosocial effects, we predict it may restore hyperaltruistic preferences in contexts where they would otherwise be diminished.
+
+## Method
+
+We will employ a well-established money-pain trade-off task adapted to examine contextual specificity of hyperaltruistic preferences. Our approach involves manipulating decision context (monetary gains versus losses) while measuring subjects' willingness to inflict electric shocks on themselves versus others in exchange for monetary outcomes.
+
+We will use a harm aversion model to characterize subjects' behavior, where choices are driven by subjective value differences between options. The model includes a harm aversion parameter κ that depicts the relative weight subjects assign to monetary and shock differences between options. We will separately estimate κ for different conditions related to shock recipients (self vs. other) and decision contexts (gain vs. loss).
+
+To examine individual differences, we will measure personality traits using the Oxford Utilitarianism Scale, specifically focusing on instrumental harm (IH) attitudes - the degree to which people are willing to compromise moral beliefs by inflicting harm to achieve better outcomes - and impartial beneficence (IB) - impartial concern for others' well-being.
+
+For the oxytocin study, we will employ a placebo-controlled, within-subject design where participants receive both oxytocin (24 IU) and placebo in separate sessions. We will examine how oxytocin affects the relationship between decision context and hyperaltruistic preference, particularly focusing on whether it can restore hyperaltruistic tendencies in loss contexts.
+
+## Experiment Design
+
+**Study 1** will use a 2 (decision context: gain vs. loss) × 2 (shock recipient: self vs. other) within-subject design. We will recruit approximately 80 participants who will complete a money-pain trade-off task where they choose between options with different monetary amounts and electric shock levels. In gain contexts, participants decide whether to inflict more pain on themselves or others to gain more money. In loss contexts, they decide whether to inflict more pain to avoid bigger monetary losses.
+
+We will conduct pain calibration procedures to determine individual pain thresholds, then use standardized shock intensities corresponding to each participant's subjective pain rating of level 7. The task will include 240 trials across four conditions, with monetary amounts ranging from ¥0.2 to ¥20 and shock numbers from 1 to 20. We will ensure that monetary differences (Δm) and shock differences (Δs) are uncorrelated across trials.
+
+**Study 2** will employ a 2 (decision context: gain vs. loss) × 2 (shock recipient: self vs. other) × 2 (treatment: placebo vs. oxytocin) within-subject design. We will recruit approximately 46 male participants to avoid sex-related confounds in oxytocin effects. Participants will complete the same money-pain trade-off task in two sessions separated by 5-7 days, receiving either oxytocin or placebo in counterbalanced order.
+
+We will administer oxytocin or placebo intranasally (24 IU total) approximately 35 minutes before the task. To examine the proposed mediation mechanism, we will collect post-task questionnaires asking participants how they perceived the task structure - whether they regarded it as "harming" others (inflicting pain to increase gain/avoid loss) or "helping" others (sacrificing gain/accepting loss to alleviate others' pain).
+
+We will analyze choice data using both the harm aversion model and mixed-effect logistic regression to examine how decision contexts and oxytocin treatment affect sensitivities to monetary and shock differences. We will conduct moderated mediation analyses to test whether moral framing perceptions mediate the relationship between personality traits and hyperaltruistic preferences, and whether this mediation is context-dependent and influenced by oxytocin.
+
+All participants will complete personality assessments including the Oxford Utilitarianism Scale and Interpersonal Reactivity Index. We will ensure experimental realism by using actual shock delivery based on randomly selected trials and providing performance-based compensation in addition to participation fees.

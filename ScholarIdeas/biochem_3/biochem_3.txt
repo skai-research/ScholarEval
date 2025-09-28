@@ -1,0 +1,34 @@
+
+# Research Plan
+
+## Problem
+
+DNA methylation at the 5th position of cytosine (5mC) is an ancient epigenetic modification found across eukaryotes, yet its evolutionary pattern is puzzling. While DNA methyltransferases (DNMTs) that introduce 5mC are conserved across many species, they have been repeatedly lost in several independent lineages, and 5mC levels vary enormously between species. Many commonly studied model organisms, including *Drosophila melanogaster*, *C. elegans*, and *S. cerevisiae*, have completely lost DNA methylation systems.
+
+The propensity of 5mC to damage genomes may explain why 5mC systems are frequently lost during evolution. In part this is due to 5mC itself is more mutagenic than unmodified cytosine due to its deamination to thymine rather than uracil. Previous work from our laboratory demonstrated that DNMTs co-evolve with alkylation repair enzymes, particularly ALKBH2, and that DNMTs can introduce alkylation damage in the form of 3-methylcytosine (3mC) as an off-target effect.
+
+We propose that the genotoxic consequences of DNMT activity create a fitness cost that becomes particularly problematic when organisms are exposed to environmental DNA damage. This could explain the rapid evolutionary transitions toward either increased DNA methylation or complete loss of methylation systems observed in different species.
+
+## Method
+
+To test the fitness consequences of DNMT-induced DNA damage independent of gene regulatory effects, we will establish a heterologous system using *E. coli* as a host organism. We will express eukaryotic-like CG methyltransferases (M.SssI and M.MpeI) in an *E. coli* strain (C2523) that lacks the McrABC restriction modification system, allowing genome-wide 5mC accumulation without degradation of methylated DNA.
+
+We will use this system to directly assess how DNMT expression affects cellular sensitivity to various genotoxic stresses. Our approach will involve comparing the survival of DNMT-expressing cells versus control cells when exposed to different DNA-damaging agents. We will also investigate the interaction between DNMT expression and DNA repair pathway mutations to understand the mechanistic basis of any observed sensitivities.
+
+To control for potential secondary effects and ensure tight regulation of DNMT expression, we will develop an inducible system using the pBAD promoter, allowing us to control methyltransferase activity with arabinose addition. This will enable us to distinguish direct effects of DNMT activity from long-term adaptive responses.
+
+## Experiment Design
+
+We will conduct survival assays exposing DNMT-expressing *E. coli* and appropriate controls to various DNA-damaging agents, including methyl methanesulfonate (MMS), hydrogen peroxide (H₂O₂), and cisplatin. We will measure colony-forming units before and after treatment to calculate percentage survival for each condition.
+
+To test our hypothesis about alkylation damage, we will create *alkB* deletion mutants (the *E. coli* homolog of ALKBH2) and assess how loss of this repair enzyme affects the sensitivity of DNMT-expressing cells to alkylating agents. We will use statistical analysis including two-way and three-way ANOVA to identify synthetic interactions between DNMT expression and repair gene deletions.
+
+We will measure genome-wide 5mC levels using methylation-sensitive restriction enzyme digests and mass spectrometry to confirm successful methylation and quantify the extent of modification achieved by different methyltransferases.
+
+To investigate potential mechanisms underlying any observed sensitivities, we will monitor reactive oxygen species (ROS) production using fluorescent sensors in real-time, comparing DNMT-expressing cells to controls under various treatment conditions. We will also use mass spectrometry to detect oxidation products of 5mC, such as 5-hydroxymethylcytosine (5hmC) and 5-formylcytosine (5fC), which could serve as substrates for DNA repair pathways.
+
+To test whether oxidation products of 5mC contribute to cellular toxicity, we will co-express TET enzymes (from *Naegleria gruberi* and phage-derived TET43) along with DNMTs to artificially accelerate the formation of 5hmC and 5fC, then assess the combined effects on oxidative stress sensitivity.
+
+We will perform transcriptomic analysis using RNA sequencing to determine whether DNMT expression affects the cellular response to oxidative stress, particularly focusing on the expression of detoxification genes regulated by oxyR.
+
+All experiments will include appropriate controls, multiple independent clones, and statistical analysis to ensure reproducibility and significance of observed effects. We will use drop plate assays for rapid screening and more detailed colony counting assays for quantitative measurements.

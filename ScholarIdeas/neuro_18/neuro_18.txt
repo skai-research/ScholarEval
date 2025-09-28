@@ -1,0 +1,42 @@
+
+# Research Plan: Neural Encoding of Multiple Motion Speeds in Visual Cortical Area MT
+
+## Problem
+
+Segmenting visual objects from each other and their background is a fundamental function of vision, and visual motion provides a salient cue for scene segmentation. While previous studies have extensively investigated how neurons represent single visual stimuli, natural environments contain multiple entities that often co-occupy visual neurons' receptive fields. Understanding how the visual system represents multiple visual stimuli to achieve segmentation remains poorly understood.
+
+Although how cortical neurons represent the speed of a single stimulus has been well-studied, how neurons represent multiple speeds is largely unknown. Previous work has characterized how neurons in area MT represent two motion directions of transparently moving stimuli, but the neural coding principle for multiple speeds of overlapping stimuli has not been established.
+
+We hypothesize that MT neurons' responses to two motion speeds may follow one of several possible rules: 1) averaging the responses elicited by individual speed components; 2) bias toward the speed component that elicits a stronger response ("soft-max operation"); 3) bias toward the slower speed component, which may better represent more probable slower speeds in natural scenes; or 4) bias toward the faster speed component, which may benefit segmentation of faster-moving stimuli from slower backgrounds.
+
+We will investigate whether the encoding rule depends on stimulus speeds and the speed preference of individual neurons, and examine how this neural representation relates to perceptual segmentation abilities.
+
+## Method
+
+We will employ a multi-faceted approach combining psychophysics, neurophysiology, and computational modeling to characterize neural encoding of multiple motion speeds.
+
+**Psychophysical Approach:** We will first establish the perceptual basis by characterizing how human and monkey subjects perceive overlapping stimuli moving at different speeds. We will use overlapping random-dot patches moving at two different speeds within stationary apertures, employing fixed ratios between speeds (4:1 for large separation, 2:1 for small separation) across different mean speeds.
+
+**Neurophysiological Recording:** We will record extracellularly from isolated neurons in area MT of macaque monkeys while they perform fixation tasks. We will present bi-speed stimuli with the same speed ratios used in psychophysics experiments and measure responses to both bi-speed stimuli and individual speed components.
+
+**Quantitative Analysis:** We will express neuronal responses to bi-speed stimuli as weighted sums of responses to individual speed components, calculating response weights across the population to determine encoding rules. We will examine how these weights change with stimulus speeds and compare responses across neurons with different speed preferences.
+
+**Computational Modeling:** We will develop a modified divisive normalization model where response weights are determined by population neural responses to individual speed components, extending beyond traditional stimulus strength-based weighting approaches.
+
+## Experiment Design
+
+**Human Psychophysics:** We will conduct two-alternative forced-choice (2AFC) and three-alternative forced-choice (3AFC) discrimination tasks. In the 2AFC task, subjects will discriminate bi-speed stimuli from corresponding single-speed stimuli moving at the logarithmic mean speed. The 3AFC task will include a "no two-speeds" option to ensure discrimination is based on speed segmentation rather than stimulus appearance differences.
+
+We will test five speed pairs for each separation condition (4:1 and 2:1 ratios), ranging from slow (1.25 and 5°/s) to fast (20 and 80°/s for 4:1; 20 and 40°/s for 2:1) speeds. Visual stimuli will be 10° square apertures containing overlapping random-dot patches with 100% motion coherence.
+
+**Monkey Psychophysics:** We will train one monkey to perform a 2AFC task reporting whether stimuli contain one or two speeds, using identical visual parameters as human experiments to establish cross-species comparisons.
+
+**Neurophysiology:** We will record from approximately 100 MT neurons across multiple monkeys during fixation tasks. For each neuron, we will characterize direction tuning, map receptive fields, and measure speed tuning to single speeds before testing responses to bi-speed stimuli.
+
+We will present the same speed combinations used in psychophysics, with bi-speed and single-speed trials randomly interleaved. We will also conduct control experiments with stimuli moving in different directions (90° separation) to test generalizability of encoding rules.
+
+**Attention Control:** We will perform control experiments directing attention away from receptive fields using a demanding direction-discrimination task in the opposite visual field to rule out attentional explanations for any observed biases.
+
+**Population Analysis:** We will construct pseudo-population responses by pooling normalized responses from neurons with different preferred speeds, allowing us to examine population-level encoding patterns and test linear classifiers for discriminating bi-speed from single-speed stimuli.
+
+**Model Development:** We will fit responses using a modified normalization model where weights are proportional to population responses elicited by individual speed components, testing whether this approach can account for observed encoding patterns across different stimulus conditions and neuron types.

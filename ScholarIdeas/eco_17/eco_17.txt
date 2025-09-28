@@ -1,0 +1,28 @@
+
+# Research Plan
+
+## Problem
+
+Global ecosystems and food supply depend on insect biodiversity for key functions such as pollination and decomposition. High-resolution, accurate data on invertebrate populations and communities across scales are critical for informing conservation efforts. However, conventional data collection methodologies for invertebrates are expensive, labor intensive, and require substantial taxonomic expertise, limiting researchers, practitioners, and policymakers.
+
+We hypothesize that novel optical techniques show promise for automating such data collection across scales as they operate unsupervised in remote areas. The goal of this study is to determine if the measurement of an insect biodiversity metric can be automated with the use of optical near-infrared insect sensors. We aim to evaluate whether optical sensors can provide a reliable indicator of invertebrate richness that correlates with conventional assessment methods.
+
+## Method
+
+We will deploy autonomous near-infrared sensors alongside conventional sampling methods (Malaise traps and sweep nets) in agricultural fields across Kansas, USA. The sensors use light-emitting diodes to transmit infrared light (810 nm & 970 nm), creating a measurement volume between 5 and 70 L, depending on insect size. Insects flying in front of the sensor back-scatter light, which is recorded by a photodiode as a time signal.
+
+We will extract wing-beat frequency (WBF) and body-to-wing ratio (BWR) from the optical sensor data. These physical features will serve as the basis for clustering analysis, as insects of the same species exhibit similar physical properties and therefore similar signal features. We will apply the DBSCAN (Density-based spatial clustering of applications with noise) algorithm to cluster the optical data, using the number of clusters as a proxy for species richness.
+
+For conventional methods, we will identify all collected specimens to the lowest possible taxonomic unit and calculate standard biodiversity metrics including species richness, Shannon index, and Simpson index. We will then compare the automated biodiversity metrics derived from optical sensors with those obtained from conventional methods using correlation analysis.
+
+## Experiment Design
+
+We will monitor insect populations at 20 sites representing agricultural crops of central Kansas, including corn, sorghum, soybean, alfalfa, pasture, and complex cover crops. Each site will be evaluated on two different occasions (June and July 2020) to capture seasonal changes.
+
+At each site, we will place one autonomous near-infrared sensor approximately 50 m from the field margin and monitor continuously for two periods of three days in June and July. Concurrently, we will deploy Malaise traps (single bi-directional, Townes-style trap) 100 m from the margin for 24-hour periods. We will also conduct sweep net sampling at 50, 100, and 150 m from the field edge along linear transects, performing 50 sweeps per location perpendicular to the transect.
+
+We will automatically separate insect recordings from noise using proprietary cloud-based neural network software and discard observations without clearly identified wingbeats or body-to-wing ratios. All specimens from conventional methods will be identified to species or morphospecies level, with voucher specimens maintained for verification.
+
+We will randomly divide the data into optimization (30%) and testing (70%) sets. During optimization, we will tune DBSCAN parameters (ε and min_samples) to maximize Spearman correlation between biodiversity metrics from sensors and conventional methods using stochastic gradient descent. We will fit separate models for richness and diversity indices for each trapping method, plus a combined model for both conventional methods.
+
+We will calculate Spearman-rank correlations between clustering results from optical sensor data and biodiversity measures from conventional sampling methods. Additionally, we will conduct Analyses of Variance (ANOVA) and TukeyHSD post hoc analyses to evaluate the impact of sampling month, crop type, and field on richness estimates.

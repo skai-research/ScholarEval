@@ -1,0 +1,42 @@
+
+# Research Plan: The Fate of Pyruvate Dictates Cell Growth by Modulating Cellular Redox Potential
+
+## Problem
+
+Mitochondrial pyruvate metabolism is central to cell proliferation as well as the size and specialized functions of post-mitotic cells. We aim to investigate whether pyruvate metabolism influences biosynthetic capacity and cell size, using the Drosophila fat body as a model of the mammalian liver. Our research is motivated by observations that cells must appropriately allocate available nutrients to optimize their metabolic programs for energy extraction and biomass production. The balance between these processes plays an important role in determining cell fate and function. For example, in cancer and heart failure, cellular metabolism is rewired to favor biosynthesis over efficient energy production, which facilitates rapid cell proliferation.
+
+In previous work, during the third instar stage of Drosophila larval development (from 72 to 120 hours After Egg Laying), fat body cells halt cell division and dramatically increase in size. This rapid cell growth occurs alongside time-dependent changes in mRNAs encoding proteins involved in cell growth pathways and metabolic processes. Notably, we observed reduced expression of genes linking pyruvate to the TCA cycle, including pyruvate kinase (Pyk), mitochondrial pyruvate carrier subunits (Mpc1 and Mpc2), and pyruvate dehydrogenase complex subunits (Pdha and Dlat).
+
+Based on these observations, we hypothesize that the suppression of mitochondrial pyruvate metabolism, gated by the action of the MPC, might support the rapid cell growth observed in fat body cells. We further hypothesize that pyruvate fate might dictate cell growth by modulating cellular redox potential, and that this mechanism may be evolutionarily conserved between Drosophila and mammalian systems.
+
+## Method
+
+We will employ a multi-system approach combining Drosophila genetics with mammalian cell culture models to investigate how pyruvate metabolism regulates cell size. Our methodology will integrate genetic manipulation, metabolic analysis, and cell biology techniques.
+
+In Drosophila, we will use mosaic analysis to generate clones with altered MPC expression in fat body cells, allowing us to assess cell-autonomous effects on cell size. We will utilize the flip-out Gal4 system to create GFP-labeled clones expressing MPC components or control constructs. We will also employ tissue-specific drivers to manipulate MPC expression throughout the fat body.
+
+For mammalian studies, we will use HepG2 cells engineered with doxycycline-inducible MPC expression systems, allowing temporal control over MPC levels. We will culture these cells both in 2D monolayers and as 3D spheroids to better recapitulate physiological conditions. Additionally, we will validate key findings in primary rat hepatocytes to ensure physiological relevance.
+
+Our approach will include comprehensive metabolic profiling using stable isotope tracing with 13C-glucose and 13C-lactate to track pyruvate fate and metabolic flux through different pathways. We will measure oxygen consumption rates, cellular redox ratios (NADH/NAD+), and abundances of key metabolites and cofactors.
+
+## Experiment Design
+
+We will conduct systematic experiments to test our hypotheses about pyruvate metabolism and cell size regulation.
+
+**Cell Size Analysis**: We will measure cell size using fluorescence microscopy of phalloidin-stained cells, quantifying 2D area in Drosophila fat body clones and both 2D area and 3D volume in mammalian cells. We will track cell size changes over time following MPC expression induction.
+
+**Metabolic Flux Studies**: We will perform 13C-glucose tracing experiments to distinguish between pyruvate dehydrogenase (PDH) and pyruvate carboxylase (PC) activities by analyzing M+2 and M+3 isotopomers of TCA cycle intermediates. We will use 13C-lactate tracing to assess gluconeogenesis by measuring M+3 phosphoenolpyruvate and M+6 glucose production.
+
+**Genetic Epistasis Analysis**: We will conduct comprehensive genetic interactions studies in Drosophila, testing the effects of manipulating pyruvate carboxylase, pyruvate dehydrogenase components, and gluconeogenic enzymes in combination with MPC expression. We will also test interactions with canonical growth signaling pathways including mTORC1, PI3K/Akt, and Myc.
+
+**Redox State Manipulation**: We will test our hypothesis about redox control by genetically and pharmacologically manipulating cellular NADH/NAD+ ratios. We will express alternative NADH dehydrogenases, supplement with NAD+ precursors, and use redox-modulating compounds to assess their effects on MPC-induced cell size changes.
+
+**Protein Synthesis Assessment**: We will measure protein synthesis rates using puromycin incorporation assays and amino acid analogs like O-propargyl-puromycin (OPP) and L-homopropargylglycine (HPG). We will also quantify the abundance of destabilized GFP as a reporter of ongoing protein synthesis.
+
+**Amino Acid Rescue Experiments**: We will test whether amino acid supplementation can rescue the cell size defects caused by MPC expression, focusing particularly on TCA cycle-derived amino acids like aspartate, glutamate, and proline.
+
+**Biomolecule Quantification**: We will fractionate and quantify cellular DNA, RNA, protein, and lipid content to determine which macromolecules are most affected by altered pyruvate metabolism.
+
+**Subcellular Fractionation**: We will separate cytoplasmic and mitochondrial fractions to measure compartment-specific NADH/NAD+ ratios and assess how MPC expression affects redox balance in different cellular compartments.
+
+All experiments will include appropriate controls, multiple biological replicates, and statistical analysis to ensure robust and reproducible results. We will validate key findings across multiple model systems to demonstrate evolutionary conservation of the mechanisms we identify.

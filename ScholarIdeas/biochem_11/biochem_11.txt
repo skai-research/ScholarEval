@@ -1,0 +1,28 @@
+
+# Research Plan: Structural Insights into Human Propionyl-CoA Carboxylase (PCC) and 3-Methylcrotonyl-CoA Carboxylase (MCC)
+
+## Problem
+
+We aim to address the limited structural understanding of human biotin-dependent carboxylases (BDCs), specifically propionyl-CoA carboxylase (PCC) and 3-methylcrotonyl-CoA carboxylase (MCC). While these enzymes play crucial roles in metabolic processes—PCC catalyzes the carboxylation of propionyl-CoA in the metabolism of odd-chain fatty acids, cholesterol, and specific amino acids, and MCC catalyzes the carboxylation of 3-methylcrotonyl-CoA in leucine metabolism—our structural knowledge remains constrained. Only a low-resolution (15 Å) cryo-EM structure of human PCC has been reported, and no high-resolution structure of human MCC exists. This knowledge gap limits our understanding of substrate specificity, catalytic mechanisms, and the coordination between different functional domains in these essential metabolic enzymes.
+
+We hypothesize that high-resolution structures of human PCC and MCC in various substrate-bound states will reveal the molecular basis of substrate specificity and provide insights into the catalytic process, particularly regarding biotin positioning and conformational changes upon substrate binding.
+
+## Method
+
+We will employ cryo-electron microscopy (cryo-EM) to determine high-resolution structures of endogenously purified human PCC and MCC holoenzymes. Our approach involves purifying the native enzymes from human Expi 293F cells using streptavidin affinity chromatography, exploiting the covalently linked biotin cofactor as a natural affinity tag. We will further purify the proteins using size-exclusion chromatography to obtain homogeneous samples suitable for structural analysis.
+
+To investigate substrate binding and potential conformational changes, we will prepare samples in different states: apo (substrate-free), propionyl-CoA-bound, and acetyl-CoA-bound conditions. The inclusion of acetyl-CoA, while not a natural substrate for these enzymes, will help us understand substrate specificity by comparing binding modes with the natural substrate propionyl-CoA.
+
+We will use single-particle cryo-EM analysis to reconstruct three-dimensional structures, employing computational methods including particle picking, 2D and 3D classification, and refinement procedures to achieve high-resolution maps suitable for atomic model building.
+
+## Experiment Design
+
+We will culture Expi 293F cells and harvest them when they reach optimal density. The cells will be lysed using high-pressure disruption, and the supernatant will be incubated with Strep-Tactin®XT resin to capture biotin-containing proteins. After washing, we will elute the proteins using D-biotin and further purify them by size-exclusion chromatography using a Superose 6 Increase column.
+
+For substrate-bound samples, we will incubate the purified proteins with either propionyl-CoA or acetyl-CoA in the presence of bicarbonate, MgCl₂, and ATP to simulate catalytic conditions. We will prepare cryo-EM grids using holey carbon films, applying 4 μL of sample and flash-freezing in liquid ethane using a Vitrobot.
+
+Data collection will be performed on a Titan Krios TEM operating at 300 kV with a K3 Summit detector. We will collect movie stacks with appropriate defocus ranges and electron doses, followed by motion correction and CTF estimation. For data processing, we will use cryoSPARC for particle picking, 2D classification, ab-initio reconstruction, and heterogeneous refinement to separate PCC and MCC particles. We will perform non-uniform refinement and local refinement procedures to achieve the highest possible resolution.
+
+Model building will utilize AlphaFold predicted structures as templates, with manual adjustment in Coot and real-space refinement in Phenix. We will validate our structures using cross-validation methods against independent half-maps to prevent overfitting.
+
+We will analyze the structures to understand domain organization, substrate binding sites, and the positioning of the biotin cofactor relative to catalytic residues. Comparative analysis with existing bacterial homolog structures will help identify species-specific differences and conserved features. We will examine conformational differences between apo and substrate-bound states to understand the coordination between biotin binding and substrate recognition.

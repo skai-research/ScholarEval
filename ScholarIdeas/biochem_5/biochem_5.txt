@@ -1,0 +1,47 @@
+
+# Research Plan
+
+## Problem
+
+Cancer cells must acquire sufficient biomass precursors including amino acids, lipids, and nucleotides to support proliferation, but many tissue and tumor environments are deficient in necessary nutrients. In these nutrient-limited conditions, cells depend on biosynthesis to accumulate sufficient biomass for proliferation. The synthesis of many biomass precursors involves oxidation reactions that require NAD+ as an electron acceptor, and there is accumulating evidence that NAD+ availability and the cellular redox state (NAD+/NADH ratio) can limit the synthesis of biomass precursors including aspartate, asparagine, fatty acids, serine, and nucleotides.
+
+While previous work has demonstrated that the NAD+/NADH ratio impacts cancer cell proliferation in nutrient environments that increase dependence on biosynthetic oxidation reactions, what determines the cellular NAD+/NADH ratio and whether it is modulated in response to environmental nutrient availability is not well characterized. Moreover, whether differences in the NAD+/NADH ratio across cell types affect sensitivity to different nutrient limitations is not known.
+
+We hypothesize that the endogenous NAD+/NADH ratio of cancer cells is regulated to influence biosynthesis in different nutrient-depleted environments and plays a role in determining cancer cell proliferation when multiple oxidized nutrients are limiting. We aim to uncover how the endogenous NAD+/NADH ratio is regulated in response to environmental nutrient fluctuations and its role in determining cancer cell proliferation when multiple oxidized nutrients are limiting.
+
+## Method
+
+We will investigate the relationship between the NAD+/NADH ratio and biomass synthesis by focusing on serine synthesis as a model system, since serine synthesis involves NAD+-requiring oxidation reactions and some tumor microenvironments have low serine levels. Our approach will involve:
+
+1. **Pharmacological manipulation of NAD+/NADH ratios**: We will use alpha-ketobutyrate (AKB) as an exogenous electron acceptor to increase the NAD+/NADH ratio and rotenone (a mitochondrial complex I inhibitor) to decrease the ratio.
+
+2. **Cell line panel analysis**: We will examine a panel of cancer cells derived from various tissues-of-origin with different genetic driver mutations to assess variability in sensitivity to serine deprivation and correlate this with endogenous NAD+/NADH ratios.
+
+3. **Mechanistic investigation of NAD+ regeneration**: We will investigate the processes that lead to increased NAD+/NADH ratios in some cancer cells, focusing on major NAD+ regenerating processes including lactate production and mitochondrial respiration.
+
+4. **Multi-nutrient analysis**: We will extend our analysis beyond serine to include lipid metabolism, examining how lipid deprivation affects mitochondrial respiration and the NAD+/NADH ratio, and how this influences both citrate and serine synthesis.
+
+## Experiment Design
+
+### NAD+/NADH Ratio Manipulation and Serine Synthesis
+We will culture A549 non-small cell lung cancer cells in serine-free medium and treat with varying concentrations of AKB (250-1000 μM) and rotenone (20-40 nM) to modulate the NAD+/NADH ratio. We will measure the NAD+/NADH ratio using the NAD/NADH-Glo Assay and assess serine synthesis rates using kinetic isotope tracing with uniformly 13C-labeled glucose (U-13C-glucose), measuring production of M+3 labeled serine over time. We will collect both media and cells to capture all newly synthesized serine. Proliferation rates will be measured over 72 hours using sulforhodamine B (SRB) colorimetric assays.
+
+### Cell Line Panel Characterization
+We will measure proliferation rates of multiple cancer cell lines in the presence and absence of serine to identify variability in serine sensitivity. We will assess PHGDH protein expression by immunoblotting and measure NAD+/NADH ratios in serine-replete and serine-depleted conditions. We will perform kinetic U-13C-glucose tracing to measure serine synthesis rates in representative cell lines (A549 and H1299) that show different responses to serine deprivation.
+
+### Mitochondrial Respiration Analysis
+We will measure oxygen consumption rates using Seahorse extracellular flux analysis in cells cultured with and without serine for 24 hours. We will test whether oxygen consumption changes correlate with NAD+/NADH ratio changes by culturing cells in varying serine concentrations (0-400 μM) and measuring both parameters. We will assess lactate secretion relative to glucose consumption to evaluate this alternative NAD+ regeneration pathway.
+
+### Pharmacological Manipulation of Mitochondrial Respiration
+We will treat cells with FCCP (carbonyl cyanide-4-(trifluoromethoxy)phenylhydrazone), a proton ionophore that increases mitochondrial oxygen consumption by uncoupling respiration from ATP synthesis. We will test varying concentrations of FCCP and measure effects on proliferation, serine synthesis, oxygen consumption, and NAD+/NADH ratios. To confirm that effects are mediated through NAD+ regeneration, we will co-treat cells with rotenone to block complex I-mediated NAD+ regeneration.
+
+### Lipid Deprivation Experiments
+We will culture cells in media with lipid-depleted serum and measure oxygen consumption rates, NAD+/NADH ratios, and both citrate and serine synthesis using U-13C-glucose tracing. We will compare responses between cell lines that show different responses to serine deprivation.
+
+### Dual Nutrient Deprivation
+We will examine the effects of simultaneous serine and lipid depletion compared to single nutrient deprivations. We will measure mitochondrial respiration, NAD+/NADH ratios, serine and citrate synthesis rates, and proliferation under these conditions to test whether changes in NAD+/NADH ratio caused by one nutrient depletion can influence synthesis of and dependency on another oxidized nutrient.
+
+### Cell Line Generation and Validation
+We will generate cell lines overexpressing PHGDH using lentiviral infection to test whether enzyme expression alone can rescue proliferation defects or whether both PHGDH expression and elevated NAD+/NADH ratios are required for optimal serine synthesis in nutrient-depleted conditions.
+
+All experiments will include appropriate controls, technical replicates (n=3 minimum), and will measure cell numbers to normalize metabolic measurements. We will use established protocols for metabolite extraction and gas chromatography-mass spectrometry analysis for isotope tracing experiments.

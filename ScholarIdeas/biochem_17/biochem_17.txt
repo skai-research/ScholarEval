@@ -1,0 +1,36 @@
+
+# Research Plan
+
+## Problem
+
+Mitochondria utilize a dedicated translation system that closely resembles bacterial translation machinery, making mitochondrial ribosomes (mitoribosomes) susceptible to off-target effects from bacterial protein synthesis inhibitors used as antibiotics. This mitochondrial toxicity manifests as serious side effects including lactic acidosis, ototoxicity, nephrotoxicity, and peripheral neuropathy, depending on the specific antibiotic and patient genetics. While approximately 14.3 doses of antibiotics are administered per 1,000 people daily worldwide, the mechanisms by which these antibiotics inhibit mitochondrial translation remain unclear.
+
+We hypothesize that bacterial translation inhibitors may act through identical mechanisms in mitochondria as they do in bacteria, given the evolutionary conservation between bacterial ribosomes and mitoribosomes. However, this has not been systematically investigated. Understanding these mechanisms is critical for developing safer antibiotics with reduced mitochondrial toxicity and for comprehending how these drugs disrupt mitochondrial function.
+
+Additionally, the nucleotide-level precision offered by mitoribosome profiling may allow us to precisely annotate mitochondrial gene structure and identify novel translation events that have been previously undetected.
+
+## Method
+
+We will employ mitoribosome profiling in HEK293 cells to characterize the impact of a diverse panel of bacterial translation inhibitors on mitochondrial translation. This technique allows mapping of translating ribosomes with codon-level accuracy by identifying mRNA sequences occupied by ribosomes.
+
+Our approach involves treating cells with high concentrations of antibiotics representing different classes and mechanisms: retapamulin and tiamulin (pleuromutilin antibiotics that target the peptidyl-transferase center), josamycin and erythromycin (macrolide antibiotics), chloramphenicol and linezolid (context-dependent elongation inhibitors), and telithromycin (which causes context-dependent arrest at R/K-X-R/K motifs in bacteria).
+
+We will optimize the mitoribosome profiling methodology by comparing RNase I and MNase digestion to determine which nuclease generates the most consistent and interpretable mitoribosome-protected fragments (MRPFs). The quality will be assessed through read phasing analysis, footprint length distribution, and coverage patterns across mitochondrial open reading frames.
+
+For each antibiotic treatment, we will isolate mitoribosomes through sucrose gradient fractionation, where cytoplasmic ribosomes and mitoribosomes sediment in distinct 80S and 55S fractions respectively. We will then sequence the protected RNA fragments and map them to the mitochondrial genome to identify sites of ribosome accumulation that indicate translation arrest.
+
+## Experiment Design
+
+We will treat HEK293 cells with each antibiotic at concentrations of 100 µg/mL for tiamulin and josamycin, and 10 µg/mL for retapamulin, for 30 minutes, alongside DMSO-treated controls. Following treatment, we will perform mitoribosome profiling using the optimized nuclease digestion protocol.
+
+To distinguish between initiation and elongation inhibitors, we will analyze the distribution of MRPFs across mitochondrial transcripts. Initiation inhibitors should cause accumulation of ribosomes at the 5' end of transcripts, while elongation inhibitors should show context-dependent arrest patterns throughout the coding regions.
+
+For context-dependent inhibitors, we will calculate the average change in MRPF abundance based on the identity of amino acids at the -1 (penultimate), P-site, and A-site positions to determine the sequence contexts that promote ribosome stalling.
+
+To investigate translation initiation sites, we will analyze MRPF sizes at the 5' ends of mitochondrial transcripts. Since mitochondrial transcripts often lack 5' untranslated regions, we expect that ribosomes initiating translation will generate footprints of specific lengths that correlate with start codon positions.
+
+We will complement our mitoribosome profiling data with protein mass spectrometry analysis of isolated mitochondria to validate alternative translation initiation sites by detecting N-terminal peptides corresponding to different potential start codons.
+
+For potential novel translation events on non-coding RNAs, we will analyze read phasing patterns and amino acid composition of putative open reading frames to assess whether genuine translation elongation occurs at these sites.
+
+All experiments will include appropriate controls and replicates to ensure reproducibility and statistical significance of our findings.

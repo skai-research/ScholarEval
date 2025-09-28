@@ -1,0 +1,41 @@
+
+# Research Plan: Normative Evidence Weighting and Accumulation in Correlated Environments
+
+## Problem
+
+We aim to investigate how humans form perceptual decisions when sensory observations are correlated, addressing a fundamental gap in decision-making research. While previous studies have established that the brain follows normative principles for weighing and accumulating evidence over time with independent observations, it remains unclear whether these principles extend to correlated environments.
+
+The motivation for this research stems from the recognition that correlations between observations can dramatically impact the weight of evidence they provide for decision-making. In real-world scenarios, observations are rarely independent, yet most laboratory studies have been restricted to tasks with statistically independent observations. This limitation has prevented us from understanding whether decision-makers can compute the normative weight of evidence—the log-likelihood ratio (logLR)—or rely on approximations when faced with correlated information.
+
+We hypothesize that humans can adaptively adjust their evidence weighting to account for correlations in observations, following approximately normative principles. Specifically, we predict that participants will demonstrate the ability to:
+1. Appropriately weigh evidence based on correlation structure
+2. Accumulate this weighted evidence over time until reaching decision bounds
+3. Adapt to trial-by-trial changes in correlations with minimal training
+
+The research questions guiding our study are: Can humans appropriately weigh and accumulate evidence from correlated observations? Do they follow normative principles similar to those demonstrated for temporally dynamic observations? How robust is the brain's ability to process sensory observations with respect to their evidential weight rather than just their physical features?
+
+## Method
+
+We will employ a normative modeling approach combined with behavioral experimentation to address our research questions. Our methodology builds on established principles from sequential probability ratio tests (SPRT) and drift-diffusion models (DDM), extending them to handle pairwise-correlated observations.
+
+The theoretical framework centers on computing the appropriate weight of evidence for correlated observations using the log-likelihood ratio. For pairs of correlated observations from bivariate Gaussian distributions, the logLR depends on a correlation-dependent scale factor that accounts for both the magnitude and sign of the correlation. Negative correlations increase the weight of evidence (due to reduced overlap between generative distributions), while positive correlations decrease it (due to increased redundancy).
+
+We will develop a variant of the DDM that accounts for pairwise-correlated observations by implementing correlation-dependent adjustments to decision bounds. This approach treats evidence weighting as equivalent to scaling decision bounds to account for correlation-dependent effects on both signal and noise components of the decision process.
+
+Our experimental approach will use a novel visual discrimination task where participants observe pairs of spatially correlated stimuli and decide which of two sources generated them. We will manipulate correlations on a trial-by-trial basis while equating the expected logLR (evidence strength) across correlation conditions by adjusting the means of generative distributions.
+
+## Experiment Design
+
+We will conduct a preregistered online study with 100 human participants recruited through the Prolific platform. Participants will be randomly assigned to one of four correlation-magnitude groups (|ρ| = 0.2, 0.4, 0.6, or 0.8), with 25 participants per group.
+
+The experimental task will present sequences of star pairs whose horizontal positions are drawn from bivariate Gaussian distributions. Each trial will involve one of two sources (left or right) generating the star positions, with participants required to identify the generative source. The correlation between star positions within each pair will vary randomly across three conditions per group: −ρ, 0, and +ρ.
+
+Critical to our design, we will adjust the means of generative distributions to ensure equal expected logLR across correlation conditions. This manipulation allows us to test whether participants use normative evidence weighting: if they do, their performance should be equivalent across correlation conditions; if they ignore correlations, we expect systematic differences in response times and accuracy.
+
+Each participant will complete 768 trials divided into 4 blocks, with 12 conditions per block (2 sources × 2 evidence strengths × 3 correlations). Prior to the main task, participants will undergo training and a staircase procedure to standardize task difficulty across individuals.
+
+We will measure choice accuracy and response times as primary dependent variables. Our experimental design will allow us to distinguish between different evidence-weighting strategies by examining how these measures vary across correlation conditions.
+
+For data analysis, we will fit multiple variants of the DDM to individual participant data, including models with correlation-dependent bound adjustments, drift-rate adjustments, or both. Model comparison using Akaike Information Criteria and Bayesian random-effects analysis will identify which mechanisms best account for behavioral adjustments to correlations.
+
+We will assess the relationship between objective and subjective correlation estimates derived from model fits to determine whether participants accurately estimate correlations or systematically under- or over-estimate them. This analysis will reveal the degree to which human decision-making approaches normative principles in correlated environments.

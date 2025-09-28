@@ -1,0 +1,31 @@
+# Research Plan: EmbodiedCity - A Benchmark Platform for Embodied Agent in Real-World City Environment
+
+## Problem
+
+We aim to address a significant limitation in current embodied artificial intelligence (EmbodiedAI) research: the restriction to bounded indoor environments. While EmbodiedAI emphasizes agents' abilities to perceive, plan, and act in real-time interactions with the world, most existing work focuses on indoor scenarios such as room navigation or device manipulation. This limitation constrains the validation of embodied agents' capabilities within narrow boundaries, creating a substantial gap toward artificial general intelligence.
+
+The core problem stems from the lack of high-quality simulators, benchmarks, and datasets for embodied intelligence in open-world, outdoor scenarios. Existing platforms either employ fictional cities with simplified environments, support only limited tasks, or use street view images that significantly restrict potential EmbodiedAI applications. We hypothesize that expanding embodied agents from indoor rooms to outdoor cities will enable more comprehensive evaluation of embodied intelligence capabilities and better support the development of artificial general intelligence.
+
+Our research questions focus on: (1) How can we create a highly realistic urban simulation environment based on real-world cities? (2) What systematic benchmark tasks can effectively evaluate multi-dimensional embodied intelligence capabilities in urban environments? (3) How do current large language models perform on these urban embodied tasks?
+
+## Method
+
+We will construct a comprehensive benchmark platform consisting of three main components: a 3D simulation environment, agent interfaces, and systematic benchmark tasks.
+
+For the 3D environment, we will build a highly realistic simulation based on a 2.8km × 2.4km commercial district in Beijing, China, using Unreal Engine 5.3. We will manually create 3D models of approximately 200 buildings using Blender, referencing streetview services from Baidu Map and Amap. The environment will include 100 streets with a combined length of 50km, incorporating realistic traffic patterns using the Mirage Simulation System for vehicle and pedestrian dynamics. We will model over 6,000 urban elements including street furniture, vegetation, and urban amenities.
+
+For agent interfaces, we will develop input/output systems based on AirSim to enable first-person observations and realistic control actions. We will support multiple observation types (RGB images, depth images, segmentation images, IMU data, GPS data, LiDAR data) and various action spaces for both drones and ground vehicles. We will create a Python SDK and HTTP-based proxy server to facilitate easy access and development.
+
+Our benchmark methodology will encompass five essential embodied tasks covering perception, reasoning, and decision-making abilities: (1) embodied first-view scene understanding, (2) embodied question answering, (3) embodied dialogue, (4) embodied action (visual-language navigation), and (5) embodied task planning.
+
+## Experiment Design
+
+We will conduct comprehensive evaluations using popular multi-modal large language models including Fuyu-8B, Qwen-VL, Claude 3, and GPT-4 Turbo across all five benchmark tasks.
+
+For data collection, we will employ a combination of automated generation and human refinement. We will randomly sample locations within our city environment to capture RGB observations from multiple perspectives. For scene understanding tasks, we will generate descriptions using vision-language models followed by manual review and correction. For question answering tasks, we will create three categories: distance questions, position questions, and counting questions, using both template-based generation and human annotation.
+
+For dialogue tasks, we will extend the question-answering framework to multi-turn conversations requiring context maintenance. For navigation tasks, we will manually annotate starting points, target locations, and optimal trajectories, ensuring varied difficulty levels based on distance and environmental complexity. For task planning, we will design scenarios requiring multi-step reasoning and provide ground truth through human annotation.
+
+We will evaluate performance using established metrics: BLEU scores (1-4), ROUGE, METEOR, CIDEr for text generation tasks, and Sentence-BERT for semantic similarity. For navigation tasks, we will use Success Rate (SR), Success weighted by Path Length (SPL), and Navigation Error (NE).
+
+Our experimental setup will systematically test each model's capabilities across different task complexities and environmental conditions. We will analyze performance patterns, identify failure modes, and assess the relative strengths and weaknesses of different approaches. The evaluation will provide insights into current limitations of large language models in urban embodied intelligence tasks and establish baseline performance metrics for future research.

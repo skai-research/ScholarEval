@@ -1,0 +1,33 @@
+# Research Plan: Instance-Conditioned Adaptation Model (ICAM) for Neural Vehicle Routing Solver
+
+## Problem
+
+We aim to address the critical limitation of existing neural combinatorial optimization (NCO) methods in solving large-scale vehicle routing problems. Current constructive NCO methods, particularly reinforcement learning-based approaches, demonstrate good performance on instances similar to their training scale (e.g., 100 nodes) but struggle significantly when generalizing to much larger instances (e.g., 1,000+ nodes). This poor large-scale generalization severely limits their practical application prospects.
+
+The core hypothesis is that incorporating instance-specific geometric patterns and structural information can significantly improve the generalization capability of neural routing solvers across different problem scales. We observe that routing instances with different scales exhibit vastly different geometric structures and optimal solution patterns, which existing methods fail to capture effectively. Our research questions focus on: (1) How can we effectively leverage instance-conditioned information to improve cross-scale generalization? (2) What model architecture modifications are needed to efficiently incorporate this information throughout the solution construction process? (3) How can we design a training scheme that enables better learning of scale-independent features?
+
+## Method
+
+We propose the Instance-Conditioned Adaptation Model (ICAM) built around three key methodological components:
+
+**Instance-Conditioned Adaptation Function**: We will design a simple yet efficient adaptation function f(N, d_ij) = -α·log₂N·d_ij that incorporates both scale information (N) and pairwise node distances (d_ij) with a single learnable parameter α. This function will provide instance-specific bias throughout the neural solution construction process while maintaining computational efficiency.
+
+**Adaptation Attention Free Module (AAFM)**: We will replace traditional Multi-Head Attention (MHA) operations with a novel attention mechanism based on Attention Free Transformer (AFT-full). AAFM will explicitly incorporate the adaptation function into attention calculations, enabling direct capture of pairwise relationships between nodes while reducing computational complexity compared to standard attention mechanisms.
+
+**Enhanced Model Architecture**: We will develop ICAM using an encoder-decoder structure where the adaptation function is integrated into both the encoding phase (through AAFM) and the compatibility calculation in the decoder. The model will use a deeper 12-layer encoder to generate better node embeddings while maintaining efficiency through the attention-free design.
+
+## Experiment Design
+
+**Problem Settings**: We will evaluate ICAM on three routing problems: Traveling Salesman Problem (TSP), Capacitated Vehicle Routing Problem (CVRP), and Asymmetric Traveling Salesman Problem (ATSP). Test instances will be generated following established protocols, with scales ranging from 100 to 5,000 nodes for TSP/CVRP and up to 1,000 nodes for ATSP.
+
+**Three-Stage Training Scheme**: We will implement a progressive training approach: (1) Stage 1 - warm-up training on small-scale instances (100 nodes) for stability, (2) Stage 2 - varying-scale training on instances with scales randomly sampled from uniform distribution [100,500] to learn cross-scale features, and (3) Stage 3 - top-k elite training focusing on the best k trajectories with a joint loss function combining original POMO loss and a new top-k loss.
+
+**Baseline Comparisons**: We will compare against classical solvers (Concorde, LKH3, HGS), constructive NCO methods (POMO, MatNet, ELG, Pointerformer), and two-stage NCO approaches (MCTS-based methods, TAM, GLOP). Performance will be measured using optimality gaps, solution quality, and inference times.
+
+**Evaluation Metrics**: We will assess performance using objective values, optimality gaps compared to optimal solutions from LKH3, and total inference times. We will report results for single trajectory, multiple trajectories, and instance augmentation scenarios to provide comprehensive performance analysis.
+
+**Ablation Studies**: We will conduct systematic ablation studies to validate: (1) effectiveness of individual components in the adaptation function, (2) impact of AAFM versus standard MHA, (3) contribution of each training stage, (4) effects of different model depths, and (5) sensitivity to hyperparameter settings including the learnable parameter α.
+
+**Cross-Distribution Testing**: We will evaluate generalization capability on instances with different distributions (rotation, explosion) and benchmark datasets (TSPLIB, CVRPLIB) to demonstrate robustness across problem variants.
+
+The experimental design will enable us to demonstrate that ICAM achieves state-of-the-art performance among RL-based constructive methods while maintaining fast inference times, particularly excelling in large-scale generalization scenarios where existing methods struggle.

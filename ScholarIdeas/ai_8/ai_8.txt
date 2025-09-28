@@ -1,0 +1,35 @@
+# Research Plan: GenomeOcean - Efficient Foundation Model for Genome Generation
+
+## Problem
+
+We aim to address the underexplored potential of generative modeling in genomics by developing a genome foundation model that can synthesize new DNA sequences. While existing genome foundation models like DNABERT and Nucleotide Transformers excel at discriminative tasks such as promoter prediction and splice site detection, they leave the generative capabilities largely untapped. Generative genome models hold promise for synthetic biology applications and designing organisms with desired traits.
+
+We hypothesize that for a generative genome model to be valuable in real-world applications, it must satisfy two fundamental criteria: contextual adherence and computational efficiency. Contextual adherence means the generated sequences should faithfully follow the input context while remaining biologically plausible, retaining species-specific information and demonstrating appropriate functional characteristics. Computational efficiency is crucial because generating novel, realistic DNA sequences often requires extensive experimentation with large numbers of candidates.
+
+We further hypothesize that training on diverse environmental samples from various ecosystems will enable better contextual adherence compared to models trained primarily on reference genomes, which possess inherent biases. Environmental samples provide more comprehensive representation of Earth's genetic diversity, allowing the model to learn from a vastly larger and more varied genetic repertoire.
+
+## Method
+
+We will develop GenomeOcean, a 4-billion-parameter genome foundation model using an efficiency-oriented design approach. Our methodology involves three key components:
+
+**Architecture Selection**: We will conduct preliminary experiments to systematically evaluate different design choices including tokenization methods (character-level, overlapping k-mer, non-overlapping k-mer, and BPE), model architectures (Transformers vs. State Space Models vs. Mixture-of-Experts), and training objectives (masked language modeling vs. causal language modeling). Based on these empirical insights, we will select the most suitable combination for both expressiveness and efficiency.
+
+**Training Data Curation**: Unlike existing models that rely on reference genomes, we will train GenomeOcean exclusively on large-scale curated environmental samples collected from diverse ecosystems including oceans, lakes, forests, and soils. This approach will expose the model to uncultured and uncharacterized organisms, enabling it to learn from the true diversity of life rather than biased reference collections.
+
+**Efficiency Optimization**: We will integrate several efficiency-oriented techniques including Group-Query Attention (GQA), FlashAttention-2, and deploy the model using vLLM framework for optimized inference. We will also carefully select tokenization methods that balance sequence compression with biological expressiveness.
+
+## Experiment Design
+
+**Preliminary Architecture Experiments**: We will conduct controlled comparisons of different tokenization methods by evaluating their compactness (compression rate) and expressiveness (performance on the GUE benchmark with 28 genome classification datasets). We will train models with identical setups using different architectures (Mamba for SSMs, Mistral for dense Transformers, Mixtral for MoE) and training objectives, comparing them based on pre-training time, training loss, and average performance on downstream tasks.
+
+**Model Training**: We will implement GenomeOcean as a Transformer Decoder with 24 layers, 3072 hidden size, and optimized attention mechanisms. Training will occur in two stages: first with 1024 token sequences for 59,000 steps, then extended to 10,240 tokens for 1,600 steps. We will use a curated dataset of approximately 700 billion base pairs from environmental samples.
+
+**Evaluation Framework**: Since standardized evaluation methods for genome generation do not exist, we will develop a comprehensive automated evaluation suite assessing two dimensions: (1) adherence to context sequences, and (2) similarity to ground-truth sequences.
+
+For context adherence, we will construct datasets containing 1000 non-overlapping genome sequences from 10 unique species each, generating sequences from real contexts and using discriminative genome foundation models (DNABERT-2, HyenaDNA, Nucleotide Transformers-V2, Caduceus) as judges for species classification tasks.
+
+For ground-truth similarity, we will evaluate biological properties including open reading frame (ORF) lengths and codon usage bias. We will construct separate datasets for coding and non-coding regions to assess whether the model generates functionally appropriate sequences. For codon usage bias evaluation, we will select well-characterized microbial species and measure Codon Adaptation Index (CAI) distributions.
+
+**Baseline Comparisons**: We will compare GenomeOcean against state-of-the-art generative genome foundation models including Evo (7B parameters) and GenSLMs (2.5B parameters), using consistent inference hyperparameters across all models for fair comparison.
+
+**Performance Analysis**: We will measure both distributional-level performance (whether models understand underlying data distributions) and individual sequence-level performance (pairwise comparisons between generated and reference sequences). We will also analyze the impact of context sequence length on model performance, testing lengths from 500 to 16,000 base pairs.

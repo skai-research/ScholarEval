@@ -1,0 +1,34 @@
+
+# Research Plan
+
+## Problem
+
+Sleep-associated memory consolidation and reactivation play crucial roles in language acquisition and new word learning. However, the extent to which properties of word learning difficulty impact sleep-associated memory reactivation remains unclear. Previous research has shown that artificial words with phonotactic properties similar to real words are easier to learn and remember, suggesting that pre-existing knowledge about sound structure facilitates encoding and consolidation. Yet findings regarding the effects of similarity to pre-existing knowledge on sleep consolidation are controversial - some studies suggest reduced similarity facilitates consolidation during sleep, while others indicate beneficial effects of pre-existing knowledge.
+
+We hypothesize that learning difficulty, as manipulated through phonotactical properties of artificial words, will impact the effectiveness of targeted memory reactivation (TMR) during sleep. Based on previous findings showing that prior knowledge and encoding depth influence TMR effectiveness, we expect higher effectiveness of TMR for easy-to-learn words compared to difficult words, accompanied by higher oscillatory activity in the slow-wave and spindle range.
+
+## Method
+
+We will create a novel learning paradigm using artificial words with varying difficulty levels based on phonotactical properties. We will form four sets of artificial words (40 words per set) consisting of different sequences of two vowels and two consonants. These sets will be paired into high-phonotactic probability (high-PP) and low-phonotactic probability (low-PP) conditions based on their similarity to pre-existing real word knowledge.
+
+During encoding, we will train participants to discriminate artificial words based on reward associations using manual button presses. The high- and low-PP conditions will each consist of 40 rewarded and 40 non-rewarded words. We will use signal detection theory to analyze responses as hits, correct rejections, misses, and false alarms. Participants will receive monetary feedback based on their responses across three presentations of each word in randomized order.
+
+We will employ auditory targeted memory reactivation (TMR) during non-REM sleep stages 2 & 3, using a between-subject design where one group receives TMR of low-PP words and another group receives TMR of high-PP words. We will measure pre-sleep and post-sleep memory performance to assess TMR effectiveness.
+
+## Experiment Design
+
+We will recruit healthy young adults as participants. The experimental procedure will include:
+
+1. **Encoding Phase**: Participants will learn to categorize artificial words into rewarded and unrewarded categories through a discrimination task with monetary feedback. Each word will be presented three times in randomized order.
+
+2. **Pre-sleep Memory Test**: We will assess initial memory performance using the same categorization task without feedback.
+
+3. **Sleep and TMR**: Participants will sleep in a laboratory setting with polysomnographic monitoring. During non-REM sleep stages 2 & 3, we will present artificial words auditorily (either high-PP or low-PP words, depending on group assignment) with randomized inter-stimulus intervals.
+
+4. **Post-sleep Memory Test**: We will assess memory performance the following morning using the same categorization task.
+
+We will record EEG throughout encoding and sleep phases to examine neural correlates. During encoding, we will conduct time-frequency analyses time-locked to auditory word presentations to examine oscillatory correlates of encoding performance, particularly focusing on alpha desynchronization as a marker of encoding depth.
+
+During sleep, we will analyze slow-wave density and spindle-band power nested during slow-wave up-states following TMR presentations as neural signatures of memory reactivation. We will use detection algorithms to identify slow waves and conduct time-frequency analyses to extract spindle power during slow-wave up-states.
+
+We will calculate sensitivity values (d') and response bias (c-criterion) based on signal detection theory to measure participants' abilities to differentiate and categorize rewarded and unrewarded words. We expect that high-PP words will show superior encoding performance compared to low-PP words as a manipulation check, and that TMR will be more effective for the easy-to-learn (high-PP) words, accompanied by increased spindle activity during slow-wave up-states.

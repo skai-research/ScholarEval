@@ -1,0 +1,40 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the interplay between homeostatic synaptic scaling and homeostatic structural plasticity in maintaining robust firing rate homeostasis in neural networks. The mammalian brain operates as a complex system that must balance flexibility for learning with stability to prevent catastrophic network dysfunction. While Hebbian plasticity enables memory formation through positive feedback mechanisms, it risks driving networks toward overexcitation or silence without compensatory mechanisms.
+
+Homeostatic synaptic scaling has been well-established as a negative feedback mechanism that proportionally adjusts synaptic weights to maintain target firing rates. However, spine-number-based structural plasticity shows inconsistent experimental results, particularly under chronic activity inhibition, leading to insufficient understanding of its functional role. Previous studies report both homeostatic and non-homeostatic regulation of spine density upon activity perturbation, creating divergent and sometimes contradictory findings.
+
+We hypothesize that structural plasticity follows a non-linear (biphasic) relationship with neural activity, where partial inhibition increases spine numbers while complete inhibition reduces them. Furthermore, we propose that homeostatic structural plasticity and synaptic scaling function as redundant and compensatory mechanisms that compete and complement each other to achieve economical and robust control of firing rate homeostasis. Both mechanisms utilize calcium concentration as an integral feedback signal, suggesting a critical role for integral feedback control in maintaining network stability.
+
+## Method
+
+We will combine live-cell microscopy experiments with computational modeling to systematically study the response of structural plasticity under activity perturbations and its interaction with homeostatic synaptic scaling.
+
+**Experimental Approach:**
+We will use organotypic entorhinal-hippocampal tissue cultures with eGFP-tagged neurons to track individual dendritic segments over time. We will apply different concentrations of NBQX (2,3-dioxo-6-nitro-7-sulfamoyl-benzo[f]quinoxaline), a competitive AMPA receptor antagonist, to achieve partial (200 nM) and complete (50 μM) inhibition of excitatory neurotransmission. Whole-cell patch-clamp recordings will characterize the degree of synaptic inhibition, while time-lapse imaging will track changes in spine density and size over three-day treatment periods.
+
+**Computational Framework:**
+We will implement network simulations using current-based leaky integrate-and-fire point neurons in an inhibition-dominated network architecture (10,000 excitatory and 2,500 inhibitory neurons). We will establish a biphasic structural plasticity rule governed by calcium-based activity-dependent formation of synapses, using a Gaussian-shaped growth rule with two setpoints to represent the observed biphasic dependency. We will also implement calcium-based synaptic scaling rules that use intracellular calcium concentration as the control signal for weight modifications.
+
+The theoretical framework will treat both synaptic scaling and structural plasticity as integral feedback mechanisms using calcium concentration to track neural activity over time. We will model these as engineering control systems, with structural plasticity resembling a PID controller and synaptic scaling functioning as a PI controller.
+
+## Experiment Design
+
+**Experimental Studies:**
+We will conduct whole-cell patch-clamp recordings from CA1 pyramidal neurons in wild-type cultures to characterize the effects of 200 nM and 50 μM NBQX on spontaneous excitatory postsynaptic currents (sEPSCs). We will measure both amplitude and frequency changes to determine the degree of synaptic inhibition achieved by each concentration.
+
+For structural analysis, we will use Thy1-eGFP cultures and perform time-lapse imaging of individual dendritic segments from the radiatum layer before and after three-day NBQX treatments. We will track the same segments to measure changes in spine density and individual spine sizes, comparing baseline and post-treatment values using appropriate statistical methods including Wilcoxon tests and linear mixed models.
+
+**Computational Experiments:**
+We will grow neural networks using three distinct structural plasticity rules: (1) linear growth rule with one setpoint, (2) Gaussian rule with zero and non-zero setpoints, and (3) biphasic Gaussian rule with two non-zero setpoints. We will characterize network development, connectivity patterns, and firing rate distributions for each rule.
+
+We will systematically manipulate external input strength to subpopulations of excitatory neurons (0% to 200% of original intensity) to simulate input deprivation and stimulation scenarios. We will measure resulting changes in neural activity, structural connectivity, and effective connectivity over time.
+
+To examine the interaction between structural plasticity and synaptic scaling, we will implement various combinations of scaling strengths and growth rates. We will apply silencing protocols and measure connectivity recovery, firing rate restoration, and network dynamics under different parameter combinations.
+
+We will quantify network robustness by measuring discrepancies between actual and target firing rates and connectivity levels over time. We will analyze the temporal dynamics of calcium concentration, synaptic weights, and synapse numbers to understand the mechanistic interactions between the two homeostatic mechanisms.
+
+All simulations will be performed using the NEST simulator with parallel computation capabilities, and we will systematically vary key parameters including calcium time constants, growth rates, and scaling factors to characterize the parameter space where successful homeostatic control emerges.

@@ -1,0 +1,55 @@
+
+# Research Plan
+
+## Problem
+
+We aim to investigate the relationship between cognitive abilities and mental health in children, specifically examining how this relationship is represented at different neurobiological levels of analysis. While cognitive abilities are frequently associated with mental health across various disorders beginning in childhood, the extent to which this relationship is captured by different neurobiological units of analysis—such as multimodal neuroimaging and polygenic scores (PGS)—remains unclear.
+
+According to the National Institute of Mental Health's Research Domain Criteria (RDoC) framework, cognitive abilities should be investigated not only behaviorally but also neurobiologically, from the brain to genes. Understanding this neurobiology will be a milestone toward completing the transdiagnostic etiology of mental health. We must also consider how these neurobiological units capture variations due to environmental factors, such as socio-demographics, lifestyles, and childhood developmental adverse events.
+
+We hypothesize that the relationship between cognitive abilities and mental health can be partially explained by cognitive abilities at neural and genetic levels of analysis, and that environmental factors will account for a significant portion of this relationship. We expect that neurobiological units of analysis will capture some of the variance attributable to environmental factors.
+
+## Method
+
+We will use data from the Adolescent Brain Cognitive Development (ABCD) Study, examining children aged 9-10 at baseline and 11-12 at two-year follow-up. Our approach involves creating "proxy measures" of cognitive abilities using predictive modeling techniques across different units of analysis, followed by commonality analyses to understand shared variance.
+
+We will operationalize cognitive abilities as a latent variable (g-factor) representing behavioral performance across six cognitive tasks using confirmatory factor analysis. Mental health will be assessed through emotional and behavioral problems (Child Behaviour Checklist) and temperaments (BIS/BAS and UPPS-P scales).
+
+For neurobiological units of analysis, we will use:
+1. **Multimodal neuroimaging**: We will employ opportunistic stacking to combine information across 45 sets of brain MRI features, including task-fMRI, resting-state fMRI, structural MRI, and diffusion tensor imaging
+2. **Polygenic scores**: We will calculate PGS based on three large-scale genome-wide association studies on cognitive abilities
+
+For environmental factors, we will include 44 features covering socio-demographics, lifestyles, and developmental adverse events.
+
+We will conduct commonality analyses using these proxy measures to address three specific questions: (1) the extent to which the relationship between cognitive abilities and mental health is represented by neural and genetic levels, (2) how much this relationship is explained by environmental factors, and (3) whether neurobiological units can account for variance due to environmental factors.
+
+## Experiment Design
+
+### Predictive Modeling Phase
+
+We will implement nested leave-one-site-out cross-validation to ensure generalizability across different sites, treating one of 21 sites as a test set while using the remaining sites for training. Within each training set, we will apply 10-fold cross-validation for hyperparameter tuning.
+
+**Cognitive Abilities from Mental Health**: We will use Partial Least Squares (PLS) to predict cognitive abilities from mental health features, testing CBCL and temperament measures separately and combined.
+
+**Cognitive Abilities from Neuroimaging**: We will implement opportunistic stacking with two layers: (1) set-specific layer using Elastic Net to predict cognitive abilities from each of 45 neuroimaging feature sets, and (2) stacking layer using Random Forest to combine predictions across all sets. This approach will handle missing neuroimaging data while maximizing predictive performance.
+
+**Cognitive Abilities from Polygenic Scores**: We will use Elastic Net to predict cognitive abilities from three PGS definitions, selecting optimal PGS thresholds within training sets and controlling for population stratification using genetic principal components.
+
+**Cognitive Abilities from Environmental Factors**: We will apply PLS to predict cognitive abilities from socio-demographic, lifestyle, and developmental adverse event features, handling missing values through imputation.
+
+### Commonality Analysis Phase
+
+We will extract predicted values from each predictive model as proxy measures of cognitive abilities and conduct four sets of commonality analyses using random-intercept linear mixed models:
+
+1. **Mental Health and Neuroimaging**: Examining shared variance between mental health and neuroimaging proxy measures
+2. **Mental Health and Polygenic Scores**: Assessing overlap between mental health and genetic proxy measures  
+3. **Mental Health and Environmental Factors**: Evaluating shared variance with socio-demographic, lifestyle, and developmental factors
+4. **All Four Proxy Measures**: Comprehensive analysis including all neurobiological and environmental measures
+
+We will control for biological sex, age, and medication effects by residualizing these variables from observed cognitive abilities and proxy measures. Family structure will be accounted for in the mixed-effects models, with families nested within sites.
+
+### Validation and Stability Assessment
+
+We will repeat all analyses at both time points (baseline and two-year follow-up) to demonstrate the stability of our findings across this developmental period. We will use the same CFA model for cognitive abilities across time points and apply consistent standardization procedures to ensure comparability.
+
+We will evaluate predictive performance using Pearson correlation coefficients, coefficient of determination (R²), mean absolute error, and root mean square error. Feature importance will be assessed through PLS loadings, Elastic Net coefficients, and SHAP values for Random Forest models.

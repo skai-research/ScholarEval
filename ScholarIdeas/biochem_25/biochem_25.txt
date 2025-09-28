@@ -1,0 +1,34 @@
+
+# Research Plan
+
+## Problem
+
+We seek to investigate whether the nucleus possesses a unique protein quality control (PQC) surveillance mechanism analogous to the well-characterized unfolded protein responses in other membrane-bound organelles, such as the endoplasmic reticulum (erUPR) and mitochondria (mtUPR). 
+
+Our previous work demonstrated that mammalian cells mount a robust transcriptional response when exposed to unfolded protein throughout the cell, uniquely engaging the p53 pathway - a response not observed with other protein folding stresses like heat shock or tunicamycin treatment. This selective p53 activation by unfolded protein suggests an unexplored role for p53 in PQC surveillance. However, we were unable to determine whether this p53 response occurs equally in response to nuclear versus cytosolic unfolded protein due to technical limitations.
+
+We hypothesize that the nucleus has distinct protein quality control mechanisms compared to the cytosol, and that p53 may serve as a specific sensor or effector in a nuclear-specific unfolded protein response pathway. Our research questions are: (1) Does unfolded protein in the nucleus elicit different cellular responses compared to unfolded protein in the cytosol? (2) Is p53 activation specifically triggered by nuclear unfolded protein? (3) What are the differing consequences of unfolded protein in the nucleus compared to in the cytosol?
+
+## Method
+
+We will use engineered destabilizing domains (DDs) as molecular tools to create compartment-specific unfolded protein stress. DDs are conditionally folded proteins that adopt a stable conformation when bound to a cell-permeable ligand (Shield-1) but unfold and become targeted for proteasomal degradation upon ligand withdrawal. This system allows us to rapidly and specifically induce unfolded protein stress in defined cellular compartments.
+
+We will create DD-superfolder GFP fusion constructs with different subcellular localizations by incorporating targeting sequences: nuclear localization signals (NLS) for nuclear targeting, nuclear export signals (NES) for cytosolic localization, and non-targeted controls. These constructs will be stably expressed in mouse NIH3T3 fibroblasts via retroviral transduction.
+
+To assess the cellular responses to compartment-specific unfolded protein, we will employ RNA sequencing to capture global transcriptional changes over time following ligand withdrawal. We will use bioinformatics approaches including differential gene expression analysis, clustering methods, and pathway enrichment analysis to identify common and distinct response features.
+
+We will also investigate the impact of unfolded DD on proteasome activity using synthetic degron reporters - fluorescent proteins fused to degradation signals that accumulate when proteasome capacity is overwhelmed. Both ubiquitin-dependent and ubiquitin-independent degron reporters will be used to assess UPS functionality.
+
+## Experiment Design
+
+We will generate stable cell lines expressing nuclear-localized DD (NucDD), cytosol-localized DD (CytoDD), and non-targeted DD (ntDD) constructs. We will confirm proper subcellular localization using fluorescence microscopy and verify similar expression levels and degradation kinetics across constructs using flow cytometry.
+
+For transcriptional profiling, we will harvest cells at multiple timepoints (0, 15, 30, 60, 120, and 240 minutes) following Shield-1 withdrawal to capture the temporal dynamics of the response. We will prepare RNA samples with biological replicates for mRNA sequencing and perform differential gene expression analysis to identify genes that are commonly or distinctly regulated by nuclear versus cytosolic unfolded protein.
+
+To measure proteasome activity, we will co-express degron reporters with DD constructs and monitor reporter fluorescence levels over time following ligand withdrawal. We will also create compartment-specific versions of degron reporters to assess how localized unfolded protein affects proteasome capacity within the same versus different cellular compartments.
+
+We will validate key findings using RT-qPCR for selected genes and immunoblotting for protein levels of transcription factors predicted to be stabilized by proteasome competition. We will also generate p53 knockout cell lines using CRISPR to test the requirement for p53 in observed transcriptional responses.
+
+To assess functional consequences, we will perform cell cycle analysis using EdU incorporation and DNA content measurements to determine if compartment-specific unfolded protein affects cell cycle progression. We will compare wild-type and p53 knockout backgrounds to determine p53-dependence of any observed cell cycle effects.
+
+All experiments will include appropriate controls, biological replicates, and statistical analyses to ensure robust and reproducible results. The experimental timeline will focus on the 0-240 minute window when the majority of unfolded DD is degraded and proteasome activity changes are most pronounced.

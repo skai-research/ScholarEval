@@ -1,0 +1,34 @@
+
+# Research Plan: Guardian of Excitability: Multifaceted Role of Galanin in Whole Brain Excitability
+
+## Problem
+
+Galanin is a neuropeptide critically involved in homeostatic processes including controlling arousal, sleep, and regulation of stress. This extensive range of functions aligns with implications of galanin in diverse pathologies, including anxiety disorders, depression, and epilepsy. While previous research has demonstrated galanin's involvement in these processes, the regulatory function of galanin on whole-brain activity remains incompletely understood.
+
+We have previously developed a novel epilepsy model (eaat2a mutants) characterized by recurrent epileptic seizures and interictal neuronal hypoactivity. The unexpected observation of locomotor and neuronal hypoactivity in this model contrasts with most existing studies in zebrafish that report hyperactivity in epileptic animals. Intriguingly, recent investigations have demonstrated that overexpression of galanin induces locomotory hypoactivity in zebrafish models, suggesting a potential involvement of galanin in the hypoactivity observed in eaat2a mutants.
+
+We hypothesize that galanin exerts a sedative influence on brain activity and plays a regulatory role in seizure activity. We further hypothesize that galanin's effects may be mediated through specific galanin receptor subtypes, particularly galanin receptor 1a (galr1a). Our research questions focus on: (1) How does galanin regulate whole-brain activity under normal and pathological conditions? (2) What role does galanin play in different seizure models? (3) Which galanin receptor subtypes mediate these effects?
+
+## Method
+
+We will employ a comprehensive approach combining wide-field calcium imaging, genetic perturbations, and pharmacological interventions to investigate galanin's role in whole-brain activity regulation. Our methodology leverages the transparency of larval zebrafish during their developmental stages, which facilitates live imaging of neural activity across the entire brain.
+
+Our approach will utilize transgenic zebrafish lines expressing calcium indicators (elavl3:GCaMP5G and elavl3:GCaMP6f) to monitor neuronal activity. We will manipulate galanin signaling through multiple genetic approaches: using hsp70l:gal transgenic fish for galanin overexpression, galanin knockout mutants (gal-/-), and targeted disruption of specific galanin receptors through F0 knockouts (crispants).
+
+We will employ two distinct seizure models to examine galanin's role across different pathological contexts: the eaat2a-/- genetic model (which affects glutamate uptake) and the pentylenetetrazole (PTZ) pharmacological model (which acts as a GABAA receptor antagonist). This dual approach will allow us to assess galanin's function across different mechanisms of seizure induction.
+
+To quantify galanin expression changes, we will perform quantitative real-time PCR (qPCR) analysis on larval brains under various experimental conditions. We will also investigate the role of specific galanin receptor subtypes, focusing particularly on galr1a, through targeted genetic knockouts.
+
+## Experiment Design
+
+We will conduct calcium imaging experiments on 5 days post fertilization (dpf) zebrafish larvae. Individual larvae will be immobilized in low melting temperature agarose and calcium signals recorded using wide-field epifluorescence microscopy for 1-hour periods. We will extract fluorescence signals from manually selected regions of interest covering the whole brain and calculate fractional changes in fluorescence (ΔF/F0).
+
+For baseline brain activity analysis, we will compare wild-type larvae with various genetic manipulations including hsp70l:gal overexpression lines, gal-/- knockout mutants, and galr1a crispants. We will categorize calcium events into different threshold groups (5% and 10% ΔF/F0) and measure event frequency, amplitude, and duration.
+
+To investigate galanin's role in seizure activity, we will test both spontaneous seizures in eaat2a-/- mutants and PTZ-induced seizures. For the eaat2a model, we will cross these mutants with galanin manipulation lines (both overexpression and knockout) to assess how altered galanin levels affect seizure characteristics. For PTZ experiments, we will expose larvae to 20 mM PTZ either acutely during imaging or in a rebound protocol (1-hour exposure followed by 2-hour washout before imaging).
+
+We will define seizures as calcium fluctuations reaching at least 100% ΔF/F0 in the whole brain and measure seizure number, amplitude, duration, and area under the curve. For qPCR analysis, we will dissect brains from pools of 15 larvae per condition and measure galanin transcript levels using established reference genes.
+
+To investigate receptor-specific mechanisms, we will generate F0 knockouts of galr1a using CRISPR-Cas9 technology with multiple guide RNAs targeting the same exon. We will compare the effects of galr1a knockouts with those of complete galanin knockouts to determine receptor-specific contributions to galanin's effects on brain activity and seizure susceptibility.
+
+All experiments will include appropriate controls, and we will use statistical approaches including Wilcoxon-Mann-Whitney tests for continuous variables and negative binomial regression for count data. We will ensure robust sample sizes and randomize larvae allocation to experimental groups.
