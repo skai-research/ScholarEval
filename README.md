@@ -66,7 +66,7 @@ Additional resources:
 If you find **ScholarEval** or **ScholarIdeas** useful in your work, please cite our paper:
 
 ```bibtex
-@misc{li2025autosdtscalingdatadrivendiscovery,
+@misc{moussa2025scholareval,
       title={ScholarEval: Research Idea Evaluation Grounded in Literature}, 
       author={Hanane Nour Moussa, Patrick Queiroz Da Silva, Daniel Adu-Ampratwum, Alyson East, Zitong Lu, Nikki Puccetti, Mingyi Xue, Huan Sun, Bodhisattwa Prasad Majumder, Sachin Kumar},
       year={2025},
