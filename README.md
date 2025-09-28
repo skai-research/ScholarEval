@@ -23,7 +23,7 @@ Our experiments show that ScholarEval:
 ## Repository Structure  
 
 ### ScholarEval Pipeline  
-<img width="1054" height="633" alt="image" src="https://github.com/user-attachments/assets/21e3cd3a-cede-4259-88f8-9a6fab0d2cea" />
+<img width="1279" height="757" alt="image" src="https://github.com/user-attachments/assets/a7da367a-3b12-4935-9570-b05afd062536" />
 
 The pipeline to generate **soundness** and **contribution** evaluations for a research idea using ScholarEval is located in `ScholarEval/scholareval.py`.  
 
@@ -44,7 +44,7 @@ cd ScholarEval
 
 ### ScholarIdeas Dataset
 
-<img width="1067" height="373" alt="image" src="https://github.com/user-attachments/assets/68584122-3ff6-46ef-bb3a-3e8f8d38592b" />
+<img width="1290" height="456" alt="image" src="https://github.com/user-attachments/assets/813b041e-acb8-477b-b484-d6ad66bc26c3" />
 
 The `ScholarIdeas/` directory contains 117 research ideas and their reviews spanning AI, neuroscience, biochemistry, and ecology. Each review is composed of multiple rubrics, for a total of **1076 rubrics** across the dataset.
 
