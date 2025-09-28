@@ -3,7 +3,8 @@
 This is the accompanying repository of the paper "ScholarEval: Research Idea Evaluation Grounded in Literature."
 
 ## Overview  
-<img width="1047" height="482" alt="image" src="https://github.com/user-attachments/assets/9cdff5da-cd83-430e-ae99-a8aa496caec2" />
+<img width="1623" height="695" alt="image" src="https://github.com/user-attachments/assets/8530749b-520b-4dc9-b420-9adb11269526" />
+
 
 This repository hosts **ScholarEval**, a retrieval-augmented framework for evaluating research ideas along two key dimensions:  
 - **Soundness** — the empirical validity of proposed methods based on existing literature  
