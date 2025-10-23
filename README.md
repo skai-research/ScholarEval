@@ -13,7 +13,7 @@ This repository hosts **ScholarEval**, a retrieval-augmented framework for evalu
 To support evaluation, we also release **ScholarIdeas**, the first expert-annotated dataset of 117 research ideas and reviews spanning four domains: artificial intelligence, neuroscience, biochemistry, and ecology.  
 
 ### Key Results
-Our experiments show that ScholarEval:  
+Our evaluation shows that ScholarEval:  
 - Achieves significantly higher coverage of expert-annotated rubrics in ScholarIdeas compared to all baselines  
 - Is consistently preferred over OpenAI’s *o4-mini-deep-research* in terms of actionability, depth, and evidence support  
 - Outperforms deep research in a user study with experts on literature engagement, idea refinement, and overall usefulness  
