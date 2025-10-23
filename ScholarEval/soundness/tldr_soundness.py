@@ -31,12 +31,11 @@ def main():
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
 
-    API_KEY = os.environ.get("API_KEY_2")
+    API_KEY = os.environ.get("API_KEY")
     API_ENDPOINT = os.environ.get("API_ENDPOINT")
     llm = LLMEngine(llm_engine_name=args.llm_engine_name, api_key=API_KEY, api_endpoint=API_ENDPOINT)
     su = StringUtils()
     
-    # Get LLM cost information
     llm_cost = model_cost[args.litellm_name]
 
     with open(args.input_file, "r", encoding="utf-8") as f:
@@ -44,7 +43,6 @@ def main():
     with open(args.meta_review_file) as f:
         meta_review = json.load(f)["analysis"]
 
-    # Compute average soundness score across method-level reviews
     avg_soundness_score = compute_average_soundness_score(meta_review)
 
     support_blocks, contra_blocks, suggestion_blocks, evaluation_blocks = [], [], [], []
@@ -104,7 +102,6 @@ JSON formatting requirements:
     response, input_tokens, output_tokens = llm.respond(prompt, temperature=0.2)
     tldr = su.extract_json_output(response)
 
-    # Calculate cost
     if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
         cost = 0
     else:
@@ -113,9 +110,7 @@ JSON formatting requirements:
     
     print(f"LLM cost for tldr_soundness: ${cost:.6f}")
 
-    # Attach average soundness score and cost information to final output JSON
     tldr['average_soundness_score'] = avg_soundness_score
-    # Log cost to centralized cost log if provided
     if args.cost_log_file:
         cost_entry = {
             "step": "tldr_soundness",
@@ -131,20 +126,17 @@ JSON formatting requirements:
         json.dump(tldr, f, indent=4, ensure_ascii=False)
 
     # Prepare Markdown summary
-    strengths_md = "\n\n".join(tldr.get('strengths', [])) if isinstance(tldr.get('strengths'), list) else str(tldr.get('strengths', ''))
-    weaknesses_md = "\n\n".join(tldr.get('weaknesses', [])) if isinstance(tldr.get('weaknesses'), list) else str(tldr.get('weaknesses', ''))
+    strengths_md = "\n\n".join(tldr.get('strengths_summary', [])) if isinstance(tldr.get('strengths_summary'), list) else str(tldr.get('strengths_summary', ''))
+    weaknesses_md = "\n\n".join(tldr.get('weaknesses_summary', [])) if isinstance(tldr.get('weaknesses_summary'), list) else str(tldr.get('weaknesses_summary', ''))
     suggestions_list = tldr.get('top_3_suggestions', [])
     suggestions_md = "\n\n".join(suggestions_list) if isinstance(suggestions_list, list) else str(suggestions_list)
-    verdict_md = tldr.get('overall_verdict', '')
 
     score_text = f"{avg_soundness_score:.2f}" if avg_soundness_score is not None else "N/A (no valid scores found)"
 
     md = (
-        f"## Final Evaluation — Overall Verdict\n{verdict_md}\n\n"
-        f"## Strengths (most → least important)\n{strengths_md}\n\n"
-        f"## Weaknesses (most → least critical)\n{weaknesses_md}\n\n"
-        f"## Top 3 Suggestions (priority order)\n{suggestions_md}\n\n"
-        f"## Average Soundness Score (from prior step)\n{score_text}"
+        f"## Strengths \n{strengths_md}\n\n"
+        f"## Weaknesses \n{weaknesses_md}\n\n"
+        f"## Top 3 Suggestions \n{suggestions_md}\n\n"
     )
     # Apply citation checking if bibliography file is provided
     final_output = md

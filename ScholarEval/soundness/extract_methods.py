@@ -14,12 +14,11 @@ def main():
     parser.add_argument("--litellm_name", required=True, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
-    API_KEY = os.environ.get("API_KEY_2")
+    API_KEY = os.environ.get("API_KEY")
     API_ENDPOINT = os.environ.get("API_ENDPOINT")
     llm = LLMEngine(llm_engine_name=args.llm_engine_name, api_key=API_KEY, api_endpoint=API_ENDPOINT)
     su = StringUtils()
     
-    # Get cost information
     llm_cost = model_cost[args.litellm_name]
     
     with open(args.input_file, "r", encoding="utf-8") as f:
@@ -51,7 +50,6 @@ def main():
     ]
     response, input_tokens, output_tokens = llm.respond(prompt, temperature=0.1)
     
-    # Calculate cost
     if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
         cost = 0
     else:
@@ -60,7 +58,6 @@ def main():
     
     print(f"Extract methods cost: ${cost:.4f} (Input: {input_tokens}, Output: {output_tokens})")
     
-    # Log cost to centralized cost log if provided
     if args.cost_log_file:
         cost_entry = {
             "step": "extract_methods",

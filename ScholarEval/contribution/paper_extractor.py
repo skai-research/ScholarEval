@@ -40,7 +40,7 @@ def main():
                 logging.warning(f"Failed to write progress file: {e}")
 
     logging.info("Initializing Semantic Scholar client")
-    s2 = SemanticScholar(os.environ.get("S2_API_KEY_1"))
+    s2 = SemanticScholar(os.environ.get("S2_API_KEY"))
 
     logging.info("Loading queries from %s", args.queries_file)
     with open(args.queries_file, "r", encoding="utf-8") as f:

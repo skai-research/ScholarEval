@@ -10,7 +10,6 @@ from ..engine.litellm_engine import LLMEngine
 
 
 def read_paper_content(content_path: str) -> str:
-    """Read paper content from a text file."""
     try:
         with open(content_path, 'r', encoding='utf-8') as f:
             content = f.read()
@@ -22,7 +21,6 @@ def read_paper_content(content_path: str) -> str:
 
 def process_single_paper_content(content_file: str, paper_content_dir: str, research_plans_dir: str, llm: LLMEngine, 
                                 rate_limit_lock: threading.Lock, last_request_time: list, rate_limit_delay: float, llm_cost) -> dict:
-    """Process a single paper content file and extract research plan."""
     content_path = os.path.join(paper_content_dir, content_file)
     paper_name = os.path.splitext(content_file)[0]
     
@@ -55,7 +53,6 @@ def process_single_paper_content(content_file: str, paper_content_dir: str, rese
 
 
 def extract_research_plan_from_content(paper_content: str, llm: LLMEngine, llm_cost) -> str:
-    """Extract research plan from paper content using LLM."""
     gen_research_plan_prompt = """You are a highly skilled assistant tasked with thoroughly reading the content of a research paper and extracting its research plan. The research plan should reflect the state of the research at the time it was proposed, before any experiments or conclusions were drawn.
 
     A research plan consists of the following key sections:
@@ -115,20 +112,16 @@ def main():
     parser.add_argument("--rate_limit_delay", type=float, default=1.0, help="Delay between LLM calls in seconds (default: 1.0)")
     args = parser.parse_args()
 
-    # Create research plans directory if it doesn't exist
     os.makedirs(args.research_plans_dir, exist_ok=True)
 
-    # Thread-safe rate limiting
     rate_limit_lock = threading.Lock()
     last_request_time = [0.0]
 
-    # Initialize LLM engine
-    API_KEY = os.environ.get("API_KEY_1")
+    API_KEY = os.environ.get("API_KEY")
     API_ENDPOINT = os.environ.get("API_ENDPOINT")
     llm = LLMEngine(llm_engine_name=args.llm_engine_name, api_key=API_KEY, api_endpoint=API_ENDPOINT)
     llm_cost = model_cost["claude-sonnet-4-20250514"]
 
-    # Get paper content files
     if not os.path.exists(args.paper_content_dir):
         print(f"Error: Paper content directory {args.paper_content_dir} does not exist")
         return
@@ -146,16 +139,12 @@ def main():
     failed_extractions = []
     total_cost = 0.0
 
-    # Create wrapper function for processing with rate limiting
     def process_content_wrapper(content_file: str) -> dict:
         return process_single_paper_content(content_file, args.paper_content_dir, args.research_plans_dir, llm, rate_limit_lock, last_request_time, args.rate_limit_delay, llm_cost)
 
-    # Use ThreadPoolExecutor for concurrent processing
     with ThreadPoolExecutor(max_workers=args.max_workers) as executor:
-        # Submit all processing tasks
         future_to_file = {executor.submit(process_content_wrapper, content_file): content_file for content_file in content_files}
         
-        # Process completed extractions with progress bar
         with tqdm(total=total_files, desc="Extracting research plans") as pbar:
             for future in as_completed(future_to_file):
                 content_file = future_to_file[future]

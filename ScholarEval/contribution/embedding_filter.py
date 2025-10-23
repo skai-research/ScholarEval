@@ -8,14 +8,13 @@ from typing import List, Dict, Any
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from sklearn.metrics.pairwise import cosine_similarity
 
-# Thread-local storage for OpenAI clients
 thread_local = threading.local()
 
 def get_thread_client():
     """Get thread-local OpenAI client"""
     if not hasattr(thread_local, 'client'):
         thread_local.client = openai.OpenAI(
-            api_key=os.environ.get("API_KEY_1"),
+            api_key=os.environ.get("API_KEY"),
             base_url=os.environ.get("API_ENDPOINT")
         )
     return thread_local.client
@@ -49,11 +48,9 @@ def calculate_similarities(plan_embedding: List[float], paper_embeddings: List[L
 
 def filter_top_k_papers(papers: List[Dict[str, Any]], similarities: List[float], k: int) -> List[Dict[str, Any]]:
     """Filter top k papers based on similarity scores"""
-    # Create pairs of (similarity, paper) and sort by similarity descending
     paper_sim_pairs = list(zip(similarities, papers))
     paper_sim_pairs.sort(key=lambda x: x[0], reverse=True)
     
-    # Add similarity score to each paper and return top k
     top_papers = []
     for sim, paper in paper_sim_pairs[:k]:
         paper_with_score = paper.copy()
@@ -83,7 +80,6 @@ def main():
     print(f"Loading paper metadata from {args.papers_json}...")
     papers = load_paper_metadata(args.papers_json)
     
-    # Separate papers with and without relevance_score
     papers_with_score = [paper for paper in papers if 'relevance_score' in paper]
     papers_to_filter = [paper for paper in papers if 'relevance_score' not in paper]
     
@@ -113,17 +109,15 @@ def main():
     print(f"Generating embeddings for {len(papers_to_filter)} papers using {args.max_workers} workers...")
     
     # Process only papers that need filtering in parallel
-    paper_embeddings = [None] * len(papers_to_filter)  # Pre-allocate to maintain order
+    paper_embeddings = [None] * len(papers_to_filter) 
     completed_count = 0
     
     with ThreadPoolExecutor(max_workers=args.max_workers) as executor:
-        # Submit all tasks
         future_to_index = {
             executor.submit(get_paper_embedding, (i, paper)): i 
             for i, paper in enumerate(papers_to_filter)
         }
         
-        # Collect results
         for future in as_completed(future_to_index):
             try:
                 i, embedding = future.result()

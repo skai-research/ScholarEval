@@ -112,10 +112,8 @@ def extract_bibliography(comparisons: list) -> str:
         if paper_ref and paper_ref not in unique_references:
             unique_references.add(paper_ref)
     
-    # Sort references alphabetically by first word (usually author name)
     sorted_references = sorted(list(unique_references), key=lambda x: x.split()[0].lower())
     
-    # Format each reference
     for i, ref in enumerate(sorted_references, 1):
         bibliography.append(f"{i}. {ref}")
         bibliography.append("")
@@ -149,17 +147,15 @@ def main():
 
     llm = LLMEngine(
         llm_engine_name=args.llm_engine,
-        api_key=os.environ.get("API_KEY_1"),  
+        api_key=os.environ.get("API_KEY"),  
         api_endpoint=os.environ.get("API_ENDPOINT")
     )
     
-    # Get LLM cost information
     llm_cost = model_cost[args.litellm_name]
 
     logging.info("Synthesizing final contribution assessment...")
     evaluation, input_tokens, output_tokens = prompt_final_synthesis(llm, research_plan_text, comparisons)
     
-    # Calculate cost
     if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
         cost = 0
     else:
@@ -168,7 +164,6 @@ def main():
     
     print(f"LLM cost for contribution_evaluator: ${cost:.6f}")
 
-    # Log cost to centralized cost log if provided
     if args.cost_log_file:
         cost_entry = {
             "step": "contribution_evaluator",
@@ -181,26 +176,23 @@ def main():
             f.write('\n')
     
     final_score = compute_final_score(comparisons)
-    full_output = f"{evaluation}\n\nFinal Score: {final_score}"
+    # full_output = f"{evaluation}\n\nFinal Score: {final_score}"
+    full_output = evaluation
     
-    # Extract bibliography and save it if requested
     bibliography_content = extract_bibliography(comparisons)
     if args.bibliography_file:
         save_bibliography(comparisons, args.bibliography_file)
         logging.info("Bibliography saved to %s", args.bibliography_file)
     
-    # Apply citation checking
     final_output = full_output
     try:
         logging.info("Applying citation checking to contribution evaluation...")
         
-        # Apply citation checking using extracted bibliography
         final_output = check_citations_from_strings(
             report_content=full_output,
             bibliography_content=bibliography_content
         )
         
-        # Save citation-checked version
         output_dir = os.path.dirname(args.output_file)
         citation_checked_path = os.path.join(output_dir, "contribution_citation_checked.md")
         with open(citation_checked_path, "w", encoding="utf-8") as f:
@@ -212,7 +204,6 @@ def main():
         logging.info("Using original unchecked output as fallback.")
         final_output = full_output
 
-    # Save final output (either citation-checked or original)
     with open(args.output_file, "w", encoding="utf-8") as f:
         f.write(final_output)
 

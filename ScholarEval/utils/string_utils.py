@@ -32,11 +32,11 @@ class StringUtils():
 
             # If the extracted object is a list, log and extract first item
             if isinstance(extracted_resp, list):
-                print("⚠️ extract_json_output: Extracted JSON is a list, using first element.")
+                print("extract_json_output: Extracted JSON is a list, using first element.")
                 extracted_resp = extracted_resp[0]  # or handle this more carefully if needed
 
         except Exception as e:
-            print(f"❌ Skipping response due to JSON parse error:")
+            print(f"Skipping response due to JSON parse error:")
             print(response)
             print("Error:", e)
             extracted_resp = None
@@ -89,7 +89,7 @@ class StringUtils():
                             json_obj = json.loads(current_obj)
                             jsonl_objects.append(json_obj)
                         except json.JSONDecodeError as e:
-                            print(f"⚠️ Skipping invalid JSON object: {current_obj}")
+                            print(f"Skipping invalid JSON object: {current_obj}")
                             print(f"Error: {e}")
                             continue
                         current_obj = ""
@@ -103,14 +103,14 @@ class StringUtils():
                             json_obj = json.loads(line)
                             jsonl_objects.append(json_obj)
                         except json.JSONDecodeError as e:
-                            print(f"⚠️ Skipping invalid JSON line: {line}")
+                            print(f"Skipping invalid JSON line: {line}")
                             print(f"Error: {e}")
                             continue
 
             return jsonl_objects
 
         except Exception as e:
-            print(f"❌ Skipping response due to JSONL parse error:")
+            print(f"Skipping response due to JSONL parse error:")
             print(response)
             print("Error:", e)
             return []

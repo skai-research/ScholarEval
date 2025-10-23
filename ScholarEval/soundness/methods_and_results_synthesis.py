@@ -25,56 +25,55 @@ def process_reference(rp, method, ref, clean_ref_and_paper, llm, su, llm_cost, l
             'output_tokens': 0
         }
     
-        prompt = [
-        {
-            "role": "user", 
-            "content": """You are an expert research assistant knowledgeable in many domains. You are extremely critical and observant, and do not to overgeneralize findings. You are given a proposed research method and the methods/results section from a paper.
-            [start paper]
-            {paper_text}
-            [end paper]
+    prompt = [
+    {
+        "role": "user", 
+        "content": """You are an expert research assistant knowledgeable in many domains. You are extremely critical and observant, and do not to overgeneralize findings. You are given a proposed research method and the methods/results section from a paper.
+        [start paper]
+        {paper_text}
+        [end paper]
 
-            [start proposed research method]
-            {pm}
-            [end proposed research method]
+        [start proposed research method]
+        {pm}
+        [end proposed research method]
 
-            To further understand the scope of the proposed research method, here is the entire research plan that it is extracted from - a method is a single approach that researchers are adopting to execute their research plan:
-            [start research plan]
-            {rp}        
-            [end research plan]
+        To further understand the scope of the proposed research method, here is the entire research plan that it is extracted from - a method is a single approach that researchers are adopting to execute their research plan:
+        [start research plan]
+        {rp}        
+        [end research plan]
 
-            For any method in the paper that is related to the proposed research method and the overall research plan, please summarize the method used in the paper, report the experimental outcome from using the method, and provide some context for experimental conditions.
+        For any method in the paper that is related to the proposed research method and the overall research plan, please summarize the method used in the paper, report the experimental outcome from using the method, and provide some context for experimental conditions.
 
-            Do not use any in-text citations. Ensure that the method, results, and context you provide are specific and detailed, and has mention of how it relates to the proposed method and research plan.
+        Do not use any in-text citations. Ensure that the method, results, and context you provide are specific and detailed, and has mention of how it relates to the proposed method and research plan.
 
-            If the proposed research method does not relate to any methods in the paper, please return an empty dictionary.
+        If the proposed research method does not relate to any methods in the paper, please return an empty dictionary.
 
-            Strictly follow the output format displayed below.
+        Strictly follow the output format displayed below.
 
-            JSON formatting requirements:
-            - Must be a complete, valid JSON object
-            - Start with an open bracket and end with closed bracket
-            - No trailing commas after the last property
-            - Validate JSON structure before output
-            ```json
-            {{
-                "method": "Description of experimental approach including: algorithm/technique, datasets/inputs, computational resources, implementation/experimentation details, and evaluation setup, and metrics/instruments used, etc.",
-                "results": "Quantitative outcomes with specific values, comparisons to baselines, statistical significance where applicable",
-                "context": "Key experimental conditions: dataset/population size, hardware/system/instrument specs, hyperparameters, or other domain-specific constraints that affect reproducibility"
-            }}
-            ```""".format(paper_text=clean_ref_and_paper[ref], pm=method, rp=rp)
-                    }
+        JSON formatting requirements:
+        - Must be a complete, valid JSON object
+        - Start with an open bracket and end with closed bracket
+        - No trailing commas after the last property
+        - Validate JSON structure before output
+        ```json
+        {{
+            "method": "Description of experimental approach including: algorithm/technique, datasets/inputs, computational resources, implementation/experimentation details, and evaluation setup, and metrics/instruments used, etc.",
+            "results": "Quantitative outcomes with specific values, comparisons to baselines, statistical significance where applicable",
+            "context": "Key experimental conditions: dataset/population size, hardware/system/instrument specs, hyperparameters, or other domain-specific constraints that affect reproducibility"
+        }}
+        ```""".format(paper_text=clean_ref_and_paper[ref], pm=method, rp=rp)
+                }
     ]
-    
+
     response, input_tokens, output_tokens = llm.respond(prompt, temperature=0.3)
     clean_analysis = su.extract_json_output(response)
-    
-    # Calculate cost for this reference
+
     if litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
         cost = 0
     else:
         cost = (llm_cost["input_cost_per_token"] * input_tokens + 
                 llm_cost["output_cost_per_token"] * output_tokens)
-    
+
     return {
         'corpus_id': ref,
         'analysis': clean_analysis,
@@ -95,10 +94,9 @@ def main():
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
     
-    API_KEY = os.environ.get("API_KEY_2")
+    API_KEY = os.environ.get("API_KEY")
     API_ENDPOINT = os.environ.get("API_ENDPOINT")
     
-    # Get cost information
     llm_cost = model_cost[args.litellm_name]
     
     with open(args.research_plan, "r", encoding="utf-8") as f:
@@ -113,10 +111,8 @@ def main():
     total_input_tokens = 0
     total_output_tokens = 0
     
-    # Thread-safe cost tracking
     cost_lock = threading.Lock()
     
-    # Thread-local storage for LLM and StringUtils instances
     thread_local = threading.local()
     
     def get_thread_instances():
@@ -135,14 +131,11 @@ def main():
         return method, process_reference(rp, method, ref, clean_ref_and_paper, llm, su, llm_cost, args.litellm_name)
     
     for method, references in tqdm(clean_methods_refs.items(), desc='Analyzing Sources'):
-        # print(f"Processing method: {method}")
         
-        # Create tasks for parallel processing
         tasks = [(method, ref) for ref in references]
         
         # Process references in parallel
         with ThreadPoolExecutor(max_workers=args.max_workers) as executor:
-            # Submit all tasks
             future_to_task = {
                 executor.submit(process_ref_wrapper, task): task 
                 for task in tasks
@@ -154,7 +147,6 @@ def main():
                     method_name, result = future.result()
                     all_methods_analysis[method_name].append(result)
                     
-                    # Update total costs thread-safely
                     with cost_lock:
                         total_cost += result.get('cost', 0)
                         total_input_tokens += result.get('input_tokens', 0)

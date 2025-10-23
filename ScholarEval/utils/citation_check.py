@@ -22,7 +22,6 @@ def check_and_format_citations(report_file: str, bibliography_file: str, llm_eng
     with open(bibliography_file, "r", encoding="utf-8") as f:
         bibliography_content = f.read()
     
-    # Initialize LLM engine
     llm = LLMEngine(
         llm_engine_name=llm_engine,
         api_key=os.environ.get("API_KEY_1"),
@@ -80,7 +79,6 @@ def check_and_format_citations(report_file: str, bibliography_file: str, llm_eng
         }
     ]
     
-    # Get formatted response from LLM
     response, _, _ = llm.respond(prompt, temperature=0.1)
     return response.strip()
 
@@ -98,14 +96,12 @@ def check_citations_from_strings(report_content: str, bibliography_content: str,
         Formatted report with proper citations
     """
     
-    # Initialize LLM engine
     llm = LLMEngine(
         llm_engine_name=llm_engine,
         api_key=os.environ.get("API_KEY_1"),
         api_endpoint=os.environ.get("API_ENDPOINT")
     )
     
-    # Create prompt for citation checking and formatting
     prompt = [
         {
             "role": "system",
@@ -157,7 +153,6 @@ def check_citations_from_strings(report_content: str, bibliography_content: str,
         }
     ]
     
-    # Get formatted response from LLM
     response, _, _ = llm.respond(prompt, temperature=0.1)
     return response.strip()
 
@@ -173,10 +168,8 @@ if __name__ == "__main__":
     
     args = parser.parse_args()
     
-    # Process the citation checking
     formatted_report = check_and_format_citations(args.report, args.bibliography, args.llm_engine)
     
-    # Save the formatted report
     with open(args.output, "w", encoding="utf-8") as f:
         f.write(formatted_report)
     

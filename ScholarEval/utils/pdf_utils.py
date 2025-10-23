@@ -13,7 +13,7 @@ class FastPDFDownloader:
         self.max_workers = max_workers
         self.timeout = timeout
         self.pdf_dir = pdf_dir
-        self.email = email  # Required for Unpaywall API
+        self.email = email 
         self.unpaywall_base_url = "https://api.unpaywall.org/v2"
 
     def _normalize_pdf_url(self, pdf_url: str) -> str:
@@ -71,7 +71,7 @@ class FastPDFDownloader:
     ) -> Optional[Dict[str, Any]]:
         """Query Unpaywall API for open access information"""
         if not self.email:
-            print("⚠️  Email required for Unpaywall API")
+            print("Email required for Unpaywall API")
             return None
 
         try:
@@ -84,10 +84,10 @@ class FastPDFDownloader:
                     # DOI not found in Unpaywall
                     return None
                 else:
-                    print(f"⚠️  Unpaywall API error {response.status} for DOI: {doi}")
+                    print(f"Unpaywall API error {response.status} for DOI: {doi}")
                     return None
         except Exception as e:
-            print(f"⚠️  Unpaywall query failed for {doi}: {str(e)}")
+            print(f"Unpaywall query failed for {doi}: {str(e)}")
             return None
 
     def _get_best_oa_location(self, unpaywall_data: Dict[str, Any]) -> Optional[str]:
@@ -131,7 +131,7 @@ class FastPDFDownloader:
         if not doi:
             return None
 
-        print(f"🔍 Checking Unpaywall for DOI: {doi}")
+        print(f"Checking Unpaywall for DOI: {doi}")
 
         # Query Unpaywall API
         unpaywall_data = await self._query_unpaywall(session, doi)
@@ -141,23 +141,23 @@ class FastPDFDownloader:
         # Get the best open access PDF URL
         oa_pdf_url = self._get_best_oa_location(unpaywall_data)
         if not oa_pdf_url:
-            print(f"📝 No open access PDF found for: {doi}")
+            print(f"No open access PDF found for: {doi}")
             return None
 
-        print(f"🎯 Found open access PDF: {oa_pdf_url}")
+        print(f"Found open access PDF: {oa_pdf_url}")
 
         # Try to download the open access PDF
         result = await self._try_aiohttp_strategies(
             session, oa_pdf_url, pdf_fp, corpus_id
         )
         if result:
-            print(f"✅ Unpaywall success: {corpus_id}")
+            print(f"Unpaywall success: {corpus_id}")
             return result
 
         # Fallback to requests if aiohttp fails
         result = await self._requests_fallback(oa_pdf_url, pdf_fp, corpus_id)
         if result:
-            print(f"✅ Unpaywall + requests: {corpus_id}")
+            print(f"Unpaywall + requests: {corpus_id}")
             return result
 
         return None
@@ -411,7 +411,7 @@ class FastPDFDownloader:
                 if try_unpaywall and self.email
                 else "without Unpaywall"
             )
-            print(f"🚀 Starting {len(tasks)} downloads {unpaywall_status}...")
+            print(f"Starting {len(tasks)} downloads {unpaywall_status}...")
 
             # Process in reasonable batches to avoid timeouts
             batch_size = 50
@@ -428,7 +428,7 @@ class FastPDFDownloader:
 
             # Count successes
             successful = sum(1 for r in results if r and not isinstance(r, Exception))
-            print(f"✅ Completed: {successful}/{len(tasks)} successful downloads")
+            print(f"Completed: {successful}/{len(tasks)} successful downloads")
 
             return results
 
@@ -493,7 +493,7 @@ class FastPDFDownloader:
     async def check_open_access_status(self, doi: str) -> Optional[Dict[str, Any]]:
         """Check if a DOI has open access versions available via Unpaywall"""
         if not self.email:
-            print("⚠️  Email required for Unpaywall API")
+            print("Email required for Unpaywall API")
             return None
 
         connector = aiohttp.TCPConnector(ssl=False)

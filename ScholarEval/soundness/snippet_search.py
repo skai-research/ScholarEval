@@ -25,7 +25,6 @@ def main():
     parser.add_argument("--progress_file", help="Optional path to write progress updates for monitoring.")
     args = parser.parse_args()
     
-    # Ensure PDF directory exists
     pdf_dir = Path(args.pdf_dir)
     pdf_dir.mkdir(parents=True, exist_ok=True)
     print(f"Using PDF directory: {pdf_dir.absolute()}")
@@ -46,10 +45,9 @@ def main():
             except Exception as e:
                 print(f"Failed to write progress file: {e}")
     
-    s2 = SemanticScholar(os.environ.get("S2_API_KEY_2"))
-    downloader = FastPDFDownloader(pdf_dir=str(pdf_dir), email="moussa.45@osu.edu")
+    s2 = SemanticScholar(os.environ.get("S2_API_KEY"))
+    downloader = FastPDFDownloader(pdf_dir=str(pdf_dir), email=os.environ.get("email"))
     
-    # Start GROBID container
     if not downloader.is_grobid_container_running():
         subprocess.run(["docker", "run", "-d", "--rm", "-p", "8070:8070", "lfoppiano/grobid:latest-crf"])
     else:
@@ -65,37 +63,31 @@ def main():
     total_methods = len(clean_methods)
     write_progress("starting", 0, total_methods, "Initializing snippet search...")
     
-    # Determine cutoff date for search
     if args.cutoff_date:
-        # Use provided cutoff date
         pub_date = args.cutoff_date
     elif args.research_title and args.research_abstract:
-        # Fall back to publication date logic if no cutoff date provided
         eval_paper = s2.get_single_paper(args.research_title)
         found_paper = s2.is_right_paper(eval_paper['data'][0]['abstract'], args.research_abstract)
         pub_date = s2.get_safe_pub_date(eval_paper['data'][0]['publicationDate']) if found_paper else ""
     else:
-        # No cutoff date and no research title/abstract
         pub_date = ""
 
     references = {}
     total_snippets = 0
     
-    # TIMING: Snippet search phase
     snippet_search_start = time.time()
     
-    # Iterate through each method to get its snippets
     if os.path.exists(args.output_file+'_references.json'):
         with open(args.output_file+'_references.json', 'r') as f:
             references = json.load(f)
         print(f"Loaded existing references from {args.output_file+'_references.json'}")
     else:
-        print(f"🔍 Starting snippet search for {total_methods} methods...")
+        print(f"Starting snippet search for {total_methods} methods...")
         for mid, method in enumerate(tqdm(clean_methods, desc='Finding Snippets for Each Method')):
             write_progress("processing", mid + 1, total_methods, f"Processing method {mid + 1}/{total_methods}: {method[:50]}...")
             try:
                 print("Right before search_snippets")
-                snippets = s2.search_snippets(queries["queries"][method], year=['', pub_date], limit=20)
+                snippets = s2.search_snippets(queries["queries"][method], year=['', pub_date], limit=15)
                 print(f"Right after search_snippets, got: {type(snippets)}")
                 if snippets is None:
                     print("Warning: search_snippets returned None")
@@ -110,8 +102,6 @@ def main():
                 else:
                     print(f"   No snippets returned (None/empty)")
                 
-                # To integrate paper search if needed
-                # papers = s2.search_top_papers(query='generative ai', limit=10)
                 if snippets and 'data' in snippets:
                     all_paper_ids = s2.steal_cite_from_snip(snippets['data'])
                     references[method] = list(all_paper_ids)
@@ -155,7 +145,7 @@ def main():
     
     metadata_end = time.time()
     print(f" Paper metadata collection took: {metadata_end - metadata_start:.2f} seconds")
-    write_progress("Downloading all pdfs to read", total_methods, total_methods, f"Saving {len(unique_paper_ids)} pdfs to file...")
+    write_progress("Downloading all pdfs to read", total_methods, total_methods, f"Reading through {len(unique_paper_ids)} pdfs...")
     # Download all pdfs
     print(f"should be {len(unique_paper_ids)} pdfs to download")
     
@@ -246,14 +236,12 @@ def main():
     xml_parsing_end = time.time()
     total_xml_time = xml_parsing_end - xml_parsing_start
     print(f" XML parsing took: {total_xml_time:.2f} seconds total ({total_xml_time/len(xml_files):.2f}s per file average)")
-    # TIMING: Final file save
     save_start = time.time()
     with open(args.output_file+'_papers.json', 'w') as f:
         json.dump(extracted, f, indent=4)
     save_end = time.time()
     print(f" Final JSON save took: {save_end - save_start:.2f} seconds")
 
-    # write_progress("completed", total_methods, total_methods, f"Successfully found {total_snippets} snippets across {total_methods} methods")
 
 if __name__ == '__main__':
     main()

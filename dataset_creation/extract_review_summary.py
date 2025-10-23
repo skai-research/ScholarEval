@@ -17,7 +17,6 @@ def extract_review_sentences(review_text: str, research_plan_text: str, llm: LLM
     Process review and research plan pair to generate intermediate output.
     Placeholder function that will be modified later.
     """
-    # Placeholder prompt - will be changed later
     prompt_text = """You are an expert assistant skilled at extracting key components of scientific paper reviews containing evaluations of the underlying reseach idea and discarding all other criticism of other aspects of the scientific paper including results and presentation. Namely, you will be given a text containing all the reviews that the scientific paper received as well as a research plan detailing the main research idea contained in the scientific paper, and your job is to extract sentences from the review that address components mentioned in the research plan. Any sentences that contain any criticism of aspects of the paper not mentioned in the research plan should not be extracted. This is an important guideline to follow. 
 
     # Reviews contain the following components:
@@ -53,53 +52,11 @@ def extract_review_sentences(review_text: str, research_plan_text: str, llm: LLM
     query_cost = llm_cost["input_cost_per_token"] * prompt_tokens + llm_cost["output_cost_per_token"] * completion_tokens
     return response, query_cost
 
-
-# def polish_review_summary_depr(intermediate_text: str, research_plan_text: str, llm: LLMEngine) -> str:
-#     """
-#     Process intermediate file and research plan to generate final output.
-#     Placeholder function that will be modified later.
-#     """
-#     # Placeholder prompt - will be changed later
-#     prompt_text = """You are an expert assistant skilled at enhancing the coherence of review summaries. In this task you will be given a summary that was created by merely concatenating extracted sentences from a longer review. You will be given this extractive review summary along with the research plan that it reviews and you have to do the following tasks while taking into account the constraints.
-#     Tasks:
-#     - Removing redundancies: The review summary was created by concatenating the extracted sentences from multiple reviews written by different reviewers about the same paper. Thus, some of the sentences can be redundant. You should remove all redudancies. If a point is mentioned more the once, drop the other mentions and only keep one.
-#     - Improving coherence: Since the review summary is just composed of concatenated sentences, it might not sound very coherent. You should improve the coherence by making some changes to the sentence transitions and flow.
-#     - Adding context: the review summary might refer to some aspects of the research plan without sufficient context. You should aim to make the summary clearer by adding context from the research plan that would enhance the understanding of the review.
-
-#     Constraints:
-#     - Make sure that the changes that you make are minimal and only aim to remove the redundancy, improve the coherence, and add context.
-#     - Do not completely paraphrase the review summary, try to keep the original wording and sentences as much as possible. Your changes should not lead to a significant overhaul of the review summary.
-#     - Do not change the tone of the review. It should still be written as if it's produced by an actual reviewer.
-    
-#     Extractive review summary:
-#     {intermediate_text}
-    
-#     Research Plan:
-#     {research_plan_text}
-
-#     Output format: You should output the final review as follows: 
-#     [Review Summary: <polished review summary>]
-
-#     Nothing else besides the review sumary should be contained in the response.
-    
-#     """
-    
-#     prompt = [
-#         {
-#             "role": "user",
-#             "content": prompt_text.format(intermediate_text=intermediate_text, research_plan_text=research_plan_text)
-#         }
-#     ]
-    
-#     response, _, _ = llm.respond(prompt, temperature=0.1)
-#     return response
-
 def polish_review_summary(intermediate_text: str, research_plan_text: str, llm: LLMEngine, llm_cost) -> tuple:
     """
     Process intermediate file and research plan to generate final output.
     Placeholder function that will be modified later.
     """
-    # Placeholder prompt - will be changed later
     prompt_text = """You are an expert assistant skilled at extracting clear and non-redundant evaluation statements from a review summary. In this task you will be given a summary that was created by merely concatenating extracted sentences from a longer review. You will be given this extractive review summary along with the research plan that it reviews and you have to do the following tasks while taking into account the constraints.
     Tasks:
     - Removing redundancies: The review summary was created by concatenating the extracted sentences from multiple reviews written by different reviewers about the same paper. Thus, some of the sentences can be redundant. You should remove all redundancies. If a point is mentioned more the once, drop the other mentions and only keep one.
@@ -146,7 +103,6 @@ def polish_review_summary(intermediate_text: str, research_plan_text: str, llm: 
     return response, query_cost
 
 def read_text_file(file_path: str) -> str:
-    """Read text from a file."""
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             return f.read()
@@ -163,12 +119,10 @@ def process_review_research_pair(review_file: str, reviews_folder: str, research
     research_plan_path = os.path.join(research_plans_folder, f"{base_name}.txt")
     
     try:
-        # Read review file
         review_text = read_text_file(review_path)
         if review_text is None:
             return {"error": f"Failed to read review file {review_file}", "file": review_file}
         
-        # Read corresponding research plan file
         if not os.path.exists(research_plan_path):
             return {"error": f"No matching research plan found for {review_file}", "file": review_file}
         
@@ -176,7 +130,6 @@ def process_review_research_pair(review_file: str, reviews_folder: str, research
         if research_plan_text is None:
             return {"error": f"Failed to read research plan file for {base_name}", "file": review_file}
         
-        # Rate-limited LLM call
         with rate_limit_lock:
             current_time = time.time()
             time_since_last = current_time - last_request_time[0]
@@ -186,7 +139,6 @@ def process_review_research_pair(review_file: str, reviews_folder: str, research
             
             intermediate_result, query_cost = extract_review_sentences(review_text, research_plan_text, llm, llm_cost)
         
-        # Save intermediate result
         intermediate_file_path = os.path.join(intermediate_folder, f"{base_name}_intermediate.txt")
         with open(intermediate_file_path, 'w', encoding='utf-8') as f:
             f.write(intermediate_result)
@@ -211,12 +163,10 @@ def process_intermediate_file(intermediate_file: str, intermediate_folder: str, 
     su = StringUtils()
     
     try:
-        # Read intermediate file
         intermediate_text = read_text_file(intermediate_path)
         if intermediate_text is None:
             return {"error": f"Failed to read intermediate file {intermediate_file}", "file": intermediate_file}
         
-        # Read corresponding research plan file
         if not os.path.exists(research_plan_path):
             return {"error": f"No matching research plan found for {base_name}", "file": intermediate_file}
         
@@ -224,7 +174,6 @@ def process_intermediate_file(intermediate_file: str, intermediate_folder: str, 
         if research_plan_text is None:
             return {"error": f"Failed to read research plan file for {base_name}", "file": intermediate_file}
         
-        # Rate-limited LLM call
         with rate_limit_lock:
             current_time = time.time()
             time_since_last = current_time - last_request_time[0]
@@ -234,10 +183,8 @@ def process_intermediate_file(intermediate_file: str, intermediate_folder: str, 
             
             final_result, query_cost = polish_review_summary(intermediate_text, research_plan_text, llm, llm_cost)
         
-        # Extract JSONL from the response
         final_result = su.extract_jsonl_output(final_result)
         
-        # Save final result as JSONL
         final_file_path = os.path.join(final_folder, f"{base_name}.jsonl")
 
         with open(final_file_path, 'w') as f:
@@ -268,33 +215,27 @@ def main():
     parser.add_argument("--skip_extraction", action="store_true", help="Skip Stage 1 (extraction) and go directly to Stage 2 (polishing) using existing intermediate files")
     args = parser.parse_args()
 
-    # Create output directories if they don't exist
     os.makedirs(args.intermediate_folder, exist_ok=True)
     os.makedirs(args.final_folder, exist_ok=True)
 
-    # Thread-safe rate limiting
     rate_limit_lock = threading.Lock()
-    last_request_time = [0.0]  # Use list to allow modification in nested function
+    last_request_time = [0.0]
 
-    # Initialize LLM engine
     API_KEY = os.environ.get("API_KEY_1")
     API_ENDPOINT = os.environ.get("API_ENDPOINT")
     llm = LLMEngine(llm_engine_name=args.llm_engine_name, api_key=API_KEY, api_endpoint=API_ENDPOINT)
     llm_cost = model_cost["claude-sonnet-4-20250514"]
 
-    # Initialize stage 1 results and cost tracking
     stage1_results = []
     failed_stage1 = []
     total_stage1_cost = 0.0
     
     if not args.skip_extraction:
-        # Get all review txt files
         review_files = [f for f in os.listdir(args.reviews_folder) if f.endswith('.txt')]
         total_files = len(review_files)
         
         print(f"Found {total_files} review files to process")
 
-        # Stage 1: Process review-research plan pairs
         print("\nStage 1: Processing review-research plan pairs...")
 
         def process_stage1_wrapper(review_file: str) -> Dict[str, Any]:
@@ -303,7 +244,6 @@ def main():
                 args.intermediate_folder, llm, rate_limit_lock, last_request_time, args.rate_limit_delay, llm_cost
             )
 
-        # Use ThreadPoolExecutor for stage 1
         with ThreadPoolExecutor(max_workers=args.max_workers) as executor:
             future_to_file = {executor.submit(process_stage1_wrapper, review_file): review_file for review_file in review_files}
             
@@ -330,7 +270,6 @@ def main():
     else:
         print("Skipping Stage 1: Using existing intermediate files")
 
-    # Stage 2: Process intermediate files
     print("\nStage 2: Processing intermediate files...")
     intermediate_files = [f for f in os.listdir(args.intermediate_folder) if f.endswith('_intermediate.txt')]
     stage2_results = []
@@ -343,7 +282,6 @@ def main():
             args.final_folder, llm, rate_limit_lock, last_request_time, args.rate_limit_delay, llm_cost
         )
 
-    # Use ThreadPoolExecutor for stage 2
     with ThreadPoolExecutor(max_workers=args.max_workers) as executor:
         future_to_file = {executor.submit(process_stage2_wrapper, intermediate_file): intermediate_file for intermediate_file in intermediate_files}
         
@@ -368,10 +306,8 @@ def main():
 
     print(f"Stage 2 completed: {len(stage2_results)}/{len(intermediate_files)} successful")
 
-    # Calculate total cost
     total_cost = total_stage1_cost + total_stage2_cost
 
-    # Save processing summary
     summary = {
         "total_review_files": total_files if not args.skip_extraction else "N/A (Stage 1 skipped)",
         "stage1_successful": len(stage1_results),

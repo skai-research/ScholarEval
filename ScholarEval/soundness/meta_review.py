@@ -81,7 +81,6 @@ def process_reference(rp, method, related_work, rw, llm, su, llm_cost, litellm_n
         clean_analysis = su.extract_json_output(response)
         clean_analysis['n_related_work'] = rw
         
-        # Calculate cost
         if litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
             cost = 0
         else:
@@ -96,7 +95,6 @@ def process_reference(rp, method, related_work, rw, llm, su, llm_cost, litellm_n
 def convert_json_to_markdown(analysis_data, output_path):
     """Convert the JSON analysis to markdown format"""
     with open(output_path, 'w', encoding='utf-8') as f:
-        # f.write("# Meta-Review Analysis\n\n")
         
         for method_name, analysis in analysis_data.items():
             if (analysis.get('support', '') == 'No related work found' and
@@ -105,40 +103,24 @@ def convert_json_to_markdown(analysis_data, output_path):
                 analysis.get('suggested_action', '') == 'No related work found'):
                 continue
             else: 
-                # Write method title
                 f.write(f"## {method_name}\n\n")
                 
-                # Support section
                 f.write("### Support\n\n")
                 support = analysis.get('support', 'No support information available')
                 f.write(f"{support}\n\n")
                 
-                # Contradictions section
                 f.write("### Contradictions\n\n")
                 contradictions = analysis.get('contradictions', 'No contradictions information available')
                 f.write(f"{contradictions}\n\n")
 
-                # # Evaluation section
-                # f.write("### Evaluation\n\n")   
-                # evaluation = analysis.get('evaluation', 'No evaluation information available')
-                # f.write(f"{evaluation}\n\n")
-                
-                # Suggested Action section
                 f.write("### Suggested Action\n\n")
                 suggested_action = analysis.get('suggested_action', 'No suggested action available')
                 f.write(f"{suggested_action}\n\n")
                 
-                # Soundness Score section
-                f.write("### Soundness Score\n\n")
-                soundness_score = analysis.get('soundness_score', 'No score available')
-                f.write(f"**Score:** {soundness_score}\n\n")
-                
-                # Add separator between methods
                 f.write("---\n\n")
 
 def save_bibliography(citation_dict, output_path):
     """Save all references used in the meta review to a bibliography text file"""
-    # Initialize Semantic Scholar client
     s2 = SemanticScholar(os.environ.get("S2_API_KEY_2"))
     
     with open(output_path, 'w', encoding='utf-8') as f:
@@ -181,7 +163,6 @@ def save_bibliography(citation_dict, output_path):
                 else:
                     formatted_authors = "Unknown Author"
                 
-                # Write formatted reference
                 f.write(f"{i}. {formatted_authors} ({publication_date[:4] if publication_date != 'No Date' else 'Unknown Year'})\n")
                 f.write(f"   Title: {title}\n")
                 f.write(f"   Venue: {venue}\n")
@@ -224,10 +205,9 @@ def main():
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
     
-    API_KEY = os.environ.get("API_KEY_2")
+    API_KEY = os.environ.get("API_KEY")
     API_ENDPOINT = os.environ.get("API_ENDPOINT")
     
-    # Get cost information
     llm_cost = model_cost[args.litellm_name]
     
     with open(args.research_plan, "r", encoding="utf-8") as f:
@@ -237,10 +217,9 @@ def main():
     with open(args.methods_and_ref_file) as f:
         clean_methods_refs = json.load(f)
         
-    s2 = SemanticScholar(os.environ.get("S2_API_KEY_2"))  
+    s2 = SemanticScholar(os.environ.get("S2_API_KEY"))  
     
     unique_paper_ids = list(set(["CorpusId:" + ref for references in clean_methods_refs.values() for ref in references]))
-    # Process in batches of 500
     batch_size = 500
     citations = []
     for i in range(0, len(unique_paper_ids), batch_size):
@@ -257,7 +236,6 @@ def main():
     total_input_tokens = 0
     total_output_tokens = 0
     
-    # Thread-safe cost tracking
     cost_lock = threading.Lock()
     
     # Thread-local storage for LLM and StringUtils instances
@@ -273,22 +251,6 @@ def main():
             thread_local.su = StringUtils()
         return thread_local.llm, thread_local.su
     
-    # def process_ref_wrapper(mr_analysis_tuple):
-    #     method, all_analyses = mr_analysis_tuple
-    #     related_work = []
-    #     rw = 0
-    #     for analysis in all_analyses:
-    #         has_data = analysis.get('analysis', None)
-    #         if not has_data:
-    #             continue
-    #         a = analysis['analysis']
-    #         citation, venue, citation_count = citation_dict[analysis['corpus_id']]
-    #         if all([len(a.get(key, '')) > 0 for key in ["method", "results", "context"]]):
-    #             rw += 1
-    #             related_work.append(f"[start related work {rw}]\n[metadata]\n- in_text_citation: {citation}\n- venue: {venue}\n- citation count: {citation_count}\n[method]\n{a['method']}\n[results]\n{a['results']}\n[context]\n{a['context']}\n[end related work {rw}]\n\n")
-            
-    #     llm, su = get_thread_instances()
-    #     return method, process_reference(method, related_work, rw, llm, su)
     
     def extract_date_from_citation(citation):
         """Extract date from citation format [(author, YYYY-MM)](link)"""
@@ -297,8 +259,8 @@ def main():
             try:
                 return datetime.strptime(match.group(1), '%Y-%m')
             except ValueError:
-                return datetime.min  # fallback for invalid dates
-        return datetime.min  # fallback if no date found
+                return datetime.min  
+        return datetime.min  
 
     def process_ref_wrapper(mr_analysis_tuple):
         method, all_analyses = mr_analysis_tuple
@@ -346,21 +308,17 @@ def main():
     # Create tasks for parallel processing
     tasks = [(method, analysis) for method, analysis in mr_analysis.items()]
     
-    # Process references in parallel
     with ThreadPoolExecutor(max_workers=args.max_workers) as executor:
-        # Submit all tasks
         future_to_task = {
             executor.submit(process_ref_wrapper, task): task 
             for task in tasks
         }
         
-        # Collect results with progress bar
         for future in future_to_task:
             try:
                 method_name, result = future.result()
                 all_methods_analysis[method_name] = result
                 
-                # Update total costs thread-safely
                 with cost_lock:
                     total_cost += result.get('cost', 0)
                     total_input_tokens += result.get('input_tokens', 0)
@@ -372,7 +330,6 @@ def main():
     
     print(f"Meta review cost: ${total_cost:.4f} (Input: {total_input_tokens}, Output: {total_output_tokens})")
     
-    # Log cost to centralized cost log if provided
     if args.cost_log_file:
         cost_entry = {
             "step": "meta_review",
@@ -390,10 +347,8 @@ def main():
             'analysis': all_methods_analysis
         }, f, indent=4)
     
-    # Convert JSON to markdown
     convert_json_to_markdown(all_methods_analysis, args.markdown_output)
     
-    # Save bibliography if requested
     if args.bibliography_file:
         save_bibliography(citation_dict, args.bibliography_file)
     

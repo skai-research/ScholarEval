@@ -24,23 +24,20 @@ def main():
         plan = f.read()
     papers = json.load(open(args.papers_file))
     
-    # Get LLM cost information
     llm_cost = model_cost[args.litellm_name]
     
-    # Thread-safe cost tracking
     cost_lock = threading.Lock()
     total_cost = 0
     total_input_tokens = 0
     total_output_tokens = 0
     
-    # Thread-local storage for LLM instances
     thread_local = threading.local()
     
     def get_thread_llm():
         if not hasattr(thread_local, 'llm'):
             thread_local.llm = LLMEngine(
                 llm_engine_name=args.llm_engine, 
-                api_key=os.environ.get("API_KEY_1"), 
+                api_key=os.environ.get("API_KEY"), 
                 api_endpoint=os.environ.get("API_ENDPOINT")
             )
         return thread_local.llm
@@ -119,7 +116,6 @@ def main():
 
         resp, input_tokens, output_tokens = llm.respond(prompt, temperature=0)
         
-        # Thread-safe cost tracking
         with cost_lock:
             if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
                 cost = 0
@@ -130,15 +126,12 @@ def main():
             total_input_tokens += input_tokens
             total_output_tokens += output_tokens
         
-        # Extract JSON from response
         try:
             import re
-            # Look for JSON block in the response
             json_match = re.search(r'```json\s*(\{.*?\})\s*```', resp, re.DOTALL)
             if json_match:
                 json_str = json_match.group(1)
             else:
-                # Fallback: look for any JSON-like structure
                 json_match = re.search(r'\{.*?\}', resp, re.DOTALL)
                 if json_match:
                     json_str = json_match.group()
@@ -147,7 +140,6 @@ def main():
             
             assessment = json.loads(json_str)
             
-            # Add assessment to paper metadata
             paper_with_assessment = paper.copy()
             paper_with_assessment['relevance_score'] = assessment.get('score', 0)
             paper_with_assessment['relevance_rationale'] = assessment.get('rationale', 'No rationale provided')
@@ -160,7 +152,6 @@ def main():
             
         except (json.JSONDecodeError, ValueError, KeyError) as e:
             logging.warning(f"Failed to parse LLM response for paper {paper['paperId']}: {e}")
-            # Fallback: add default values
             paper_with_assessment = paper.copy()
             paper_with_assessment['relevance_score'] = 0
             paper_with_assessment['relevance_rationale'] = f"Failed to parse assessment: {resp[:200]}..."
@@ -183,13 +174,11 @@ def main():
     # Process papers that need scoring in parallel
     relevant = already_scored.copy()  # Start with already scored papers
     with ThreadPoolExecutor(max_workers=args.max_workers) as executor:
-        # Submit all tasks
         future_to_paper = {
             executor.submit(assess_paper_relevance, paper): paper 
             for paper in needs_scoring
         }
         
-        # Collect results
         for future in as_completed(future_to_paper):
             try:
                 paper_with_assessment = future.result()
@@ -197,7 +186,6 @@ def main():
             except Exception as e:
                 paper = future_to_paper[future]
                 logging.error(f"Error processing paper {paper['paperId']}: {e}")
-                # Add fallback entry
                 paper_with_assessment = paper.copy()
                 paper_with_assessment['relevance_score'] = 0
                 paper_with_assessment['relevance_rationale'] = f"Processing error: {str(e)}"

@@ -60,7 +60,7 @@ def main():
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
 
-    API_KEY = os.environ.get("API_KEY_1")
+    API_KEY = os.environ.get("API_KEY")
     API_ENDPOINT = os.environ.get("API_ENDPOINT")
     llm = LLMEngine(llm_engine_name=args.llm_engine_name, api_key=API_KEY, api_endpoint=API_ENDPOINT)
     

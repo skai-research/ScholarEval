@@ -111,14 +111,13 @@ def main():
     total_input_tokens = 0
     total_output_tokens = 0
 
-    # Thread-local storage for LLM and StringUtils instances
     thread_local = threading.local()
     
     def get_thread_instances():
         if not hasattr(thread_local, 'llm'):
             thread_local.llm = LLMEngine(
                 llm_engine_name=args.llm_engine,
-                api_key=os.environ.get("API_KEY_1"),
+                api_key=os.environ.get("API_KEY"),
                 api_endpoint=os.environ.get("API_ENDPOINT")
             )
             thread_local.su = StringUtils()

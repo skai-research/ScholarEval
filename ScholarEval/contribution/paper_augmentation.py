@@ -40,14 +40,13 @@ async def main():
                         help="Max number of references to fetch per paper (used with 'all' augmentation type)")
     args = parser.parse_args()
 
-    s2 = SemanticScholar(api_key=os.environ.get("S2_API_KEY_1"))
+    s2 = SemanticScholar(api_key=os.environ.get("S2_API_KEY"))
     downloader = FastPDFDownloader()
     
     # Start GROBID container if not running
     if not downloader.is_grobid_container_running():
         logging.info("Starting GROBID container...")
         subprocess.run(["docker", "run", "-d", "--rm", "-p", "8070:8070", "lfoppiano/grobid:latest-crf"])
-        # Wait for container to be ready
         while not downloader.is_grobid_container_running():
             logging.info("Waiting for GROBID container to start...")
             time.sleep(5)
@@ -59,10 +58,9 @@ async def main():
     augmented = {p['paperId']: p for p in papers}
     initial_paper_count = len(papers)
     
-    # Tracking counters
     recommendations_added = 0
     related_work_added = 0
-    references_added = 0  # For simple references API
+    references_added = 0  
     pdfs_downloaded = 0
     xml_files_processed = 0
 

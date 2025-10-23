@@ -75,7 +75,7 @@ def main():
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
 
-    API_KEY = os.environ.get("API_KEY_1")  
+    API_KEY = os.environ.get("API_KEY")  
     API_ENDPOINT = os.environ.get("API_ENDPOINT") 
     llm = LLMEngine(llm_engine_name=args.llm_engine_name, api_key=API_KEY, api_endpoint=API_ENDPOINT)
     su = StringUtils()
@@ -83,14 +83,11 @@ def main():
     # Get LLM cost information
     llm_cost = model_cost[args.litellm_name]
 
-    # Read research plan
     with open(args.input_file, "r", encoding="utf-8") as f:
         research_plan = f.read()
 
-    # Extract contributions
     contributions_text, input_tokens, output_tokens = extract_dimensions_contributions(llm, research_plan)
     
-    # Calculate cost
     if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
         cost = 0
     else:
@@ -99,7 +96,6 @@ def main():
     
     print(f"LLM cost for extract_dimensions_and_contributions: ${cost:.6f}")
     
-    # Log cost to centralized cost log if provided
     if args.cost_log_file:
         cost_entry = {
             "step": "extract_dimensions_and_contributions",
@@ -111,7 +107,6 @@ def main():
             json.dump(cost_entry, f)
             f.write('\n')
     
-    # Extract JSON from the response
     contributions_json = su.extract_json_output(contributions_text)
     
     with open(args.output_file, "w", encoding="utf-8") as f:

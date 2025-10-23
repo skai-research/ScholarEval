@@ -69,10 +69,8 @@ class SemanticScholar():
             "limit": limit
         }
 
-        # If max_date is provided, add the publicationDateOrYear filter
         if max_date:
             params["publicationDateOrYear"] = f":{max_date}"
-        # Alternatively, you can also filter by year range via 'year'
 
         headers = {"x-api-key": self.api_key}
         time.sleep(1.2)  # Avoid hitting rate limits
@@ -99,7 +97,6 @@ class SemanticScholar():
             "limit": limit
         }
         if max_date:
-            # 'year' param filters by publication date ≤ max_date
             params["year"] = f":{max_date}"
 
         headers = {"x-api-key": self.api_key}
