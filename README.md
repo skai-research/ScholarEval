@@ -53,9 +53,8 @@ cd ScholarEval
 * `litellm_name`: (Optional) LiteLLM model name for cost calculation (e.g., `claude-sonnet-4-5-20250929`)
 
 ##### Request access to our web app
-
 And lastly, you can request access to our web app via `go.osu.edu/scholar-eval` We are offering $15 free credits for academic use. 
----
+
 
 ### ScholarIdeas Dataset
 
