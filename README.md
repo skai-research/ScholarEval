@@ -35,6 +35,7 @@ There are three ways to run ScholarEval on your ideas: running the ScholarEval a
 export API_KEY="your-litellm-api-key"
 export API_ENDPOINT="your-litellm-api-endpoint"
 export S2_API_KEY="your-semantic-scholar-api-key"
+export email="optional - your academic email for unpaywall open access pdfs"
 ```
 3. Install required packages (see `requirements.txt`)
 4. Run `streamlit run ScholarEval/ScholarEval_app.py`
