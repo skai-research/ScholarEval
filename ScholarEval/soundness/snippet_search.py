@@ -87,7 +87,7 @@ def main():
             write_progress("processing", mid + 1, total_methods, f"Processing method {mid + 1}/{total_methods}: {method[:50]}...")
             try:
                 print("Right before search_snippets")
-                snippets = s2.search_snippets(queries["queries"][method], year=['', pub_date], limit=15)
+                snippets = s2.search_snippets(queries["queries"][method], year=['', pub_date], limit=5)
                 print(f"Right after search_snippets, got: {type(snippets)}")
                 if snippets is None:
                     print("Warning: search_snippets returned None")
