@@ -44,11 +44,10 @@ export email="optional - your academic email for unpaywall open access pdfs"
 Alternatively, if you don't want to use ScholarEval via the user interface, you can simply run the ScholarEval pipeline as follows: 
 
 ```bash
-cd ScholarEval
-./run_scholareval.sh <research_idea_path> [cutoff_date] <llm_engine_name> <save_to> [litellm_name]
+bash run_scholareval.sh
 ````
 ###### Command Line Arguments
-
+The command line args to set in `run_scholareval.sh` are:
 * `research_idea_path`: Path to the research idea text file
 * `cutoff_date`: Optional cutoff date for literature search
 * `llm_engine_name`: LLM engine name (e.g., `gpt-4o`, `claude-sonnet-4`) as specified by your litellm gateway 
