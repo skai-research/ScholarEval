@@ -40,21 +40,21 @@ export S2_API_KEY="your-semantic-scholar-api-key"
 4. Run `streamlit run ScholarEval/ScholarEval_app.py`
 5. Input your research idea and start the soundness and contribution evaluation as shown in [this short demo video](https://youtu.be/rgLWZkdvUPc). All intermediate logs are saved locally in `demo_data.`
 ##### Run ScholarEval pipeline via command line
-To run the pipeline:  
+Alternatively, if you don't want to use ScholarEval via the user interface, you can simply run the ScholarEval pipeline as follows: 
 
 ```bash
 cd ScholarEval
-./run_scholareval.sh <research_plan_path> <llm_engine_name> [litellm_name]
+./run_scholareval.sh <research_idea_path> <llm_engine_name> [litellm_name]
 ````
 ###### Command Line Arguments
 
 * `research_idea_path`: Path to the research idea text file
-* `llm_engine_name`: LLM engine name (e.g., `gpt-4o`, `claude-sonnet-4`)
-* `litellm_name`: LiteLLM model name for cost calculation
+* `llm_engine_name`: LLM engine name (e.g., `gpt-4o`, `claude-sonnet-4`) as specified by your litellm gateway 
+* `litellm_name`: (Optional) LiteLLM model name for cost calculation (e.g., `claude-sonnet-4-5-20250929`)
+
 ##### Request access to our web app
 
-
-
+And lastly, you can request access to our web app via `go.osu.edu/scholar-eval` We are offering $15 free credits for academic use. 
 ---
 
 ### ScholarIdeas Dataset
