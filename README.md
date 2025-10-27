@@ -26,7 +26,18 @@ Our evaluation shows that ScholarEval:
 <img width="1279" height="757" alt="image" src="https://github.com/user-attachments/assets/a7da367a-3b12-4935-9570-b05afd062536" />
 
 #### How to run ScholarEval
+
+There are three ways to run ScholarEval on your ideas: running the ScholarEval app locally, running the pipeline via command line, or requesting access to our web app. For any questions or concerns please contact `moussa.45@osu.edu` and `dasilva.30@osu.edu`
 ##### Run the ScholarEval app locally 
+1. Clone this repository.
+2. Set the following environment variables
+```
+export API_KEY="your-litellm-api-key"
+export API_ENDPOINT="your-litellm-api-endpoint"
+export S2_API_KEY="your-semantic-scholar-api-key"
+```
+3. Install required packages (see `requirements.txt`)
+4. 
 ##### Run ScholarEval pipeline via command line
 To run the pipeline:  
 
