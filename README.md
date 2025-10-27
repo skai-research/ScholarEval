@@ -60,6 +60,8 @@ And lastly, you can request access to our web app via `go.osu.edu/scholar-eval` 
 
 <img width="1290" height="456" alt="image" src="https://github.com/user-attachments/assets/813b041e-acb8-477b-b484-d6ad66bc26c3" />
 
+You can also download ScholarIdeas on [Hugging Face](https://huggingface.co/datasets/hananour/ScholarIdeas). 
+
 The `ScholarIdeas/` directory contains 117 research ideas and their reviews spanning AI, neuroscience, biochemistry, and ecology. Each review is composed of multiple rubrics, for a total of **1076 rubrics** across the dataset.
 
 Each folder in `ScholarIdeas/` includes:
