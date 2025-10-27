@@ -68,11 +68,14 @@ def process_reference(rp, method, ref, clean_ref_and_paper, llm, su, llm_cost, l
     response, input_tokens, output_tokens = llm.respond(prompt, temperature=0.3)
     clean_analysis = su.extract_json_output(response)
 
-    if litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
-        cost = 0
+    if litellm_name:
+        if litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
+            cost = 0
+        else:
+            cost = (llm_cost["input_cost_per_token"] * input_tokens + 
+                    llm_cost["output_cost_per_token"] * output_tokens)
     else:
-        cost = (llm_cost["input_cost_per_token"] * input_tokens + 
-                llm_cost["output_cost_per_token"] * output_tokens)
+        cost = 0
 
     return {
         'corpus_id': ref,
@@ -89,7 +92,7 @@ def main():
     parser.add_argument("--ref_and_paper_file", required=True, help="Path to references and paper text")
     parser.add_argument("--output_file", required=True, help="Path to output methods JSON")
     parser.add_argument("--llm_engine_name", required=True, help="llm engine name (e.g., 'gpt-4o')")
-    parser.add_argument("--litellm_name", required=True, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
+    parser.add_argument("--litellm_name", help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
     parser.add_argument("--max_workers", type=int, default=8, help="Maximum number of parallel workers")
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
@@ -97,7 +100,7 @@ def main():
     API_KEY = os.environ.get("API_KEY")
     API_ENDPOINT = os.environ.get("API_ENDPOINT")
     
-    llm_cost = model_cost[args.litellm_name]
+    llm_cost = model_cost[args.litellm_name] if args.litellm_name else None
     
     with open(args.research_plan, "r", encoding="utf-8") as f:
         rp = f.read()

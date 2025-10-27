@@ -53,7 +53,7 @@ def main():
                         help="Path to .txt file with one contribution per line")
     parser.add_argument("--llm_engine_name", type=str, required=True,
                         help="Name of the LLM engine to use (e.g., 'gpt-4')")
-    parser.add_argument("--litellm_name", type=str, required=True,
+    parser.add_argument("--litellm_name", type=str,
                         help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
     parser.add_argument("--output_file", type=str, required=True,
                         help="Path to save generated queries as JSON")
@@ -65,7 +65,7 @@ def main():
     llm = LLMEngine(llm_engine_name=args.llm_engine_name, api_key=API_KEY, api_endpoint=API_ENDPOINT)
     
     # Get LLM cost information
-    llm_cost = model_cost[args.litellm_name]
+    llm_cost = model_cost[args.litellm_name] if args.litellm_name else None
 
     with open(args.research_plan, "r", encoding="utf-8") as f:
         research_plan = f.read()
@@ -83,11 +83,14 @@ def main():
     
     for contrib in contributions:
         queries, input_tokens, output_tokens = generate_queries_for_contribution(llm, contrib, research_plan)
-        if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
-            cost = 0
+        if args.litellm_name:
+            if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
+                cost = 0
+            else:
+                cost = (llm_cost["input_cost_per_token"] * input_tokens + 
+                        llm_cost["output_cost_per_token"] * output_tokens)
         else:
-            cost = (llm_cost["input_cost_per_token"] * input_tokens + 
-                    llm_cost["output_cost_per_token"] * output_tokens)
+            cost = 0
         total_cost += cost
         total_input_tokens += input_tokens
         total_output_tokens += output_tokens

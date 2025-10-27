@@ -81,11 +81,14 @@ def process_reference(rp, method, related_work, rw, llm, su, llm_cost, litellm_n
         clean_analysis = su.extract_json_output(response)
         clean_analysis['n_related_work'] = rw
         
-        if litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
-            cost = 0
+        if litellm_name:
+            if litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
+                cost = 0
+            else:
+                cost = (llm_cost["input_cost_per_token"] * input_tokens + 
+                        llm_cost["output_cost_per_token"] * output_tokens)
         else:
-            cost = (llm_cost["input_cost_per_token"] * input_tokens + 
-                    llm_cost["output_cost_per_token"] * output_tokens)
+            cost = 0
         clean_analysis['cost'] = cost
         clean_analysis['input_tokens'] = input_tokens
         clean_analysis['output_tokens'] = output_tokens
@@ -199,7 +202,7 @@ def main():
     parser.add_argument("--output_file", required=True, help="Path to output methods JSON")
     parser.add_argument("--markdown_output", required=True, help="Path to output markdown file")
     parser.add_argument("--llm_engine_name", required=True, help="llm engine name (e.g., 'gpt-4o')")
-    parser.add_argument("--litellm_name", required=True, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
+    parser.add_argument("--litellm_name", help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
     parser.add_argument("--max_workers", type=int, default=8, help="Maximum number of parallel workers")
     parser.add_argument("--bibliography_file", required=False, help="Path to save bibliography/references txt file")
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
@@ -208,7 +211,7 @@ def main():
     API_KEY = os.environ.get("API_KEY")
     API_ENDPOINT = os.environ.get("API_ENDPOINT")
     
-    llm_cost = model_cost[args.litellm_name]
+    llm_cost = model_cost[args.litellm_name] if args.litellm_name else None
     
     with open(args.research_plan, "r", encoding="utf-8") as f:
         rp = f.read()

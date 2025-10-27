@@ -14,7 +14,7 @@ def main():
     parser.add_argument("--research_plan", required=True)
     parser.add_argument("--papers_file", required=True, help="Extracted papers JSON")
     parser.add_argument("--llm_engine", required=True)
-    parser.add_argument("--litellm_name", required=True, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
+    parser.add_argument("--litellm_name", help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
     parser.add_argument("--output_file", required=True)
     parser.add_argument("--max_workers", type=int, default=5, help="Maximum number of parallel workers")
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
@@ -24,7 +24,7 @@ def main():
         plan = f.read()
     papers = json.load(open(args.papers_file))
     
-    llm_cost = model_cost[args.litellm_name]
+    llm_cost = model_cost[args.litellm_name] if args.litellm_name else None
     
     cost_lock = threading.Lock()
     total_cost = 0
@@ -117,11 +117,14 @@ def main():
         resp, input_tokens, output_tokens = llm.respond(prompt, temperature=0)
         
         with cost_lock:
-            if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
-                cost = 0
+            if args.litellm_name:
+                if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
+                    cost = 0
+                else:
+                    cost = (llm_cost["input_cost_per_token"] * input_tokens + 
+                            llm_cost["output_cost_per_token"] * output_tokens)
             else:
-                cost = (llm_cost["input_cost_per_token"] * input_tokens + 
-                        llm_cost["output_cost_per_token"] * output_tokens)
+                cost = 0
             total_cost += cost
             total_input_tokens += input_tokens
             total_output_tokens += output_tokens

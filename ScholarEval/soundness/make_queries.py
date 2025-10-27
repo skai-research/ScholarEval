@@ -12,7 +12,7 @@ def main():
     parser.add_argument("--methods_file", required=True, help="Path to methods JSON file")
     parser.add_argument("--output_file", required=True, help="Path to output queries JSON")
     parser.add_argument("--llm_engine_name", required=True, help="llm engine name (e.g., 'gpt-4o')")
-    parser.add_argument("--litellm_name", required=True, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
+    parser.add_argument("--litellm_name", help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
     API_KEY = os.environ.get("API_KEY")
@@ -20,7 +20,7 @@ def main():
     llm = LLMEngine(llm_engine_name=args.llm_engine_name, api_key=API_KEY, api_endpoint=API_ENDPOINT)
     su = StringUtils()
     
-    llm_cost = model_cost[args.litellm_name]
+    llm_cost = model_cost[args.litellm_name] if args.litellm_name else None
     
     with open(args.research_plan, "r", encoding="utf-8") as f:
         rp = f.read()
@@ -61,11 +61,14 @@ def main():
         ]
         response, input_tokens, output_tokens = llm.respond(prompt, temperature=0.3)
         
-        if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
-            method_cost = 0
+        if args.litellm_name:
+            if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
+                method_cost = 0
+            else:
+                method_cost = (llm_cost["input_cost_per_token"] * input_tokens + 
+                              llm_cost["output_cost_per_token"] * output_tokens)
         else:
-            method_cost = (llm_cost["input_cost_per_token"] * input_tokens + 
-                          llm_cost["output_cost_per_token"] * output_tokens)
+            method_cost = 0
         total_cost += method_cost
         total_input_tokens += input_tokens
         total_output_tokens += output_tokens
@@ -73,7 +76,10 @@ def main():
         clean_query = su.extract_json_output(response)['query']
         queries[method] = clean_query
 
-    print(f"Make queries cost: ${total_cost:.4f} (Input: {total_input_tokens}, Output: {total_output_tokens})")
+    if args.litellm_name:
+        print(f"Make queries cost: ${total_cost:.4f} (Input: {total_input_tokens}, Output: {total_output_tokens})")
+    else:
+        print(f"Make queries tokens: (Input: {total_input_tokens}, Output: {total_output_tokens})")
 
     if args.cost_log_file:
         cost_entry = {

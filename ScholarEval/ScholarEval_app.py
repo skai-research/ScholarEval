@@ -114,6 +114,14 @@ for key in required_keys:
     status = "✅" if os.environ.get(key) else "❌"
     api_keys_status.write(f"{key}: {status}")
 
+# Cost computation option - currently disabled
+enable_cost_computation = st.sidebar.checkbox(
+    "Enable cost computation", 
+    value=False,
+    help="Track LLM usage costs during evaluation"
+)
+litellm_name = None
+
 st.sidebar.markdown("---")
 st.sidebar.markdown("### Runs Storage")
 demo_data_path = Path("demo_data")
@@ -223,7 +231,9 @@ with col2:
                 status_placeholder.text("Extracting methods from research plan...")
                 progress_bar.progress(15)
                 st.info("Identifying research methods...")
-                cmd1 = ["python", "-m", "ScholarEval.soundness.extract_methods", "--input_file", str(input_file), "--output_file", str(soundness_dir / "methods.json"), "--llm_engine_name", "GPT-4.1-nano", "--litellm_name", "claude-sonnet-4-20250514", "--cost_log_file", str(soundness_dir / "soundness_costs.jsonl")]
+                cmd1 = ["python", "-m", "ScholarEval.soundness.extract_methods", "--input_file", str(input_file), "--output_file", str(soundness_dir / "methods.json"), "--llm_engine_name", "GPT-4.1-nano", "--cost_log_file", str(soundness_dir / "soundness_costs.jsonl")]
+                if litellm_name:
+                    cmd1.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd1, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Method extraction failed: {result.stderr}")
@@ -242,7 +252,9 @@ with col2:
                 status_placeholder.text("Generating search queries...")
                 progress_bar.progress(40)
                 st.info("Creating targeted queries for literature search...")
-                cmd3 = ["python", "-m", "ScholarEval.soundness.make_queries", "--research_plan", str(input_file), "--methods_file", str(soundness_dir / "methods.json"), "--output_file", str(soundness_dir / "queries.json"), "--llm_engine_name", "GPT-4.1-nano", "--litellm_name", "claude-sonnet-4-20250514", "--cost_log_file", str(soundness_dir / "soundness_costs.jsonl")]
+                cmd3 = ["python", "-m", "ScholarEval.soundness.make_queries", "--research_plan", str(input_file), "--methods_file", str(soundness_dir / "methods.json"), "--output_file", str(soundness_dir / "queries.json"), "--llm_engine_name", "GPT-4.1-nano", "--cost_log_file", str(soundness_dir / "soundness_costs.jsonl")]
+                if litellm_name:
+                    cmd3.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd3, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Query generation failed: {result.stderr}")
@@ -287,7 +299,9 @@ with col2:
                 status_placeholder.text("Analyzing existing methods in the literature...")
                 progress_bar.progress(80)
                 st.info("Analyzing soundness against existing literature...")
-                cmd5 = ["python", "-m", "ScholarEval.soundness.methods_and_results_synthesis", "--research_plan", str(input_file), "--methods_and_ref_file", str(soundness_dir / "snippet_references.json"), "--ref_and_paper_file", str(soundness_dir / "snippet_papers.json"), "--output_file", str(soundness_dir / "methods_analysis.json"), "--llm_engine_name", llm_model, "--litellm_name", "claude-sonnet-4-20250514", "--cost_log_file", str(soundness_dir / "soundness_costs.jsonl")]
+                cmd5 = ["python", "-m", "ScholarEval.soundness.methods_and_results_synthesis", "--research_plan", str(input_file), "--methods_and_ref_file", str(soundness_dir / "snippet_references.json"), "--ref_and_paper_file", str(soundness_dir / "snippet_papers.json"), "--output_file", str(soundness_dir / "methods_analysis.json"), "--llm_engine_name", llm_model, "--cost_log_file", str(soundness_dir / "soundness_costs.jsonl")]
+                if litellm_name:
+                    cmd5.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd5, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Method analysis failed: {result.stderr}")
@@ -299,7 +313,9 @@ with col2:
                 progress_bar.progress(95)
                 st.info("Creating comprehensive soundness assessment...")
                 review_file = soundness_dir / "meta_review.json"
-                cmd6 = ["python", "-m", "ScholarEval.soundness.meta_review", "--research_plan", str(input_file), "--mr_analysis_file", str(soundness_dir / "methods_analysis.json"), "--methods_and_ref_file", str(soundness_dir / "snippet_references.json"), "--output_file", str(review_file), "--markdown_output", str(soundness_dir / "meta_review.md"), "--llm_engine_name", llm_model, "--litellm_name", "claude-sonnet-4-20250514", "--cost_log_file", str(soundness_dir / "soundness_costs.jsonl")]
+                cmd6 = ["python", "-m", "ScholarEval.soundness.meta_review", "--research_plan", str(input_file), "--mr_analysis_file", str(soundness_dir / "methods_analysis.json"), "--methods_and_ref_file", str(soundness_dir / "snippet_references.json"), "--output_file", str(review_file), "--markdown_output", str(soundness_dir / "meta_review.md"), "--llm_engine_name", llm_model, "--cost_log_file", str(soundness_dir / "soundness_costs.jsonl")]
+                if litellm_name:
+                    cmd6.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd6, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Meta review failed: {result.stderr}")
@@ -311,8 +327,10 @@ with col2:
                 progress_bar.progress(95)
                 st.info("Generating TLDR...")
                 tldr_file = soundness_dir / "tldr_soundness.txt"
-                cmd7 = ["python", "-m", "ScholarEval.soundness.tldr_soundness", "--input_file", str(input_file), "--meta_review_file", str(soundness_dir / "meta_review.json"), "--llm_engine_name", llm_model, "--litellm_name", "claude-sonnet-4-20250514", "--output_file", str(tldr_file), 
+                cmd7 = ["python", "-m", "ScholarEval.soundness.tldr_soundness", "--input_file", str(input_file), "--meta_review_file", str(soundness_dir / "meta_review.json"), "--llm_engine_name", llm_model, "--output_file", str(tldr_file), 
                 "--markdown_file",str(soundness_dir / "tldr_soundness.md"), "--cost_log_file", str(soundness_dir / "soundness_costs.jsonl")]
+                if litellm_name:
+                    cmd7.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd7, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"TLDR failed: {result.stderr}")
@@ -391,7 +409,9 @@ with col2:
                 status_placeholder.text("Extracting dimensions and contributions from research plan...")
                 progress_bar.progress(10)
                 st.info("Analyzing research plan to identify contribution dimensions...")
-                cmd1 = ["python", "-m", "ScholarEval.contribution.extract_dimensions_and_contributions", "--input_file", str(input_file), "--llm_engine", "GPT-4.1-nano", "--litellm_name", "claude-sonnet-4-20250514", "--output_file", str(contribution_dir / "dimensions_contributions.jsonl"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                cmd1 = ["python", "-m", "ScholarEval.contribution.extract_dimensions_and_contributions", "--input_file", str(input_file), "--llm_engine", "GPT-4.1-nano", "--output_file", str(contribution_dir / "dimensions_contributions.jsonl"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                if litellm_name:
+                    cmd1.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd1, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Dimension extraction failed: {result.stderr}")
@@ -413,7 +433,9 @@ with col2:
                 status_placeholder.text("Generating targeted search queries...")
                 progress_bar.progress(20)
                 st.info("Creating optimized queries for literature search...")
-                cmd2 = ["python", "-m", "ScholarEval.contribution.queries_generator", "--research_plan", str(input_file), "--contrib_file", str(contribution_dir / "dimensions_contributions.jsonl"), "--llm_engine_name", "GPT-4.1-nano", "--litellm_name", "claude-sonnet-4-20250514", "--output_file", str(contribution_dir / "contribution_queries.json"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                cmd2 = ["python", "-m", "ScholarEval.contribution.queries_generator", "--research_plan", str(input_file), "--contrib_file", str(contribution_dir / "dimensions_contributions.jsonl"), "--llm_engine_name", "GPT-4.1-nano", "--output_file", str(contribution_dir / "contribution_queries.json"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                if litellm_name:
+                    cmd2.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd2, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Query generation failed: {result.stderr}")
@@ -467,7 +489,9 @@ with col2:
                 status_placeholder.text("Assessing relevance of extracted papers...")
                 progress_bar.progress(50)
                 st.info("Filtering papers based on relevance to research plan...")
-                cmd4 = ["python", "-m", "ScholarEval.contribution.relevance_assessor", "--research_plan", str(input_file), "--papers_file", str(contribution_dir / "contribution_papers.json"), "--llm_engine", llm_model, "--litellm_name", "claude-sonnet-4-20250514", "--output_file", str(contribution_dir / "filtered_contribution_papers.json"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                cmd4 = ["python", "-m", "ScholarEval.contribution.relevance_assessor", "--research_plan", str(input_file), "--papers_file", str(contribution_dir / "contribution_papers.json"), "--llm_engine", llm_model, "--output_file", str(contribution_dir / "filtered_contribution_papers.json"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                if litellm_name:
+                    cmd4.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd4, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Relevance assessment failed: {result.stderr}")
@@ -521,7 +545,9 @@ with col2:
                 status_placeholder.text("Re-assessing relevance of augmented papers...")
                 progress_bar.progress(75)
                 st.info("Filtering augmented papers for final relevance...")
-                cmd7 = ["python", "-m", "ScholarEval.contribution.relevance_assessor", "--research_plan", str(input_file), "--papers_file", str(contribution_dir / "filtered_augmented_contribution_papers.json"), "--llm_engine", llm_model, "--litellm_name", "claude-sonnet-4-20250514", "--output_file", str(contribution_dir / "final_contribution_papers.json"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                cmd7 = ["python", "-m", "ScholarEval.contribution.relevance_assessor", "--research_plan", str(input_file), "--papers_file", str(contribution_dir / "filtered_augmented_contribution_papers.json"), "--llm_engine", llm_model, "--output_file", str(contribution_dir / "final_contribution_papers.json"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                if litellm_name:
+                    cmd7.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd7, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Final relevance assessment failed: {result.stderr}")
@@ -552,7 +578,9 @@ with col2:
                 status_placeholder.text("Conducting pairwise comparisons...")
                 progress_bar.progress(85)
                 st.info("Performing detailed comparisons between research plan and papers...")
-                cmd9 = ["python", "-m", "ScholarEval.contribution.pairwise_comparator", "--research_plan", str(input_file), "--papers_metadata", str(contribution_dir / "sampled_final_contribution_papers.json"), "--dimensions_file", str(contribution_dir / "dimensions_contributions.jsonl"), "--llm_engine", llm_model, "--litellm_name", "claude-sonnet-4-20250514", "--output_file", str(contribution_dir / "pairwise_comparisons.json"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                cmd9 = ["python", "-m", "ScholarEval.contribution.pairwise_comparator", "--research_plan", str(input_file), "--papers_metadata", str(contribution_dir / "sampled_final_contribution_papers.json"), "--dimensions_file", str(contribution_dir / "dimensions_contributions.jsonl"), "--llm_engine", llm_model, "--output_file", str(contribution_dir / "pairwise_comparisons.json"), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                if litellm_name:
+                    cmd9.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd9, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Pairwise comparison failed: {result.stderr}")
@@ -576,7 +604,9 @@ with col2:
                 progress_bar.progress(95)
                 st.info("Creating comprehensive contribution assessment...")
                 review_file = contribution_dir / "contribution_review.txt"
-                cmd11 = ["python", "-m", "ScholarEval.contribution.contribution_review_synthesis", "--research_plan", str(input_file), "--comparisons_file", str(contribution_dir / "contribution_context.json"), "--llm_engine", llm_model, "--litellm_name", "claude-sonnet-4-20250514", "--output_file", str(review_file), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                cmd11 = ["python", "-m", "ScholarEval.contribution.contribution_review_synthesis", "--research_plan", str(input_file), "--comparisons_file", str(contribution_dir / "contribution_context.json"), "--llm_engine", llm_model, "--output_file", str(review_file), "--cost_log_file", str(contribution_dir / "contribution_costs.jsonl")]
+                if litellm_name:
+                    cmd11.extend(["--litellm_name", litellm_name])
                 result = subprocess.run(cmd11, capture_output=True, text=True, cwd=working_dir, env=env)
                 if result.returncode != 0:
                     st.error(f"Contribution review synthesis failed: {result.stderr}")

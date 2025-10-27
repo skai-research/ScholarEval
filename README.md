@@ -44,12 +44,14 @@ Alternatively, if you don't want to use ScholarEval via the user interface, you 
 
 ```bash
 cd ScholarEval
-./run_scholareval.sh <research_idea_path> <llm_engine_name> [litellm_name]
+./run_scholareval.sh <research_idea_path> [cutoff_date] <llm_engine_name> <save_to> [litellm_name]
 ````
 ###### Command Line Arguments
 
 * `research_idea_path`: Path to the research idea text file
+* `cutoff_date`: Optional cutoff date for literature search
 * `llm_engine_name`: LLM engine name (e.g., `gpt-4o`, `claude-sonnet-4`) as specified by your litellm gateway 
+* `save_to`: folder to save all intermediate and final results to
 * `litellm_name`: (Optional) LiteLLM model name for cost calculation (e.g., `claude-sonnet-4-5-20250929`)
 
 ##### Request access to our web app

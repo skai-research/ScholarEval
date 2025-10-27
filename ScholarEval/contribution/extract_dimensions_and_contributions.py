@@ -70,7 +70,7 @@ def main():
     parser = argparse.ArgumentParser(description="Extract core contributions from a research plan.")
     parser.add_argument("--input_file", type=str, required=True, help="Path to the research plan text file.")
     parser.add_argument("--llm_engine_name", type=str, required=True, help="Name of the LLM engine to use (e.g., 'gpt-4o').")
-    parser.add_argument("--litellm_name", type=str, required=True, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514').")
+    parser.add_argument("--litellm_name", type=str, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514').")
     parser.add_argument("--output_file", type=str, required=True, help="Path to save the extracted contributions.")
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
@@ -81,20 +81,23 @@ def main():
     su = StringUtils()
     
     # Get LLM cost information
-    llm_cost = model_cost[args.litellm_name]
+    llm_cost = model_cost[args.litellm_name] if args.litellm_name else None
 
     with open(args.input_file, "r", encoding="utf-8") as f:
         research_plan = f.read()
 
     contributions_text, input_tokens, output_tokens = extract_dimensions_contributions(llm, research_plan)
     
-    if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
-        cost = 0
+    if args.litellm_name:
+        if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
+            cost = 0
+        else:
+            cost = (llm_cost["input_cost_per_token"] * input_tokens + 
+                    llm_cost["output_cost_per_token"] * output_tokens)
+        print(f"LLM cost for extract_dimensions_and_contributions: ${cost:.6f}")
     else:
-        cost = (llm_cost["input_cost_per_token"] * input_tokens + 
-                llm_cost["output_cost_per_token"] * output_tokens)
-    
-    print(f"LLM cost for extract_dimensions_and_contributions: ${cost:.6f}")
+        cost = 0
+        print(f"LLM tokens for extract_dimensions_and_contributions: (Input: {input_tokens}, Output: {output_tokens})")
     
     if args.cost_log_file:
         cost_entry = {

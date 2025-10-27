@@ -135,7 +135,7 @@ def main():
     parser.add_argument("--research_plan", required=True, help="Path to the research plan .txt file.")
     parser.add_argument("--comparisons_file", required=True, help="Path to pairwise comparisons JSON file.")
     parser.add_argument("--llm_engine", required=True, help="LLM model name to use.")
-    parser.add_argument("--litellm_name", required=True, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514').")
+    parser.add_argument("--litellm_name", help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514').")
     parser.add_argument("--output_file", required=True, help="Path to save final contribution evaluation.")
     parser.add_argument("--bibliography_file", required=False, help="Path to save bibliography/references txt file")
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
@@ -151,18 +151,21 @@ def main():
         api_endpoint=os.environ.get("API_ENDPOINT")
     )
     
-    llm_cost = model_cost[args.litellm_name]
+    llm_cost = model_cost[args.litellm_name] if args.litellm_name else None
 
     logging.info("Synthesizing final contribution assessment...")
     evaluation, input_tokens, output_tokens = prompt_final_synthesis(llm, research_plan_text, comparisons)
     
-    if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
-        cost = 0
+    if args.litellm_name:
+        if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
+            cost = 0
+        else:
+            cost = (llm_cost["input_cost_per_token"] * input_tokens + 
+                    llm_cost["output_cost_per_token"] * output_tokens)
+        print(f"LLM cost for contribution_evaluator: ${cost:.6f}")
     else:
-        cost = (llm_cost["input_cost_per_token"] * input_tokens + 
-                llm_cost["output_cost_per_token"] * output_tokens)
-    
-    print(f"LLM cost for contribution_evaluator: ${cost:.6f}")
+        cost = 0
+        print(f"LLM tokens for contribution_evaluator: (Input: {input_tokens}, Output: {output_tokens})")
 
     if args.cost_log_file:
         cost_entry = {

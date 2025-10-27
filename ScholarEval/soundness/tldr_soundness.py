@@ -26,7 +26,7 @@ def main():
     parser.add_argument("--output_file", required=True, help="Path to output JSON")
     parser.add_argument("--markdown_file", required=True, help="Path to output Markdown")
     parser.add_argument("--llm_engine_name", required=True, help="llm engine name (e.g., 'gpt-4o')")
-    parser.add_argument("--litellm_name", required=True, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
+    parser.add_argument("--litellm_name", help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514')")
     parser.add_argument("--bibliography_file", required=False, help="Path to bibliography file for citation checking")
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
     args = parser.parse_args()
@@ -36,7 +36,7 @@ def main():
     llm = LLMEngine(llm_engine_name=args.llm_engine_name, api_key=API_KEY, api_endpoint=API_ENDPOINT)
     su = StringUtils()
     
-    llm_cost = model_cost[args.litellm_name]
+    llm_cost = model_cost[args.litellm_name] if args.litellm_name else None
 
     with open(args.input_file, "r", encoding="utf-8") as f:
         rp = f.read()
@@ -102,11 +102,14 @@ JSON formatting requirements:
     response, input_tokens, output_tokens = llm.respond(prompt, temperature=0.2)
     tldr = su.extract_json_output(response)
 
-    if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
-        cost = 0
+    if args.litellm_name:
+        if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
+            cost = 0
+        else:
+            cost = (llm_cost["input_cost_per_token"] * input_tokens + 
+                    llm_cost["output_cost_per_token"] * output_tokens)
     else:
-        cost = (llm_cost["input_cost_per_token"] * input_tokens + 
-                llm_cost["output_cost_per_token"] * output_tokens)
+        cost = 0
     
     print(f"LLM cost for tldr_soundness: ${cost:.6f}")
 

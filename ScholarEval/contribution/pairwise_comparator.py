@@ -92,7 +92,7 @@ def main():
     parser.add_argument("--papers_metadata", required=True, help="Path to papers metadata JSON file.")
     parser.add_argument("--dimensions_file", required=True, help="Path to dimensions JSONL file.")
     parser.add_argument("--llm_engine", required=True, help="Name of the LLM engine (e.g., 'gpt-4o').")
-    parser.add_argument("--litellm_name", required=True, help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514').")
+    parser.add_argument("--litellm_name", help="LiteLLM model name for cost calculation (e.g., 'claude-sonnet-4-20250514').")
     parser.add_argument("--output_file", required=True, help="Where to save the pairwise comparisons.")
     parser.add_argument("--max_workers", type=int, default=5, help="Maximum number of parallel workers")
     parser.add_argument("--cost_log_file", help="Path to centralized cost log file")
@@ -103,7 +103,7 @@ def main():
     papers = load_json(args.papers_metadata)
     
     # Get LLM cost information
-    llm_cost = model_cost[args.litellm_name]
+    llm_cost = model_cost[args.litellm_name] if args.litellm_name else None
     
     # Thread-safe cost tracking
     cost_lock = threading.Lock()
@@ -149,11 +149,14 @@ def main():
             
             # Thread-safe cost tracking
             with cost_lock:
-                if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
-                    cost = 0
+                if args.litellm_name:
+                    if args.litellm_name == "meta_llama/Llama-3.3-70B-Instruct":
+                        cost = 0
+                    else:
+                        cost = (llm_cost["input_cost_per_token"] * input_tokens + 
+                                llm_cost["output_cost_per_token"] * output_tokens)
                 else:
-                    cost = (llm_cost["input_cost_per_token"] * input_tokens + 
-                            llm_cost["output_cost_per_token"] * output_tokens)
+                    cost = 0
                 total_cost += cost
                 total_input_tokens += input_tokens
                 total_output_tokens += output_tokens
