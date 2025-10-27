@@ -37,7 +37,8 @@ export API_ENDPOINT="your-litellm-api-endpoint"
 export S2_API_KEY="your-semantic-scholar-api-key"
 ```
 3. Install required packages (see `requirements.txt`)
-4. 
+4. Run `streamlit run ScholarEval/ScholarEval_app.py`
+5. Input your research idea and start the soundness and contribution evaluation as shown in [this short demo video](https://youtu.be/rgLWZkdvUPc). All intermediate logs are saved locally in `demo_data.`
 ##### Run ScholarEval pipeline via command line
 To run the pipeline:  
 
