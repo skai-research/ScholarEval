@@ -25,20 +25,23 @@ Our evaluation shows that ScholarEval:
 ### ScholarEval Pipeline  
 <img width="1279" height="757" alt="image" src="https://github.com/user-attachments/assets/a7da367a-3b12-4935-9570-b05afd062536" />
 
-The pipeline to generate **soundness** and **contribution** evaluations for a research idea using ScholarEval is located in `ScholarEval/scholareval.py`.  
-
+#### How to run ScholarEval
+##### Run the ScholarEval app locally 
+##### Run ScholarEval pipeline via command line
 To run the pipeline:  
 
 ```bash
 cd ScholarEval
 ./run_scholareval.sh <research_plan_path> <llm_engine_name> [litellm_name]
 ````
-
-#### Command Line Arguments
+###### Command Line Arguments
 
 * `research_idea_path`: Path to the research idea text file
 * `llm_engine_name`: LLM engine name (e.g., `gpt-4o`, `claude-sonnet-4`)
 * `litellm_name`: LiteLLM model name for cost calculation
+##### Request access to our web app
+
+
 
 ---
 
@@ -66,14 +69,14 @@ Additional resources:
 If you find **ScholarEval** or **ScholarIdeas** useful in your work, please cite our paper:
 
 ```bibtex
-@misc{moussa2025scholareval,
+@misc{moussa2025scholarevalresearchideaevaluation,
       title={ScholarEval: Research Idea Evaluation Grounded in Literature}, 
-      author={Hanane Nour Moussa, Patrick Queiroz Da Silva, Daniel Adu-Ampratwum, Alyson East, Zitong Lu, Nikki Puccetti, Mingyi Xue, Huan Sun, Bodhisattwa Prasad Majumder, Sachin Kumar},
+      author={Hanane Nour Moussa and Patrick Queiroz Da Silva and Daniel Adu-Ampratwum and Alyson East and Zitong Lu and Nikki Puccetti and Mingyi Xue and Huan Sun and Bodhisattwa Prasad Majumder and Sachin Kumar},
       year={2025},
-      eprint={},
+      eprint={2510.16234},
       archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/}, 
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2510.16234}, 
 }
 ```
 
