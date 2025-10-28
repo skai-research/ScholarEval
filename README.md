@@ -49,7 +49,7 @@ bash run_scholareval.sh
 ###### Command Line Arguments
 The command line args to set in `run_scholareval.sh` are:
 * `research_idea_path`: Path to the research idea text file
-* `cutoff_date`: Optional cutoff date for literature search
+* `cutoff_date`: (Optional) cutoff date for literature search as YYYY-MM-DD
 * `llm_engine_name`: LLM engine name (e.g., `gpt-4o`, `claude-sonnet-4`) as specified by your litellm gateway 
 * `save_to`: folder to save all intermediate and final results to
 * `litellm_name`: (Optional) LiteLLM model name for cost calculation (e.g., `claude-sonnet-4-5-20250929`)
